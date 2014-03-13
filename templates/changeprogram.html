@@ -1,0 +1,123 @@
+$def with (gv,frm,index,indexerror, enabled, mode)
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"></meta>
+    </head>
+<body>
+    <H3>Change settings of program $index</H3>
+    <form method="post"> 
+        $if index == -1:
+            No program of index $indexerror !
+        $else:
+            <b>Name:</b>
+            $:frm.Name.render()
+            $if frm.Name.note:
+                <strong class="wrong">$frm.Name.note</strong>
+            <p></p>
+            <b>Program is:</b>
+            $if enabled:
+                <input type="radio" checked="checked" id="Enabled" value="On" name="Enabled">On
+                <input type="radio" id="Enabled" value="Off" name="Enabled">Off
+            $else:
+                <input type="radio" id="Enabled" value="On" name="Enabled">On
+                <input type="radio" checked="checked" id="Enabled" value="Off" name="Enabled">Off
+            <hr>
+            <b>Mode of operation:</b>
+            <p></p>
+            $if mode == 'waterlevel':
+                <input type="radio" checked="checked" id="Mode" value="waterlevel" name="Mode">
+            $else:
+                <input type="radio" id="Mode" value="waterlevel" name="Mode">
+            <b>Water level</b> mode of operation:
+            <br>
+            Water stations when all stations are empty at least for 
+            $:frm.wlMinDelay.render()
+            $if frm.wlMinDelay.note:
+                <strong class="wrong">$frm.wlMinDelay.note</strong>
+            hours, but not sooner than 
+            $:frm.wlEmptyDelay.render()
+            $if frm.wlEmptyDelay.note:
+                <strong class="wrong">$frm.wlEmptyDelay.note</strong>
+            hours from last watering.
+            <p></p>
+            $if mode == 'weekly':
+                <input type="radio" checked="checked" id="Mode" value="weekly" name="Mode">
+            $else:
+                <input type="radio" id="Mode" value="weekly" name="Mode">
+            <b>Weekly</b> mode of operation:
+            <br>
+            Water stations at days of a week: 
+            $:frm.calwDays1.render() Mo, 
+            $:frm.calwDays2.render() Tu, 
+            $:frm.calwDays3.render() We,
+            $:frm.calwDays4.render() Th,
+            $:frm.calwDays5.render() Fr, 
+            $:frm.calwDays6.render() Sa, 
+            $:frm.calwDays7.render() Su,
+            and every 
+            $:frm.calRepeatW.render()
+            $if frm.calRepeatW.note:
+                <strong class="wrong">$frm.calRepeatW.note</strong>
+            hours during a day.
+            <p></p>
+            $if mode == 'interval':
+                <input type="radio" checked="checked" id="Mode" value="interval" name="Mode">
+            $else:
+                <input type="radio" id="Mode" value="interval" name="Mode">
+            <b>Interval</b> mode of operation:
+            <br>
+            Water stations every
+            $:frm.caliInterval.render()
+            $if frm.caliInterval.note:
+                <strong class="wrong">$frm.caliInterval.note</strong>
+            days and every 
+            $:frm.calRepeatI.render()
+            $if frm.calRepeatI.note:
+                <strong class="wrong">$frm.calRepeatI.note</strong>
+            hours during a day.
+            <hr>
+            Program is <b>valid</b> from
+            $:frm.TimeFromH.render()
+            $if frm.TimeFromH.note:
+                <strong class="wrong">$frm.TimeFromH.note</strong>
+            :
+            $:frm.TimeFromM.render() (hour:minute)
+            $if frm.TimeFromM.note:
+                <strong class="wrong">$frm.TimeFromM.note</strong>
+            to
+            $:frm.TimeToH.render()
+            $if frm.TimeToH.note:
+                <strong class="wrong">$frm.TimeToH.note</strong>
+            :
+            $:frm.TimeToM.render() 
+            $if frm.TimeToM.note:
+                <strong class="wrong">$frm.TimeToM.note</strong>
+            (hour:minute) of every day.
+            <hr>
+            <b>Select stations:</b>
+            <br>
+            $for i in range(gv.hw['StNo'])
+                <tr>
+                    <td>
+                        $i:
+                    </td>
+                    <td>
+                        $code:
+                            x=gv.hw['StName'][i]
+                        $x
+                    </td>
+                    <td>
+                        $if i in gv.prg[index]['Stations']:
+                            <input checked="checked" type="checkbox" id="s$:i" value="" name="s$:i">
+                        $else:
+                            <input type="checkbox" id="s$:i" value="" name="s$:i">
+                    </td>
+                </tr>
+        <p></p>
+        <button name="submit"><img src="static/icons/svc_submit.png" align="absmiddle" title="Submit" alt="Submit"> Submit</button>
+        <button name="cancel"><img src="static/icons/svc_delall.png" align="absmiddle" title="Cancel" alt="Cancel"> Cancel</button>
+    </form>
+</body>
+</html>

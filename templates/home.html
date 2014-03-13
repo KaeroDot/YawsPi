@@ -1,0 +1,125 @@
+$def with (gv)
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"></meta>
+    </head>
+<body>
+    <H3>YAWPI - Yet Another Watering system for raspberry PI</H3>
+    <p></p>
+    <b>System name: </b> $gv.sd['Name']
+    <br>
+    <b>YAWPI Version: </b> $gv.sd['Version']
+    <br>
+    <b>RPi Revision: </b> $gv.hw['RPiRevision']
+    <br>
+    <b>Device date and time: </b> $gv.cvd['TimeStr']
+    <p></p>
+    <b>Status</b>
+    <br>
+    <b>Operation: </b> 
+        $if gv.sd['Enabled']:
+            <font color='green'>Running</font>
+        $else:
+            <font color='red'>Stopped</font>
+    <br>
+    <b>Loging: </b>
+        $if gv.sd['Logging']:
+            <font color='green'>Enabled</font>, limit:
+                $if gv.sd['LoggingLimit'] == 0:
+                    unlimited
+                $else:
+                    $gv.sd['LoggingLimit'] lines
+        $else:
+            <font color='red'>Stopped</font>
+    <br>
+    <p></p>
+    <b>Sensors: </b>
+    <br>
+    <b>Temperature sensor: </b>
+        $if gv.hw['SeTemp']:
+            &deg;
+        $else:
+            Not installed
+    <br>
+    <b>Pressure sensor: </b> 
+        $if gv.hw['SePress']:
+            Pa
+        $else:
+            Not installed
+    <br>
+    <b>Humidity sensor: </b> 
+        $if gv.hw['SeHumid']:
+            %
+        $else:
+            Not installed
+    <br>
+    <b>Rain sensor: </b>
+        $if gv.hw['SeRain']:
+            mm
+        $else:
+            Not installed
+    <br>
+    <b>Barrel water level: </b>
+        $'{:.0f}'.format(gv.cvd['BaWL'] * 100)%
+    <p></p>
+    <b>Stations status and sensors</b>
+    <table border="1">
+        <tbody>
+            <tr>
+                <td>
+                    No
+                </td>
+                <td>
+                    Name
+                </td>
+                <td>
+                    Water Level
+                </td>
+                <td>
+                    Running
+                </td>
+                <td>
+                    Next Run
+                </td>
+            </tr>
+            $for i in range(gv.hw['StNo'])
+                <tr>
+                    <td>
+                        $i
+                    </td>
+                    <td>
+                        $gv.hw['StName'][i]
+                    </td>
+                    <td>
+                        $'{:.0f}'.format(gv.cvd['StWL'][i] * 100)%
+                    </td>
+                    <td>
+                        $if gv.hw['StValveState'][i]:
+                            <font color='red'>Yes</font>
+                        $else:
+                            No
+                    </td>
+                    <td>
+                       - 
+                    </td>
+                </tr>
+        </tbody>
+    </table>
+    <p></p>
+    <form method="post"> 
+        <button name="reload"><img src="static/icons/svc_refresh.png" align="absmiddle" title="Refresh" alt="Refresh"> Refresh</button>
+        <button name="runnow"><img src="static/icons/svc_run.png" align="absmiddle" title="Run now" alt="Run now"> Run now</button>
+        <button name="options"><img src="static/icons/svc_options.png" align="absmiddle" title="Options" alt="Options"> Options</button>
+        <button name="stations">Stations</button>
+        <button name="programs"><img src="static/icons/svc_cal.png" align="absmiddle" title="Programs" alt="Programs"> Programs</button>
+        <button name="log"><img src="static/icons/svc_log.png" align="absmiddle" title="Show log" alt="Show log"> Show log</button>
+        $if gv.sd['Enabled']:
+            <button name="stop"><img src="static/icons/svc_stop.png" align="absmiddle" title="Stop" alt="Stop"> Stop</button>
+        $else:
+            <button name="start"><img src="static/icons/svc_start.png" align="absmiddle" title="Start" alt="Start"> Start</button>
+        <button name="reboot"><img src="static/icons/svc_reboot.png" align="absmiddle" title="Reboot" alt="Reboot"> Reboot</button>
+    </form>
+</body>
+</html>

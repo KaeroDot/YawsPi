@@ -1,0 +1,75 @@
+$def with (gv)
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"></meta>
+    </head>
+<body>
+    <H3>Programs</H3>
+    <p></p>
+    <form method="post"> 
+        <button name="add"><img src="static/icons/svc_add.png" align="absmiddle" title="Add new program" alt="Add new program"> Add new program</button>
+    </form>
+    <p></p>
+    <table border="1">
+        <tbody>
+            <tr>
+                <td>
+                    No
+                </td>
+                <td>
+                    Name
+                </td>
+                <td>
+                    Enabled
+                </td>
+                <td>
+                    Stations
+                </td>
+                <td>
+                Edit
+                </td>
+                <td>
+                Remove
+                </td>
+            </tr>
+            $for i in range(len(gv.prg))
+                <tr>
+                    <td>
+                        $i
+                    </td>
+                    <td>
+                        $code:
+                            x=gv.prg[i]['Name']
+                        $x
+                    </td>
+                    <td>
+                       $if gv.prg[i]['Enabled']:
+                           <font color='green'>Yes</font>
+                       $else:
+                           <font color='red'>No</font>
+                    </td>
+                    <td>
+                        $for j in gv.prg[i]['Stations']
+                            $j: $gv.hw['StName'][j], 
+                    </td>
+                    <td>
+                        <form method="post"> 
+                            <button name="c$:i"><img src="static/icons/svc_edit.png" align="absmiddle" title="Modify $:i" alt="Modify $:i"></button>
+                        </form>
+                    </td>
+                    <td>
+                        <form method="post"> 
+                            <button name="r$:i"><img src="static/icons/svc_del.png" align="absmiddle" title="Remove $:i" alt="Remove $:i"></button>
+                        </form>
+                    </td>
+                </tr>
+        </tbody>
+    </table>
+    <p></p>
+    <form method="post"> 
+        <button name="cancel"><img src="static/icons/svc_back.png" align="absmiddle" title="Back to home page" alt="Back to home page"> Back to home page</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,20 @@
+$def with (gv,frm,index,indexerror)
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"></meta>
+    </head>
+<body>
+    <H3>Change settings of station $index</H3>
+    <form method="post"> 
+        $if index == -1:
+            No station of index $indexerror !
+        $else:
+            $:frm.render()
+        <p></p>
+        <button name="submit"><img src="static/icons/svc_submit.png" align="absmiddle" title="Submit" alt="Submit"> Submit</button>
+        <button name="cancel"><img src="static/icons/svc_delall.png" align="absmiddle" title="Cancel" alt="Cancel"> Cancel</button>
+    </form>
+</body>
+</html>

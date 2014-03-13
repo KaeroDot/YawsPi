@@ -1,0 +1,44 @@
+$def with (gv)
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"></meta>
+    </head>
+<body>
+    <H3>Stations</H3>
+    <p></p>
+    <table border="1">
+        <tbody>
+            <tr>
+                <td>
+                    No
+                </td>
+                <td>
+                    Name
+                </td>
+                <td>
+                </td>
+            </tr>
+            $for i in range(gv.hw['StNo'])
+                <tr>
+                    <td>
+                        $i
+                    </td>
+                    <td>
+                        $gv.hw['StName'][i]
+                    </td>
+                    <td>
+                        <form method="post"> 
+                            <button name="$:i"><img src="static/icons/svc_edit.png" align="absmiddle" title="Modify $:i" alt="Modify $:i"></button>
+                        </form>
+                    </td>
+                </tr>
+        </tbody>
+    </table>
+    <p></p>
+    <form method="post"> 
+        <button name="cancel"><img src="static/icons/svc_back.png" align="absmiddle" title="Back" alt="Back"> Back to home page</button>
+    </form>
+</body>
+</html>

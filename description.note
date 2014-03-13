@@ -1,0 +1,77 @@
+---web server--- {{{1
+
+---home--- {{{2
+"/", 'home'
+
+tlacitka:
+refresh?,
+options,
+stations,
+programs,
+log,
+stop all/start all,
+run once
+reboot
+
+stranka:
+System name: 
+Version:
+Device time:
+
+Status:
+Operation: on
+Log: on/off
+Sensors...rain/temperature/humidity
+Barrel water level: 100%
+Stations status:
+S01: | Running (remaining X s) | Next run at date-time | Water Level
+S02: | Running (remaining X s) | Next run at date-time | Water Level
+...
+
+
+---options--- {{{2
+"/options", 'options'
+Name
+Port
+...
+
+tlacitka:
+Submit
+Cancel
+
+---stations--- {{{2
+vypis stanic
+s tlacitky se zmenou nazvu?
+
+---programs--- {{{2
+Total number of programs: 1 (maximum is 32)
+
+Program 1: Mon Tue Wed Thur Fri Sat Sun Time: 06:00 - 18:00 , Every 0 hrs 1 mins, Run: 0 mins 30 secs, S01	S02	S03	S04 S05	S06	S07	S08
+
+Delete Modify Run Now
+
+---modify program--- {{{2
+Modify Program 1
+This program is: OnOff
+
+Select Days:
+
+Weekly:MonTueWedThuFriSatSun
+Select AllSelect None
+Select Restrictions:
+No restriction
+Odd days only (except 31st and Feb 29th)
+Even days only
+
+Interval: Every  days, starting in  days.
+Select Stations:
+
+S01	S02	S03	S04
+S05	S06	S07	S08
+Time:  :  ->  :  (hh:mm)
+Every:  hours  minutes 
+Duration:  minutes  seconds
+ Submit  Cancel
+
+---global variables--- {{{1
+
