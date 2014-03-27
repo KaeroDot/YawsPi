@@ -12,7 +12,7 @@ $def with (gv)
     <br>
     <b>YAWPI Version: </b> $gv.gs['Version']
     <br>
-    <b>RPi Revision: </b> $gv.hws['RPiRevision']
+    <b>RPi Revision: </b> $gv.hw.RPiRevision
     <br>
     <b>Device date and time: </b> $gv.cv['TimeStr']
     <p></p>
@@ -84,7 +84,7 @@ $def with (gv)
                     Next Run
                 </td>
             </tr>
-            $for i in range(gv.hws['StNo'])
+            $for i in range(gv.hw.StNo)
                 <tr>
                     <td>
                         $i
@@ -96,7 +96,7 @@ $def with (gv)
                         $'{:.0f}'.format(gv.cv['StWL'][i] * 100)%
                     </td>
                     <td>
-                        $if gv.cv['StStatus'][i]:
+                        $if gv.hw.StStatus[i]:
                             <font color='red'>Yes</font>
                         $else:
                             No

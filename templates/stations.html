@@ -20,13 +20,13 @@ $def with (gv)
                 <td>
                 </td>
             </tr>
-            $for i in range(gv.hw['StNo'])
+            $for i in range(gv.hw.StNo)
                 <tr>
                     <td>
                         $i
                     </td>
                     <td>
-                        $gv.hw['StName'][i]
+                        $gv.hws['StData'][i]['Name']
                     </td>
                     <td>
                         <form method="post"> 

@@ -1,13 +1,11 @@
+# vim modeline: vim: shiftwidth=4 tabstop=4
 #=================================================================
 # hardware abstraction layer
 #=================================================================
 
-# variables which should be used outside this class: see _init_vars()
+# variables which should be accessed outside this class: see _init_vars()
 
 # imports:
-# gv - 'global vars' - an empty module, used for storing vars (as attributes),
-# that need to be 'global' across threads and between functions and classes:
-import gv
 # random numbers for sensors when hardware is not present:
 import random
 # timing for filling
@@ -40,8 +38,10 @@ class yawpihw:
         self._init_hw()
 
     def _init_vars(self):  # initialization of variables
-        # init variables:
+        # outside this class only following variables should be accessed
+        # revision number of raspberry pi:
         self.RPiRevision = ''
+        # running on raspberry pi?:
         self.WithHW = 0
         # number of stations:
         self.StNo = len(self.hwc['St'])

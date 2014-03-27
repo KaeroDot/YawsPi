@@ -98,14 +98,14 @@ $def with (gv,frm,index,indexerror, enabled, mode)
             <hr>
             <b>Select stations:</b>
             <br>
-            $for i in range(gv.hw['StNo'])
+            $for i in range(gv.hw.StNo)
                 <tr>
                     <td>
                         $i:
                     </td>
                     <td>
                         $code:
-                            x=gv.hw['StName'][i]
+                            x=gv.hws['StData'][i]['Name']
                         $x
                     </td>
                     <td>
@@ -113,6 +113,9 @@ $def with (gv,frm,index,indexerror, enabled, mode)
                             <input checked="checked" type="checkbox" id="s$:i" value="" name="s$:i">
                         $else:
                             <input type="checkbox" id="s$:i" value="" name="s$:i">
+                    </td>
+                    <td>
+                        |
                     </td>
                 </tr>
         <p></p>
