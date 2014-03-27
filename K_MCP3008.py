@@ -7,8 +7,8 @@ import RPi.GPIO as GPIO
 
 MAXADCNUM = 7
 
-class K_MCP32008(object):
-    
+class K_MCP3008(object):
+
     def __init__(self, clockpin, mosipin, misopin, cspin):
         self.clockpin = clockpin
         self.mosipin = mosipin
@@ -23,7 +23,7 @@ class K_MCP32008(object):
         GPIO.setup(self.clockpin, GPIO.OUT)
         GPIO.setup(self.cspin, GPIO.OUT)
 
-# read SPI data from MCP3208 chip, 8 possible adc's (0 thru 7)
+# read SPI data from MCP3008 chip, 8 possible adc's (0 thru 7)
     def readadc(self, adcnum):
         assert adcnum >=0 and adcnum <= MAXADCNUM, "Value of adcnum out of bounds"
 
@@ -55,7 +55,7 @@ class K_MCP32008(object):
                         adcout |= 0x1
 
         GPIO.output(self.cspin, True)
-        
+
         adcout >>= 1 # first bit is 'null' so drop it
         return adcout
 
@@ -67,7 +67,7 @@ if __name__ == '__main__':
     # change to the value of the voltage reference connected to the ADC:
     VOLTREF = 5
     # change values as desired - they're the pins connected from the SPI port on the ADC to the RPi
-    mcp = K_MCP32008(clockpin = 11, misopin = 9, mosipin = 10, cspin = 27)
+    mcp = K_MCP3008(clockpin = 11, misopin = 9, mosipin = 10, cspin = 27)
 
     # maximal value of the analog to digital converter:
     MAXDIG = 4095

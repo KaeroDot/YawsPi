@@ -60,7 +60,7 @@ $def with (gv,frm,index,indexerror, enabled, mode)
             $:frm.calRepeatW.render()
             $if frm.calRepeatW.note:
                 <strong class="wrong">$frm.calRepeatW.note</strong>
-            hours during a day.
+            hours during a day (start from beginning time of program valid).
             <p></p>
             $if mode == 'interval':
                 <input type="radio" checked="checked" id="Mode" value="interval" name="Mode">
@@ -72,11 +72,11 @@ $def with (gv,frm,index,indexerror, enabled, mode)
             $:frm.caliInterval.render()
             $if frm.caliInterval.note:
                 <strong class="wrong">$frm.caliInterval.note</strong>
-            days and every 
+            days (start today) and every 
             $:frm.calRepeatI.render()
             $if frm.calRepeatI.note:
                 <strong class="wrong">$frm.calRepeatI.note</strong>
-            hours during a day.
+            hours during a day (start from beginning time of program valid).
             <hr>
             Program is <b>valid</b> from
             $:frm.TimeFromH.render()

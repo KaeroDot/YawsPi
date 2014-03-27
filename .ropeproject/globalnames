@@ -1,4 +1,4 @@
 €}q(Uaa]Uyaws_hal]q(U
-SwitchPumpqUStWLSensorStatusqUBaWLSensorStatusqUCleanUpqUxUPEqUSwitchStValveqeUvars]U	yawpi_hal]q	Uyawpihwq
-aUyawpi_hw_config]qUyawpi_hw_configqaUyaws]q(UrenderqU	GetNowStrqUappqUiUurlsqUhomeqUoptionsqeUyawpi]q(UWebHomeqUrenderqUappqUWebStationsqUWebProgramsqUlog_addqUstation_fillqUget_now_strqU
-WebOptionsqUsensors_get_allqUinit_sdqUprg_loadq UWebLogq!Uget_new_prgq"Ulog_getq#Utmpq$Ucfg_saveq%U	WebRebootq&UWebChangeProgramq'Uquitq(Us_to_hmsq)Uhwq*Uendtimeq+Ulog_saveq,Uprg_saveq-Uurlsq.Ucfg_loadq/UWebChangeStationq0eUbb]Uyaws_hwconfig]q1(UxUPEq2eUyaws-hwconfig]u.
+SwitchPumpqUStWLSensorStatusqUBaWLSensorStatusqUCleanUpqUxUPEqUSwitchStValveqeUvars]U	yawpi_hal]q	UyawpiHALq
+aUyawpi_hw_config]qUyawpi_hw_configqaUyaws]q(UrenderqU	GetNowStrqUappqUiUurlsqUhomeqUoptionsqeUyawpi]q(Ugs_loadqUinit_gsqUinit_hwsqUrenderqUgs_saveqUprg_get_newqUappqUinit_cvqUWebProgramsqU	prg_waterqUWebHomeqUlog_addq Ustation_fillq!Uget_now_strq"U
+WebOptionsq#Usensors_get_allq$U	cv_updateq%Uprg_loadq&UWebLogq'Uhws_saveq(Uprogq)Ulog_getq*Utmpq+UWebStationsq,U	WebRebootq-UWebChangeProgramq.Uquitq/Us_to_hmsq0Uget_day_secq1Uhwq2Uendtimeq3UiUWebChangeStationq4Ulog_saveq5Uprg_saveq6Uhws_loadq7Uurlsq8eUbb]Uyawpi_hw_control]q9Uyawpihwq:aUyaws_hwconfig]q;(UxUPEq<eUyaws-hwconfig]u.

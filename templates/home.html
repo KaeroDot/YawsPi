@@ -8,29 +8,29 @@ $def with (gv)
 <body>
     <H3>YAWPI - Yet Another Watering system for raspberry PI</H3>
     <p></p>
-    <b>System name: </b> $gv.sd['Name']
+    <b>System name: </b> $gv.gs['Name']
     <br>
-    <b>YAWPI Version: </b> $gv.sd['Version']
+    <b>YAWPI Version: </b> $gv.gs['Version']
     <br>
-    <b>RPi Revision: </b> $gv.hw['RPiRevision']
+    <b>RPi Revision: </b> $gv.hws['RPiRevision']
     <br>
-    <b>Device date and time: </b> $gv.cvd['TimeStr']
+    <b>Device date and time: </b> $gv.cv['TimeStr']
     <p></p>
     <b>Status</b>
     <br>
     <b>Operation: </b> 
-        $if gv.sd['Enabled']:
+        $if gv.gs['Enabled']:
             <font color='green'>Running</font>
         $else:
             <font color='red'>Stopped</font>
     <br>
     <b>Loging: </b>
-        $if gv.sd['Logging']:
+        $if gv.gs['Logging']:
             <font color='green'>Enabled</font>, limit:
-                $if gv.sd['LoggingLimit'] == 0:
+                $if gv.gs['LoggingLimit'] == 0:
                     unlimited
                 $else:
-                    $gv.sd['LoggingLimit'] lines
+                    $gv.gs['LoggingLimit'] lines
         $else:
             <font color='red'>Stopped</font>
     <br>
@@ -38,31 +38,31 @@ $def with (gv)
     <b>Sensors: </b>
     <br>
     <b>Temperature sensor: </b>
-        $if gv.hw['SeTemp']:
+        $if gv.cv['SeTemp']:
             &deg;
         $else:
             Not installed
     <br>
     <b>Pressure sensor: </b> 
-        $if gv.hw['SePress']:
+        $if gv.cv['SePress']:
             Pa
         $else:
             Not installed
     <br>
     <b>Humidity sensor: </b> 
-        $if gv.hw['SeHumid']:
+        $if gv.cv['SeHumid']:
             %
         $else:
             Not installed
     <br>
     <b>Rain sensor: </b>
-        $if gv.hw['SeRain']:
+        $if gv.cv['SeRain']:
             mm
         $else:
             Not installed
     <br>
-    <b>Barrel water level: </b>
-        $'{:.0f}'.format(gv.cvd['BaWL'] * 100)%
+    <b>Source water level: </b>
+        $'{:.0f}'.format(gv.cv['SoWL'] * 100)%
     <p></p>
     <b>Stations status and sensors</b>
     <table border="1">
@@ -84,19 +84,19 @@ $def with (gv)
                     Next Run
                 </td>
             </tr>
-            $for i in range(gv.hw['StNo'])
+            $for i in range(gv.hws['StNo'])
                 <tr>
                     <td>
                         $i
                     </td>
                     <td>
-                        $gv.hw['StName'][i]
+                        $gv.hws['StData'][i]['Name']
                     </td>
                     <td>
-                        $'{:.0f}'.format(gv.cvd['StWL'][i] * 100)%
+                        $'{:.0f}'.format(gv.cv['StWL'][i] * 100)%
                     </td>
                     <td>
-                        $if gv.hw['StValveState'][i]:
+                        $if gv.cv['StStatus'][i]:
                             <font color='red'>Yes</font>
                         $else:
                             No
@@ -115,7 +115,7 @@ $def with (gv)
         <button name="stations">Stations</button>
         <button name="programs"><img src="static/icons/svc_cal.png" align="absmiddle" title="Programs" alt="Programs"> Programs</button>
         <button name="log"><img src="static/icons/svc_log.png" align="absmiddle" title="Show log" alt="Show log"> Show log</button>
-        $if gv.sd['Enabled']:
+        $if gv.gs['Enabled']:
             <button name="stop"><img src="static/icons/svc_stop.png" align="absmiddle" title="Stop" alt="Stop"> Stop</button>
         $else:
             <button name="start"><img src="static/icons/svc_start.png" align="absmiddle" title="Start" alt="Start"> Start</button>
