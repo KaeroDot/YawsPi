@@ -18,6 +18,7 @@ $def with (gv)
                     Name
                 </td>
                 <td>
+                    Edit
                 </td>
             </tr>
             $for i in range(gv.hw.StNo)
@@ -30,7 +31,7 @@ $def with (gv)
                     </td>
                     <td>
                         <form method="post"> 
-                            <button name="$:i"><img src="static/icons/svc_edit.png" align="absmiddle" title="Modify $:i" alt="Modify $:i"></button>
+                            <button name="$:i" title="Change settings of station $:i"><img src="static/icons/edit.png" align="absmiddle"></button>
                         </form>
                     </td>
                 </tr>
@@ -38,7 +39,7 @@ $def with (gv)
     </table>
     <p></p>
     <form method="post"> 
-        <button name="cancel"><img src="static/icons/svc_back.png" align="absmiddle" title="Back" alt="Back"> Back to home page</button>
+        <button name="cancel" title="Back to home page"><img src="static/icons/back.png" align="absmiddle"> Back to home page</button>
     </form>
 </body>
 </html>

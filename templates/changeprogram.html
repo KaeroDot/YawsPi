@@ -1,4 +1,4 @@
-$def with (gv,frm,index,indexerror, enabled, mode)
+$def with (gv,frm,index,indexerror)
 
 <!DOCTYPE html>
 <html>
@@ -6,18 +6,19 @@ $def with (gv,frm,index,indexerror, enabled, mode)
         <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"></meta>
     </head>
 <body>
-    <H3>Change settings of program $index</H3>
+    $if index == -1:
+        <H3>No program of index $indexerror!</H3>
+    $else:
+        <H3>Change settings of program $gv.prg[index]['Name'] ($index)</H3>
     <form method="post"> 
-        $if index == -1:
-            No program of index $indexerror !
-        $else:
+        $if index != -1:
             <b>Name:</b>
             $:frm.Name.render()
             $if frm.Name.note:
                 <strong class="wrong">$frm.Name.note</strong>
             <p></p>
             <b>Program is:</b>
-            $if enabled:
+            $if gv.prg[index]['Enabled']:
                 <input type="radio" checked="checked" id="Enabled" value="On" name="Enabled">On
                 <input type="radio" id="Enabled" value="Off" name="Enabled">Off
             $else:
@@ -26,7 +27,7 @@ $def with (gv,frm,index,indexerror, enabled, mode)
             <hr>
             <b>Mode of operation:</b>
             <p></p>
-            $if mode == 'waterlevel':
+            $if gv.prg[index]['Mode'] == 'waterlevel':
                 <input type="radio" checked="checked" id="Mode" value="waterlevel" name="Mode">
             $else:
                 <input type="radio" id="Mode" value="waterlevel" name="Mode">
@@ -42,7 +43,7 @@ $def with (gv,frm,index,indexerror, enabled, mode)
                 <strong class="wrong">$frm.wlEmptyDelay.note</strong>
             hours from last watering.
             <p></p>
-            $if mode == 'weekly':
+            $if gv.prg[index]['Mode'] == 'weekly':
                 <input type="radio" checked="checked" id="Mode" value="weekly" name="Mode">
             $else:
                 <input type="radio" id="Mode" value="weekly" name="Mode">
@@ -62,7 +63,7 @@ $def with (gv,frm,index,indexerror, enabled, mode)
                 <strong class="wrong">$frm.calRepeatW.note</strong>
             hours during a day (start from beginning time of program valid).
             <p></p>
-            $if mode == 'interval':
+            $if gv.prg[index]['Mode'] == 'interval':
                 <input type="radio" checked="checked" id="Mode" value="interval" name="Mode">
             $else:
                 <input type="radio" id="Mode" value="interval" name="Mode">
@@ -98,29 +99,28 @@ $def with (gv,frm,index,indexerror, enabled, mode)
             <hr>
             <b>Select stations:</b>
             <br>
+            <table border="0"> 
+            <tbody>
+            <tr>
             $for i in range(gv.hw.StNo)
-                <tr>
-                    <td>
-                        $i:
-                    </td>
-                    <td>
-                        $code:
-                            x=gv.hws['StData'][i]['Name']
-                        $x
-                    </td>
-                    <td>
-                        $if i in gv.prg[index]['Stations']:
-                            <input checked="checked" type="checkbox" id="s$:i" value="" name="s$:i">
-                        $else:
-                            <input type="checkbox" id="s$:i" value="" name="s$:i">
-                    </td>
-                    <td>
-                        |
-                    </td>
-                </tr>
-        <p></p>
-        <button name="submit"><img src="static/icons/svc_submit.png" align="absmiddle" title="Submit" alt="Submit"> Submit</button>
-        <button name="cancel"><img src="static/icons/svc_delall.png" align="absmiddle" title="Cancel" alt="Cancel"> Cancel</button>
+                <td>
+                    $gv.hws['StData'][i]['Name']
+                    ($i)
+                    $if i in gv.prg[index]['Stations']:
+                        <input checked="checked" type="checkbox" id="s$:i" value="" name="s$:i">
+                    $else:
+                        <input type="checkbox" id="s$:i" value="" name="s$:i">
+                    ,
+                </td>
+                $if not (i + 1) % 6:
+                    </tr>
+                    <tr>
+            </tr>
+            </tbody>
+            </table>
+            <p></p>
+            <button name="submit" title="Submit all changes."><img src="static/icons/submit.png" align="absmiddle"> Submit</button>
+        <button name="cancel" title="Cancel changes and go back to list of programs."><img src="static/icons/cancel.png" align="absmiddle"> Cancel</button>
     </form>
 </body>
 </html>

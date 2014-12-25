@@ -6,15 +6,16 @@ $def with (gv,frm,index,indexerror)
         <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"></meta>
     </head>
 <body>
-    <H3>Change settings of station $index</H3>
+    $if index == -1:
+            <H3>No station of index $indexerror!</H3>
+    $else:
+            <H3>Change settings of station $gv.hws['StData'][index]['Name'] ($index)</H3>
     <form method="post"> 
-        $if index == -1:
-            No station of index $indexerror !
-        $else:
+        $if index != -1:
             $:frm.render()
-        <p></p>
-        <button name="submit"><img src="static/icons/svc_submit.png" align="absmiddle" title="Submit" alt="Submit"> Submit</button>
-        <button name="cancel"><img src="static/icons/svc_delall.png" align="absmiddle" title="Cancel" alt="Cancel"> Cancel</button>
+            <p></p>
+            <button name="submit" title="Submit all changes"><img src="static/icons/submit.png" align="absmiddle"> Submit</button>
+        <button name="cancel" title="Cancel changes and go back to list of stations"><img src="static/icons/cancel.png" align="absmiddle"> Cancel</button>
     </form>
 </body>
 </html>

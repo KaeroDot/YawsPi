@@ -1,4 +1,10 @@
 #!/bin/bash
+sudo apt-get install i2c-tools
+sudo apt-get install python-pip
+sudo apt-get install python-lxml
+sudo apt-get install python-webpy
+sudo pip install pygal
+
 
 sudo modprobe i2c-dev
 sudo python yawpi.py

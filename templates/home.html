@@ -8,23 +8,26 @@ $def with (gv)
 <body>
     <H3>YAWPI - Yet Another Watering system for raspberry PI</H3>
     <p></p>
-    <b>System name: </b> $gv.gs['Name']
+    System name: <b>$gv.gs['Name']</b>
     <br>
-    <b>YAWPI Version: </b> $gv.gs['Version']
+    SW Version: <b>$gv.gs['Version']</b>
     <br>
-    <b>RPi Revision: </b> $gv.hw.RPiRevision
+    RPi Revision: <b>$gv.hw.RPiRevision</b>
     <br>
-    <b>Device date and time: </b> $gv.cv['TimeStr']
+    Device date and time: <b>$gv.cv['TimeStr']</b>
     <p></p>
     <b>Status</b>
     <br>
-    <b>Operation: </b> 
+    Operation:
+        <b>
         $if gv.gs['Enabled']:
             <font color='green'>Running</font>
         $else:
             <font color='red'>Stopped</font>
+        </b> 
     <br>
-    <b>Loging: </b>
+    Loging:
+        <b>
         $if gv.gs['Logging']:
             <font color='green'>Enabled</font>, limit:
                 $if gv.gs['LoggingLimit'] == 0:
@@ -33,38 +36,31 @@ $def with (gv)
                     $gv.gs['LoggingLimit'] lines
         $else:
             <font color='red'>Stopped</font>
+        </b>
     <br>
     <p></p>
     <b>Sensors: </b>
-    <br>
-    <b>Temperature sensor: </b>
-        $if gv.cv['SeTemp']:
-            &deg;
-        $else:
-            Not installed
-    <br>
-    <b>Pressure sensor: </b> 
-        $if gv.cv['SePress']:
-            Pa
-        $else:
-            Not installed
-    <br>
-    <b>Humidity sensor: </b> 
-        $if gv.cv['SeHumid']:
-            %
-        $else:
-            Not installed
-    <br>
-    <b>Rain sensor: </b>
-        $if gv.cv['SeRain']:
-            mm
-        $else:
-            Not installed
-    <br>
-    <b>Source water level: </b>
-        $'{:.0f}'.format(gv.cv['SoWL'] * 100)%
+    $if 'temp' in gv.hw.Sensors:
+            <br>
+            Temperature sensor: <b>$gv.cv['SeTemp'] &deg</b>
+    $if 'press' in gv.hw.Sensors:
+            <br>
+            Pressure sensor: <b>$gv.cv['SePress'] Pa</b>
+    $if 'humid' in gv.hw.Sensors:
+            <br>
+            Humidity sensor: <b>$gv.cv['SeHumid'] %</b>
+    $if 'rain' in gv.hw.Sensors:
+            <br>
+            Rain sensor: <b>$gv.cv['SeRain'] mm</b>
+    $if 'illum' in gv.hw.Sensors:
+            <br>
+            Illuminance sensor: <b>$gv.cv['SeIllum'] lux</b>
     <p></p>
-    <b>Stations status and sensors</b>
+    <b>Source:</b>
+    <br>
+    Water level: <b>$'{:.0f}'.format(gv.cv['SoWL'] * 100) %</b>
+    <p></p>
+    <b>Stations status</b>
     <table border="1">
         <tbody>
             <tr>
@@ -93,7 +89,7 @@ $def with (gv)
                         $gv.hws['StData'][i]['Name']
                     </td>
                     <td>
-                        $'{:.0f}'.format(gv.cv['StWL'][i] * 100)%
+                        $'{:.0f}'.format(gv.cv['StWL'][i] * 100) %
                     </td>
                     <td>
                         $if gv.hw.StStatus[i]:
@@ -109,17 +105,18 @@ $def with (gv)
     </table>
     <p></p>
     <form method="post"> 
-        <button name="reload"><img src="static/icons/svc_refresh.png" align="absmiddle" title="Refresh" alt="Refresh"> Refresh</button>
-        <button name="runnow"><img src="static/icons/svc_run.png" align="absmiddle" title="Run now" alt="Run now"> Run now</button>
-        <button name="options"><img src="static/icons/svc_options.png" align="absmiddle" title="Options" alt="Options"> Options</button>
-        <button name="stations">Stations</button>
-        <button name="programs"><img src="static/icons/svc_cal.png" align="absmiddle" title="Programs" alt="Programs"> Programs</button>
-        <button name="log"><img src="static/icons/svc_log.png" align="absmiddle" title="Show log" alt="Show log"> Show log</button>
+        <button name="reload" title="Refresh this page"><img src="static/icons/update.png" align="absmiddle"> Refresh</button>
+        <button name="runnow" title="Run now"><img src="static/icons/run_now.png" align="absmiddle"> Run now</button>
+        <button name="options" title="Change options"><img src="static/icons/options.png" align="absmiddle"> Options</button>
+        <button name="stations" title="List of stations and change settings"><img src="static/icons/stations.png" align="absmiddle"> Stations</button>
+        <button name="programs" title="Show programs and change settings"><img src="static/icons/programs.png" align="absmiddle"> Programs</button>
+        <button name="log" title="Show log of events"><img src="static/icons/log.png" align="absmiddle"> Log</button>
+        <button name="history" title="Show history"><img src="static/icons/history.png" align="absmiddle"> History</button>
         $if gv.gs['Enabled']:
-            <button name="stop"><img src="static/icons/svc_stop.png" align="absmiddle" title="Stop" alt="Stop"> Stop</button>
+            <button name="stop" title="Stop all programs"><img src="static/icons/stop.png" align="absmiddle"> Stop</button>
         $else:
-            <button name="start"><img src="static/icons/svc_start.png" align="absmiddle" title="Start" alt="Start"> Start</button>
-        <button name="reboot"><img src="static/icons/svc_reboot.png" align="absmiddle" title="Reboot" alt="Reboot"> Reboot</button>
+            <button name="start" title="Start enabled programs"><img src="static/icons/start.png" align="absmiddle"> Start</button>
+        <button name="reboot" title="Reboot system"><img src="static/icons/quit.png" align="absmiddle"> Reboot</button>
     </form>
 </body>
 </html>

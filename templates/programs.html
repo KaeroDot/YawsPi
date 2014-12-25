@@ -9,7 +9,8 @@ $def with (gv)
     <H3>Programs</H3>
     <p></p>
     <form method="post"> 
-        <button name="add"><img src="static/icons/svc_add.png" align="absmiddle" title="Add new program" alt="Add new program"> Add new program</button>
+        <button name="add" title="Add a new program"><img src="static/icons/program_add.png" align="absmiddle"> Add new program</button>
+        <button name="check" title="Check programs"><img src="static/icons/program_check.png" align="absmiddle"> Check programs</button>
     </form>
     <p></p>
     <table border="1">
@@ -31,7 +32,7 @@ $def with (gv)
                 Edit
                 </td>
                 <td>
-                Remove
+                Delete
                 </td>
             </tr>
             $for i in range(len(gv.prg))
@@ -40,9 +41,7 @@ $def with (gv)
                         $i
                     </td>
                     <td>
-                        $code:
-                            x=gv.prg[i]['Name']
-                        $x
+                        $gv.prg[i]['Name']
                     </td>
                     <td>
                        $if gv.prg[i]['Enabled']:
@@ -52,16 +51,16 @@ $def with (gv)
                     </td>
                     <td>
                         $for j in gv.prg[i]['Stations']
-                            $j: $gv.hw['StName'][j], 
+                            $gv.hws['StData'][j]['Name'] ($j),
                     </td>
                     <td>
                         <form method="post"> 
-                            <button name="c$:i"><img src="static/icons/svc_edit.png" align="absmiddle" title="Modify $:i" alt="Modify $:i"></button>
+                            <button name="c$:i" title="Change settings of program $:i"><img src="static/icons/program_edit.png" align="absmiddle"></button>
                         </form>
                     </td>
                     <td>
                         <form method="post"> 
-                            <button name="r$:i"><img src="static/icons/svc_del.png" align="absmiddle" title="Remove $:i" alt="Remove $:i"></button>
+                            <button name="r$:i" title="Delete program $:i"><img src="static/icons/program_delete.png" align="absmiddle"></button>
                         </form>
                     </td>
                 </tr>
@@ -69,7 +68,7 @@ $def with (gv)
     </table>
     <p></p>
     <form method="post"> 
-        <button name="cancel"><img src="static/icons/svc_back.png" align="absmiddle" title="Back to home page" alt="Back to home page"> Back to home page</button>
+        <button name="cancel" title="Back to home page"><img src="static/icons/back.png" align="absmiddle"> Back to home page</button>
     </form>
 </body>
 </html>

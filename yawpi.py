@@ -10,11 +10,13 @@
 # standard modules:
 import time
 from datetime import datetime
+from datetime import timedelta
 import sys
 import web
 import thread
 import pickle
 import os
+import pygal
 # gv - 'global vars' - an empty module, used for storing vars (as attributes),
 # that need to be 'global' across threads and between functions and classes:
 import gv
@@ -22,17 +24,22 @@ import gv
 from yawpi_hw_control import yawpihw
 
 
-# ------------------- general functions:
+# ------------------- various functions:
 def get_now_str():  # returns current date and time as string
     return time.strftime('%d. %m. %Y %H:%M:%S, %A, %B, %Z')
 
 
+def get_now_str_data():  # returns current date and time as string
+    return time.strftime('%Y-%m-%d %H:%M:%S')
+
+
 def get_day_sec():  # returns seconds from midnight
-    today = datetime.date.today()
-    return time.time() - time.mktime(today.timetuple())
+    today = datetime.today()
+    return today.hour * 3600 + today.minute * 60 + today.second
 
 
 def s_to_hms(secondsofaday):  # seconds -> (hour, minute, second)
+    # XXX smazat neni pouzita!
     # convert seconds of a day to hour and minute and second of a day
     hour = secondsofaday // 3600
     rest = secondsofaday - hour * 3600
@@ -48,12 +55,12 @@ def quit():  # performs safe quit
     gv.hw.clean_up()  # cleans GPIO
     gs_save()  # save configuration
     prg_save()  # save programs
-    # XXX save hardware settings
+    hws_save()  # save hardware settings
     log_add('quitting')
     log_save()  # save log
-    # and this is the end of the script
 
 
+# ------------------- variables initializations/definitions:
 def init_gs():  # initialize dictionary with general settings:
     gv.gs = {
         # Name: configurable name of the system
@@ -61,21 +68,30 @@ def init_gs():  # initialize dictionary with general settings:
         # Version: yawpi version
         'Version': u'0.1',
         # Enabled: operation enabled
-        'Enabled': 0,
+        'Enabled': True,
         # httpPort: http port of web pages
         'httpPort': 8080,
         # Location: city name for weather retrieval from internet
         'Location': u'Brno',
         # Logging: writing to log enabled
-        'Logging': 1,
+        'Logging': True,
         # LoggingLimit: maximal number of log records to keep, 0 = no limit
         'LoggingLimit': 1000,
+        # MLInterval: Main loop interval (s) - how often watering and water
+        # levels are checked
+        'MLInterval': 60
     }
 
 
 def init_hws():  # initialize dictionary with hw settings:
     gv.hws = {
         'StData': [],
+        'SoData': {
+            'SaveData': True,
+        },
+        'SeData': {
+            'SaveData': [],
+        },
     }
     for x in range(gv.hw.StNo):
         gv.hws['StData'].append({
@@ -87,6 +103,8 @@ def init_hws():  # initialize dictionary with hw settings:
             # upper threshold - if sensors value is above, station is
             # considered full:
             'HighThr': 0.9,
+            # save measured and filling data:
+            'SaveData': True
         })
 
 
@@ -99,11 +117,12 @@ def init_cv():  # initialize dictionary with current values
         'SoWL': 0,
         # StWL: current water level of stations
         'StWL': [0] * gv.hw.StNo,
-        # temperature sensor status
+        # sensors status
         'SeTemp': -300,
         'SeRain': -300,
         'SeHumid': -300,
         'SePress': -300,
+        'SeIllum': -300,
     }
 
 
@@ -132,62 +151,232 @@ def prg_get_new():  # returns dict with a new program
         'caliInterval': 172800,
         # for both calendar modes - repeat during day every (s):
         'calRepeat': 18000,
-        # program valid from time of day (s):
-        'TimeFrom': 21600,
-        # program valid to time of day (s):
-        'TimeTo': 64800,
+        # program valid from time of day (Hours and Minutes):
+        'TimeFromH': 6,
+        'TimeFromM': 0,
+        # program valid to time of day (Hours and Minutes):
+        'TimeToH': 19,
+        'TimeToM': 0,
         # last run of program (s):
         'TimeLastRun': 0,
-        # first found empty (usefull for waterlevel mode) (s):
+        # first found empty (usefull only for waterlevel mode) (s):
         'TimeFoundEmpty': 0,
     }
 
 
-def prg_water(index):  # return boolean whether watering should start?
-    if gv.prg[i]['Enabled']:
+# ------------------- watering program handling:
+def prg_is_water_time(index):  # return boolean if watering should start
+    # also adds log if watering should start or not and why not
+    prg = gv.prg[index]
+    if prg['Enabled']:
         now = time.time()
-        nowinday = get_day_sec()
-        # test for valid time of day:
-        if nowinday < gv.prg[i]['TimeFrom'] or nowinday > gv.prg[i]['TimeTo']:
-            return False
-        if gv.prg[i]['Mode'] == 'waterlevel':
+        if prg['Mode'] == 'waterlevel':
             # water level mode:
-            # check time from last watering is long enough:
-            if not now > gv.prg[i]['TimeLastRun'] + gv.prg[i]['wlMinDelay']:
-                return False
-            # check if already found all stations empty:
-            if gv.prg[i]['TimeFoundEmpty'] == 0:
-                # check if all stations in program are empty:
-                # (station is empty if value is lower than low threshold)
-                tmp = False
-                for st in gv.prg[i]['Stations']:
-                    if gv.cv['StWL'][st] > gv.hws['StData'][st]['LowThr']:
-                        tmp = True
-                if tmp:
-                    return False
-                else:
-                    # all stations empty, remember time
-                    gv.prg[i]['TimeFoundEmpty'] = now
-            # check if stations are empty long enough:
-            if now > gv.prg[i]['TimeFoundEmpty'] + gv.prg[i]['wlEmptyDelay']:
+            tmp = prg_lev_is_water_time(index, now)
+            if tmp[0]:
+                log_add('program "' + prg['Name'] +
+                        '" (' + str(index) + '): ready for watering')
                 return True
             else:
+                log_add('program "' + prg['Name'] +
+                        '" (' + str(index) + '): ' + tmp[1])
                 return False
-        elif gv.prg[i]['Mode'] == 'weekly':
+        elif prg['Mode'] == 'weekly':
             # weekly calendar mode:
-            # check if valid day of week:
-            if not datetime.datetime.today().isoweekday() in gv.prg[i]['calwDays']:
+            tmp = prg_wee_next_water_time(index, now)
+            if is_in_time_range(index, now, tmp[0]):
+                log_add('program "' + prg['Name'] +
+                        '" (' + str(index) + '): ready for watering')
+                return True
+            else:
+                log_add('program "' + prg['Name'] +
+                        '" (' + str(index) + '): ' + tmp[1])
                 return False
-            # check if valid repeated hours during a day:
-            # XXX finish!
-            return False
-        elif gv.prg[i]['Mode'] == 'interval':
-            # XXX finish!
-            return False
+        elif prg['Mode'] == 'interval':
+            # interval mode:
+            tmp = prg_int_next_water_time(index, now)
+            if is_in_time_range(index, now, tmp[0]):
+                log_add('program "' + prg['Name'] +
+                        '" (' + str(index) + '): ready for watering')
+                return True
+            else:
+                log_add('program "' + prg['Name'] + '" (' +
+                        str(index) + '): ' + tmp[1])
+                return False
         else:
             raise NameError('unknown program type')
 
 
+def prg_lev_is_water_time(index, now):  # subpart of prg_is_water_time
+    # only for programs with mode 'waterlevel'
+    # returns tuple with boolean and reason why is not water time if not
+    prg = gv.prg[index]
+    # check if all stations empty. if TimeFoundEmpty is zero, routine
+    # still did not found all stations to be empty
+    if prg['TimeFoundEmpty'] == 0:
+        # check if all stations in program are empty:
+        # (station is empty if value is lower than low threshold)
+        allempty = True
+        for st in prg['Stations']:
+            if gv.cv['StWL'][st] > gv.hws['StData'][st]['LowThr']:
+                allempty = False
+        if not allempty:
+            return (False, 'some stations still not empty')
+        else:
+            # all stations empty, remember time
+            # 0.0001 is to be sure when TimeFoundEmpty is set to zero,
+            # this function return True
+            # XXX jaky je smysl toho 0.0001???
+            gv.prg[index]['TimeFoundEmpty'] = now - 0.0001
+    # check if time from last watering is long enough:
+    if now < prg['TimeLastRun'] + prg['wlMinDelay']:
+        return (False, 'not long enough from last watering')
+    # check if stations are empty long enough:
+    if now < prg['TimeFoundEmpty'] + prg['wlEmptyDelay']:
+        return (False, 'stations not empty long enough')
+    # all conditions ok, program is ready for watering:
+    return (True, 'ready for watering')
+
+
+def is_in_time_range(index, querytime, watertime):
+    # divny nazev prejmenovat... XXX
+    # checks if next water time is equal to query time
+    tmp = (
+        # is last watering far away?
+        watertime > gv.prg[index]['TimeLastRun'] + 2 * gv.gs['MLInterval']
+        # is next watering time near query time?
+        and watertime > querytime - 2 * gv.gs['MLInterval']
+        and watertime < querytime + 2 * gv.gs['MLInterval']
+    )
+    return tmp
+
+
+def prg_wee_next_water_time(index, starttime):  # returns next watering time
+    # finds next watering time, search begins from starttime
+    # returns tuple with next time and a reason why starttime is not next
+    # watering time (in the case it is not)
+    # only for programs with mode 'weekly'
+
+    prg = gv.prg[index]
+    dts = datetime.fromtimestamp(starttime)
+    dt = dts
+    # go to nearest valid week day:
+    dt = prg_wee_nearest_valid_day(index, dt)
+    # if change in a day occured...
+    if dt.day != dts.day:
+        # ...return it as next watering time:
+        return (time.mktime(dt.timetuple()), 'not valid day of week')
+    # ...else move by calRepeat and find time later than starttime:
+    tmp = dt
+    while not dt > dts:
+        dt = dt + timedelta(seconds=prg['calRepeat'])
+    # if found time is less than TimeTo...
+    if dt.day == tmp.day:
+        if (
+           dt.hour < prg['TimeToH'] or
+           (dt.hour == prg['TimeToH'] and dt.minute < prg['TimeToM'])
+           ):
+                # ...return it as next watering time:
+                return (time.mktime(dt.timetuple()), 'not valid time of a day')
+        else:
+            # ... or add a day to move out from current day, find next valid
+            # day in program and return TimeFrom:
+            dt = dt + timedelta(1)
+    dt = prg_wee_nearest_valid_day(index, dt)
+    return (time.mktime(dt.timetuple()), 'later than TimeTo')
+
+
+def prg_wee_nearest_valid_day(index, startdatetime):  # finds valid week day
+    # moves startdatetime by days till a week day specified by program is found
+    # time is set to TimeFromH, TimeFromM
+    # valid only for programs with mode 'weekly'
+
+    # move to middle of day to prevent any rounding and leap seconds errors:
+    dt = startdatetime.replace(hour=12)
+    # check for correct values in program to prevent infinite loops:
+    if not any(i in gv.prg[index]['calwDays'] for i in range(1, 8)):
+        raise NameError('program does not contain any valid weekdays!')
+    while not dt.isoweekday() in gv.prg[index]['calwDays']:
+        # move by one day:
+        dt = dt + timedelta(1)
+    # set time to TimeFrom:
+    dt = dt.replace(hour=gv.prg[index]['TimeFromH'],
+                    minute=gv.prg[index]['TimeFromM'],
+                    second=0,
+                    microsecond=0,
+                    )
+    return dt
+
+
+def prg_int_next_water_time(index, starttime):  # returns next watering time
+    # finds next watering time later than starttime
+    # returns tuple with next time and a reason why starttime is not next
+    # watering time (in the case it is not)
+    # only for programs with mode 'interval'
+
+    # XXX by nemelo byt timelastrun ale nejaky starting point
+    prg = gv.prg[index]
+    dts = datetime.fromtimestamp(starttime)
+    dt = datetime.fromtimestamp(prg['TimeLastRun'])
+    # check for correct values in program:
+    if dts < dt:
+        raise NameError('last watering time is not smaller then starttime!')
+    # set time to TimeFrom:
+    dt = dt.replace(hour=prg['TimeFromH'],
+                    minute=prg['TimeFromM'],
+                    second=0,
+                    microsecond=0,
+                    )
+    # add caliInterval multiples of days till the day of starttime is found:
+    while (dts - dt).days > 0:
+        dt = dt + timedelta(days=prg['caliInterval'])
+    # prepare response:
+    # if found day is same as starttime...:
+    if dts.day != dt.day:
+        # ...starttime is not valid watering day, return current as next
+        # watering time:
+        return (time.mktime(dt.timetuple()), 'not valid day')
+    # ... else add seconds from calRepeat and find time later than starttime:
+    while dt < dts:
+        dt = dt + timedelta(seconds=prg['calRepeat'])
+    # if change in a day occured...:
+    if dt.day != dts.day:
+        # ...set time to TimeFrom return it as next watering time:
+        dt = dt.replace(hour=prg['TimeFromH'],
+                        minute=prg['TimeFromM'],
+                        second=0,
+                        microsecond=0,
+                        )
+        return (dt, 'not valid day')
+    # ...else if time is smaller than TimeTo:
+    if (
+        dt.hour < prg['TimeToH'] or
+        (dt.hour == prg['TimeToH'] and dt.minute < prg['TimeToM'])
+    ):
+        # starttime is valid day and smaller than TimeTo:
+        return (time.mktime(dt.timetuple()), 'not valid time of a day')
+    # else add multiple of caliInterval:
+    dt = dt + timedelta(seconds=prg['calRepeat'])
+    # set time to TimeFrom and return it as next watering time:
+    dt = dt.replace(hour=prg['TimeFromH'],
+                    minute=prg['TimeFromM'],
+                    second=0,
+                    microsecond=0,
+                    )
+    return (dt, 'later than TimeTo')
+
+
+def prg_water(index):  # starts watering all stations in the program
+    # fill stations in program:
+    for st in gv.prg[index]['Stations']:
+        station_fill(st)
+    # save time of filling:
+    gv.prg[index]['TimeLastRun'] = time.time()
+    # set that station was not yet found empty:
+    gv.prg[index]['TimeFoundEmpty'] = 0
+
+
+# ------------------- configurations saving and loading:
 def gs_load():  # load configuration file
     # general settings:
     if os.path.isfile(gv.gsfilepath):
@@ -204,8 +393,8 @@ def gs_load():  # load configuration file
 
 def gs_save():  # save configuration file
     # general settings:
-    if not os.path.isdir(gv.datadir):
-        os.mkdir(gv.datadir)
+    if not os.path.isdir(gv.configdir):
+        os.mkdir(gv.configdir)
     gsfile = open(gv.gsfilepath, 'w')
     pickle.dump(gv.gs, gsfile)
     gsfile.close()
@@ -232,8 +421,8 @@ def hws_load():  # load hardware settings file
 
 def hws_save():  # save hardware settings to a file
     # hardware settings:
-    if not os.path.isdir(gv.datadir):
-        os.mkdir(gv.datadir)
+    if not os.path.isdir(gv.configdir):
+        os.mkdir(gv.configdir)
     hwsfile = open(gv.hwsfilepath, 'w')
     pickle.dump(gv.hws, hwsfile)
     hwsfile.close()
@@ -256,14 +445,108 @@ def prg_load():  # load program file
 
 def prg_save():  # save program file
     # general settings:
-    if not os.path.isdir(gv.datadir):
-        os.mkdir(gv.datadir)
+    if not os.path.isdir(gv.configdir):
+        os.mkdir(gv.configdir)
     prgfile = open(gv.prgfilepath, 'w')
     pickle.dump(gv.prg, prgfile)
     prgfile.close()
     log_add('programs saved to file')
 
 
+# ------------------- watering data related:
+def data_filename(name):
+    # returns filename with measured data for station, source or sensor
+    try:
+        if int(name) in range(gv.hw.StNo):
+            return gv.datadir + '/' + str(name).format('%03d') + '.csv'
+    except ValueError:
+        return gv.datadir + '/' + name + '.csv'
+
+
+def save_station_data_point(index, value):  # save water level of a station
+    # create data folder if missing:
+    if not os.path.isdir(gv.datadir):
+        os.mkdir(gv.datadir)
+    if index in range(gv.hw.StNo):
+        # saving data for this station enabled?:
+        if gv.hws['StData'][index]['SaveData']:
+            if not data_filename(str(index)):
+                datafile = open(data_filename(str(index)), 'a')
+                tmp = get_now_str_data() + '; ' + str(value) + '\n'
+                datafile.writelines(tmp)
+                datafile.close()
+
+
+def save_source_data_point(value):  # save measured source water level
+    # create data folder if missing:
+    if not os.path.isdir(gv.datadir):
+        os.mkdir(gv.datadir)
+    # saving data for source enabled?:
+    if gv.hws['SoData']['SaveData']:
+        if not data_filename('source'):
+            datafile = open(data_filename('source'), 'a')
+            tmp = get_now_str_data() + '; ' + str(value) + '\n'
+            datafile.writelines(tmp)
+            datafile.close()
+
+
+def save_sensor_data_point(name, value):  # save measured sensor value
+    # create data folder if missing:
+    if not os.path.isdir(gv.datadir):
+        os.mkdir(gv.datadir)
+    if name in gv.hw.Sensors:
+        # save data for this sensor enabled?:
+        if name in gv.hws['SeData']['SaveData']:
+            if not data_filename(name):
+                datafile = open(data_filename(name), 'a')
+                tmp = get_now_str_data() + '; ' + str(value) + '\n'
+                datafile.writelines(tmp)
+                datafile.close()
+
+
+def load_data_file(name):
+    data = []
+    if os.path.isfile(data_filename(name)):
+        # file should be closed automatically when using with statement
+        with open(data_filename(name)) as f:
+            for line in f:
+                data.append([datetime.strptime(line[:19], '%Y-%m-%d %H:%M:%S'),
+                            float(line[20:])])
+    return data
+
+
+def make_graphs(name):  # generate graphs with history
+    # returns svg graph with measured data for station, source or sensor
+    # XXX finish: generates 3 graphs: last 7 days, last 30 days and all
+    # measured data
+    data = load_data_file(name)
+    if name == 'source':
+        gtitle = 'water source'
+    elif name == 'temp':
+        gtitle = 'ambient temperature'
+    elif name == 'humid':
+        gtitle = 'ambient humidity'
+    elif name == 'press':
+        gtitle = 'ambient pressure'
+    elif name == 'rain':
+        gtitle = 'rain'
+    elif name == 'illum':
+        gtitle = 'ambient light'
+    else:
+        gtitle = gv.hws['StData'][int(name)]['Name'] + '(' + str(name) + ')'
+    if len(data) == 0:
+        data = [datetime.now(), 0]
+    graphall = pygal.DateY(x_label_rotation=20,
+                           style=pygal.style.RedBlueStyle,
+                           legend_at_bottom=True,
+                           # human_readable=True, - this has no sense probably
+                           x_label_format="%H:%M, %a %d.%m.",
+                           title=gtitle,
+                           )
+    return graphall.render()
+
+
+# ------------------- log related:
 def log_add(line):  # add string to a log buffer
     if gv.gs['Logging']:
         # add time to the log line:
@@ -279,13 +562,18 @@ def log_save():  # saves log to a file
     # thread) to prevent thread collisions
     # write only if buffer is not empty:
     if gv.gs['Logging'] and len(gv.logbuffer) > 0:
+        if not os.path.isdir(gv.configdir):
+            os.mkdir(gv.configdir)
+        if os.path.isfile(gv.prgfilepath):
             logfile = open(gv.logfilepath, 'a')
-            # this is not atomic XXX! :
-            tmp = gv.logbuffer
-            gv.logbuffer = []
-            # write buffer to a file:
-            logfile.writelines(tmp)
-            logfile.close()
+        else:
+            logfile = open(gv.logfilepath, 'w')
+        # this is not atomic XXX! :
+        tmp = gv.logbuffer
+        gv.logbuffer = []
+        # write buffer to a file:
+        logfile.writelines(tmp)
+        logfile.close()
         # XXX how to limit lines in log file?
 
 
@@ -299,36 +587,47 @@ def log_get():  # returns full log (load file and add buffer)
     return tmp
 
 
-# ------------------- hardware related functions (should be called only from main thread):
+# ------------------- hardware related functions:
+# (can be called only from main thread)
 def sensors_get_all():  # measures water levels of barrel and all stations
-    # barrel water level:
+    if __name__ != "__main__":
+        raise NameError('sensors_get_all() called outside main thread!')
+    # get source water level:
     gv.cv['SoWL'] = gv.hw.so_level()
+    save_source_data_point(gv.cv['SoWL'])
     log_add('water source is ' + str(gv.cv['SoWL'] * 100) + '% full')
     # stations water level:
     for i in range(gv.hw.StNo):
         # XXX tady dat threshold (nebo nekam jinam)?
         gv.cv['StWL'][i] = gv.hw.se_level(i)
-        log_add('station ' + str(i) + ' is '
-                + str(gv.cv['StWL'][i] * 100) + '% full')
+        save_station_data_point(i, gv.cv['StWL'][i])
+        log_add('station "' + gv.hws['StData'][i]['Name'] + '" (' + str(i) +
+                ') is ' + str(gv.cv['StWL'][i] * 100) + '% full')
     # weather sensors:
     gv.cv['SeTemp'] = gv.hw.se_temp()
     gv.cv['SeHumid'] = gv.hw.se_humid()
     gv.cv['SeRain'] = gv.hw.se_rain()
     gv.cv['SePress'] = gv.hw.se_press()
+    gv.cv['SeIllum'] = gv.hw.se_illum()
+    # weather XXX logging
 
 
 def station_fill(index):  # fill water into one station
-    log_add('preparing to fill station ' + str(index))
+    if __name__ != "__main__":
+        raise NameError('station_fill() called outside main thread!')
+    log_add('preparing to fill station "' + gv.hws['StData'][i]['Name'] +
+            '" (' + str(index) + ')')
     # get filling time in seconds according to station capacity:
     filltime = gv.hw.fill_time(index)
-    threshold = 0.1  # XXX finish it!
+    gv.hw.st_fill(index, gv.hws['StData'][index]['HighThr'])
     try:
         realfilltime = gv.hw.st_fill(index, gv.hws['StData'][index]['HighThr'])
     except:   # XXX tohle je mozna blbost, try mozna uvnitr station fill?
         gv.hw.so_switch(0)
         raise NameError('Error when filling station!')
-    tmp = 'station ' + str(index) + ' was filled, time of filling was ' \
-          + str(realfilltime) + ', time limit was ' + str(filltime) + ' s'
+    tmp = 'station "' + gv.hws['StData'][i]['Name'] + '" (' + str(index) + \
+          ') was filled, time of filling was ' + str(realfilltime) + \
+          ' s, time limit was ' + str(filltime) + ' s'
     if realfilltime > filltime:
         tmp = tmp + ', limit EXCEEDED!'
     log_add(tmp)
@@ -343,8 +642,17 @@ class WebHome:  # home page with status informations
 
     def POST(self):
         response = web.input()  # get user response
-        if 'reload' in response:
-            raise web.seeother('/')
+        simpleredirect = {
+            'reload': '/',
+            'options': '/options',
+            'stations': '/stations',
+            'programs': '/programs',
+            'history': '/history',
+            'log': '/log',
+            'reboot': '/reboot',
+        }
+        if response.keys()[0] in simpleredirect:
+            raise web.seeother(simpleredirect[response.keys()[0]])
         elif 'runnow' in response:
             if not 'askforRun' in gv.flags:
                 gv.flags = gv.flags + ['askforRun']
@@ -355,24 +663,14 @@ class WebHome:  # home page with status informations
                     break
                 time.sleep(0.1)
             raise web.seeother('/')
-        elif 'options' in response:
-            raise web.seeother('/options')
-        elif 'stations' in response:
-            raise web.seeother('/stations')
-        elif 'programs' in response:
-            raise web.seeother('/programs')
-        elif 'log' in response:
-            raise web.seeother('/log')
         elif 'start' in response:
             gv.gs['Enabled'] = 1
             raise web.seeother('/')
         elif 'stop' in response:
             gv.gs['Enabled'] = 0
             raise web.seeother('/')
-        elif 'reboot' in response:
-            raise web.seeother('/reboot')
-        else:
-            raise NameError('Error - unknown button on home page')
+        # if any unknown response, reload home page:
+        raise web.seeother('/')
 
 
 class WebOptions:  # options page to change settings
@@ -381,25 +679,73 @@ class WebOptions:  # options page to change settings
             web.form.Textbox(
                 'Name',
                 web.form.regexp('.+', 'At least one character'),
-                description='System name:'
+                description='System name:',
+                title='User name of the system, such as A super garden etc.',
             ),
             web.form.Textbox(
                 'httpPort',
-                web.form.regexp('^\d\d\d\d$', 'Must be four digits'),
-                description='http port of web pages:'
+                web.form.Validator('(integer 0 and greater)',
+                                   lambda x: int(x) >= 0),
+                description='http port of web pages:',
+                title='Port of the web server. Default is 8080. Web ' +
+                'address of YAWPI is http://xxx.xxx.xxx.xxx:port/ .',
             ),
             web.form.Textbox(
                 'Location',
-                description='City location of the system (for weather service):'
+                description='City location of the system:',
+                title='Name of the city is used for weather retrieval ' +
+                'from weather service.'
             ),
             web.form.Checkbox(
                 'Logging',
-                description='Logging:'
+                description='Logging:',
+                title='Enable or disable logging of events.',
             ),
             web.form.Textbox(
                 'LoggingLimit',
-                web.form.regexp('^\d+$', 'Must be at least one digit'),
-                description='Limit logs to number of lines:'
+                web.form.Validator('(integer greater than 0)',
+                                   lambda x: int(x) > 0),
+                description='Limit logs to number of lines:',
+                title='Maximal number of lines in the log, usefull ' +
+                'to prevent large files.'
+            ),
+            web.form.Textbox(
+                'MLInterval',
+                web.form.Validator('(integer greater than 1)',
+                                   lambda x: int(x) > 1),
+                description='Main loop interval in seconds:',
+                title='How often YAWPI checks for water levels and ' +
+                'if watering is due',
+            ),
+            web.form.Checkbox(
+                'SourceData',
+                description='Save source water level data:',
+                title='Enable or disable logging of source water level data.',
+            ),
+            web.form.Checkbox(
+                'TempData',
+                description='Save temperature data:',
+                title='Enable or disable logging of temperature data.',
+            ),
+            web.form.Checkbox(
+                'HumidData',
+                description='Save humidity data:',
+                title='Enable or disable logging of humidity data.',
+            ),
+            web.form.Checkbox(
+                'PressData',
+                description='Save pressure data:',
+                title='Enable or disable logging of pressure data.',
+            ),
+            web.form.Checkbox(
+                'RainData',
+                description='Save rain data:',
+                title='Enable or disable logging of rain data.',
+            ),
+            web.form.Checkbox(
+                'IllumData',
+                description='Save illumination data:',
+                title='Enable or disable logging of illumination data.',
             ),
         )
 
@@ -411,14 +757,19 @@ class WebOptions:  # options page to change settings
         frm.Location.value = gv.gs['Location']
         frm.Logging.checked = gv.gs['Logging']
         frm.LoggingLimit.value = gv.gs['LoggingLimit']
+        frm.MLInterval.value = gv.gs['MLInterval']
+        frm.SourceData.checked = gv.hws['SoData']['SaveData']
+        frm.TempData.checked = 'temp' in gv.hws['SeData']['SaveData']
+        frm.HumidData.checked = 'humid' in gv.hws['SeData']['SaveData']
+        frm.PressData.checked = 'press' in gv.hws['SeData']['SaveData']
+        frm.RainData.checked = 'rain' in gv.hws['SeData']['SaveData']
+        frm.IllumData.checked = 'illum' in gv.hws['SeData']['SaveData']
         return render.options(gv, frm)
 
     def POST(self):
         frm = self.frm()
         response = web.input()  # get user response
-        if 'cancel' in response:  # if cancel pressed, go to home page
-            raise web.seeother('/')
-        elif 'submit' in response:
+        if 'submit' in response:
             if not frm.validates():  # if not validated
                 # set default values of forms to user response (so input of all
                 # fields is not lost if one field is not validated)
@@ -431,14 +782,27 @@ class WebOptions:  # options page to change settings
             else:
                 # write new values to global variables:
                 gv.gs['Name'] = response['Name']
-                gv.gs['httpPort'] = response['httpPort']
+                gv.gs['httpPort'] = int(response['httpPort'])
                 gv.gs['Location'] = response['Location']
                 gv.gs['Logging'] = 'Logging' in response
-                gv.gs['LoggingLimit'] = response['LoggingLimit']
+                gv.gs['LoggingLimit'] = int(response['LoggingLimit'])
+                gv.gs['MLInterval'] = int(response['MLInterval'])
+                gv.hws['SeData']['SaveData'] = []
+                gv.hws['SoData']['SaveData'] = 'SourceData' in response
+                if 'TempData' in response:
+                    gv.hws['SeData']['SaveData'].append('temp')
+                if 'HumidData' in response:
+                    gv.hws['SeData']['SaveData'].append('humid')
+                if 'PressData' in response:
+                    gv.hws['SeData']['SaveData'].append('press')
+                if 'RainData' in response:
+                    gv.hws['SeData']['SaveData'].append('rain')
+                if 'IllumData' in response:
+                    gv.hws['SeData']['SaveData'].append('illum')
                 log_add('options changed by user')
                 raise web.seeother('/')
-        else:
-            raise NameError('Error - unknown response in options page')
+        # if cancel or any unknown response, go to home page:
+        raise web.seeother('/')
 
 
 class WebReboot:  # show reboot question
@@ -447,15 +811,13 @@ class WebReboot:  # show reboot question
 
     def POST(self):
         response = web.input()  # get user response
-        if 'cancel' in response:  # if cancel pressed, go to home page
-            raise web.seeother('/')
-        elif 'reboot' in response:
+        if 'reboot' in response:
             # send keyboard interrupt to main thread:
             thread.interrupt_main()
             # quit this thread with webserver:
             sys.exit(0)
-        else:
-            raise NameError('Error - unknown response in reboot page')
+        # if cancel or any unknown response, go to home page:
+        raise web.seeother('/')
 
 
 class WebLog:  # show log
@@ -471,10 +833,8 @@ class WebLog:  # show log
         response = web.input()  # get user response
         if 'reload' in response:  # if reload pressed, reload page
             raise web.seeother('/log')
-        elif 'cancel' in response:
-            raise web.seeother('/')
-        else:
-            raise NameError('Error - unknown response in reboot page')
+        # if cancel or any unknown response, go to home page:
+        raise web.seeother('/')
 
 
 class WebStations:  # shows list of stations
@@ -483,69 +843,96 @@ class WebStations:  # shows list of stations
 
     def POST(self):
         response = web.input()  # get user response
-        if 'cancel' in response:  # if back pressed, go to home page
-            raise web.seeother('/')
-        else:
-            for i in range(gv.hw.StNo):
-                if str(i) in response:
-                    return web.seeother('changestation' + str(i))
-            else:
-                raise NameError('Error - unknown response in stations page')
+        for i in range(gv.hw.StNo):
+            if str(i) in response:
+                return web.seeother('changestation' + str(i))
+        # if cancel or any unknown response, go to home page:
+        raise web.seeother('/')
 
 
-class WebChangeStation():  # change station settings
+class WebChangeStation:  # change station settings
     def __init__(self):
         self.frm = web.form.Form(  # definitions of all input fields
             web.form.Textbox(
                 'Name',
                 web.form.regexp('.+', 'At least one character'),
-                description='Station name:'
+                description='Station name:',
+                title='User name of the station, such as Rose, turnips etc.',
+            ),
+            web.form.Textbox(
+                'LowThr',
+                web.form.Validator('(number from 0 to 100)',
+                                   lambda x: float(x) >= 0),
+                web.form.Validator('(number from 0 to 100)',
+                                   lambda x: float(x) <= 100),
+                description='Low Threshold (%)',
+                title='If sensor output is below this value, ' +
+                'station is considered empty.',
+            ),
+            web.form.Textbox(
+                'HighThr',
+                web.form.Validator('(number from 0 to 100)',
+                                   lambda x: float(x) >= 0),
+                web.form.Validator('(number from 0 to 100)',
+                                   lambda x: float(x) <= 100),
+                description='High Threshold (%)',
+                title='If sensor output is above this value, ' +
+                'station is considered full.',
+            ),
+            web.form.Checkbox(
+                'SaveData',
+                description='Save measured and filling data',
+                title='If checked, all water level data and filling data' +
+                ' will be saved to a file',
             ),
         )
 
     def GET(self, indexstr):
         frm = self.frm()
-        try:
-            self.index = int(indexstr)
-        except ValueError:
-            self.index = -1
-        if self.index >= 0 and self.index < gv.hw.StNo:
+        # check if index of required station is valid:
+        if indexstr in [str(i) for i in range(gv.hw.StNo)]:
             # set default values of forms to current global values:
-            frm.Name.value = gv.hws['StData'][self.index]['Name']
+            index = int(indexstr)
+            frm.Name.value = gv.hws['StData'][index]['Name']
+            frm.LowThr.value = gv.hws['StData'][index]['LowThr'] * 100
+            frm.HighThr.value = gv.hws['StData'][index]['HighThr'] * 100
+            frm.SaveData.checked = gv.hws['StData'][index]['SaveData']
         else:
-            self.index = -1
-            frm.Name.value = 'X'
-        return render.changestation(gv, frm, self.index, indexstr)
+            # incorrect station, set to -1, web template will report error:
+            index = -1
+        return render.changestation(gv, frm, index, indexstr)
 
     def POST(self, indexstr):
         frm = self.frm()
         response = web.input()  # get user response
-        # XXX if else by vzdy melo skoncit na back, pro pripad podivnych
-        # navratovych hodnot, a to same u jinych POST ostatnich class
-        if 'cancel' in response:  # if back pressed, go to stations page
-            raise web.seeother('/stations')
-        elif 'submit' in response:
-            try:
-                self.index = int(indexstr)
-            except ValueError:
-                self.index = -1
-            if self.index >= 0 and self.index < gv.hws.StNo:
+        if 'submit' in response:
+            if indexstr in [str(i) for i in range(gv.hw.StNo)]:
+                index = int(indexstr)
                 if not frm.validates():  # if not validated
                     # set default values of forms to user response (so input of
                     # all fields is not lost if one field is not validated)
                     frm.Name.value = response['Name']
-                    return render.changestation(gv, frm, self.index, '')
+                    frm.LowThr.value = response['LowThr']
+                    frm.HighThr.value = response['HighThr']
+                    frm.SaveData.checked = 'SaveData' in response
+                    return render.changestation(gv, frm, index, '')
                 else:
                     # write new values to global variables:
-                    gv.hws['StData'][self.index]['StName'] = response['Name']
-                    log_add('settings of station ' + str(self.index)
-                            + ' (' + gv.hws['StData'][self.index]['StName']
-                            + ' was changed by user')
+                    tmp = gv.hws['StData'][index]
+                    tmp['Name'] = response['Name']
+                    tmp['LowThr'] = float(frm.LowThr.value) / 100
+                    tmp['HighThr'] = float(frm.HighThr.value) / 100
+                    tmp['SaveData'] = 'SaveData' in response
+                    gv.hws['StData'][index] = tmp
+                    log_add('settings of station "' +
+                            gv.hws['StData'][index]['Name'] + '" (' +
+                            str(index) + ') was changed by user')
                     raise web.seeother('/stations')
             else:
-                return render.changestation(gv, frm, -1, indexstr)
-        else:
-            raise NameError('Error - unknown response in changestation page')
+                index = -1
+            return render.changestation(gv, frm, index, indexstr)
+        # if cancel or any unknown response, go to home page:
+        raise web.seeother('/stations')
 
 
 class WebPrograms:  # shows list of programs
@@ -554,25 +941,23 @@ class WebPrograms:  # shows list of programs
 
     def POST(self):
         response = web.input()  # get user response
-        if 'cancel' in response:  # if back pressed, go to home page
-            raise web.seeother('/')
-        elif 'add' in response:
+        if 'add' in response:
             gv.prg.append(prg_get_new())
             return web.seeother('programs')
-        else:
-            for i in range(len(gv.prg)):
-                if 'c' + str(i) in response:
-                    # change program
-                    return web.seeother('changeprogram' + str(i))
-                if 'r' + str(i) in response:
-                    # remove program
-                    gv.prg.pop(i)
-                    return web.seeother('programs')
-            else:
-                raise NameError('Error - unknown response in program page')
+        if 'check' in response:
+            return web.seeother('checkprograms')
+        if response.keys()[0] in ['c' + str(i) for i in range(len(gv.prg))]:
+            # change program:
+            return web.seeother('changeprogram' + response.keys()[0][1:])
+        if response.keys()[0] in ['r' + str(i) for i in range(len(gv.prg))]:
+            # remove program and reload page:
+            gv.prg.pop(int(response.keys()[0][1:]))
+            return web.seeother('programs')
+        # if cancel or any unknown response, go to home page:
+        raise web.seeother('/')
 
 
-class WebChangeProgram():  # change program settings
+class WebChangeProgram:  # change program settings
     def __init__(self):
         self.frm = web.form.Form(  # definitions of all input fields
             web.form.Textbox(
@@ -582,14 +967,14 @@ class WebChangeProgram():  # change program settings
             web.form.Textbox(
                 'wlMinDelay',
                 web.form.Validator('(real number greater than 0)',
-                                   lambda x: float(x) > 0),
-                size="1",
+                                   lambda x: float(x) >= 0),
+                size="3",
             ),
             web.form.Textbox(
                 'wlEmptyDelay',
                 web.form.Validator('(real number greater than 0)',
-                                   lambda x: float(x) > 0),
-                size="1",
+                                   lambda x: float(x) >= 0),
+                size="3",
             ),
             web.form.Checkbox(
                 'calwDays1',
@@ -616,7 +1001,7 @@ class WebChangeProgram():  # change program settings
                 'caliInterval',
                 web.form.Validator('(real number greater than 0)',
                                    lambda x: float(x) > 0),
-                size="1",
+                size="3",
             ),
             web.form.Textbox(
                 'calRepeatW',
@@ -624,7 +1009,7 @@ class WebChangeProgram():  # change program settings
                                    lambda x: float(x) >= 0),
                 web.form.Validator('(real number from 0 to 23.99)',
                                    lambda x: float(x) < 24),
-                size="1",
+                size="3",
             ),
             web.form.Textbox(
                 'calRepeatI',
@@ -632,7 +1017,7 @@ class WebChangeProgram():  # change program settings
                                    lambda x: float(x) >= 0),
                 web.form.Validator('(real number from 0 to 23.99)',
                                    lambda x: float(x) < 24),
-                size="1",
+                size="3",
             ),
             web.form.Textbox(
                 'TimeFromH',
@@ -640,15 +1025,15 @@ class WebChangeProgram():  # change program settings
                                    lambda x: int(x) >= 0),
                 web.form.Validator('(integer number from 0 to 23)',
                                    lambda x: int(x) <= 23),
-                size="1",
+                size="3",
             ),
             web.form.Textbox(
                 'TimeFromM',
-                web.form.Validator('(integer number from 0 to 23)',
+                web.form.Validator('(integer number from 0 to 59)',
                                    lambda x: int(x) >= 0),
                 web.form.Validator('(integer number from 0 to 59)',
                                    lambda x: int(x) <= 59),
-                size="1",
+                size="3",
             ),
             web.form.Textbox(
                 'TimeToH',
@@ -656,69 +1041,58 @@ class WebChangeProgram():  # change program settings
                                    lambda x: int(x) >= 0),
                 web.form.Validator('(integer number from 0 to 23)',
                                    lambda x: int(x) <= 23),
-                size="1",
+                size="3",
             ),
             web.form.Textbox(
                 'TimeToM',
-                web.form.Validator('(integer number from 0 to 23)',
+                web.form.Validator('(integer number from 0 to 59)',
                                    lambda x: int(x) >= 0),
                 web.form.Validator('(integer number from 0 to 59)',
                                    lambda x: int(x) <= 59),
-                size="1",
+                size="3",
             ),
         )
 
     def GET(self, indexstr):
         frm = self.frm()
-        try:
-            self.index = int(indexstr)
-        except ValueError:
-            self.index = -1
-        if self.index >= 0 and self.index < len(gv.prg):
+        # check if index of required program is valid:
+        if indexstr in [str(i) for i in range(len(gv.prg))]:
+            index = int(indexstr)
             # set default values of forms to current global values:
-            frm.Name.value = gv.prg[self.index]['Name']
+            frm.Name.value = gv.prg[index]['Name']
             # convert wlMinDelay to hours:
-            frm.wlMinDelay.value = gv.prg[self.index]['wlMinDelay'] / 3600
+            frm.wlMinDelay.value = gv.prg[index]['wlMinDelay'] / 3600
             # convert wlEmptyDelay to hours:
-            frm.wlEmptyDelay.value = gv.prg[self.index]['wlEmptyDelay'] / 3600
-            frm.calwDays1.checked = 1 in gv.prg[self.index]['calwDays']
-            frm.calwDays2.checked = 2 in gv.prg[self.index]['calwDays']
-            frm.calwDays3.checked = 3 in gv.prg[self.index]['calwDays']
-            frm.calwDays4.checked = 4 in gv.prg[self.index]['calwDays']
-            frm.calwDays5.checked = 5 in gv.prg[self.index]['calwDays']
-            frm.calwDays6.checked = 6 in gv.prg[self.index]['calwDays']
-            frm.calwDays7.checked = 7 in gv.prg[self.index]['calwDays']
+            frm.wlEmptyDelay.value = gv.prg[index]['wlEmptyDelay'] / 3600
+            frm.calwDays1.checked = 1 in gv.prg[index]['calwDays']
+            frm.calwDays2.checked = 2 in gv.prg[index]['calwDays']
+            frm.calwDays3.checked = 3 in gv.prg[index]['calwDays']
+            frm.calwDays4.checked = 4 in gv.prg[index]['calwDays']
+            frm.calwDays5.checked = 5 in gv.prg[index]['calwDays']
+            frm.calwDays6.checked = 6 in gv.prg[index]['calwDays']
+            frm.calwDays7.checked = 7 in gv.prg[index]['calwDays']
             # convert caliInterval to days:
-            frm.caliInterval.value = gv.prg[self.index]['caliInterval'] / 86400
+            frm.caliInterval.value = gv.prg[index]['caliInterval'] / 86400
             # convert calRepeat to hours:
-            frm.calRepeatW.value = gv.prg[self.index]['calRepeat'] / 3600
-            frm.calRepeatI.value = gv.prg[self.index]['calRepeat'] / 3600
-            # convert TimeFrom to hour and minute:
-            frm.TimeFromH.value = s_to_hms(gv.prg[self.index]['TimeFrom'])[0]
-            frm.TimeFromM.value = s_to_hms(gv.prg[self.index]['TimeFrom'])[1]
-            # convert TimeTo to hour and minute:
-            frm.TimeToH.value = s_to_hms(gv.prg[self.index]['TimeTo'])[0]
-            frm.TimeToM.value = s_to_hms(gv.prg[self.index]['TimeTo'])[1]
+            frm.calRepeatW.value = gv.prg[index]['calRepeat'] / 3600
+            frm.calRepeatI.value = gv.prg[index]['calRepeat'] / 3600
+            # TimeFrom:
+            frm.TimeFromH.value = gv.prg[index]['TimeFromH']
+            frm.TimeFromM.value = gv.prg[index]['TimeFromM']
+            # TimeTo:
+            frm.TimeToH.value = gv.prg[index]['TimeToH']
+            frm.TimeToM.value = gv.prg[index]['TimeToM']
         else:
-            self.index = -1
-            frm.Name.value = 'X'
-        return render.changeprogram(gv, frm, self.index, indexstr,
-                                    gv.prg[self.index]['Enabled'],
-                                    gv.prg[self.index]['Mode'])
+            # incorrect program, set to -1, web template will report error:
+            index = -1
+        return render.changeprogram(gv, frm, index, indexstr)
 
     def POST(self, indexstr):
         frm = self.frm()
         response = web.input()  # get user response
-        # XXX if else by vzdy melo skoncit na back, pro pripad podivnych
-        # navratovych hodnot, a to same u jinych POST ostatnich class
-        if 'cancel' in response:  # if back pressed, go to stations page
-            raise web.seeother('/programs')
-        elif 'submit' in response:
-            try:
-                self.index = int(indexstr)
-            except ValueError:
-                self.index = -1
-            if self.index >= 0 and self.index < len(gv.prg):
+        if 'submit' in response:
+            if indexstr in [str(i) for i in range(len(gv.prg))]:
+                index = int(indexstr)
                 if not frm.validates():  # if not validated
                     # set default values of forms to user response (so input of
                     # all fields is not lost if one field is not validated)
@@ -739,37 +1113,39 @@ class WebChangeProgram():  # change program settings
                     frm.TimeFromM.value = response['TimeFromM']
                     frm.TimeToH.value = response['TimeToH']
                     frm.TimeToM.value = response['TimeToM']
-                    return render.changeprogram(gv, frm, self.index, 'On' in response, 0, response['Mode'])
+                    return render.changeprogram(gv, frm, index, indexstr)
                 else:
                 # write new values to global variables:
-                    gv.prg[self.index]['Name'] = response['Name']
+                    p = gv.prg[index]
+                    p['Name'] = response['Name']
                     if response['Enabled'] == 'On':
-                        gv.prg[self.index]['Enabled'] = True
+                        p['Enabled'] = True
                     else:
-                        gv.prg[self.index]['Enabled'] = False
-                    print response['Mode']
-                    gv.prg[self.index]['Mode'] = response['Mode']
-                    if not (gv.prg[self.index]['Mode'] == 'waterlevel'
-                            or gv.prg[self.index]['Mode'] == 'waterlevel'
-                            or gv.prg[self.index]['Mode'] == 'waterlevel'):
-                        gv.prg[self.index]['Mode'] == 'waterlevel'
-                    gv.prg[self.index]['wlMinDelay'] = float(response['wlMinDelay']) * 3600
-                    gv.prg[self.index]['wlEmptyDelay'] = float(response['wlEmptyDelay']) * 3600
+                        p['Enabled'] = False
+                    p['Mode'] = response['Mode']
+                    if not (p['Mode'] == 'waterlevel'
+                            or p['Mode'] == 'weekly'
+                            or p['Mode'] == 'interval'):
+                        p['Mode'] == 'waterlevel'
+                    p['wlMinDelay'] = float(response['wlMinDelay']) * 3600
+                    p['wlEmptyDelay'] = float(response['wlEmptyDelay']) * 3600
                     # parse weekdays, sort, remove duplicates and save:
                     tmp = []
                     for i in range(1, 8):
                         if 'calwDays' + str(i) in response:
                             tmp.append(i)
                     # sort and remove duplicates:
-                    gv.prg[self.index]['calwDays'] = list(set(sorted(tmp)))
-                    gv.prg[self.index]['caliInterval'] = int(response['caliInterval']) * 86400
+                    p['calwDays'] = list(set(sorted(tmp)))
+                    p['caliInterval'] = int(response['caliInterval']) * 86400
                     if response['Mode'] == 'weekly':
-                        gv.prg[self.index]['calRepeat'] = float(response['calRepeatW']) * 3600
+                        p['calRepeat'] = float(response['calRepeatW']) * 3600
                     else:
-                        gv.prg[self.index]['calRepeat'] = float(response['calRepeatI']) * 3600
-                    # parse valid from and valid to times:
-                    gv.prg[self.index]['TimeFrom'] = int(response['TimeFromH']) * 3600 + int(response['TimeFromM']) * 60
-                    gv.prg[self.index]['TimeTo'] = int(response['TimeToH']) * 3600 + int(response['TimeToM']) * 60
+                        p['calRepeat'] = float(response['calRepeatI']) * 3600
+                    # set from and to times:
+                    p['TimeFromH'] = int(response['TimeFromH'])
+                    p['TimeFromM'] = int(response['TimeFromM'])
+                    p['TimeToH'] = int(response['TimeToH'])
+                    p['TimeToM'] = int(response['TimeToM'])
                     # parse selected stations
                     tmp = []
                     for i in response:
@@ -780,16 +1156,80 @@ class WebChangeProgram():  # change program settings
                             except ValueError:
                                 pass
                     # sort and remove duplicates:
-                    gv.prg[self.index]['Stations'] = list(set(sorted(tmp)))
+                    p['Stations'] = list(set(sorted(tmp)))
+                    gv.prg[index] = p
                     # log change:
-                    log_add('settings of program ' + str(self.index)
-                            + ' (' + gv.prg[self.index]['Name'] + ')'
+                    log_add('settings of program ' + str(index)
+                            + ' (' + gv.prg[index]['Name'] + ')'
                             + ' was changed by user')
                     raise web.seeother('/programs')
             else:
-                return render.changeprogram(gv, frm, -1, indexstr, 'waterlevel')
-        else:
-            raise NameError('Error - unknown response in changeprogram page')
+                index = -1
+            return render.changeprogram(gv, frm, -1,
+                                        indexstr, 'waterlevel')
+        # if cancel or any unknown response, go to home page:
+        raise web.seeother('/programs')
+
+
+class WebCheckPrograms:  # shows plan of programs for next 2 weeks
+    def GET(self):
+        # plan from now
+        tstart = time.time()
+        # till next two naive weeks:
+        tmax = tstart + 2 * 7 * 24 * 3600
+        list = []
+        for i in range(len(gv.prg)):
+            if gv.prg[i]['Enabled']:
+                # generate next waterings
+                t = tstart
+                while t < tmax:
+                    if gv.prg[i]['Mode'] == 'weekly':
+                        tmp = prg_wee_next_water_time(i, t)
+                    elif gv.prg[i]['Mode'] == 'interval':
+                        tmp = prg_int_next_water_time(i, t)
+                    list.append((tmp[0], i))
+                    # add second to move in programs:
+                    t = tmp[0] + 1
+        # string to embed in web page:
+        s = ''
+        for i in range(len(list)):
+            s = s + '<tr><td>' + \
+                time.strftime('%d. %m. %Y %H:%M:%S, %A',
+                              time.localtime(list[i][0])
+                              ) + \
+                ':&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp </td><td>' + \
+                gv.prg[list[i][1]]['Name'] + \
+                '</td></tr>'
+        if len(s) == 0:
+            s = 'No programs or all programs are disabled.'
+        return render.checkprograms(s)
+
+    def POST(self):
+        raise web.seeother('/programs')
+
+
+class WebHistory:  # shows list of stations
+    def GET(self):
+        return render.history(gv)
+
+    def POST(self):
+        response = web.input()  # get user response
+        resp = response.keys()[0]
+        try:
+            # XXX tohle pujde lip pomoci str(range)
+            if int(resp) in range(gv.hw.StNo):
+                return make_graphs(resp)
+            else:
+                raise NameError('Error - unknown response in history page')
+        except ValueError:
+            if (resp in gv.hw.Sensors) | (resp == 'source'):
+                return make_graphs(resp)
+            elif 'cancel' in response:  # if back pressed, go to home page
+                raise web.seeother('/')
+            else:
+                raise NameError('Error - unknown response in history page')
+        # if cancel or any unknown response, go to home page:
+        raise web.seeother('/')
 
 
 # ------------------- code run in both threads:
@@ -799,20 +1239,23 @@ urls = (
     '/options', 'WebOptions',
     '/reboot', 'WebReboot',
     '/log', 'WebLog',
+    '/history', 'WebHistory',
     '/stations', 'WebStations',
     '/changestation(.*)', 'WebChangeStation',
     '/programs', 'WebPrograms',
+    '/checkprograms', 'WebCheckPrograms',
     '/changeprogram(.*)', 'WebChangeProgram',
 )
 
 if __name__ == "__main__":
     # ------------------- code run only in main thread:
     # initialize basic global values:
+    gv.configdir = "config"
     gv.datadir = "data"
-    gv.gsfilepath = gv.datadir + "/sd.pkl"
-    gv.hwsfilepath = gv.datadir + "/hws.pkl"
-    gv.prgfilepath = gv.datadir + "/prg.pkl"
-    gv.logfilepath = gv.datadir + "/log.txt"
+    gv.gsfilepath = gv.configdir + "/sd.pkl"
+    gv.hwsfilepath = gv.configdir + "/hws.pkl"
+    gv.prgfilepath = gv.configdir + "/prg.pkl"
+    gv.logfilepath = gv.configdir + "/log.txt"
     gv.logbuffer = []
     gv.flags = []
 
@@ -853,14 +1296,10 @@ if __name__ == "__main__":
             # watering
             if gv.gs['Enabled']:
                 # check progs if watering should start:
-                for prog in gv.prg:
-                    if prg_water(prog):
-                        # if should water now
-                        # write down last run:
-                        # XXX
-                        # fill stations:
-                        for i in gv.prg['Stations']:
-                            gv.hw.station_fill(i)
+                for i in range(len(gv.prg)):
+                    if prg_is_water_time(i):
+                        # if program should water now, do it:
+                        prg_water(i)
 
                 # XXX generate next runs - only if watering
 
@@ -870,15 +1309,16 @@ if __name__ == "__main__":
             # wait for next loop iteration
             # (time.sleep(60) is not good because catching KeyboardInterrupt
             # exception (end from web thread) would take up to 60 seconds)
-            endtime = time.time() + 60
+            endtime = time.time() + gv.gs['MLInterval']
             while time.time() < endtime:
                 # if web thread asked for refresh, break loop:
                 if 'askforRun' in gv.flags:
                     break
-                time.sleep(0.1)
+                time.sleep(1)
     except KeyboardInterrupt:
         # keyboard interrupt or reboot pressed in webserver
         quit()  # perform safe quit
+        # and this is the end of the script
 else:
     # ------------------- code run only in web thread:
     # render of templates:
