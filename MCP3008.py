@@ -1,5 +1,7 @@
 #!/usr/bin/python
 
+# library for 8x Analogue-to-Digital converter MCP3008 over SPI bus
+
 # Based on Adafruits libraries, license is inherited
 
 from time import sleep

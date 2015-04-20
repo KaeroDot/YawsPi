@@ -2638,3 +2638,34 @@
 2014.12.25-22:50:17.764537: programs saved to file
 2014.12.25-22:50:17.827040: hardware settings saved to file
 2014.12.25-22:50:17.827114: quitting
+2014.12.25-23:05:03.488113: general settings loaded from file
+2014.12.25-23:05:03.489067: no GPIO module was loaded, running in no-hardware mode
+2014.12.25-23:05:03.489549: hardware settings loaded from file
+2014.12.25-23:05:03.489974: programs loaded from file
+2014.12.25-23:05:03.490398: water source is 5.0% full
+2014.12.25-23:05:03.490477: station "stweekly" (0) is 5.0% full
+2014.12.25-23:05:03.490538: station "station 1" (1) is 5.0% full
+2014.12.25-23:05:03.490593: station "station 2" (2) is 5.0% full
+2014.12.25-23:05:03.490646: station "station 3" (3) is 5.0% full
+2014.12.25-23:06:03.553444: water source is 5.0% full
+2014.12.25-23:06:03.553562: station "stweekly" (0) is 5.0% full
+2014.12.25-23:06:03.553630: station "station 1" (1) is 5.0% full
+2014.12.25-23:06:03.553690: station "station 2" (2) is 5.0% full
+2014.12.25-23:06:03.553748: station "station 3" (3) is 5.0% full
+2014.12.25-23:06:23.750353: general settings saved to file
+2014.12.25-23:06:23.751190: programs saved to file
+2014.12.25-23:06:23.772846: hardware settings saved to file
+2014.12.25-23:06:23.772918: quitting
+2014.12.25-23:07:49.677323: general settings loaded from file
+2014.12.25-23:07:49.679946: no GPIO module was loaded, running in no-hardware mode
+2014.12.25-23:07:49.680532: hardware settings loaded from file
+2014.12.25-23:07:49.680987: programs loaded from file
+2014.12.25-23:07:49.681437: water source is 5.0% full
+2014.12.25-23:07:49.681523: station "stweekly" (0) is 5.0% full
+2014.12.25-23:07:49.681583: station "station 1" (1) is 5.0% full
+2014.12.25-23:07:49.681638: station "station 2" (2) is 5.0% full
+2014.12.25-23:07:49.681691: station "station 3" (3) is 5.0% full
+2014.12.25-23:07:50.595111: general settings saved to file
+2014.12.25-23:07:50.596032: programs saved to file
+2014.12.25-23:07:50.596760: hardware settings saved to file
+2014.12.25-23:07:50.596818: quitting

@@ -409,9 +409,10 @@ def hws_load():  # load hardware settings file
         gv.hws = pickle.load(hwsfile)
         hwsfile.close()
         if len(gv.hws['StData']) != gv.hw.StNo:
-            raise NameError('Number of stations in hardware settings file do \
-            not match hardware configuration file. Probably hardware settings \
-            file should be deleted?')
+            raise NameError('Number of stations in hardware settings file '
+                            'do not match hardware configuration file. '
+                            'Probably hardware settings pickle file should be '
+                            'deleted?')
         log_add('hardware settings loaded from file')
     else:
         # if file do not exist initialize standard settings:

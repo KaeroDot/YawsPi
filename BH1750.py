@@ -1,5 +1,7 @@
 #!/usr/bin/python
 
+# library for illuminance sensor BH1750 over i2c bus
+
 # based on the script from astromik.org, all credit goes to him, all faults are
 # mine. K>
 

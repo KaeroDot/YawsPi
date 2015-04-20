@@ -1,6 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+# library for pressure/temperature sensro BMP180 over i2c bus
+
 # based on the script from astromik.org, all credit goes to him, all faults are
 # mine. K>
 
