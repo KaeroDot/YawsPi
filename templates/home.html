@@ -45,16 +45,16 @@ $def with (gv)
             Temperature sensor: <b>$gv.cv['SeTemp'] &deg</b>
     $if 'press' in gv.hw.Sensors:
             <br>
-            Pressure sensor: <b>$gv.cv['SePress'] Pa</b>
+            Pressure sensor: <b>$"{:.0f}".format(gv.cv['SePress']) Pa</b>
     $if 'humid' in gv.hw.Sensors:
             <br>
-            Humidity sensor: <b>$gv.cv['SeHumid'] %</b>
+            Humidity sensor: <b>$"{:.0f}".format(gv.cv['SeHumid']) %</b>
     $if 'rain' in gv.hw.Sensors:
             <br>
             Rain sensor: <b>$gv.cv['SeRain'] mm</b>
     $if 'illum' in gv.hw.Sensors:
             <br>
-            Illuminance sensor: <b>$gv.cv['SeIllum'] lux</b>
+            Illuminance sensor: <b>$"{:.0f}".format(gv.cv['SeIllum']) lux</b>
     <p></p>
     <b>Source:</b>
     <br>

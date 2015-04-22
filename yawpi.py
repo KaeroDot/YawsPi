@@ -6,6 +6,14 @@
 
 # XXX todo:
 # save config and programs on change
+# bugs:
+# 1,saving of measured source level, station level do not work
+# 2,station settings should show station hardware  informations (senzor type,
+# set capacity)
+# 3, station settings - thershold - does it change grad sensor slope? it should
+# 4, check program generates too long, and generates errors
+# 5, run now - does it work?
+# replace standard datetime and imtedelta bu arrow? http://crsmithdev.com/arrow/
 
 # standard modules:
 import time
@@ -329,7 +337,7 @@ def prg_int_next_water_time(index, starttime):  # returns next watering time
                     )
     # add caliInterval multiples of days till the day of starttime is found:
     while (dts - dt).days > 0:
-        dt = dt + timedelta(days=prg['caliInterval'])
+        dt = dt + timedelta(days=prg['caliInterval']/86400)
     # prepare response:
     # if found day is same as starttime...:
     if dts.day != dt.day:
@@ -347,7 +355,7 @@ def prg_int_next_water_time(index, starttime):  # returns next watering time
                         second=0,
                         microsecond=0,
                         )
-        return (dt, 'not valid day')
+        return (time.mktime(dt.timetuple()), 'not valid day')
     # ...else if time is smaller than TimeTo:
     if (
         dt.hour < prg['TimeToH'] or
@@ -363,7 +371,7 @@ def prg_int_next_water_time(index, starttime):  # returns next watering time
                     second=0,
                     microsecond=0,
                     )
-    return (dt, 'later than TimeTo')
+    return (time.mktime(dt.timetuple()), 'later than TimeTo')
 
 
 def prg_water(index):  # starts watering all stations in the program

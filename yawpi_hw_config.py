@@ -17,8 +17,6 @@ def yawpi_hw_config():
     tmp = {}
 
     # ------------------- IO outputs:
-    # first adress is RPi GPIO, XXX <-co to je?
-    # next adresses are I2C addresses of port
     # expanders MCP23017 (multiple port expanders possible)
     tmp['PeAddresses'] = (0x27, 0x21)
 

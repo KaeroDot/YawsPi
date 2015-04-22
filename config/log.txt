@@ -1,2671 +1,435 @@
-2014.04.26-19:20:16.963604: water source is 5.0% full
-2014.04.26-19:20:16.963720: station "stweekly" (0) is 5.0% full
-2014.04.26-19:20:16.963786: station "station 1" (1) is 5.0% full
-2014.04.26-19:20:16.963846: station "station 2" (2) is 5.0% full
-2014.04.26-19:20:16.963903: station "station 3" (3) is 5.0% full
-2014.04.26-19:20:16.964465: program "prgweekly" (0): not valid day or time of a day
-2014.04.26-19:20:22.975120: general settings saved to file
-2014.04.26-19:20:22.975657: programs saved to file
-2014.04.26-19:20:22.976209: hardware settings saved to file
-2014.04.26-19:20:22.976262: quitting
-2014.04.26-19:20:23.939389: general settings loaded from file
-2014.04.26-19:20:23.940576: no GPIO module was loaded, running in no-hardware mode
-2014.04.26-19:20:23.941062: hardware settings loaded from file
-2014.04.26-19:20:23.941447: programs loaded from file
-2014.04.26-19:20:23.941810: water source is 5.0% full
-2014.04.26-19:20:23.941900: station "stweekly" (0) is 5.0% full
-2014.04.26-19:20:23.941961: station "station 1" (1) is 5.0% full
-2014.04.26-19:20:23.942022: station "station 2" (2) is 5.0% full
-2014.04.26-19:20:23.942074: station "station 3" (3) is 5.0% full
-2014.04.26-19:20:23.942616: program "prgweekly" (0): not valid day or time of a day
-2014.04.26-19:20:29.959204: water source is 5.0% full
-2014.04.26-19:20:29.959320: station "stweekly" (0) is 5.0% full
-2014.04.26-19:20:29.959387: station "station 1" (1) is 5.0% full
-2014.04.26-19:20:29.959445: station "station 2" (2) is 5.0% full
-2014.04.26-19:20:29.959501: station "station 3" (3) is 5.0% full
-2014.04.26-19:20:29.960064: program "prgweekly" (0): not valid day or time of a day
-2014.04.26-19:20:33.964239: water source is 5.0% full
-2014.04.26-19:20:33.964349: station "stweekly" (0) is 5.0% full
-2014.04.26-19:20:33.964411: station "station 1" (1) is 5.0% full
-2014.04.26-19:20:33.964466: station "station 2" (2) is 5.0% full
-2014.04.26-19:20:33.964519: station "station 3" (3) is 5.0% full
-2014.04.26-19:20:33.965085: program "prgweekly" (0): not valid day or time of a day
-2014.04.26-19:20:37.969847: water source is 5.0% full
-2014.04.26-19:20:37.969966: station "stweekly" (0) is 5.0% full
-2014.04.26-19:20:37.970033: station "station 1" (1) is 5.0% full
-2014.04.26-19:20:37.970092: station "station 2" (2) is 5.0% full
-2014.04.26-19:20:37.970149: station "station 3" (3) is 5.0% full
-2014.04.26-19:20:37.970751: program "prgweekly" (0): not valid day or time of a day
-2014.04.26-19:20:50.984898: water source is 5.0% full
-2014.04.26-19:20:50.985029: station "stweekly" (0) is 5.0% full
-2014.04.26-19:20:50.985092: station "station 1" (1) is 5.0% full
-2014.04.26-19:20:50.985147: station "station 2" (2) is 5.0% full
-2014.04.26-19:20:50.985201: station "station 3" (3) is 5.0% full
-2014.04.26-19:20:50.985789: program "prgweekly" (0): not valid day or time of a day
-2014.04.26-19:21:51.048032: water source is 5.0% full
-2014.04.26-19:21:51.048153: station "stweekly" (0) is 5.0% full
-2014.04.26-19:21:51.048217: station "station 1" (1) is 5.0% full
-2014.04.26-19:21:51.048274: station "station 2" (2) is 5.0% full
-2014.04.26-19:21:51.048327: station "station 3" (3) is 5.0% full
-2014.04.26-19:21:51.048903: program "prgweekly" (0): not valid day or time of a day
-2014.04.26-19:22:51.112289: water source is 5.0% full
-2014.04.26-19:22:51.112404: station "stweekly" (0) is 5.0% full
-2014.04.26-19:22:51.112471: station "station 1" (1) is 5.0% full
-2014.04.26-19:22:51.112530: station "station 2" (2) is 5.0% full
-2014.04.26-19:22:51.112588: station "station 3" (3) is 5.0% full
-2014.04.26-19:22:51.113215: program "prgweekly" (0): ready for watering
-2014.04.26-19:22:51.113260: preparing to fill station "stweekly" (0)
-2014.04.26-19:22:51.113318: station "stweekly" (0) was filled, time of filling was 2, time limit was 0.1 s, limit EXCEEDED!
-2014.04.26-19:23:51.173012: water source is 5.0% full
-2014.04.26-19:23:51.173126: station "stweekly" (0) is 5.0% full
-2014.04.26-19:23:51.173187: station "station 1" (1) is 5.0% full
-2014.04.26-19:23:51.173242: station "station 2" (2) is 5.0% full
-2014.04.26-19:23:51.173295: station "station 3" (3) is 5.0% full
-2014.04.26-19:23:51.173850: program "prgweekly" (0): not valid day or time of a day
-2014.04.26-19:24:51.235195: water source is 5.0% full
-2014.04.26-19:24:51.235313: station "stweekly" (0) is 5.0% full
-2014.04.26-19:24:51.235378: station "station 1" (1) is 5.0% full
-2014.04.26-19:24:51.235434: station "station 2" (2) is 5.0% full
-2014.04.26-19:24:51.235488: station "station 3" (3) is 5.0% full
-2014.04.26-19:24:51.236045: program "prgweekly" (0): not valid day or time of a day
-2014.04.26-19:25:51.296906: water source is 5.0% full
-2014.04.26-19:25:51.297031: station "stweekly" (0) is 5.0% full
-2014.04.26-19:25:51.297097: station "station 1" (1) is 5.0% full
-2014.04.26-19:25:51.297155: station "station 2" (2) is 5.0% full
-2014.04.26-19:25:51.297210: station "station 3" (3) is 5.0% full
-2014.04.26-19:25:51.297761: program "prgweekly" (0): not valid day or time of a day
-2014.04.26-19:26:51.359604: water source is 5.0% full
-2014.04.26-19:26:51.359718: station "stweekly" (0) is 5.0% full
-2014.04.26-19:26:51.359787: station "station 1" (1) is 5.0% full
-2014.04.26-19:26:51.359847: station "station 2" (2) is 5.0% full
-2014.04.26-19:26:51.359905: station "station 3" (3) is 5.0% full
-2014.04.26-19:26:51.360484: program "prgweekly" (0): not valid day or time of a day
-2014.04.26-19:27:51.420224: water source is 5.0% full
-2014.04.26-19:27:51.420342: station "stweekly" (0) is 5.0% full
-2014.04.26-19:27:51.420411: station "station 1" (1) is 5.0% full
-2014.04.26-19:27:51.420471: station "station 2" (2) is 5.0% full
-2014.04.26-19:27:51.420528: station "station 3" (3) is 5.0% full
-2014.04.26-19:27:51.421152: program "prgweekly" (0): not valid day or time of a day
-2014.04.26-19:28:51.482885: water source is 5.0% full
-2014.04.26-19:28:51.482995: station "stweekly" (0) is 5.0% full
-2014.04.26-19:28:51.483062: station "station 1" (1) is 5.0% full
-2014.04.26-19:28:51.483121: station "station 2" (2) is 5.0% full
-2014.04.26-19:28:51.483179: station "station 3" (3) is 5.0% full
-2014.04.26-19:28:51.483749: program "prgweekly" (0): ready for watering
-2014.04.26-19:28:51.483791: preparing to fill station "stweekly" (0)
-2014.04.26-19:28:51.483849: station "stweekly" (0) was filled, time of filling was 2, time limit was 0.1 s, limit EXCEEDED!
-2014.04.26-19:29:51.546703: water source is 5.0% full
-2014.04.26-19:29:51.546827: station "stweekly" (0) is 5.0% full
-2014.04.26-19:29:51.546895: station "station 1" (1) is 5.0% full
-2014.04.26-19:29:51.546954: station "station 2" (2) is 5.0% full
-2014.04.26-19:29:51.547011: station "station 3" (3) is 5.0% full
-2014.04.26-19:29:51.547595: program "prgweekly" (0): not valid day or time of a day
-2014.04.26-19:30:51.609674: water source is 5.0% full
-2014.04.26-19:30:51.609789: station "stweekly" (0) is 5.0% full
-2014.04.26-19:30:51.609851: station "station 1" (1) is 5.0% full
-2014.04.26-19:30:51.609905: station "station 2" (2) is 5.0% full
-2014.04.26-19:30:51.609958: station "station 3" (3) is 5.0% full
-2014.04.26-19:30:51.610496: program "prgweekly" (0): not valid day or time of a day
-2014.04.26-19:31:51.674957: water source is 5.0% full
-2014.04.26-19:31:51.675075: station "stweekly" (0) is 5.0% full
-2014.04.26-19:31:51.675143: station "station 1" (1) is 5.0% full
-2014.04.26-19:31:51.675203: station "station 2" (2) is 5.0% full
-2014.04.26-19:31:51.675265: station "station 3" (3) is 5.0% full
-2014.04.26-19:31:51.675895: program "prgweekly" (0): not valid day or time of a day
-2014.04.26-19:32:51.738890: water source is 5.0% full
-2014.04.26-19:32:51.739009: station "stweekly" (0) is 5.0% full
-2014.04.26-19:32:51.739078: station "station 1" (1) is 5.0% full
-2014.04.26-19:32:51.739139: station "station 2" (2) is 5.0% full
-2014.04.26-19:32:51.739197: station "station 3" (3) is 5.0% full
-2014.04.26-19:32:51.739786: program "prgweekly" (0): not valid day or time of a day
-2014.04.26-19:33:51.801297: water source is 5.0% full
-2014.04.26-19:33:51.801418: station "stweekly" (0) is 5.0% full
-2014.04.26-19:33:51.801489: station "station 1" (1) is 5.0% full
-2014.04.26-19:33:51.801550: station "station 2" (2) is 5.0% full
-2014.04.26-19:33:51.801610: station "station 3" (3) is 5.0% full
-2014.04.26-19:33:51.802207: program "prgweekly" (0): not valid day or time of a day
-2014.04.26-19:34:51.867541: water source is 5.0% full
-2014.04.26-19:34:51.867658: station "stweekly" (0) is 5.0% full
-2014.04.26-19:34:51.867723: station "station 1" (1) is 5.0% full
-2014.04.26-19:34:51.867782: station "station 2" (2) is 5.0% full
-2014.04.26-19:34:51.867839: station "station 3" (3) is 5.0% full
-2014.04.26-19:34:51.868419: program "prgweekly" (0): ready for watering
-2014.04.26-19:34:51.868461: preparing to fill station "stweekly" (0)
-2014.04.26-19:34:51.868518: station "stweekly" (0) was filled, time of filling was 2, time limit was 0.1 s, limit EXCEEDED!
-2014.04.26-19:35:50.273302: settings of program 0 (prgweekly) was changed by user
-2014.04.26-19:35:51.930017: water source is 5.0% full
-2014.04.26-19:35:51.930141: station "stweekly" (0) is 5.0% full
-2014.04.26-19:35:51.930207: station "station 1" (1) is 5.0% full
-2014.04.26-19:35:51.930266: station "station 2" (2) is 5.0% full
-2014.04.26-19:35:51.930323: station "station 3" (3) is 5.0% full
-2014.04.26-19:35:51.930905: program "prgweekly" (0): not valid day or time of a day
-2014.04.26-19:35:59.848153: settings of program 0 (prgweekly) was changed by user
-2014.04.26-19:36:51.992307: water source is 5.0% full
-2014.04.26-19:36:51.992432: station "stweekly" (0) is 5.0% full
-2014.04.26-19:36:51.992499: station "station 1" (1) is 5.0% full
-2014.04.26-19:36:51.992556: station "station 2" (2) is 5.0% full
-2014.04.26-19:36:51.992613: station "station 3" (3) is 5.0% full
-2014.04.26-19:36:51.993237: program "prgweekly" (0): not valid day or time of a day
-2014.04.26-19:37:52.057593: water source is 5.0% full
-2014.04.26-19:37:52.057709: station "stweekly" (0) is 5.0% full
-2014.04.26-19:37:52.057776: station "station 1" (1) is 5.0% full
-2014.04.26-19:37:52.057833: station "station 2" (2) is 5.0% full
-2014.04.26-19:37:52.057890: station "station 3" (3) is 5.0% full
-2014.04.26-19:37:52.058491: program "prgweekly" (0): not valid day or time of a day
-2014.04.26-19:38:52.120720: water source is 5.0% full
-2014.04.26-19:38:52.120870: station "stweekly" (0) is 5.0% full
-2014.04.26-19:38:52.120948: station "station 1" (1) is 5.0% full
-2014.04.26-19:38:52.121008: station "station 2" (2) is 5.0% full
-2014.04.26-19:38:52.121067: station "station 3" (3) is 5.0% full
-2014.04.26-19:38:52.121671: program "prgweekly" (0): not valid day or time of a day
-2014.04.26-19:39:52.180295: water source is 5.0% full
-2014.04.26-19:39:52.180411: station "stweekly" (0) is 5.0% full
-2014.04.26-19:39:52.180477: station "station 1" (1) is 5.0% full
-2014.04.26-19:39:52.180535: station "station 2" (2) is 5.0% full
-2014.04.26-19:39:52.180592: station "station 3" (3) is 5.0% full
-2014.04.26-19:39:52.181235: program "prgweekly" (0): not valid day or time of a day
-2014.04.26-19:40:52.244448: water source is 5.0% full
-2014.04.26-19:40:52.244563: station "stweekly" (0) is 5.0% full
-2014.04.26-19:40:52.244629: station "station 1" (1) is 5.0% full
-2014.04.26-19:40:52.244687: station "station 2" (2) is 5.0% full
-2014.04.26-19:40:52.244745: station "station 3" (3) is 5.0% full
-2014.04.26-19:40:52.245356: program "prgweekly" (0): ready for watering
-2014.04.26-19:40:52.245400: preparing to fill station "stweekly" (0)
-2014.04.26-19:40:52.245458: station "stweekly" (0) was filled, time of filling was 2, time limit was 0.1 s, limit EXCEEDED!
-2014.04.26-19:41:52.308999: water source is 5.0% full
-2014.04.26-19:41:52.309118: station "stweekly" (0) is 5.0% full
-2014.04.26-19:41:52.309185: station "station 1" (1) is 5.0% full
-2014.04.26-19:41:52.309243: station "station 2" (2) is 5.0% full
-2014.04.26-19:41:52.309299: station "station 3" (3) is 5.0% full
-2014.04.26-19:41:52.309893: program "prgweekly" (0): not valid day or time of a day
-2014.04.26-19:42:52.369793: water source is 5.0% full
-2014.04.26-19:42:52.369909: station "stweekly" (0) is 5.0% full
-2014.04.26-19:42:52.369971: station "station 1" (1) is 5.0% full
-2014.04.26-19:42:52.370025: station "station 2" (2) is 5.0% full
-2014.04.26-19:42:52.370079: station "station 3" (3) is 5.0% full
-2014.04.26-19:42:52.370658: program "prgweekly" (0): not valid day or time of a day
-2014.04.26-19:43:52.433948: water source is 5.0% full
-2014.04.26-19:43:52.434073: station "stweekly" (0) is 5.0% full
-2014.04.26-19:43:52.434142: station "station 1" (1) is 5.0% full
-2014.04.26-19:43:52.434203: station "station 2" (2) is 5.0% full
-2014.04.26-19:43:52.434261: station "station 3" (3) is 5.0% full
-2014.04.26-19:43:52.434902: program "prgweekly" (0): not valid day or time of a day
-2014.04.26-19:44:52.495805: water source is 5.0% full
-2014.04.26-19:44:52.495929: station "stweekly" (0) is 5.0% full
-2014.04.26-19:44:52.495996: station "station 1" (1) is 5.0% full
-2014.04.26-19:44:52.496055: station "station 2" (2) is 5.0% full
-2014.04.26-19:44:52.496112: station "station 3" (3) is 5.0% full
-2014.04.26-19:44:52.496739: program "prgweekly" (0): not valid day or time of a day
-2014.04.26-19:45:52.557440: water source is 5.0% full
-2014.04.26-19:45:52.557559: station "stweekly" (0) is 5.0% full
-2014.04.26-19:45:52.557627: station "station 1" (1) is 5.0% full
-2014.04.26-19:45:52.557685: station "station 2" (2) is 5.0% full
-2014.04.26-19:45:52.557742: station "station 3" (3) is 5.0% full
-2014.04.26-19:45:52.557819: program "prgweekly" (0): not valid time of day
-2014.04.26-19:46:52.622058: water source is 5.0% full
-2014.04.26-19:46:52.622178: station "stweekly" (0) is 5.0% full
-2014.04.26-19:46:52.622245: station "station 1" (1) is 5.0% full
-2014.04.26-19:46:52.622302: station "station 2" (2) is 5.0% full
-2014.04.26-19:46:52.622359: station "station 3" (3) is 5.0% full
-2014.04.26-19:46:52.622437: program "prgweekly" (0): not valid time of day
-2014.04.26-19:47:52.685567: water source is 5.0% full
-2014.04.26-19:47:52.685681: station "stweekly" (0) is 5.0% full
-2014.04.26-19:47:52.685747: station "station 1" (1) is 5.0% full
-2014.04.26-19:47:52.685806: station "station 2" (2) is 5.0% full
-2014.04.26-19:47:52.685863: station "station 3" (3) is 5.0% full
-2014.04.26-19:47:52.685939: program "prgweekly" (0): not valid time of day
-2014.04.26-19:48:06.515457: general settings saved to file
-2014.04.26-19:48:06.516085: programs saved to file
-2014.04.26-19:48:06.516711: hardware settings saved to file
-2014.04.26-19:48:06.516770: quitting
-2014.04.27-07:40:02.332350: general settings loaded from file
-2014.04.27-07:40:02.333537: no GPIO module was loaded, running in no-hardware mode
-2014.04.27-07:40:02.333992: hardware settings loaded from file
-2014.04.27-07:40:02.334367: programs loaded from file
-2014.04.27-07:40:02.334759: water source is 5.0% full
-2014.04.27-07:40:02.334847: station "stweekly" (0) is 5.0% full
-2014.04.27-07:40:02.334910: station "station 1" (1) is 5.0% full
-2014.04.27-07:40:02.334966: station "station 2" (2) is 5.0% full
-2014.04.27-07:40:02.335022: station "station 3" (3) is 5.0% full
-2014.04.27-07:40:02.335185: program "prgweekly" (0): not valid day or time of a day
-2014.04.27-07:41:02.434227: water source is 5.0% full
-2014.04.27-07:41:02.434339: station "stweekly" (0) is 5.0% full
-2014.04.27-07:41:02.434402: station "station 1" (1) is 5.0% full
-2014.04.27-07:41:02.434456: station "station 2" (2) is 5.0% full
-2014.04.27-07:41:02.434508: station "station 3" (3) is 5.0% full
-2014.04.27-07:41:02.434686: program "prgweekly" (0): not valid day or time of a day
-2014.04.27-07:41:05.999793: general settings saved to file
-2014.04.27-07:41:06.000349: programs saved to file
-2014.04.27-07:41:06.000912: hardware settings saved to file
-2014.04.27-07:41:06.000964: quitting
-2014.04.27-09:49:29.533746: general settings loaded from file
-2014.04.27-09:49:29.535025: no GPIO module was loaded, running in no-hardware mode
-2014.04.27-09:49:29.535495: hardware settings loaded from file
-2014.04.27-09:49:29.535888: programs loaded from file
-2014.04.27-09:49:29.536257: water source is 5.0% full
-2014.04.27-09:49:29.536338: station "stweekly" (0) is 5.0% full
-2014.04.27-09:49:29.536398: station "station 1" (1) is 5.0% full
-2014.04.27-09:49:29.536451: station "station 2" (2) is 5.0% full
-2014.04.27-09:49:29.536503: station "station 3" (3) is 5.0% full
-2014.04.27-09:49:29.536674: program "prgweekly" (0): not valid day or time of a day
-2014.04.27-09:49:32.813032: general settings saved to file
-2014.04.27-09:49:32.813640: programs saved to file
-2014.04.27-09:49:32.814270: hardware settings saved to file
-2014.04.27-09:49:32.814331: quitting
-2014.05.01-20:43:21.508872: general settings loaded from file
-2014.05.01-20:43:21.552594: no GPIO module was loaded, running in no-hardware mode
-2014.05.01-20:43:21.553251: hardware settings loaded from file
-2014.05.01-20:43:21.553984: programs loaded from file
-2014.05.01-20:43:21.554358: water source is 5.0% full
-2014.05.01-20:43:21.554449: station "stweekly" (0) is 5.0% full
-2014.05.01-20:43:21.554519: station "station 1" (1) is 5.0% full
-2014.05.01-20:43:21.554576: station "station 2" (2) is 5.0% full
-2014.05.01-20:43:21.554631: station "station 3" (3) is 5.0% full
-2014.05.01-20:43:21.554726: program "prgweekly" (0): not valid time of day
-2014.05.01-20:44:21.692113: water source is 5.0% full
-2014.05.01-20:44:21.692233: station "stweekly" (0) is 5.0% full
-2014.05.01-20:44:21.692303: station "station 1" (1) is 5.0% full
-2014.05.01-20:44:21.692362: station "station 2" (2) is 5.0% full
-2014.05.01-20:44:21.692424: station "station 3" (3) is 5.0% full
-2014.05.01-20:45:21.760178: water source is 5.0% full
-2014.05.01-20:45:21.760293: station "stweekly" (0) is 5.0% full
-2014.05.01-20:45:21.760358: station "station 1" (1) is 5.0% full
-2014.05.01-20:45:21.760416: station "station 2" (2) is 5.0% full
-2014.05.01-20:45:21.760474: station "station 3" (3) is 5.0% full
-2014.05.01-20:46:21.827471: water source is 5.0% full
-2014.05.01-20:46:21.827582: station "stweekly" (0) is 5.0% full
-2014.05.01-20:46:21.827648: station "station 1" (1) is 5.0% full
-2014.05.01-20:46:21.827706: station "station 2" (2) is 5.0% full
-2014.05.01-20:46:21.827765: station "station 3" (3) is 5.0% full
-2014.05.01-20:47:21.895467: water source is 5.0% full
-2014.05.01-20:47:21.895578: station "stweekly" (0) is 5.0% full
-2014.05.01-20:47:21.895644: station "station 1" (1) is 5.0% full
-2014.05.01-20:47:21.895703: station "station 2" (2) is 5.0% full
-2014.05.01-20:47:21.895761: station "station 3" (3) is 5.0% full
-2014.05.01-20:48:21.964303: water source is 5.0% full
-2014.05.01-20:48:21.964409: station "stweekly" (0) is 5.0% full
-2014.05.01-20:48:21.964470: station "station 1" (1) is 5.0% full
-2014.05.01-20:48:21.964524: station "station 2" (2) is 5.0% full
-2014.05.01-20:48:21.964578: station "station 3" (3) is 5.0% full
-2014.05.01-20:49:22.032202: water source is 5.0% full
-2014.05.01-20:49:22.032315: station "stweekly" (0) is 5.0% full
-2014.05.01-20:49:22.032380: station "station 1" (1) is 5.0% full
-2014.05.01-20:49:22.032439: station "station 2" (2) is 5.0% full
-2014.05.01-20:49:22.032497: station "station 3" (3) is 5.0% full
-2014.05.01-20:50:22.100244: water source is 5.0% full
-2014.05.01-20:50:22.100355: station "stweekly" (0) is 5.0% full
-2014.05.01-20:50:22.100421: station "station 1" (1) is 5.0% full
-2014.05.01-20:50:22.100480: station "station 2" (2) is 5.0% full
-2014.05.01-20:50:22.100539: station "station 3" (3) is 5.0% full
-2014.05.01-21:02:24.071785: water source is 5.0% full
-2014.05.01-21:02:24.071901: station "stweekly" (0) is 5.0% full
-2014.05.01-21:02:24.071962: station "station 1" (1) is 5.0% full
-2014.05.01-21:02:24.072017: station "station 2" (2) is 5.0% full
-2014.05.01-21:02:24.072072: station "station 3" (3) is 5.0% full
-2014.05.01-21:03:24.139689: water source is 5.0% full
-2014.05.01-21:03:24.139801: station "stweekly" (0) is 5.0% full
-2014.05.01-21:03:24.139867: station "station 1" (1) is 5.0% full
-2014.05.01-21:03:24.139925: station "station 2" (2) is 5.0% full
-2014.05.01-21:03:24.139984: station "station 3" (3) is 5.0% full
-2014.05.01-21:04:24.206786: water source is 5.0% full
-2014.05.01-21:04:24.206893: station "stweekly" (0) is 5.0% full
-2014.05.01-21:04:24.206954: station "station 1" (1) is 5.0% full
-2014.05.01-21:04:24.207008: station "station 2" (2) is 5.0% full
-2014.05.01-21:04:24.207063: station "station 3" (3) is 5.0% full
-2014.05.01-21:05:24.274030: water source is 5.0% full
-2014.05.01-21:05:24.274141: station "stweekly" (0) is 5.0% full
-2014.05.01-21:05:24.274209: station "station 1" (1) is 5.0% full
-2014.05.01-21:05:24.274267: station "station 2" (2) is 5.0% full
-2014.05.01-21:05:24.274325: station "station 3" (3) is 5.0% full
-2014.05.01-21:06:24.341590: water source is 5.0% full
-2014.05.01-21:06:24.341701: station "stweekly" (0) is 5.0% full
-2014.05.01-21:06:24.341767: station "station 1" (1) is 5.0% full
-2014.05.01-21:06:24.341826: station "station 2" (2) is 5.0% full
-2014.05.01-21:06:24.341884: station "station 3" (3) is 5.0% full
-2014.05.01-21:16:09.780603: water source is 5.0% full
-2014.05.01-21:16:09.780717: station "stweekly" (0) is 5.0% full
-2014.05.01-21:16:09.780779: station "station 1" (1) is 5.0% full
-2014.05.01-21:16:09.780834: station "station 2" (2) is 5.0% full
-2014.05.01-21:16:09.780889: station "station 3" (3) is 5.0% full
-2014.05.01-21:17:09.846737: water source is 5.0% full
-2014.05.01-21:17:09.846844: station "stweekly" (0) is 5.0% full
-2014.05.01-21:17:09.846911: station "station 1" (1) is 5.0% full
-2014.05.01-21:17:09.846969: station "station 2" (2) is 5.0% full
-2014.05.01-21:17:09.847027: station "station 3" (3) is 5.0% full
-2014.05.01-21:18:09.913350: water source is 5.0% full
-2014.05.01-21:18:09.913463: station "stweekly" (0) is 5.0% full
-2014.05.01-21:18:09.913529: station "station 1" (1) is 5.0% full
-2014.05.01-21:18:09.913588: station "station 2" (2) is 5.0% full
-2014.05.01-21:18:09.913647: station "station 3" (3) is 5.0% full
-2014.05.01-21:19:09.982012: water source is 5.0% full
-2014.05.01-21:19:09.982126: station "stweekly" (0) is 5.0% full
-2014.05.01-21:19:09.982192: station "station 1" (1) is 5.0% full
-2014.05.01-21:19:09.982250: station "station 2" (2) is 5.0% full
-2014.05.01-21:19:09.982309: station "station 3" (3) is 5.0% full
-2014.05.01-21:20:10.051374: water source is 5.0% full
-2014.05.01-21:20:10.051485: station "stweekly" (0) is 5.0% full
-2014.05.01-21:20:10.051551: station "station 1" (1) is 5.0% full
-2014.05.01-21:20:10.051610: station "station 2" (2) is 5.0% full
-2014.05.01-21:20:10.051668: station "station 3" (3) is 5.0% full
-2014.05.01-21:21:10.118601: water source is 5.0% full
-2014.05.01-21:21:10.118709: station "stweekly" (0) is 5.0% full
-2014.05.01-21:21:10.118770: station "station 1" (1) is 5.0% full
-2014.05.01-21:21:10.118824: station "station 2" (2) is 5.0% full
-2014.05.01-21:21:10.118878: station "station 3" (3) is 5.0% full
-2014.05.01-21:22:10.184281: water source is 5.0% full
-2014.05.01-21:22:10.184395: station "stweekly" (0) is 5.0% full
-2014.05.01-21:22:10.184461: station "station 1" (1) is 5.0% full
-2014.05.01-21:22:10.184519: station "station 2" (2) is 5.0% full
-2014.05.01-21:22:10.184577: station "station 3" (3) is 5.0% full
-2014.05.01-21:23:10.252119: water source is 5.0% full
-2014.05.01-21:23:10.252233: station "stweekly" (0) is 5.0% full
-2014.05.01-21:23:10.252299: station "station 1" (1) is 5.0% full
-2014.05.01-21:23:10.252357: station "station 2" (2) is 5.0% full
-2014.05.01-21:23:10.252415: station "station 3" (3) is 5.0% full
-2014.05.01-21:24:10.319439: water source is 5.0% full
-2014.05.01-21:24:10.319554: station "stweekly" (0) is 5.0% full
-2014.05.01-21:24:10.319619: station "station 1" (1) is 5.0% full
-2014.05.01-21:24:10.319677: station "station 2" (2) is 5.0% full
-2014.05.01-21:24:10.319735: station "station 3" (3) is 5.0% full
-2014.05.01-21:26:08.770725: water source is 5.0% full
-2014.05.01-21:26:08.770840: station "stweekly" (0) is 5.0% full
-2014.05.01-21:26:08.770903: station "station 1" (1) is 5.0% full
-2014.05.01-21:26:08.770958: station "station 2" (2) is 5.0% full
-2014.05.01-21:26:08.771013: station "station 3" (3) is 5.0% full
-2014.05.01-21:26:17.410031: general settings saved to file
-2014.05.01-21:26:17.410645: programs saved to file
-2014.05.01-21:26:17.411206: hardware settings saved to file
-2014.05.01-21:26:17.411246: quitting
-2014.05.02-20:09:16.636101: general settings loaded from file
-2014.05.02-20:09:16.637556: no GPIO module was loaded, running in no-hardware mode
-2014.05.02-20:09:16.638041: hardware settings loaded from file
-2014.05.02-20:09:16.638436: programs loaded from file
-2014.05.02-20:09:16.638795: water source is 5.0% full
-2014.05.02-20:09:16.638886: station "stweekly" (0) is 5.0% full
-2014.05.02-20:09:16.638950: station "station 1" (1) is 5.0% full
-2014.05.02-20:09:16.639006: station "station 2" (2) is 5.0% full
-2014.05.02-20:09:16.639061: station "station 3" (3) is 5.0% full
-2014.05.02-20:10:03.790180: general settings saved to file
-2014.05.02-20:10:03.790740: programs saved to file
-2014.05.02-20:10:03.791251: hardware settings saved to file
-2014.05.02-20:10:03.791292: quitting
-2014.05.03-09:51:22.016150: general settings loaded from file
-2014.05.03-09:51:22.017369: no GPIO module was loaded, running in no-hardware mode
-2014.05.03-09:51:22.017827: hardware settings loaded from file
-2014.05.03-09:51:22.018221: programs loaded from file
-2014.05.03-09:51:22.018564: water source is 5.0% full
-2014.05.03-09:51:22.026149: station "stweekly" (0) is 5.0% full
-2014.05.03-09:51:22.026242: station "station 1" (1) is 5.0% full
-2014.05.03-09:51:22.026298: station "station 2" (2) is 5.0% full
-2014.05.03-09:51:22.026352: station "station 3" (3) is 5.0% full
-2014.05.03-09:52:22.095133: water source is 5.0% full
-2014.05.03-09:52:22.095247: station "stweekly" (0) is 5.0% full
-2014.05.03-09:52:22.095313: station "station 1" (1) is 5.0% full
-2014.05.03-09:52:22.095372: station "station 2" (2) is 5.0% full
-2014.05.03-09:52:22.095431: station "station 3" (3) is 5.0% full
-2014.05.03-09:53:22.163019: water source is 5.0% full
-2014.05.03-09:53:22.163135: station "stweekly" (0) is 5.0% full
-2014.05.03-09:53:22.163201: station "station 1" (1) is 5.0% full
-2014.05.03-09:53:22.163260: station "station 2" (2) is 5.0% full
-2014.05.03-09:53:22.163316: station "station 3" (3) is 5.0% full
-2014.05.03-09:54:22.231318: water source is 5.0% full
-2014.05.03-09:54:22.231432: station "stweekly" (0) is 5.0% full
-2014.05.03-09:54:22.231501: station "station 1" (1) is 5.0% full
-2014.05.03-09:54:22.231559: station "station 2" (2) is 5.0% full
-2014.05.03-09:54:22.231616: station "station 3" (3) is 5.0% full
-2014.05.03-09:55:22.299418: water source is 5.0% full
-2014.05.03-09:55:22.299527: station "stweekly" (0) is 5.0% full
-2014.05.03-09:55:22.299588: station "station 1" (1) is 5.0% full
-2014.05.03-09:55:22.299642: station "station 2" (2) is 5.0% full
-2014.05.03-09:55:22.299695: station "station 3" (3) is 5.0% full
-2014.05.03-09:55:29.026567: general settings saved to file
-2014.05.03-09:55:29.027090: programs saved to file
-2014.05.03-09:55:29.027610: hardware settings saved to file
-2014.05.03-09:55:29.027651: quitting
-2014.05.03-09:55:30.091088: general settings loaded from file
-2014.05.03-09:55:30.092256: no GPIO module was loaded, running in no-hardware mode
-2014.05.03-09:55:30.092717: hardware settings loaded from file
-2014.05.03-09:55:30.093153: programs loaded from file
-2014.05.03-09:55:30.093509: water source is 5.0% full
-2014.05.03-09:55:30.093597: station "stweekly" (0) is 5.0% full
-2014.05.03-09:55:30.093661: station "station 1" (1) is 5.0% full
-2014.05.03-09:55:30.093724: station "station 2" (2) is 5.0% full
-2014.05.03-09:55:30.093780: station "station 3" (3) is 5.0% full
-2014.05.03-09:55:44.613254: general settings saved to file
-2014.05.03-09:55:44.613823: programs saved to file
-2014.05.03-09:55:44.614352: hardware settings saved to file
-2014.05.03-09:55:44.614393: quitting
-2014.05.03-10:00:57.590325: general settings loaded from file
-2014.05.03-10:00:57.591498: no GPIO module was loaded, running in no-hardware mode
-2014.05.03-10:00:57.591955: hardware settings loaded from file
-2014.05.03-10:00:57.592336: programs loaded from file
-2014.05.03-10:00:57.592686: water source is 5.0% full
-2014.05.03-10:00:57.592774: station "stweekly" (0) is 5.0% full
-2014.05.03-10:00:57.592845: station "station 1" (1) is 5.0% full
-2014.05.03-10:00:57.592910: station "station 2" (2) is 5.0% full
-2014.05.03-10:00:57.592965: station "station 3" (3) is 5.0% full
-2014.05.03-10:01:57.672836: water source is 5.0% full
-2014.05.03-10:01:57.672955: station "stweekly" (0) is 5.0% full
-2014.05.03-10:01:57.673051: station "station 1" (1) is 5.0% full
-2014.05.03-10:01:57.673111: station "station 2" (2) is 5.0% full
-2014.05.03-10:01:57.673169: station "station 3" (3) is 5.0% full
-2014.05.03-10:02:57.745181: water source is 5.0% full
-2014.05.03-10:02:57.745297: station "stweekly" (0) is 5.0% full
-2014.05.03-10:02:57.745363: station "station 1" (1) is 5.0% full
-2014.05.03-10:02:57.745421: station "station 2" (2) is 5.0% full
-2014.05.03-10:02:57.745477: station "station 3" (3) is 5.0% full
-2014.05.03-10:03:57.813148: water source is 5.0% full
-2014.05.03-10:03:57.813267: station "stweekly" (0) is 5.0% full
-2014.05.03-10:03:57.813334: station "station 1" (1) is 5.0% full
-2014.05.03-10:03:57.813393: station "station 2" (2) is 5.0% full
-2014.05.03-10:03:57.813450: station "station 3" (3) is 5.0% full
-2014.05.03-10:04:57.881089: water source is 5.0% full
-2014.05.03-10:04:57.881201: station "stweekly" (0) is 5.0% full
-2014.05.03-10:04:57.881263: station "station 1" (1) is 5.0% full
-2014.05.03-10:04:57.881318: station "station 2" (2) is 5.0% full
-2014.05.03-10:04:57.881372: station "station 3" (3) is 5.0% full
-2014.05.03-10:05:57.943481: water source is 5.0% full
-2014.05.03-10:05:57.943600: station "stweekly" (0) is 5.0% full
-2014.05.03-10:05:57.943668: station "station 1" (1) is 5.0% full
-2014.05.03-10:05:57.943728: station "station 2" (2) is 5.0% full
-2014.05.03-10:05:57.943786: station "station 3" (3) is 5.0% full
-2014.05.03-10:06:58.011517: water source is 5.0% full
-2014.05.03-10:06:58.011633: station "stweekly" (0) is 5.0% full
-2014.05.03-10:06:58.011702: station "station 1" (1) is 5.0% full
-2014.05.03-10:06:58.011762: station "station 2" (2) is 5.0% full
-2014.05.03-10:06:58.011819: station "station 3" (3) is 5.0% full
-2014.05.03-10:07:58.078413: water source is 5.0% full
-2014.05.03-10:07:58.078531: station "stweekly" (0) is 5.0% full
-2014.05.03-10:07:58.078597: station "station 1" (1) is 5.0% full
-2014.05.03-10:07:58.078655: station "station 2" (2) is 5.0% full
-2014.05.03-10:07:58.078711: station "station 3" (3) is 5.0% full
-2014.05.03-10:08:58.144522: water source is 5.0% full
-2014.05.03-10:08:58.144636: station "stweekly" (0) is 5.0% full
-2014.05.03-10:08:58.144705: station "station 1" (1) is 5.0% full
-2014.05.03-10:08:58.144764: station "station 2" (2) is 5.0% full
-2014.05.03-10:08:58.144823: station "station 3" (3) is 5.0% full
-2014.05.03-10:09:58.209959: water source is 5.0% full
-2014.05.03-10:09:58.210078: station "stweekly" (0) is 5.0% full
-2014.05.03-10:09:58.210145: station "station 1" (1) is 5.0% full
-2014.05.03-10:09:58.210202: station "station 2" (2) is 5.0% full
-2014.05.03-10:09:58.210258: station "station 3" (3) is 5.0% full
-2014.05.03-10:10:58.279109: water source is 5.0% full
-2014.05.03-10:10:58.279222: station "stweekly" (0) is 5.0% full
-2014.05.03-10:10:58.279290: station "station 1" (1) is 5.0% full
-2014.05.03-10:10:58.279349: station "station 2" (2) is 5.0% full
-2014.05.03-10:10:58.279406: station "station 3" (3) is 5.0% full
-2014.05.03-10:11:58.348612: water source is 5.0% full
-2014.05.03-10:11:58.348728: station "stweekly" (0) is 5.0% full
-2014.05.03-10:11:58.348794: station "station 1" (1) is 5.0% full
-2014.05.03-10:11:58.348852: station "station 2" (2) is 5.0% full
-2014.05.03-10:11:58.348908: station "station 3" (3) is 5.0% full
-2014.05.03-10:12:58.417942: water source is 5.0% full
-2014.05.03-10:12:58.418055: station "stweekly" (0) is 5.0% full
-2014.05.03-10:12:58.418122: station "station 1" (1) is 5.0% full
-2014.05.03-10:12:58.418180: station "station 2" (2) is 5.0% full
-2014.05.03-10:12:58.418237: station "station 3" (3) is 5.0% full
-2014.05.03-10:13:58.486848: water source is 5.0% full
-2014.05.03-10:13:58.486965: station "stweekly" (0) is 5.0% full
-2014.05.03-10:13:58.487031: station "station 1" (1) is 5.0% full
-2014.05.03-10:13:58.487089: station "station 2" (2) is 5.0% full
-2014.05.03-10:13:58.487145: station "station 3" (3) is 5.0% full
-2014.05.03-10:14:58.553687: water source is 5.0% full
-2014.05.03-10:14:58.553804: station "stweekly" (0) is 5.0% full
-2014.05.03-10:14:58.553871: station "station 1" (1) is 5.0% full
-2014.05.03-10:14:58.553929: station "station 2" (2) is 5.0% full
-2014.05.03-10:14:58.553987: station "station 3" (3) is 5.0% full
-2014.05.03-10:15:58.621233: water source is 5.0% full
-2014.05.03-10:15:58.621354: station "stweekly" (0) is 5.0% full
-2014.05.03-10:15:58.621421: station "station 1" (1) is 5.0% full
-2014.05.03-10:15:58.621480: station "station 2" (2) is 5.0% full
-2014.05.03-10:15:58.621537: station "station 3" (3) is 5.0% full
-2014.05.03-10:16:58.690697: water source is 5.0% full
-2014.05.03-10:16:58.690815: station "stweekly" (0) is 5.0% full
-2014.05.03-10:16:58.690881: station "station 1" (1) is 5.0% full
-2014.05.03-10:16:58.690940: station "station 2" (2) is 5.0% full
-2014.05.03-10:16:58.690996: station "station 3" (3) is 5.0% full
-2014.05.03-10:17:58.759896: water source is 5.0% full
-2014.05.03-10:17:58.760012: station "stweekly" (0) is 5.0% full
-2014.05.03-10:17:58.760079: station "station 1" (1) is 5.0% full
-2014.05.03-10:17:58.760137: station "station 2" (2) is 5.0% full
-2014.05.03-10:17:58.760194: station "station 3" (3) is 5.0% full
-2014.05.03-10:18:58.828125: water source is 5.0% full
-2014.05.03-10:18:58.828245: station "stweekly" (0) is 5.0% full
-2014.05.03-10:18:58.828312: station "station 1" (1) is 5.0% full
-2014.05.03-10:18:58.828370: station "station 2" (2) is 5.0% full
-2014.05.03-10:18:58.828427: station "station 3" (3) is 5.0% full
-2014.05.03-10:19:19.349081: general settings saved to file
-2014.05.03-10:19:19.349636: programs saved to file
-2014.05.03-10:19:19.350167: hardware settings saved to file
-2014.05.03-10:19:19.350207: quitting
-2014.05.03-10:19:20.304839: general settings loaded from file
-2014.05.03-10:19:20.306052: no GPIO module was loaded, running in no-hardware mode
-2014.05.03-10:19:20.306503: hardware settings loaded from file
-2014.05.03-10:19:20.306882: programs loaded from file
-2014.05.03-10:19:20.307249: water source is 5.0% full
-2014.05.03-10:19:20.307338: station "stweekly" (0) is 5.0% full
-2014.05.03-10:19:20.307406: station "station 1" (1) is 5.0% full
-2014.05.03-10:19:20.307462: station "station 2" (2) is 5.0% full
-2014.05.03-10:19:20.307516: station "station 3" (3) is 5.0% full
-2014.05.03-10:20:20.384079: water source is 5.0% full
-2014.05.03-10:20:20.384196: station "stweekly" (0) is 5.0% full
-2014.05.03-10:20:20.384265: station "station 1" (1) is 5.0% full
-2014.05.03-10:20:20.384324: station "station 2" (2) is 5.0% full
-2014.05.03-10:20:20.384382: station "station 3" (3) is 5.0% full
-2014.05.03-10:21:20.452586: water source is 5.0% full
-2014.05.03-10:21:20.452703: station "stweekly" (0) is 5.0% full
-2014.05.03-10:21:20.452771: station "station 1" (1) is 5.0% full
-2014.05.03-10:21:20.452830: station "station 2" (2) is 5.0% full
-2014.05.03-10:21:20.452888: station "station 3" (3) is 5.0% full
-2014.05.03-10:22:20.521802: water source is 5.0% full
-2014.05.03-10:22:20.521915: station "stweekly" (0) is 5.0% full
-2014.05.03-10:22:20.521979: station "station 1" (1) is 5.0% full
-2014.05.03-10:22:20.522034: station "station 2" (2) is 5.0% full
-2014.05.03-10:22:20.522087: station "station 3" (3) is 5.0% full
-2014.05.03-10:23:20.589545: water source is 5.0% full
-2014.05.03-10:23:20.589666: station "stweekly" (0) is 5.0% full
-2014.05.03-10:23:20.589734: station "station 1" (1) is 5.0% full
-2014.05.03-10:23:20.589792: station "station 2" (2) is 5.0% full
-2014.05.03-10:23:20.589850: station "station 3" (3) is 5.0% full
-2014.05.03-10:24:20.673910: water source is 5.0% full
-2014.05.03-10:24:20.674034: station "stweekly" (0) is 5.0% full
-2014.05.03-10:24:20.674104: station "station 1" (1) is 5.0% full
-2014.05.03-10:24:20.674163: station "station 2" (2) is 5.0% full
-2014.05.03-10:24:20.674222: station "station 3" (3) is 5.0% full
-2014.05.03-10:25:20.741631: water source is 5.0% full
-2014.05.03-10:25:20.741747: station "stweekly" (0) is 5.0% full
-2014.05.03-10:25:20.741813: station "station 1" (1) is 5.0% full
-2014.05.03-10:25:20.741873: station "station 2" (2) is 5.0% full
-2014.05.03-10:25:20.741931: station "station 3" (3) is 5.0% full
-2014.05.03-10:26:20.809357: water source is 5.0% full
-2014.05.03-10:26:20.809471: station "stweekly" (0) is 5.0% full
-2014.05.03-10:26:20.809538: station "station 1" (1) is 5.0% full
-2014.05.03-10:26:20.809598: station "station 2" (2) is 5.0% full
-2014.05.03-10:26:20.809656: station "station 3" (3) is 5.0% full
-2014.05.03-10:27:20.877214: water source is 5.0% full
-2014.05.03-10:27:20.877323: station "stweekly" (0) is 5.0% full
-2014.05.03-10:27:20.877387: station "station 1" (1) is 5.0% full
-2014.05.03-10:27:20.877442: station "station 2" (2) is 5.0% full
-2014.05.03-10:27:20.877495: station "station 3" (3) is 5.0% full
-2014.05.03-10:28:20.946141: water source is 5.0% full
-2014.05.03-10:28:20.946257: station "stweekly" (0) is 5.0% full
-2014.05.03-10:28:20.946323: station "station 1" (1) is 5.0% full
-2014.05.03-10:28:20.946382: station "station 2" (2) is 5.0% full
-2014.05.03-10:28:20.946440: station "station 3" (3) is 5.0% full
-2014.05.03-10:29:21.014986: water source is 5.0% full
-2014.05.03-10:29:21.015102: station "stweekly" (0) is 5.0% full
-2014.05.03-10:29:21.015168: station "station 1" (1) is 5.0% full
-2014.05.03-10:29:21.015228: station "station 2" (2) is 5.0% full
-2014.05.03-10:29:21.015286: station "station 3" (3) is 5.0% full
-2014.05.03-10:30:21.083988: water source is 5.0% full
-2014.05.03-10:30:21.084106: station "stweekly" (0) is 5.0% full
-2014.05.03-10:30:21.084175: station "station 1" (1) is 5.0% full
-2014.05.03-10:30:21.084235: station "station 2" (2) is 5.0% full
-2014.05.03-10:30:21.084292: station "station 3" (3) is 5.0% full
-2014.05.03-10:31:21.153199: water source is 5.0% full
-2014.05.03-10:31:21.153312: station "stweekly" (0) is 5.0% full
-2014.05.03-10:31:21.153381: station "station 1" (1) is 5.0% full
-2014.05.03-10:31:21.153442: station "station 2" (2) is 5.0% full
-2014.05.03-10:31:21.153502: station "station 3" (3) is 5.0% full
-2014.05.03-10:32:21.221383: water source is 5.0% full
-2014.05.03-10:32:21.221497: station "stweekly" (0) is 5.0% full
-2014.05.03-10:32:21.221564: station "station 1" (1) is 5.0% full
-2014.05.03-10:32:21.221624: station "station 2" (2) is 5.0% full
-2014.05.03-10:32:21.221684: station "station 3" (3) is 5.0% full
-2014.05.03-10:33:21.290375: water source is 5.0% full
-2014.05.03-10:33:21.290490: station "stweekly" (0) is 5.0% full
-2014.05.03-10:33:21.290557: station "station 1" (1) is 5.0% full
-2014.05.03-10:33:21.290615: station "station 2" (2) is 5.0% full
-2014.05.03-10:33:21.290673: station "station 3" (3) is 5.0% full
-2014.05.03-10:34:21.358556: water source is 5.0% full
-2014.05.03-10:34:21.358674: station "stweekly" (0) is 5.0% full
-2014.05.03-10:34:21.358743: station "station 1" (1) is 5.0% full
-2014.05.03-10:34:21.358803: station "station 2" (2) is 5.0% full
-2014.05.03-10:34:21.358861: station "station 3" (3) is 5.0% full
-2014.05.03-10:35:21.427732: water source is 5.0% full
-2014.05.03-10:35:21.427850: station "stweekly" (0) is 5.0% full
-2014.05.03-10:35:21.427916: station "station 1" (1) is 5.0% full
-2014.05.03-10:35:21.427977: station "station 2" (2) is 5.0% full
-2014.05.03-10:35:21.428035: station "station 3" (3) is 5.0% full
-2014.05.03-10:36:21.497235: water source is 5.0% full
-2014.05.03-10:36:21.497349: station "stweekly" (0) is 5.0% full
-2014.05.03-10:36:21.497416: station "station 1" (1) is 5.0% full
-2014.05.03-10:36:21.497477: station "station 2" (2) is 5.0% full
-2014.05.03-10:36:21.497534: station "station 3" (3) is 5.0% full
-2014.05.03-10:37:21.566139: water source is 5.0% full
-2014.05.03-10:37:21.566252: station "stweekly" (0) is 5.0% full
-2014.05.03-10:37:21.566319: station "station 1" (1) is 5.0% full
-2014.05.03-10:37:21.566379: station "station 2" (2) is 5.0% full
-2014.05.03-10:37:21.566437: station "station 3" (3) is 5.0% full
-2014.05.03-10:38:21.633573: water source is 5.0% full
-2014.05.03-10:38:21.633688: station "stweekly" (0) is 5.0% full
-2014.05.03-10:38:21.633756: station "station 1" (1) is 5.0% full
-2014.05.03-10:38:21.633817: station "station 2" (2) is 5.0% full
-2014.05.03-10:38:21.633875: station "station 3" (3) is 5.0% full
-2014.05.03-10:39:21.701468: water source is 5.0% full
-2014.05.03-10:39:21.701583: station "stweekly" (0) is 5.0% full
-2014.05.03-10:39:21.701652: station "station 1" (1) is 5.0% full
-2014.05.03-10:39:21.701711: station "station 2" (2) is 5.0% full
-2014.05.03-10:39:21.701769: station "station 3" (3) is 5.0% full
-2014.05.03-11:48:28.266170: water source is 5.0% full
-2014.05.03-11:48:28.266282: station "stweekly" (0) is 5.0% full
-2014.05.03-11:48:28.266347: station "station 1" (1) is 5.0% full
-2014.05.03-11:48:28.266404: station "station 2" (2) is 5.0% full
-2014.05.03-11:48:28.266460: station "station 3" (3) is 5.0% full
-2014.05.03-11:49:28.333891: water source is 5.0% full
-2014.05.03-11:49:28.334007: station "stweekly" (0) is 5.0% full
-2014.05.03-11:49:28.334074: station "station 1" (1) is 5.0% full
-2014.05.03-11:49:28.334133: station "station 2" (2) is 5.0% full
-2014.05.03-11:49:28.334192: station "station 3" (3) is 5.0% full
-2014.05.03-11:50:28.402464: water source is 5.0% full
-2014.05.03-11:50:28.402581: station "stweekly" (0) is 5.0% full
-2014.05.03-11:50:28.402648: station "station 1" (1) is 5.0% full
-2014.05.03-11:50:28.402708: station "station 2" (2) is 5.0% full
-2014.05.03-11:50:28.402766: station "station 3" (3) is 5.0% full
-2014.05.03-11:51:28.471148: water source is 5.0% full
-2014.05.03-11:51:28.471265: station "stweekly" (0) is 5.0% full
-2014.05.03-11:51:28.471331: station "station 1" (1) is 5.0% full
-2014.05.03-11:51:28.471392: station "station 2" (2) is 5.0% full
-2014.05.03-11:51:28.471450: station "station 3" (3) is 5.0% full
-2014.05.03-11:52:28.540432: water source is 5.0% full
-2014.05.03-11:52:28.540547: station "stweekly" (0) is 5.0% full
-2014.05.03-11:52:28.540614: station "station 1" (1) is 5.0% full
-2014.05.03-11:52:28.540675: station "station 2" (2) is 5.0% full
-2014.05.03-11:52:28.540733: station "station 3" (3) is 5.0% full
-2014.05.03-11:53:28.609448: water source is 5.0% full
-2014.05.03-11:53:28.609566: station "stweekly" (0) is 5.0% full
-2014.05.03-11:53:28.609632: station "station 1" (1) is 5.0% full
-2014.05.03-11:53:28.609691: station "station 2" (2) is 5.0% full
-2014.05.03-11:53:28.609750: station "station 3" (3) is 5.0% full
-2014.05.03-11:54:28.678300: water source is 5.0% full
-2014.05.03-11:54:28.678414: station "stweekly" (0) is 5.0% full
-2014.05.03-11:54:28.678481: station "station 1" (1) is 5.0% full
-2014.05.03-11:54:28.678541: station "station 2" (2) is 5.0% full
-2014.05.03-11:54:28.678600: station "station 3" (3) is 5.0% full
-2014.05.03-11:55:28.746968: water source is 5.0% full
-2014.05.03-11:55:28.747082: station "stweekly" (0) is 5.0% full
-2014.05.03-11:55:28.747149: station "station 1" (1) is 5.0% full
-2014.05.03-11:55:28.747208: station "station 2" (2) is 5.0% full
-2014.05.03-11:55:28.747267: station "station 3" (3) is 5.0% full
-2014.05.03-11:56:28.816023: water source is 5.0% full
-2014.05.03-11:56:28.816138: station "stweekly" (0) is 5.0% full
-2014.05.03-11:56:28.816205: station "station 1" (1) is 5.0% full
-2014.05.03-11:56:28.816265: station "station 2" (2) is 5.0% full
-2014.05.03-11:56:28.816324: station "station 3" (3) is 5.0% full
-2014.05.03-11:57:28.884899: water source is 5.0% full
-2014.05.03-11:57:28.885037: station "stweekly" (0) is 5.0% full
-2014.05.03-11:57:28.885107: station "station 1" (1) is 5.0% full
-2014.05.03-11:57:28.885167: station "station 2" (2) is 5.0% full
-2014.05.03-11:57:28.885226: station "station 3" (3) is 5.0% full
-2014.05.03-11:58:28.948843: water source is 5.0% full
-2014.05.03-11:58:28.948960: station "stweekly" (0) is 5.0% full
-2014.05.03-11:58:28.949048: station "station 1" (1) is 5.0% full
-2014.05.03-11:58:28.949110: station "station 2" (2) is 5.0% full
-2014.05.03-11:58:28.949168: station "station 3" (3) is 5.0% full
-2014.05.03-11:59:29.016763: water source is 5.0% full
-2014.05.03-11:59:29.016880: station "stweekly" (0) is 5.0% full
-2014.05.03-11:59:29.016947: station "station 1" (1) is 5.0% full
-2014.05.03-11:59:29.017028: station "station 2" (2) is 5.0% full
-2014.05.03-11:59:29.017088: station "station 3" (3) is 5.0% full
-2014.05.03-12:00:29.084569: water source is 5.0% full
-2014.05.03-12:00:29.084681: station "stweekly" (0) is 5.0% full
-2014.05.03-12:00:29.084745: station "station 1" (1) is 5.0% full
-2014.05.03-12:00:29.084801: station "station 2" (2) is 5.0% full
-2014.05.03-12:00:29.084857: station "station 3" (3) is 5.0% full
-2014.05.03-12:01:29.152765: water source is 5.0% full
-2014.05.03-12:01:29.152878: station "stweekly" (0) is 5.0% full
-2014.05.03-12:01:29.152945: station "station 1" (1) is 5.0% full
-2014.05.03-12:01:29.153033: station "station 2" (2) is 5.0% full
-2014.05.03-12:01:29.153092: station "station 3" (3) is 5.0% full
-2014.05.03-12:02:06.995537: general settings saved to file
-2014.05.03-12:02:06.996071: programs saved to file
-2014.05.03-12:02:06.996598: hardware settings saved to file
-2014.05.03-12:02:06.996637: quitting
-2014.05.03-12:03:33.279565: general settings loaded from file
-2014.05.03-12:03:33.280723: no GPIO module was loaded, running in no-hardware mode
-2014.05.03-12:03:33.281206: hardware settings loaded from file
-2014.05.03-12:03:33.281603: programs loaded from file
-2014.05.03-12:03:33.281956: water source is 5.0% full
-2014.05.03-12:03:33.289506: station "stweekly" (0) is 5.0% full
-2014.05.03-12:03:33.289612: station "station 1" (1) is 5.0% full
-2014.05.03-12:03:33.289669: station "station 2" (2) is 5.0% full
-2014.05.03-12:03:33.289723: station "station 3" (3) is 5.0% full
-2014.05.03-12:03:54.921618: general settings saved to file
-2014.05.03-12:03:54.922142: programs saved to file
-2014.05.03-12:03:54.922635: hardware settings saved to file
-2014.05.03-12:03:54.922675: quitting
-2014.05.03-12:15:27.981282: general settings loaded from file
-2014.05.03-12:15:27.982429: no GPIO module was loaded, running in no-hardware mode
-2014.05.03-12:15:27.982883: hardware settings loaded from file
-2014.05.03-12:15:27.983269: programs loaded from file
-2014.05.03-12:15:27.983623: water source is 5.0% full
-2014.05.03-12:15:27.991183: station "stweekly" (0) is 5.0% full
-2014.05.03-12:15:27.991290: station "station 1" (1) is 5.0% full
-2014.05.03-12:15:27.991346: station "station 2" (2) is 5.0% full
-2014.05.03-12:15:27.991400: station "station 3" (3) is 5.0% full
-2014.05.03-12:16:28.077440: water source is 5.0% full
-2014.05.03-12:16:28.077559: station "stweekly" (0) is 5.0% full
-2014.05.03-12:16:28.077627: station "station 1" (1) is 5.0% full
-2014.05.03-12:16:28.077687: station "station 2" (2) is 5.0% full
-2014.05.03-12:16:28.077745: station "station 3" (3) is 5.0% full
-2014.05.03-12:17:28.145925: water source is 5.0% full
-2014.05.03-12:17:28.146042: station "stweekly" (0) is 5.0% full
-2014.05.03-12:17:28.146109: station "station 1" (1) is 5.0% full
-2014.05.03-12:17:28.146167: station "station 2" (2) is 5.0% full
-2014.05.03-12:17:28.146224: station "station 3" (3) is 5.0% full
-2014.05.03-12:17:40.544389: general settings saved to file
-2014.05.03-12:17:40.544924: programs saved to file
-2014.05.03-12:17:40.545488: hardware settings saved to file
-2014.05.03-12:17:40.545529: quitting
-2014.05.03-12:17:41.752266: general settings loaded from file
-2014.05.03-12:17:41.753448: no GPIO module was loaded, running in no-hardware mode
-2014.05.03-12:17:41.753894: hardware settings loaded from file
-2014.05.03-12:17:41.754277: programs loaded from file
-2014.05.03-12:17:41.754621: water source is 5.0% full
-2014.05.03-12:17:41.762241: station "stweekly" (0) is 5.0% full
-2014.05.03-12:17:41.762349: station "station 1" (1) is 5.0% full
-2014.05.03-12:17:41.762406: station "station 2" (2) is 5.0% full
-2014.05.03-12:17:41.762459: station "station 3" (3) is 5.0% full
-2014.05.03-12:18:41.825156: water source is 5.0% full
-2014.05.03-12:18:41.825267: station "stweekly" (0) is 5.0% full
-2014.05.03-12:18:41.825329: station "station 1" (1) is 5.0% full
-2014.05.03-12:18:41.825384: station "station 2" (2) is 5.0% full
-2014.05.03-12:18:41.825437: station "station 3" (3) is 5.0% full
-2014.05.03-12:19:41.875895: water source is 5.0% full
-2014.05.03-12:19:41.876006: station "stweekly" (0) is 5.0% full
-2014.05.03-12:19:41.876067: station "station 1" (1) is 5.0% full
-2014.05.03-12:19:41.876121: station "station 2" (2) is 5.0% full
-2014.05.03-12:19:41.876174: station "station 3" (3) is 5.0% full
-2014.05.03-12:20:41.927932: water source is 5.0% full
-2014.05.03-12:20:41.928053: station "stweekly" (0) is 5.0% full
-2014.05.03-12:20:41.928119: station "station 1" (1) is 5.0% full
-2014.05.03-12:20:41.928179: station "station 2" (2) is 5.0% full
-2014.05.03-12:20:41.928236: station "station 3" (3) is 5.0% full
-2014.05.03-12:21:41.975402: water source is 5.0% full
-2014.05.03-12:21:41.975521: station "stweekly" (0) is 5.0% full
-2014.05.03-12:21:41.975589: station "station 1" (1) is 5.0% full
-2014.05.03-12:21:41.975662: station "station 2" (2) is 5.0% full
-2014.05.03-12:21:41.975722: station "station 3" (3) is 5.0% full
-2014.05.03-12:22:42.024879: water source is 5.0% full
-2014.05.03-12:22:42.025029: station "stweekly" (0) is 5.0% full
-2014.05.03-12:22:42.025096: station "station 1" (1) is 5.0% full
-2014.05.03-12:22:42.025152: station "station 2" (2) is 5.0% full
-2014.05.03-12:22:42.025207: station "station 3" (3) is 5.0% full
-2014.05.03-12:23:42.074787: water source is 5.0% full
-2014.05.03-12:23:42.074901: station "stweekly" (0) is 5.0% full
-2014.05.03-12:23:42.074964: station "station 1" (1) is 5.0% full
-2014.05.03-12:23:42.075021: station "station 2" (2) is 5.0% full
-2014.05.03-12:23:42.075076: station "station 3" (3) is 5.0% full
-2014.05.03-12:24:42.127140: water source is 5.0% full
-2014.05.03-12:24:42.127258: station "stweekly" (0) is 5.0% full
-2014.05.03-12:24:42.127326: station "station 1" (1) is 5.0% full
-2014.05.03-12:24:42.127385: station "station 2" (2) is 5.0% full
-2014.05.03-12:24:42.127444: station "station 3" (3) is 5.0% full
-2014.05.03-12:25:42.177146: water source is 5.0% full
-2014.05.03-12:25:42.177257: station "stweekly" (0) is 5.0% full
-2014.05.03-12:25:42.177322: station "station 1" (1) is 5.0% full
-2014.05.03-12:25:42.177378: station "station 2" (2) is 5.0% full
-2014.05.03-12:25:42.177433: station "station 3" (3) is 5.0% full
-2014.05.03-12:26:42.228654: water source is 5.0% full
-2014.05.03-12:26:42.228773: station "stweekly" (0) is 5.0% full
-2014.05.03-12:26:42.228840: station "station 1" (1) is 5.0% full
-2014.05.03-12:26:42.228901: station "station 2" (2) is 5.0% full
-2014.05.03-12:26:42.228995: station "station 3" (3) is 5.0% full
-2014.05.03-16:08:56.699643: water source is 5.0% full
-2014.05.03-16:08:56.699755: station "stweekly" (0) is 5.0% full
-2014.05.03-16:08:56.699816: station "station 1" (1) is 5.0% full
-2014.05.03-16:08:56.699872: station "station 2" (2) is 5.0% full
-2014.05.03-16:08:56.699926: station "station 3" (3) is 5.0% full
-2014.05.03-16:09:56.746219: water source is 5.0% full
-2014.05.03-16:09:56.746337: station "stweekly" (0) is 5.0% full
-2014.05.03-16:09:56.746399: station "station 1" (1) is 5.0% full
-2014.05.03-16:09:56.746455: station "station 2" (2) is 5.0% full
-2014.05.03-16:09:56.746508: station "station 3" (3) is 5.0% full
-2014.05.03-16:10:56.792644: water source is 5.0% full
-2014.05.03-16:10:56.792770: station "stweekly" (0) is 5.0% full
-2014.05.03-16:10:56.792836: station "station 1" (1) is 5.0% full
-2014.05.03-16:10:56.792894: station "station 2" (2) is 5.0% full
-2014.05.03-16:10:56.792951: station "station 3" (3) is 5.0% full
-2014.05.03-16:11:56.843882: water source is 5.0% full
-2014.05.03-16:11:56.844012: station "stweekly" (0) is 5.0% full
-2014.05.03-16:11:56.844081: station "station 1" (1) is 5.0% full
-2014.05.03-16:11:56.844141: station "station 2" (2) is 5.0% full
-2014.05.03-16:11:56.844200: station "station 3" (3) is 5.0% full
-2014.05.03-16:12:56.890992: water source is 5.0% full
-2014.05.03-16:12:56.891114: station "stweekly" (0) is 5.0% full
-2014.05.03-16:12:56.891182: station "station 1" (1) is 5.0% full
-2014.05.03-16:12:56.891241: station "station 2" (2) is 5.0% full
-2014.05.03-16:12:56.891299: station "station 3" (3) is 5.0% full
-2014.05.03-16:13:56.940738: water source is 5.0% full
-2014.05.03-16:13:56.940853: station "stweekly" (0) is 5.0% full
-2014.05.03-16:13:56.940919: station "station 1" (1) is 5.0% full
-2014.05.03-16:13:56.940978: station "station 2" (2) is 5.0% full
-2014.05.03-16:13:56.941062: station "station 3" (3) is 5.0% full
-2014.05.03-16:14:56.994598: water source is 5.0% full
-2014.05.03-16:14:56.994714: station "stweekly" (0) is 5.0% full
-2014.05.03-16:14:56.994781: station "station 1" (1) is 5.0% full
-2014.05.03-16:14:56.994839: station "station 2" (2) is 5.0% full
-2014.05.03-16:14:56.994897: station "station 3" (3) is 5.0% full
-2014.05.03-16:15:57.040967: water source is 5.0% full
-2014.05.03-16:15:57.041124: station "stweekly" (0) is 5.0% full
-2014.05.03-16:15:57.041189: station "station 1" (1) is 5.0% full
-2014.05.03-16:15:57.041246: station "station 2" (2) is 5.0% full
-2014.05.03-16:15:57.041302: station "station 3" (3) is 5.0% full
-2014.05.03-16:16:57.093516: water source is 5.0% full
-2014.05.03-16:16:57.093632: station "stweekly" (0) is 5.0% full
-2014.05.03-16:16:57.093698: station "station 1" (1) is 5.0% full
-2014.05.03-16:16:57.093757: station "station 2" (2) is 5.0% full
-2014.05.03-16:16:57.093814: station "station 3" (3) is 5.0% full
-2014.05.03-16:17:57.141406: water source is 5.0% full
-2014.05.03-16:17:57.141518: station "stweekly" (0) is 5.0% full
-2014.05.03-16:17:57.141579: station "station 1" (1) is 5.0% full
-2014.05.03-16:17:57.141633: station "station 2" (2) is 5.0% full
-2014.05.03-16:17:57.141687: station "station 3" (3) is 5.0% full
-2014.05.03-16:18:57.191274: water source is 5.0% full
-2014.05.03-16:18:57.191395: station "stweekly" (0) is 5.0% full
-2014.05.03-16:18:57.191464: station "station 1" (1) is 5.0% full
-2014.05.03-16:18:57.191524: station "station 2" (2) is 5.0% full
-2014.05.03-16:18:57.191582: station "station 3" (3) is 5.0% full
-2014.05.03-16:19:57.235808: water source is 5.0% full
-2014.05.03-16:19:57.235925: station "stweekly" (0) is 5.0% full
-2014.05.03-16:19:57.235991: station "station 1" (1) is 5.0% full
-2014.05.03-16:19:57.236052: station "station 2" (2) is 5.0% full
-2014.05.03-16:19:57.236110: station "station 3" (3) is 5.0% full
-2014.05.03-16:20:57.282106: water source is 5.0% full
-2014.05.03-16:20:57.282226: station "stweekly" (0) is 5.0% full
-2014.05.03-16:20:57.282294: station "station 1" (1) is 5.0% full
-2014.05.03-16:20:57.282353: station "station 2" (2) is 5.0% full
-2014.05.03-16:20:57.282411: station "station 3" (3) is 5.0% full
-2014.05.03-16:21:57.333809: water source is 5.0% full
-2014.05.03-16:21:57.333919: station "stweekly" (0) is 5.0% full
-2014.05.03-16:21:57.333981: station "station 1" (1) is 5.0% full
-2014.05.03-16:21:57.334036: station "station 2" (2) is 5.0% full
-2014.05.03-16:21:57.334090: station "station 3" (3) is 5.0% full
-2014.05.03-16:22:57.382624: water source is 5.0% full
-2014.05.03-16:22:57.382732: station "stweekly" (0) is 5.0% full
-2014.05.03-16:22:57.382794: station "station 1" (1) is 5.0% full
-2014.05.03-16:22:57.382848: station "station 2" (2) is 5.0% full
-2014.05.03-16:22:57.382902: station "station 3" (3) is 5.0% full
-2014.05.03-16:23:57.436095: water source is 5.0% full
-2014.05.03-16:23:57.436209: station "stweekly" (0) is 5.0% full
-2014.05.03-16:23:57.436274: station "station 1" (1) is 5.0% full
-2014.05.03-16:23:57.436329: station "station 2" (2) is 5.0% full
-2014.05.03-16:23:57.436385: station "station 3" (3) is 5.0% full
-2014.05.03-16:24:57.485782: water source is 5.0% full
-2014.05.03-16:24:57.485898: station "stweekly" (0) is 5.0% full
-2014.05.03-16:24:57.485958: station "station 1" (1) is 5.0% full
-2014.05.03-16:24:57.486012: station "station 2" (2) is 5.0% full
-2014.05.03-16:24:57.486065: station "station 3" (3) is 5.0% full
-2014.05.03-16:25:57.534114: water source is 5.0% full
-2014.05.03-16:25:57.534228: station "stweekly" (0) is 5.0% full
-2014.05.03-16:25:57.534291: station "station 1" (1) is 5.0% full
-2014.05.03-16:25:57.534345: station "station 2" (2) is 5.0% full
-2014.05.03-16:25:57.534397: station "station 3" (3) is 5.0% full
-2014.05.03-16:26:57.580161: water source is 5.0% full
-2014.05.03-16:26:57.580280: station "stweekly" (0) is 5.0% full
-2014.05.03-16:26:57.580344: station "station 1" (1) is 5.0% full
-2014.05.03-16:26:57.580399: station "station 2" (2) is 5.0% full
-2014.05.03-16:26:57.580453: station "station 3" (3) is 5.0% full
-2014.05.03-16:27:57.629667: water source is 5.0% full
-2014.05.03-16:27:57.629784: station "stweekly" (0) is 5.0% full
-2014.05.03-16:27:57.629849: station "station 1" (1) is 5.0% full
-2014.05.03-16:27:57.629908: station "station 2" (2) is 5.0% full
-2014.05.03-16:27:57.629966: station "station 3" (3) is 5.0% full
-2014.05.03-16:28:57.678575: water source is 5.0% full
-2014.05.03-16:28:57.678688: station "stweekly" (0) is 5.0% full
-2014.05.03-16:28:57.678750: station "station 1" (1) is 5.0% full
-2014.05.03-16:28:57.678804: station "station 2" (2) is 5.0% full
-2014.05.03-16:28:57.678856: station "station 3" (3) is 5.0% full
-2014.05.03-16:29:57.727013: water source is 5.0% full
-2014.05.03-16:29:57.727126: station "stweekly" (0) is 5.0% full
-2014.05.03-16:29:57.727188: station "station 1" (1) is 5.0% full
-2014.05.03-16:29:57.727242: station "station 2" (2) is 5.0% full
-2014.05.03-16:29:57.727295: station "station 3" (3) is 5.0% full
-2014.05.03-16:30:57.772453: water source is 5.0% full
-2014.05.03-16:30:57.772572: station "stweekly" (0) is 5.0% full
-2014.05.03-16:30:57.772639: station "station 1" (1) is 5.0% full
-2014.05.03-16:30:57.772698: station "station 2" (2) is 5.0% full
-2014.05.03-16:30:57.772756: station "station 3" (3) is 5.0% full
-2014.05.03-16:31:57.818064: water source is 5.0% full
-2014.05.03-16:31:57.818178: station "stweekly" (0) is 5.0% full
-2014.05.03-16:31:57.818244: station "station 1" (1) is 5.0% full
-2014.05.03-16:31:57.818303: station "station 2" (2) is 5.0% full
-2014.05.03-16:31:57.818360: station "station 3" (3) is 5.0% full
-2014.05.03-16:32:57.868119: water source is 5.0% full
-2014.05.03-16:32:57.868233: station "stweekly" (0) is 5.0% full
-2014.05.03-16:32:57.868297: station "station 1" (1) is 5.0% full
-2014.05.03-16:32:57.868353: station "station 2" (2) is 5.0% full
-2014.05.03-16:32:57.868407: station "station 3" (3) is 5.0% full
-2014.05.03-16:33:57.917897: water source is 5.0% full
-2014.05.03-16:33:57.918009: station "stweekly" (0) is 5.0% full
-2014.05.03-16:33:57.918072: station "station 1" (1) is 5.0% full
-2014.05.03-16:33:57.918127: station "station 2" (2) is 5.0% full
-2014.05.03-16:33:57.918179: station "station 3" (3) is 5.0% full
-2014.05.03-16:34:57.965484: water source is 5.0% full
-2014.05.03-16:34:57.965602: station "stweekly" (0) is 5.0% full
-2014.05.03-16:34:57.965672: station "station 1" (1) is 5.0% full
-2014.05.03-16:34:57.965732: station "station 2" (2) is 5.0% full
-2014.05.03-16:34:57.965791: station "station 3" (3) is 5.0% full
-2014.05.03-16:35:58.015321: water source is 5.0% full
-2014.05.03-16:35:58.015441: station "stweekly" (0) is 5.0% full
-2014.05.03-16:35:58.015508: station "station 1" (1) is 5.0% full
-2014.05.03-16:35:58.015567: station "station 2" (2) is 5.0% full
-2014.05.03-16:35:58.015629: station "station 3" (3) is 5.0% full
-2014.05.03-16:36:58.064149: water source is 5.0% full
-2014.05.03-16:36:58.064262: station "stweekly" (0) is 5.0% full
-2014.05.03-16:36:58.064325: station "station 1" (1) is 5.0% full
-2014.05.03-16:36:58.064379: station "station 2" (2) is 5.0% full
-2014.05.03-16:36:58.064433: station "station 3" (3) is 5.0% full
-2014.05.03-16:37:58.118220: water source is 5.0% full
-2014.05.03-16:37:58.118329: station "stweekly" (0) is 5.0% full
-2014.05.03-16:37:58.118390: station "station 1" (1) is 5.0% full
-2014.05.03-16:37:58.118445: station "station 2" (2) is 5.0% full
-2014.05.03-16:37:58.118497: station "station 3" (3) is 5.0% full
-2014.05.03-16:38:58.173546: water source is 5.0% full
-2014.05.03-16:38:58.173652: station "stweekly" (0) is 5.0% full
-2014.05.03-16:38:58.173715: station "station 1" (1) is 5.0% full
-2014.05.03-16:38:58.173769: station "station 2" (2) is 5.0% full
-2014.05.03-16:38:58.173822: station "station 3" (3) is 5.0% full
-2014.05.03-16:39:58.222182: water source is 5.0% full
-2014.05.03-16:39:58.222303: station "stweekly" (0) is 5.0% full
-2014.05.03-16:39:58.222372: station "station 1" (1) is 5.0% full
-2014.05.03-16:39:58.222435: station "station 2" (2) is 5.0% full
-2014.05.03-16:39:58.222494: station "station 3" (3) is 5.0% full
-2014.05.03-16:40:58.273416: water source is 5.0% full
-2014.05.03-16:40:58.273526: station "stweekly" (0) is 5.0% full
-2014.05.03-16:40:58.273588: station "station 1" (1) is 5.0% full
-2014.05.03-16:40:58.273642: station "station 2" (2) is 5.0% full
-2014.05.03-16:40:58.273695: station "station 3" (3) is 5.0% full
-2014.05.03-16:41:58.320406: water source is 5.0% full
-2014.05.03-16:41:58.320523: station "stweekly" (0) is 5.0% full
-2014.05.03-16:41:58.320592: station "station 1" (1) is 5.0% full
-2014.05.03-16:41:58.320651: station "station 2" (2) is 5.0% full
-2014.05.03-16:41:58.320710: station "station 3" (3) is 5.0% full
-2014.05.03-16:42:58.369394: water source is 5.0% full
-2014.05.03-16:42:58.369508: station "stweekly" (0) is 5.0% full
-2014.05.03-16:42:58.369571: station "station 1" (1) is 5.0% full
-2014.05.03-16:42:58.369626: station "station 2" (2) is 5.0% full
-2014.05.03-16:42:58.369680: station "station 3" (3) is 5.0% full
-2014.05.03-16:43:58.415972: water source is 5.0% full
-2014.05.03-16:43:58.416090: station "stweekly" (0) is 5.0% full
-2014.05.03-16:43:58.416153: station "station 1" (1) is 5.0% full
-2014.05.03-16:43:58.416210: station "station 2" (2) is 5.0% full
-2014.05.03-16:43:58.416263: station "station 3" (3) is 5.0% full
-2014.05.03-16:44:58.465514: water source is 5.0% full
-2014.05.03-16:44:58.465637: station "stweekly" (0) is 5.0% full
-2014.05.03-16:44:58.465704: station "station 1" (1) is 5.0% full
-2014.05.03-16:44:58.465763: station "station 2" (2) is 5.0% full
-2014.05.03-16:44:58.465819: station "station 3" (3) is 5.0% full
-2014.05.03-16:45:58.516211: water source is 5.0% full
-2014.05.03-16:45:58.516328: station "stweekly" (0) is 5.0% full
-2014.05.03-16:45:58.516390: station "station 1" (1) is 5.0% full
-2014.05.03-16:45:58.516444: station "station 2" (2) is 5.0% full
-2014.05.03-16:45:58.516497: station "station 3" (3) is 5.0% full
-2014.05.03-16:46:58.558869: water source is 5.0% full
-2014.05.03-16:46:58.558979: station "stweekly" (0) is 5.0% full
-2014.05.03-16:46:58.559041: station "station 1" (1) is 5.0% full
-2014.05.03-16:46:58.559094: station "station 2" (2) is 5.0% full
-2014.05.03-16:46:58.559147: station "station 3" (3) is 5.0% full
-2014.05.03-16:47:58.605737: water source is 5.0% full
-2014.05.03-16:47:58.605854: station "stweekly" (0) is 5.0% full
-2014.05.03-16:47:58.605921: station "station 1" (1) is 5.0% full
-2014.05.03-16:47:58.605979: station "station 2" (2) is 5.0% full
-2014.05.03-16:47:58.606037: station "station 3" (3) is 5.0% full
-2014.05.03-16:48:58.656228: water source is 5.0% full
-2014.05.03-16:48:58.656346: station "stweekly" (0) is 5.0% full
-2014.05.03-16:48:58.656413: station "station 1" (1) is 5.0% full
-2014.05.03-16:48:58.656472: station "station 2" (2) is 5.0% full
-2014.05.03-16:48:58.656530: station "station 3" (3) is 5.0% full
-2014.05.03-16:49:58.707532: water source is 5.0% full
-2014.05.03-16:49:58.707645: station "stweekly" (0) is 5.0% full
-2014.05.03-16:49:58.707707: station "station 1" (1) is 5.0% full
-2014.05.03-16:49:58.707760: station "station 2" (2) is 5.0% full
-2014.05.03-16:49:58.707813: station "station 3" (3) is 5.0% full
-2014.05.03-16:50:58.756326: water source is 5.0% full
-2014.05.03-16:50:58.756440: station "stweekly" (0) is 5.0% full
-2014.05.03-16:50:58.756520: station "station 1" (1) is 5.0% full
-2014.05.03-16:50:58.756576: station "station 2" (2) is 5.0% full
-2014.05.03-16:50:58.756632: station "station 3" (3) is 5.0% full
-2014.05.03-16:51:58.802456: water source is 5.0% full
-2014.05.03-16:51:58.802576: station "stweekly" (0) is 5.0% full
-2014.05.03-16:51:58.802645: station "station 1" (1) is 5.0% full
-2014.05.03-16:51:58.802706: station "station 2" (2) is 5.0% full
-2014.05.03-16:51:58.802777: station "station 3" (3) is 5.0% full
-2014.05.03-16:52:58.851441: water source is 5.0% full
-2014.05.03-16:52:58.851574: station "stweekly" (0) is 5.0% full
-2014.05.03-16:52:58.851643: station "station 1" (1) is 5.0% full
-2014.05.03-16:52:58.851703: station "station 2" (2) is 5.0% full
-2014.05.03-16:52:58.851762: station "station 3" (3) is 5.0% full
-2014.05.03-16:53:58.897348: water source is 5.0% full
-2014.05.03-16:53:58.897463: station "stweekly" (0) is 5.0% full
-2014.05.03-16:53:58.897529: station "station 1" (1) is 5.0% full
-2014.05.03-16:53:58.897588: station "station 2" (2) is 5.0% full
-2014.05.03-16:53:58.897645: station "station 3" (3) is 5.0% full
-2014.05.03-16:54:58.948020: water source is 5.0% full
-2014.05.03-16:54:58.948128: station "stweekly" (0) is 5.0% full
-2014.05.03-16:54:58.948189: station "station 1" (1) is 5.0% full
-2014.05.03-16:54:58.948243: station "station 2" (2) is 5.0% full
-2014.05.03-16:54:58.948296: station "station 3" (3) is 5.0% full
-2014.05.03-16:55:58.997214: water source is 5.0% full
-2014.05.03-16:55:58.997326: station "stweekly" (0) is 5.0% full
-2014.05.03-16:55:58.997390: station "station 1" (1) is 5.0% full
-2014.05.03-16:55:58.997446: station "station 2" (2) is 5.0% full
-2014.05.03-16:55:58.997499: station "station 3" (3) is 5.0% full
-2014.05.03-16:56:59.048845: water source is 5.0% full
-2014.05.03-16:56:59.048961: station "stweekly" (0) is 5.0% full
-2014.05.03-16:56:59.049059: station "station 1" (1) is 5.0% full
-2014.05.03-16:56:59.049120: station "station 2" (2) is 5.0% full
-2014.05.03-16:56:59.049178: station "station 3" (3) is 5.0% full
-2014.05.03-16:57:59.100658: water source is 5.0% full
-2014.05.03-16:57:59.100773: station "stweekly" (0) is 5.0% full
-2014.05.03-16:57:59.100851: station "station 1" (1) is 5.0% full
-2014.05.03-16:57:59.100914: station "station 2" (2) is 5.0% full
-2014.05.03-16:57:59.100972: station "station 3" (3) is 5.0% full
-2014.05.03-16:58:59.147308: water source is 5.0% full
-2014.05.03-16:58:59.147432: station "stweekly" (0) is 5.0% full
-2014.05.03-16:58:59.147501: station "station 1" (1) is 5.0% full
-2014.05.03-16:58:59.147560: station "station 2" (2) is 5.0% full
-2014.05.03-16:58:59.147617: station "station 3" (3) is 5.0% full
-2014.05.03-16:59:59.188814: water source is 5.0% full
-2014.05.03-16:59:59.188931: station "stweekly" (0) is 5.0% full
-2014.05.03-16:59:59.189005: station "station 1" (1) is 5.0% full
-2014.05.03-16:59:59.189099: station "station 2" (2) is 5.0% full
-2014.05.03-16:59:59.189158: station "station 3" (3) is 5.0% full
-2014.05.03-17:00:59.237728: water source is 5.0% full
-2014.05.03-17:00:59.237842: station "stweekly" (0) is 5.0% full
-2014.05.03-17:00:59.237908: station "station 1" (1) is 5.0% full
-2014.05.03-17:00:59.237967: station "station 2" (2) is 5.0% full
-2014.05.03-17:00:59.238023: station "station 3" (3) is 5.0% full
-2014.05.03-17:01:59.286722: water source is 5.0% full
-2014.05.03-17:01:59.286832: station "stweekly" (0) is 5.0% full
-2014.05.03-17:01:59.286894: station "station 1" (1) is 5.0% full
-2014.05.03-17:01:59.286948: station "station 2" (2) is 5.0% full
-2014.05.03-17:01:59.287001: station "station 3" (3) is 5.0% full
-2014.05.03-17:02:59.338443: water source is 5.0% full
-2014.05.03-17:02:59.338561: station "stweekly" (0) is 5.0% full
-2014.05.03-17:02:59.338627: station "station 1" (1) is 5.0% full
-2014.05.03-17:02:59.338686: station "station 2" (2) is 5.0% full
-2014.05.03-17:02:59.338743: station "station 3" (3) is 5.0% full
-2014.05.03-17:03:59.387278: water source is 5.0% full
-2014.05.03-17:03:59.387393: station "stweekly" (0) is 5.0% full
-2014.05.03-17:03:59.387471: station "station 1" (1) is 5.0% full
-2014.05.03-17:03:59.387531: station "station 2" (2) is 5.0% full
-2014.05.03-17:03:59.387589: station "station 3" (3) is 5.0% full
-2014.05.03-17:04:59.431920: water source is 5.0% full
-2014.05.03-17:04:59.432029: station "stweekly" (0) is 5.0% full
-2014.05.03-17:04:59.432091: station "station 1" (1) is 5.0% full
-2014.05.03-17:04:59.432145: station "station 2" (2) is 5.0% full
-2014.05.03-17:04:59.432198: station "station 3" (3) is 5.0% full
-2014.05.03-17:05:59.475784: water source is 5.0% full
-2014.05.03-17:05:59.475898: station "stweekly" (0) is 5.0% full
-2014.05.03-17:05:59.475978: station "station 1" (1) is 5.0% full
-2014.05.03-17:05:59.476035: station "station 2" (2) is 5.0% full
-2014.05.03-17:05:59.476089: station "station 3" (3) is 5.0% full
-2014.05.03-17:06:59.523319: water source is 5.0% full
-2014.05.03-17:06:59.523426: station "stweekly" (0) is 5.0% full
-2014.05.03-17:06:59.523496: station "station 1" (1) is 5.0% full
-2014.05.03-17:06:59.523551: station "station 2" (2) is 5.0% full
-2014.05.03-17:06:59.523605: station "station 3" (3) is 5.0% full
-2014.05.03-17:07:59.570274: water source is 5.0% full
-2014.05.03-17:07:59.570401: station "stweekly" (0) is 5.0% full
-2014.05.03-17:07:59.570471: station "station 1" (1) is 5.0% full
-2014.05.03-17:07:59.570531: station "station 2" (2) is 5.0% full
-2014.05.03-17:07:59.570590: station "station 3" (3) is 5.0% full
-2014.05.03-17:08:59.618259: water source is 5.0% full
-2014.05.03-17:08:59.618372: station "stweekly" (0) is 5.0% full
-2014.05.03-17:08:59.618438: station "station 1" (1) is 5.0% full
-2014.05.03-17:08:59.618497: station "station 2" (2) is 5.0% full
-2014.05.03-17:08:59.618554: station "station 3" (3) is 5.0% full
-2014.05.03-17:09:59.671141: water source is 5.0% full
-2014.05.03-17:09:59.671257: station "stweekly" (0) is 5.0% full
-2014.05.03-17:09:59.671324: station "station 1" (1) is 5.0% full
-2014.05.03-17:09:59.671383: station "station 2" (2) is 5.0% full
-2014.05.03-17:09:59.671440: station "station 3" (3) is 5.0% full
-2014.05.03-17:10:59.717710: water source is 5.0% full
-2014.05.03-17:10:59.717819: station "stweekly" (0) is 5.0% full
-2014.05.03-17:10:59.717881: station "station 1" (1) is 5.0% full
-2014.05.03-17:10:59.717935: station "station 2" (2) is 5.0% full
-2014.05.03-17:10:59.717988: station "station 3" (3) is 5.0% full
-2014.05.03-17:11:59.770572: water source is 5.0% full
-2014.05.03-17:11:59.770692: station "stweekly" (0) is 5.0% full
-2014.05.03-17:11:59.770762: station "station 1" (1) is 5.0% full
-2014.05.03-17:11:59.770822: station "station 2" (2) is 5.0% full
-2014.05.03-17:11:59.770881: station "station 3" (3) is 5.0% full
-2014.05.03-17:12:59.821215: water source is 5.0% full
-2014.05.03-17:12:59.821328: station "stweekly" (0) is 5.0% full
-2014.05.03-17:12:59.821397: station "station 1" (1) is 5.0% full
-2014.05.03-17:12:59.821472: station "station 2" (2) is 5.0% full
-2014.05.03-17:12:59.821532: station "station 3" (3) is 5.0% full
-2014.05.03-17:13:59.873837: water source is 5.0% full
-2014.05.03-17:13:59.873949: station "stweekly" (0) is 5.0% full
-2014.05.03-17:13:59.874016: station "station 1" (1) is 5.0% full
-2014.05.03-17:13:59.874072: station "station 2" (2) is 5.0% full
-2014.05.03-17:13:59.874125: station "station 3" (3) is 5.0% full
-2014.05.03-17:14:59.919779: water source is 5.0% full
-2014.05.03-17:14:59.919891: station "stweekly" (0) is 5.0% full
-2014.05.03-17:14:59.919955: station "station 1" (1) is 5.0% full
-2014.05.03-17:14:59.920011: station "station 2" (2) is 5.0% full
-2014.05.03-17:14:59.920064: station "station 3" (3) is 5.0% full
-2014.05.03-17:15:59.969982: water source is 5.0% full
-2014.05.03-17:15:59.970092: station "stweekly" (0) is 5.0% full
-2014.05.03-17:15:59.970153: station "station 1" (1) is 5.0% full
-2014.05.03-17:15:59.970207: station "station 2" (2) is 5.0% full
-2014.05.03-17:15:59.970260: station "station 3" (3) is 5.0% full
-2014.05.03-17:17:00.020027: water source is 5.0% full
-2014.05.03-17:17:00.020141: station "stweekly" (0) is 5.0% full
-2014.05.03-17:17:00.020209: station "station 1" (1) is 5.0% full
-2014.05.03-17:17:00.020268: station "station 2" (2) is 5.0% full
-2014.05.03-17:17:00.020326: station "station 3" (3) is 5.0% full
-2014.05.03-17:18:00.074616: water source is 5.0% full
-2014.05.03-17:18:00.074726: station "stweekly" (0) is 5.0% full
-2014.05.03-17:18:00.074794: station "station 1" (1) is 5.0% full
-2014.05.03-17:18:00.074852: station "station 2" (2) is 5.0% full
-2014.05.03-17:18:00.074910: station "station 3" (3) is 5.0% full
-2014.05.03-17:19:00.143724: water source is 5.0% full
-2014.05.03-17:19:00.143833: station "stweekly" (0) is 5.0% full
-2014.05.03-17:19:00.143899: station "station 1" (1) is 5.0% full
-2014.05.03-17:19:00.143957: station "station 2" (2) is 5.0% full
-2014.05.03-17:19:00.144015: station "station 3" (3) is 5.0% full
-2014.05.03-18:05:26.180720: water source is 5.0% full
-2014.05.03-18:05:26.180831: station "stweekly" (0) is 5.0% full
-2014.05.03-18:05:26.180893: station "station 1" (1) is 5.0% full
-2014.05.03-18:05:26.180947: station "station 2" (2) is 5.0% full
-2014.05.03-18:05:26.181023: station "station 3" (3) is 5.0% full
-2014.05.03-18:06:26.234136: water source is 5.0% full
-2014.05.03-18:06:26.234252: station "stweekly" (0) is 5.0% full
-2014.05.03-18:06:26.234316: station "station 1" (1) is 5.0% full
-2014.05.03-18:06:26.234371: station "station 2" (2) is 5.0% full
-2014.05.03-18:06:26.234425: station "station 3" (3) is 5.0% full
-2014.05.03-18:07:26.282267: water source is 5.0% full
-2014.05.03-18:07:26.282379: station "stweekly" (0) is 5.0% full
-2014.05.03-18:07:26.282446: station "station 1" (1) is 5.0% full
-2014.05.03-18:07:26.282505: station "station 2" (2) is 5.0% full
-2014.05.03-18:07:26.282562: station "station 3" (3) is 5.0% full
-2014.05.03-18:08:26.326242: water source is 5.0% full
-2014.05.03-18:08:26.326361: station "stweekly" (0) is 5.0% full
-2014.05.03-18:08:26.326428: station "station 1" (1) is 5.0% full
-2014.05.03-18:08:26.326487: station "station 2" (2) is 5.0% full
-2014.05.03-18:08:26.326544: station "station 3" (3) is 5.0% full
-2014.05.03-18:09:26.375737: water source is 5.0% full
-2014.05.03-18:09:26.375849: station "stweekly" (0) is 5.0% full
-2014.05.03-18:09:26.375916: station "station 1" (1) is 5.0% full
-2014.05.03-18:09:26.375974: station "station 2" (2) is 5.0% full
-2014.05.03-18:09:26.376031: station "station 3" (3) is 5.0% full
-2014.05.03-18:10:26.426214: water source is 5.0% full
-2014.05.03-18:10:26.426344: station "stweekly" (0) is 5.0% full
-2014.05.03-18:10:26.426412: station "station 1" (1) is 5.0% full
-2014.05.03-18:10:26.426473: station "station 2" (2) is 5.0% full
-2014.05.03-18:10:26.426531: station "station 3" (3) is 5.0% full
-2014.05.03-18:11:26.476836: water source is 5.0% full
-2014.05.03-18:11:26.476958: station "stweekly" (0) is 5.0% full
-2014.05.03-18:11:26.477060: station "station 1" (1) is 5.0% full
-2014.05.03-18:11:26.477122: station "station 2" (2) is 5.0% full
-2014.05.03-18:11:26.477181: station "station 3" (3) is 5.0% full
-2014.05.03-18:12:26.527509: water source is 5.0% full
-2014.05.03-18:12:26.527628: station "stweekly" (0) is 5.0% full
-2014.05.03-18:12:26.527707: station "station 1" (1) is 5.0% full
-2014.05.03-18:12:26.527768: station "station 2" (2) is 5.0% full
-2014.05.03-18:12:26.527827: station "station 3" (3) is 5.0% full
-2014.05.03-18:13:26.577525: water source is 5.0% full
-2014.05.03-18:13:26.577640: station "stweekly" (0) is 5.0% full
-2014.05.03-18:13:26.577707: station "station 1" (1) is 5.0% full
-2014.05.03-18:13:26.577766: station "station 2" (2) is 5.0% full
-2014.05.03-18:13:26.577822: station "station 3" (3) is 5.0% full
-2014.05.03-18:14:26.628381: water source is 5.0% full
-2014.05.03-18:14:26.628497: station "stweekly" (0) is 5.0% full
-2014.05.03-18:14:26.628566: station "station 1" (1) is 5.0% full
-2014.05.03-18:14:26.628625: station "station 2" (2) is 5.0% full
-2014.05.03-18:14:26.628682: station "station 3" (3) is 5.0% full
-2014.05.03-18:15:26.680801: water source is 5.0% full
-2014.05.03-18:15:26.680907: station "stweekly" (0) is 5.0% full
-2014.05.03-18:15:26.680968: station "station 1" (1) is 5.0% full
-2014.05.03-18:15:26.681048: station "station 2" (2) is 5.0% full
-2014.05.03-18:15:26.681102: station "station 3" (3) is 5.0% full
-2014.05.03-18:16:26.731973: water source is 5.0% full
-2014.05.03-18:16:26.732080: station "stweekly" (0) is 5.0% full
-2014.05.03-18:16:26.732143: station "station 1" (1) is 5.0% full
-2014.05.03-18:16:26.732199: station "station 2" (2) is 5.0% full
-2014.05.03-18:16:26.732252: station "station 3" (3) is 5.0% full
-2014.05.03-18:17:26.780495: water source is 5.0% full
-2014.05.03-18:17:26.780601: station "stweekly" (0) is 5.0% full
-2014.05.03-18:17:26.780663: station "station 1" (1) is 5.0% full
-2014.05.03-18:17:26.780716: station "station 2" (2) is 5.0% full
-2014.05.03-18:17:26.780769: station "station 3" (3) is 5.0% full
-2014.05.03-18:18:26.826447: water source is 5.0% full
-2014.05.03-18:18:26.826556: station "stweekly" (0) is 5.0% full
-2014.05.03-18:18:26.826620: station "station 1" (1) is 5.0% full
-2014.05.03-18:18:26.826674: station "station 2" (2) is 5.0% full
-2014.05.03-18:18:26.826726: station "station 3" (3) is 5.0% full
-2014.05.03-18:19:26.876458: water source is 5.0% full
-2014.05.03-18:19:26.876566: station "stweekly" (0) is 5.0% full
-2014.05.03-18:19:26.876629: station "station 1" (1) is 5.0% full
-2014.05.03-18:19:26.876685: station "station 2" (2) is 5.0% full
-2014.05.03-18:19:26.876739: station "station 3" (3) is 5.0% full
-2014.05.03-18:20:26.928112: water source is 5.0% full
-2014.05.03-18:20:26.928222: station "stweekly" (0) is 5.0% full
-2014.05.03-18:20:26.928286: station "station 1" (1) is 5.0% full
-2014.05.03-18:20:26.928341: station "station 2" (2) is 5.0% full
-2014.05.03-18:20:26.928393: station "station 3" (3) is 5.0% full
-2014.05.03-18:21:26.977657: water source is 5.0% full
-2014.05.03-18:21:26.977765: station "stweekly" (0) is 5.0% full
-2014.05.03-18:21:26.977828: station "station 1" (1) is 5.0% full
-2014.05.03-18:21:26.977883: station "station 2" (2) is 5.0% full
-2014.05.03-18:21:26.977936: station "station 3" (3) is 5.0% full
-2014.05.03-18:22:27.025193: water source is 5.0% full
-2014.05.03-18:22:27.025316: station "stweekly" (0) is 5.0% full
-2014.05.03-18:22:27.025385: station "station 1" (1) is 5.0% full
-2014.05.03-18:22:27.025446: station "station 2" (2) is 5.0% full
-2014.05.03-18:22:27.025505: station "station 3" (3) is 5.0% full
-2014.05.03-18:23:27.072474: water source is 5.0% full
-2014.05.03-18:23:27.072589: station "stweekly" (0) is 5.0% full
-2014.05.03-18:23:27.072653: station "station 1" (1) is 5.0% full
-2014.05.03-18:23:27.072710: station "station 2" (2) is 5.0% full
-2014.05.03-18:23:27.072776: station "station 3" (3) is 5.0% full
-2014.05.03-18:24:27.121955: water source is 5.0% full
-2014.05.03-18:24:27.122068: station "stweekly" (0) is 5.0% full
-2014.05.03-18:24:27.122129: station "station 1" (1) is 5.0% full
-2014.05.03-18:24:27.122184: station "station 2" (2) is 5.0% full
-2014.05.03-18:24:27.122237: station "station 3" (3) is 5.0% full
-2014.05.03-18:25:27.171285: water source is 5.0% full
-2014.05.03-18:25:27.171403: station "stweekly" (0) is 5.0% full
-2014.05.03-18:25:27.171466: station "station 1" (1) is 5.0% full
-2014.05.03-18:25:27.171522: station "station 2" (2) is 5.0% full
-2014.05.03-18:25:27.171576: station "station 3" (3) is 5.0% full
-2014.05.03-18:26:27.217524: water source is 5.0% full
-2014.05.03-18:26:27.217634: station "stweekly" (0) is 5.0% full
-2014.05.03-18:26:27.217697: station "station 1" (1) is 5.0% full
-2014.05.03-18:26:27.217752: station "station 2" (2) is 5.0% full
-2014.05.03-18:26:27.217807: station "station 3" (3) is 5.0% full
-2014.05.03-18:27:27.265208: water source is 5.0% full
-2014.05.03-18:27:27.265327: station "stweekly" (0) is 5.0% full
-2014.05.03-18:27:27.265396: station "station 1" (1) is 5.0% full
-2014.05.03-18:27:27.265456: station "station 2" (2) is 5.0% full
-2014.05.03-18:27:27.265515: station "station 3" (3) is 5.0% full
-2014.05.03-18:28:27.314523: water source is 5.0% full
-2014.05.03-18:28:27.314640: station "stweekly" (0) is 5.0% full
-2014.05.03-18:28:27.314708: station "station 1" (1) is 5.0% full
-2014.05.03-18:28:27.314768: station "station 2" (2) is 5.0% full
-2014.05.03-18:28:27.314826: station "station 3" (3) is 5.0% full
-2014.05.03-18:29:27.363917: water source is 5.0% full
-2014.05.03-18:29:27.364032: station "stweekly" (0) is 5.0% full
-2014.05.03-18:29:27.364096: station "station 1" (1) is 5.0% full
-2014.05.03-18:29:27.364152: station "station 2" (2) is 5.0% full
-2014.05.03-18:29:27.364207: station "station 3" (3) is 5.0% full
-2014.05.03-18:30:27.410233: water source is 5.0% full
-2014.05.03-18:30:27.410345: station "stweekly" (0) is 5.0% full
-2014.05.03-18:30:27.410409: station "station 1" (1) is 5.0% full
-2014.05.03-18:30:27.410464: station "station 2" (2) is 5.0% full
-2014.05.03-18:30:27.410518: station "station 3" (3) is 5.0% full
-2014.05.03-18:31:27.458513: water source is 5.0% full
-2014.05.03-18:31:27.458622: station "stweekly" (0) is 5.0% full
-2014.05.03-18:31:27.458684: station "station 1" (1) is 5.0% full
-2014.05.03-18:31:27.458739: station "station 2" (2) is 5.0% full
-2014.05.03-18:31:27.458792: station "station 3" (3) is 5.0% full
-2014.05.03-18:32:27.508520: water source is 5.0% full
-2014.05.03-18:32:27.508636: station "stweekly" (0) is 5.0% full
-2014.05.03-18:32:27.508699: station "station 1" (1) is 5.0% full
-2014.05.03-18:32:27.508755: station "station 2" (2) is 5.0% full
-2014.05.03-18:32:27.508809: station "station 3" (3) is 5.0% full
-2014.05.03-18:33:27.557745: water source is 5.0% full
-2014.05.03-18:33:27.557859: station "stweekly" (0) is 5.0% full
-2014.05.03-18:33:27.557922: station "station 1" (1) is 5.0% full
-2014.05.03-18:33:27.557977: station "station 2" (2) is 5.0% full
-2014.05.03-18:33:27.558030: station "station 3" (3) is 5.0% full
-2014.05.03-18:34:27.604714: water source is 5.0% full
-2014.05.03-18:34:27.604825: station "stweekly" (0) is 5.0% full
-2014.05.03-18:34:27.604888: station "station 1" (1) is 5.0% full
-2014.05.03-18:34:27.604944: station "station 2" (2) is 5.0% full
-2014.05.03-18:34:27.604997: station "station 3" (3) is 5.0% full
-2014.05.03-18:35:27.657063: water source is 5.0% full
-2014.05.03-18:35:27.657180: station "stweekly" (0) is 5.0% full
-2014.05.03-18:35:27.657250: station "station 1" (1) is 5.0% full
-2014.05.03-18:35:27.657310: station "station 2" (2) is 5.0% full
-2014.05.03-18:35:27.657368: station "station 3" (3) is 5.0% full
-2014.05.03-18:36:27.702431: water source is 5.0% full
-2014.05.03-18:36:27.702547: station "stweekly" (0) is 5.0% full
-2014.05.03-18:36:27.702610: station "station 1" (1) is 5.0% full
-2014.05.03-18:36:27.702666: station "station 2" (2) is 5.0% full
-2014.05.03-18:36:27.702720: station "station 3" (3) is 5.0% full
-2014.05.03-18:37:27.756863: water source is 5.0% full
-2014.05.03-18:37:27.756979: station "stweekly" (0) is 5.0% full
-2014.05.03-18:37:27.757077: station "station 1" (1) is 5.0% full
-2014.05.03-18:37:27.757138: station "station 2" (2) is 5.0% full
-2014.05.03-18:37:27.757208: station "station 3" (3) is 5.0% full
-2014.05.03-18:38:27.809309: water source is 5.0% full
-2014.05.03-18:38:27.809427: station "stweekly" (0) is 5.0% full
-2014.05.03-18:38:27.809494: station "station 1" (1) is 5.0% full
-2014.05.03-18:38:27.809553: station "station 2" (2) is 5.0% full
-2014.05.03-18:38:27.809610: station "station 3" (3) is 5.0% full
-2014.05.03-18:39:27.856398: water source is 5.0% full
-2014.05.03-18:39:27.856521: station "stweekly" (0) is 5.0% full
-2014.05.03-18:39:27.856589: station "station 1" (1) is 5.0% full
-2014.05.03-18:39:27.856648: station "station 2" (2) is 5.0% full
-2014.05.03-18:39:27.856711: station "station 3" (3) is 5.0% full
-2014.05.03-18:40:27.906256: water source is 5.0% full
-2014.05.03-18:40:27.906372: station "stweekly" (0) is 5.0% full
-2014.05.03-18:40:27.906439: station "station 1" (1) is 5.0% full
-2014.05.03-18:40:27.906497: station "station 2" (2) is 5.0% full
-2014.05.03-18:40:27.906555: station "station 3" (3) is 5.0% full
-2014.05.03-18:41:27.957986: water source is 5.0% full
-2014.05.03-18:41:27.958104: station "stweekly" (0) is 5.0% full
-2014.05.03-18:41:27.958167: station "station 1" (1) is 5.0% full
-2014.05.03-18:41:27.958223: station "station 2" (2) is 5.0% full
-2014.05.03-18:41:27.958276: station "station 3" (3) is 5.0% full
-2014.05.03-18:42:28.016320: water source is 5.0% full
-2014.05.03-18:42:28.016429: station "stweekly" (0) is 5.0% full
-2014.05.03-18:42:28.016496: station "station 1" (1) is 5.0% full
-2014.05.03-18:42:28.016555: station "station 2" (2) is 5.0% full
-2014.05.03-18:42:28.016613: station "station 3" (3) is 5.0% full
-2014.05.03-18:43:28.082156: water source is 5.0% full
-2014.05.03-18:43:28.082266: station "stweekly" (0) is 5.0% full
-2014.05.03-18:43:28.082332: station "station 1" (1) is 5.0% full
-2014.05.03-18:43:28.082391: station "station 2" (2) is 5.0% full
-2014.05.03-18:43:28.082449: station "station 3" (3) is 5.0% full
-2014.05.03-18:44:24.452954: general settings saved to file
-2014.05.03-18:44:24.453553: programs saved to file
-2014.05.03-18:44:24.454088: hardware settings saved to file
-2014.05.03-18:44:24.454129: quitting
-2014.05.03-18:44:25.174878: general settings loaded from file
-2014.05.03-18:44:25.176027: no GPIO module was loaded, running in no-hardware mode
-2014.05.03-18:44:25.176485: hardware settings loaded from file
-2014.05.03-18:44:25.176879: programs loaded from file
-2014.05.03-18:44:25.177251: water source is 5.0% full
-2014.05.03-18:44:25.183657: station "stweekly" (0) is 5.0% full
-2014.05.03-18:44:25.183768: station "station 1" (1) is 5.0% full
-2014.05.03-18:44:25.183826: station "station 2" (2) is 5.0% full
-2014.05.03-18:44:25.183880: station "station 3" (3) is 5.0% full
-2014.05.03-18:45:25.250455: water source is 5.0% full
-2014.05.03-18:45:25.250566: station "stweekly" (0) is 5.0% full
-2014.05.03-18:45:25.250633: station "station 1" (1) is 5.0% full
-2014.05.03-18:45:25.250692: station "station 2" (2) is 5.0% full
-2014.05.03-18:45:25.250749: station "station 3" (3) is 5.0% full
-2014.05.03-18:46:25.324303: water source is 5.0% full
-2014.05.03-18:46:25.324419: station "stweekly" (0) is 5.0% full
-2014.05.03-18:46:25.324495: station "station 1" (1) is 5.0% full
-2014.05.03-18:46:25.324555: station "station 2" (2) is 5.0% full
-2014.05.03-18:46:25.324613: station "station 3" (3) is 5.0% full
-2014.05.03-18:47:25.390991: water source is 5.0% full
-2014.05.03-18:47:25.391103: station "stweekly" (0) is 5.0% full
-2014.05.03-18:47:25.391165: station "station 1" (1) is 5.0% full
-2014.05.03-18:47:25.391221: station "station 2" (2) is 5.0% full
-2014.05.03-18:47:25.391276: station "station 3" (3) is 5.0% full
-2014.05.03-18:48:25.541737: water source is 5.0% full
-2014.05.03-18:48:25.541857: station "stweekly" (0) is 5.0% full
-2014.05.03-18:48:25.541924: station "station 1" (1) is 5.0% full
-2014.05.03-18:48:25.541984: station "station 2" (2) is 5.0% full
-2014.05.03-18:48:25.542041: station "station 3" (3) is 5.0% full
-2014.05.03-18:49:25.608851: water source is 5.0% full
-2014.05.03-18:49:25.608967: station "stweekly" (0) is 5.0% full
-2014.05.03-18:49:25.609063: station "station 1" (1) is 5.0% full
-2014.05.03-18:49:25.609124: station "station 2" (2) is 5.0% full
-2014.05.03-18:49:25.609183: station "station 3" (3) is 5.0% full
-2014.05.03-18:50:25.676755: water source is 5.0% full
-2014.05.03-18:50:25.676873: station "stweekly" (0) is 5.0% full
-2014.05.03-18:50:25.676941: station "station 1" (1) is 5.0% full
-2014.05.03-18:50:25.677000: station "station 2" (2) is 5.0% full
-2014.05.03-18:50:25.677081: station "station 3" (3) is 5.0% full
-2014.05.03-18:51:25.745198: water source is 5.0% full
-2014.05.03-18:51:25.745315: station "stweekly" (0) is 5.0% full
-2014.05.03-18:51:25.745384: station "station 1" (1) is 5.0% full
-2014.05.03-18:51:25.745443: station "station 2" (2) is 5.0% full
-2014.05.03-18:51:25.745500: station "station 3" (3) is 5.0% full
-2014.05.03-20:09:30.826851: water source is 5.0% full
-2014.05.03-20:09:30.826969: station "stweekly" (0) is 5.0% full
-2014.05.03-20:09:30.827033: station "station 1" (1) is 5.0% full
-2014.05.03-20:09:30.827090: station "station 2" (2) is 5.0% full
-2014.05.03-20:09:30.827144: station "station 3" (3) is 5.0% full
-2014.05.03-20:10:30.896051: water source is 5.0% full
-2014.05.03-20:10:30.896166: station "stweekly" (0) is 5.0% full
-2014.05.03-20:10:30.896233: station "station 1" (1) is 5.0% full
-2014.05.03-20:10:30.896292: station "station 2" (2) is 5.0% full
-2014.05.03-20:10:30.896350: station "station 3" (3) is 5.0% full
-2014.05.03-20:10:55.802306: general settings saved to file
-2014.05.03-20:10:55.802875: programs saved to file
-2014.05.03-20:10:55.803396: hardware settings saved to file
-2014.05.03-20:10:55.803436: quitting
-2014.05.03-20:10:57.084803: general settings loaded from file
-2014.05.03-20:10:57.086002: no GPIO module was loaded, running in no-hardware mode
-2014.05.03-20:10:57.086463: hardware settings loaded from file
-2014.05.03-20:10:57.086862: programs loaded from file
-2014.05.03-20:10:57.087223: water source is 5.0% full
-2014.05.03-20:10:57.087310: station "stweekly" (0) is 5.0% full
-2014.05.03-20:10:57.087374: station "station 1" (1) is 5.0% full
-2014.05.03-20:10:57.087430: station "station 2" (2) is 5.0% full
-2014.05.03-20:10:57.087485: station "station 3" (3) is 5.0% full
-2014.05.03-20:11:41.016274: settings of program 0 (prgweekly) was changed by user
-2014.05.03-20:11:57.181105: water source is 5.0% full
-2014.05.03-20:11:57.181232: station "stweekly" (0) is 5.0% full
-2014.05.03-20:11:57.181297: station "station 1" (1) is 5.0% full
-2014.05.03-20:11:57.181352: station "station 2" (2) is 5.0% full
-2014.05.03-20:11:57.181407: station "station 3" (3) is 5.0% full
-2014.05.03-20:12:19.287273: settings of program 0 (prgweekly) was changed by user
-2014.05.03-20:12:57.256801: water source is 5.0% full
-2014.05.03-20:12:57.256921: station "stweekly" (0) is 5.0% full
-2014.05.03-20:12:57.256986: station "station 1" (1) is 5.0% full
-2014.05.03-20:12:57.257078: station "station 2" (2) is 5.0% full
-2014.05.03-20:12:57.257137: station "station 3" (3) is 5.0% full
-2014.05.03-20:13:57.325214: water source is 5.0% full
-2014.05.03-20:13:57.325324: station "stweekly" (0) is 5.0% full
-2014.05.03-20:13:57.325385: station "station 1" (1) is 5.0% full
-2014.05.03-20:13:57.325440: station "station 2" (2) is 5.0% full
-2014.05.03-20:13:57.325493: station "station 3" (3) is 5.0% full
-2014.05.03-20:14:57.393513: water source is 5.0% full
-2014.05.03-20:14:57.393628: station "stweekly" (0) is 5.0% full
-2014.05.03-20:14:57.393696: station "station 1" (1) is 5.0% full
-2014.05.03-20:14:57.393755: station "station 2" (2) is 5.0% full
-2014.05.03-20:14:57.393812: station "station 3" (3) is 5.0% full
-2014.05.03-20:15:57.461689: water source is 5.0% full
-2014.05.03-20:15:57.461800: station "stweekly" (0) is 5.0% full
-2014.05.03-20:15:57.461861: station "station 1" (1) is 5.0% full
-2014.05.03-20:15:57.461916: station "station 2" (2) is 5.0% full
-2014.05.03-20:15:57.461969: station "station 3" (3) is 5.0% full
-2014.05.03-20:16:57.527452: water source is 5.0% full
-2014.05.03-20:16:57.527569: station "stweekly" (0) is 5.0% full
-2014.05.03-20:16:57.527637: station "station 1" (1) is 5.0% full
-2014.05.03-20:16:57.527696: station "station 2" (2) is 5.0% full
-2014.05.03-20:16:57.527754: station "station 3" (3) is 5.0% full
-2014.05.03-20:17:07.241797: settings of program 0 (prgweekly) was changed by user
-2014.05.03-20:17:57.595428: water source is 5.0% full
-2014.05.03-20:17:57.595545: station "stweekly" (0) is 5.0% full
-2014.05.03-20:17:57.595612: station "station 1" (1) is 5.0% full
-2014.05.03-20:17:57.595672: station "station 2" (2) is 5.0% full
-2014.05.03-20:17:57.595729: station "station 3" (3) is 5.0% full
-2014.05.03-20:18:17.001504: settings of program 0 (prgweekly) was changed by user
-2014.05.03-20:18:25.717423: settings of program 0 (prgweekly) was changed by user
-2014.05.03-20:18:40.999956: settings of program 0 (prgweekly) was changed by user
-2014.05.03-20:18:44.269645: settings of program 0 (prgweekly) was changed by user
-2014.05.03-20:18:57.662735: water source is 5.0% full
-2014.05.03-20:18:57.662849: station "stweekly" (0) is 5.0% full
-2014.05.03-20:18:57.662914: station "station 1" (1) is 5.0% full
-2014.05.03-20:18:57.662969: station "station 2" (2) is 5.0% full
-2014.05.03-20:18:57.663024: station "station 3" (3) is 5.0% full
-2014.05.03-20:19:15.173819: settings of program 0 (prgweekly) was changed by user
-2014.05.03-20:19:35.934492: settings of program 0 (prgweekly) was changed by user
-2014.05.03-20:19:57.730855: water source is 5.0% full
-2014.05.03-20:19:57.730971: station "stweekly" (0) is 5.0% full
-2014.05.03-20:19:57.731039: station "station 1" (1) is 5.0% full
-2014.05.03-20:19:57.731099: station "station 2" (2) is 5.0% full
-2014.05.03-20:19:57.731157: station "station 3" (3) is 5.0% full
-2014.05.03-20:20:57.785365: water source is 5.0% full
-2014.05.03-20:20:57.785480: station "stweekly" (0) is 5.0% full
-2014.05.03-20:20:57.785544: station "station 1" (1) is 5.0% full
-2014.05.03-20:20:57.785599: station "station 2" (2) is 5.0% full
-2014.05.03-20:20:57.785652: station "station 3" (3) is 5.0% full
-2014.05.03-20:21:57.829532: water source is 5.0% full
-2014.05.03-20:21:57.829649: station "stweekly" (0) is 5.0% full
-2014.05.03-20:21:57.829711: station "station 1" (1) is 5.0% full
-2014.05.03-20:21:57.829767: station "station 2" (2) is 5.0% full
-2014.05.03-20:21:57.829821: station "station 3" (3) is 5.0% full
-2014.05.03-20:22:57.884749: water source is 5.0% full
-2014.05.03-20:22:57.884864: station "stweekly" (0) is 5.0% full
-2014.05.03-20:22:57.884927: station "station 1" (1) is 5.0% full
-2014.05.03-20:22:57.884981: station "station 2" (2) is 5.0% full
-2014.05.03-20:22:57.885034: station "station 3" (3) is 5.0% full
-2014.05.03-20:23:57.935637: water source is 5.0% full
-2014.05.03-20:23:57.935757: station "stweekly" (0) is 5.0% full
-2014.05.03-20:23:57.935825: station "station 1" (1) is 5.0% full
-2014.05.03-20:23:57.935884: station "station 2" (2) is 5.0% full
-2014.05.03-20:23:57.935942: station "station 3" (3) is 5.0% full
-2014.05.03-20:24:57.991242: water source is 5.0% full
-2014.05.03-20:24:57.991366: station "stweekly" (0) is 5.0% full
-2014.05.03-20:24:57.991434: station "station 1" (1) is 5.0% full
-2014.05.03-20:24:57.991495: station "station 2" (2) is 5.0% full
-2014.05.03-20:24:57.991552: station "station 3" (3) is 5.0% full
-2014.05.03-20:25:58.039573: water source is 5.0% full
-2014.05.03-20:25:58.039694: station "stweekly" (0) is 5.0% full
-2014.05.03-20:25:58.039764: station "station 1" (1) is 5.0% full
-2014.05.03-20:25:58.039826: station "station 2" (2) is 5.0% full
-2014.05.03-20:25:58.039886: station "station 3" (3) is 5.0% full
-2014.05.03-20:26:58.088898: water source is 5.0% full
-2014.05.03-20:26:58.089017: station "stweekly" (0) is 5.0% full
-2014.05.03-20:26:58.089111: station "station 1" (1) is 5.0% full
-2014.05.03-20:26:58.089172: station "station 2" (2) is 5.0% full
-2014.05.03-20:26:58.089231: station "station 3" (3) is 5.0% full
-2014.05.03-20:27:58.136922: water source is 5.0% full
-2014.05.03-20:27:58.137060: station "stweekly" (0) is 5.0% full
-2014.05.03-20:27:58.137139: station "station 1" (1) is 5.0% full
-2014.05.03-20:27:58.137199: station "station 2" (2) is 5.0% full
-2014.05.03-20:27:58.137258: station "station 3" (3) is 5.0% full
-2014.05.03-20:28:58.189260: water source is 5.0% full
-2014.05.03-20:28:58.189384: station "stweekly" (0) is 5.0% full
-2014.05.03-20:28:58.189451: station "station 1" (1) is 5.0% full
-2014.05.03-20:28:58.189508: station "station 2" (2) is 5.0% full
-2014.05.03-20:28:58.189564: station "station 3" (3) is 5.0% full
-2014.05.03-20:29:58.237981: water source is 5.0% full
-2014.05.03-20:29:58.238101: station "stweekly" (0) is 5.0% full
-2014.05.03-20:29:58.238168: station "station 1" (1) is 5.0% full
-2014.05.03-20:29:58.238228: station "station 2" (2) is 5.0% full
-2014.05.03-20:29:58.238286: station "station 3" (3) is 5.0% full
-2014.05.03-20:30:58.285216: water source is 5.0% full
-2014.05.03-20:30:58.285333: station "stweekly" (0) is 5.0% full
-2014.05.03-20:30:58.285397: station "station 1" (1) is 5.0% full
-2014.05.03-20:30:58.285455: station "station 2" (2) is 5.0% full
-2014.05.03-20:30:58.285516: station "station 3" (3) is 5.0% full
-2014.05.03-20:31:58.336187: water source is 5.0% full
-2014.05.03-20:31:58.336308: station "stweekly" (0) is 5.0% full
-2014.05.03-20:31:58.336375: station "station 1" (1) is 5.0% full
-2014.05.03-20:31:58.336434: station "station 2" (2) is 5.0% full
-2014.05.03-20:31:58.336492: station "station 3" (3) is 5.0% full
-2014.05.03-20:32:58.387305: water source is 5.0% full
-2014.05.03-20:32:58.387440: station "stweekly" (0) is 5.0% full
-2014.05.03-20:32:58.387510: station "station 1" (1) is 5.0% full
-2014.05.03-20:32:58.387569: station "station 2" (2) is 5.0% full
-2014.05.03-20:32:58.387627: station "station 3" (3) is 5.0% full
-2014.05.03-20:33:58.440943: water source is 5.0% full
-2014.05.03-20:33:58.441088: station "stweekly" (0) is 5.0% full
-2014.05.03-20:33:58.441153: station "station 1" (1) is 5.0% full
-2014.05.03-20:33:58.441208: station "station 2" (2) is 5.0% full
-2014.05.03-20:33:58.441261: station "station 3" (3) is 5.0% full
-2014.05.03-20:34:58.490317: water source is 5.0% full
-2014.05.03-20:34:58.490445: station "stweekly" (0) is 5.0% full
-2014.05.03-20:34:58.490511: station "station 1" (1) is 5.0% full
-2014.05.03-20:34:58.490568: station "station 2" (2) is 5.0% full
-2014.05.03-20:34:58.490622: station "station 3" (3) is 5.0% full
-2014.05.03-20:35:58.540471: water source is 5.0% full
-2014.05.03-20:35:58.540594: station "stweekly" (0) is 5.0% full
-2014.05.03-20:35:58.540663: station "station 1" (1) is 5.0% full
-2014.05.03-20:35:58.540724: station "station 2" (2) is 5.0% full
-2014.05.03-20:35:58.540784: station "station 3" (3) is 5.0% full
-2014.05.03-20:36:58.593248: water source is 5.0% full
-2014.05.03-20:36:58.593378: station "stweekly" (0) is 5.0% full
-2014.05.03-20:36:58.593447: station "station 1" (1) is 5.0% full
-2014.05.03-20:36:58.593507: station "station 2" (2) is 5.0% full
-2014.05.03-20:36:58.593564: station "station 3" (3) is 5.0% full
-2014.05.03-20:37:58.647361: water source is 5.0% full
-2014.05.03-20:37:58.647478: station "stweekly" (0) is 5.0% full
-2014.05.03-20:37:58.647542: station "station 1" (1) is 5.0% full
-2014.05.03-20:37:58.647597: station "station 2" (2) is 5.0% full
-2014.05.03-20:37:58.647650: station "station 3" (3) is 5.0% full
-2014.05.03-20:38:58.692411: water source is 5.0% full
-2014.05.03-20:38:58.692541: station "stweekly" (0) is 5.0% full
-2014.05.03-20:38:58.692608: station "station 1" (1) is 5.0% full
-2014.05.03-20:38:58.692668: station "station 2" (2) is 5.0% full
-2014.05.03-20:38:58.692725: station "station 3" (3) is 5.0% full
-2014.05.03-20:39:58.741409: water source is 5.0% full
-2014.05.03-20:39:58.741529: station "stweekly" (0) is 5.0% full
-2014.05.03-20:39:58.741591: station "station 1" (1) is 5.0% full
-2014.05.03-20:39:58.741647: station "station 2" (2) is 5.0% full
-2014.05.03-20:39:58.741701: station "station 3" (3) is 5.0% full
-2014.05.03-20:40:58.796654: water source is 5.0% full
-2014.05.03-20:40:58.796768: station "stweekly" (0) is 5.0% full
-2014.05.03-20:40:58.796833: station "station 1" (1) is 5.0% full
-2014.05.03-20:40:58.796889: station "station 2" (2) is 5.0% full
-2014.05.03-20:40:58.796943: station "station 3" (3) is 5.0% full
-2014.05.03-20:41:58.844529: water source is 5.0% full
-2014.05.03-20:41:58.844648: station "stweekly" (0) is 5.0% full
-2014.05.03-20:41:58.844715: station "station 1" (1) is 5.0% full
-2014.05.03-20:41:58.844772: station "station 2" (2) is 5.0% full
-2014.05.03-20:41:58.844826: station "station 3" (3) is 5.0% full
-2014.05.03-20:42:58.898462: water source is 5.0% full
-2014.05.03-20:42:58.898583: station "stweekly" (0) is 5.0% full
-2014.05.03-20:42:58.898653: station "station 1" (1) is 5.0% full
-2014.05.03-20:42:58.898731: station "station 2" (2) is 5.0% full
-2014.05.03-20:42:58.898790: station "station 3" (3) is 5.0% full
-2014.05.03-20:43:58.951430: water source is 5.0% full
-2014.05.03-20:43:58.951551: station "stweekly" (0) is 5.0% full
-2014.05.03-20:43:58.951618: station "station 1" (1) is 5.0% full
-2014.05.03-20:43:58.951678: station "station 2" (2) is 5.0% full
-2014.05.03-20:43:58.951736: station "station 3" (3) is 5.0% full
-2014.05.03-20:44:59.002931: water source is 5.0% full
-2014.05.03-20:44:59.003046: station "stweekly" (0) is 5.0% full
-2014.05.03-20:44:59.003110: station "station 1" (1) is 5.0% full
-2014.05.03-20:44:59.003165: station "station 2" (2) is 5.0% full
-2014.05.03-20:44:59.003218: station "station 3" (3) is 5.0% full
-2014.05.03-20:45:59.054236: water source is 5.0% full
-2014.05.03-20:45:59.054357: station "stweekly" (0) is 5.0% full
-2014.05.03-20:45:59.054426: station "station 1" (1) is 5.0% full
-2014.05.03-20:45:59.054486: station "station 2" (2) is 5.0% full
-2014.05.03-20:45:59.054543: station "station 3" (3) is 5.0% full
-2014.05.03-20:46:59.101643: water source is 5.0% full
-2014.05.03-20:46:59.101764: station "stweekly" (0) is 5.0% full
-2014.05.03-20:46:59.101830: station "station 1" (1) is 5.0% full
-2014.05.03-20:46:59.101889: station "station 2" (2) is 5.0% full
-2014.05.03-20:46:59.101946: station "station 3" (3) is 5.0% full
-2014.05.03-20:49:34.326991: water source is 5.0% full
-2014.05.03-20:49:34.327110: station "stweekly" (0) is 5.0% full
-2014.05.03-20:49:34.327174: station "station 1" (1) is 5.0% full
-2014.05.03-20:49:34.327230: station "station 2" (2) is 5.0% full
-2014.05.03-20:49:34.327283: station "station 3" (3) is 5.0% full
-2014.05.03-20:50:34.373955: water source is 5.0% full
-2014.05.03-20:50:34.374070: station "stweekly" (0) is 5.0% full
-2014.05.03-20:50:34.374134: station "station 1" (1) is 5.0% full
-2014.05.03-20:50:34.374190: station "station 2" (2) is 5.0% full
-2014.05.03-20:50:34.374243: station "station 3" (3) is 5.0% full
-2014.05.03-20:51:34.421208: water source is 5.0% full
-2014.05.03-20:51:34.421329: station "stweekly" (0) is 5.0% full
-2014.05.03-20:51:34.421392: station "station 1" (1) is 5.0% full
-2014.05.03-20:51:34.421447: station "station 2" (2) is 5.0% full
-2014.05.03-20:51:34.421500: station "station 3" (3) is 5.0% full
-2014.05.03-20:52:34.472723: water source is 5.0% full
-2014.05.03-20:52:34.472838: station "stweekly" (0) is 5.0% full
-2014.05.03-20:52:34.472901: station "station 1" (1) is 5.0% full
-2014.05.03-20:52:34.472956: station "station 2" (2) is 5.0% full
-2014.05.03-20:52:34.473037: station "station 3" (3) is 5.0% full
-2014.05.03-20:53:34.516684: water source is 5.0% full
-2014.05.03-20:53:34.516807: station "stweekly" (0) is 5.0% full
-2014.05.03-20:53:34.516875: station "station 1" (1) is 5.0% full
-2014.05.03-20:53:34.516936: station "station 2" (2) is 5.0% full
-2014.05.03-20:53:34.516995: station "station 3" (3) is 5.0% full
-2014.05.03-20:54:34.563833: water source is 5.0% full
-2014.05.03-20:54:34.563949: station "stweekly" (0) is 5.0% full
-2014.05.03-20:54:34.564013: station "station 1" (1) is 5.0% full
-2014.05.03-20:54:34.564068: station "station 2" (2) is 5.0% full
-2014.05.03-20:54:34.564122: station "station 3" (3) is 5.0% full
-2014.05.03-20:55:34.615349: water source is 5.0% full
-2014.05.03-20:55:34.615463: station "stweekly" (0) is 5.0% full
-2014.05.03-20:55:34.615525: station "station 1" (1) is 5.0% full
-2014.05.03-20:55:34.615580: station "station 2" (2) is 5.0% full
-2014.05.03-20:55:34.615633: station "station 3" (3) is 5.0% full
-2014.05.03-20:56:34.661433: water source is 5.0% full
-2014.05.03-20:56:34.661549: station "stweekly" (0) is 5.0% full
-2014.05.03-20:56:34.661613: station "station 1" (1) is 5.0% full
-2014.05.03-20:56:34.661669: station "station 2" (2) is 5.0% full
-2014.05.03-20:56:34.661723: station "station 3" (3) is 5.0% full
-2014.05.03-20:57:34.712854: water source is 5.0% full
-2014.05.03-20:57:34.712968: station "stweekly" (0) is 5.0% full
-2014.05.03-20:57:34.713058: station "station 1" (1) is 5.0% full
-2014.05.03-20:57:34.713114: station "station 2" (2) is 5.0% full
-2014.05.03-20:57:34.713168: station "station 3" (3) is 5.0% full
-2014.05.03-20:58:34.759246: water source is 5.0% full
-2014.05.03-20:58:34.759367: station "stweekly" (0) is 5.0% full
-2014.05.03-20:58:34.759431: station "station 1" (1) is 5.0% full
-2014.05.03-20:58:34.759486: station "station 2" (2) is 5.0% full
-2014.05.03-20:58:34.759538: station "station 3" (3) is 5.0% full
-2014.05.03-20:59:34.812989: water source is 5.0% full
-2014.05.03-20:59:34.813132: station "stweekly" (0) is 5.0% full
-2014.05.03-20:59:34.813209: station "station 1" (1) is 5.0% full
-2014.05.03-20:59:34.813264: station "station 2" (2) is 5.0% full
-2014.05.03-20:59:34.813317: station "station 3" (3) is 5.0% full
-2014.05.03-21:00:34.864868: water source is 5.0% full
-2014.05.03-21:00:34.864998: station "stweekly" (0) is 5.0% full
-2014.05.03-21:00:34.865094: station "station 1" (1) is 5.0% full
-2014.05.03-21:00:34.865153: station "station 2" (2) is 5.0% full
-2014.05.03-21:00:34.865207: station "station 3" (3) is 5.0% full
-2014.05.03-21:01:34.914275: water source is 5.0% full
-2014.05.03-21:01:34.914393: station "stweekly" (0) is 5.0% full
-2014.05.03-21:01:34.914456: station "station 1" (1) is 5.0% full
-2014.05.03-21:01:34.914511: station "station 2" (2) is 5.0% full
-2014.05.03-21:01:34.914564: station "station 3" (3) is 5.0% full
-2014.05.03-21:02:34.961984: water source is 5.0% full
-2014.05.03-21:02:34.962098: station "stweekly" (0) is 5.0% full
-2014.05.03-21:02:34.962161: station "station 1" (1) is 5.0% full
-2014.05.03-21:02:34.962217: station "station 2" (2) is 5.0% full
-2014.05.03-21:02:34.962271: station "station 3" (3) is 5.0% full
-2014.05.03-21:03:35.014280: water source is 5.0% full
-2014.05.03-21:03:35.014400: station "stweekly" (0) is 5.0% full
-2014.05.03-21:03:35.014468: station "station 1" (1) is 5.0% full
-2014.05.03-21:03:35.014532: station "station 2" (2) is 5.0% full
-2014.05.03-21:03:35.014591: station "station 3" (3) is 5.0% full
-2014.05.03-21:04:35.061721: water source is 5.0% full
-2014.05.03-21:04:35.061842: station "stweekly" (0) is 5.0% full
-2014.05.03-21:04:35.061910: station "station 1" (1) is 5.0% full
-2014.05.03-21:04:35.061970: station "station 2" (2) is 5.0% full
-2014.05.03-21:04:35.062028: station "station 3" (3) is 5.0% full
-2014.05.03-21:05:35.108520: water source is 5.0% full
-2014.05.03-21:05:35.108641: station "stweekly" (0) is 5.0% full
-2014.05.03-21:05:35.108708: station "station 1" (1) is 5.0% full
-2014.05.03-21:05:35.108767: station "station 2" (2) is 5.0% full
-2014.05.03-21:05:35.108825: station "station 3" (3) is 5.0% full
-2014.05.03-21:06:35.161083: water source is 5.0% full
-2014.05.03-21:06:35.161197: station "stweekly" (0) is 5.0% full
-2014.05.03-21:06:35.161260: station "station 1" (1) is 5.0% full
-2014.05.03-21:06:35.161316: station "station 2" (2) is 5.0% full
-2014.05.03-21:06:35.161370: station "station 3" (3) is 5.0% full
-2014.05.03-21:07:35.211643: water source is 5.0% full
-2014.05.03-21:07:35.211771: station "stweekly" (0) is 5.0% full
-2014.05.03-21:07:35.211840: station "station 1" (1) is 5.0% full
-2014.05.03-21:07:35.211899: station "station 2" (2) is 5.0% full
-2014.05.03-21:07:35.211956: station "station 3" (3) is 5.0% full
-2014.05.03-21:08:35.260297: water source is 5.0% full
-2014.05.03-21:08:35.260424: station "stweekly" (0) is 5.0% full
-2014.05.03-21:08:35.260493: station "station 1" (1) is 5.0% full
-2014.05.03-21:08:35.260552: station "station 2" (2) is 5.0% full
-2014.05.03-21:08:35.260610: station "station 3" (3) is 5.0% full
-2014.05.03-21:09:35.309114: water source is 5.0% full
-2014.05.03-21:09:35.309226: station "stweekly" (0) is 5.0% full
-2014.05.03-21:09:35.309289: station "station 1" (1) is 5.0% full
-2014.05.03-21:09:35.309343: station "station 2" (2) is 5.0% full
-2014.05.03-21:09:35.309396: station "station 3" (3) is 5.0% full
-2014.05.03-21:10:35.363573: water source is 5.0% full
-2014.05.03-21:10:35.363688: station "stweekly" (0) is 5.0% full
-2014.05.03-21:10:35.363751: station "station 1" (1) is 5.0% full
-2014.05.03-21:10:35.363806: station "station 2" (2) is 5.0% full
-2014.05.03-21:10:35.363858: station "station 3" (3) is 5.0% full
-2014.05.03-21:11:35.413470: water source is 5.0% full
-2014.05.03-21:11:35.413590: station "stweekly" (0) is 5.0% full
-2014.05.03-21:11:35.413656: station "station 1" (1) is 5.0% full
-2014.05.03-21:11:35.413715: station "station 2" (2) is 5.0% full
-2014.05.03-21:11:35.413772: station "station 3" (3) is 5.0% full
-2014.05.03-21:12:35.466394: water source is 5.0% full
-2014.05.03-21:12:35.466515: station "stweekly" (0) is 5.0% full
-2014.05.03-21:12:35.466583: station "station 1" (1) is 5.0% full
-2014.05.03-21:12:35.466643: station "station 2" (2) is 5.0% full
-2014.05.03-21:12:35.466701: station "station 3" (3) is 5.0% full
-2014.05.03-21:13:35.517683: water source is 5.0% full
-2014.05.03-21:13:35.517797: station "stweekly" (0) is 5.0% full
-2014.05.03-21:13:35.517860: station "station 1" (1) is 5.0% full
-2014.05.03-21:13:35.517914: station "station 2" (2) is 5.0% full
-2014.05.03-21:13:35.517967: station "station 3" (3) is 5.0% full
-2014.05.03-21:14:35.565045: water source is 5.0% full
-2014.05.03-21:14:35.565165: station "stweekly" (0) is 5.0% full
-2014.05.03-21:14:35.565230: station "station 1" (1) is 5.0% full
-2014.05.03-21:14:35.565286: station "station 2" (2) is 5.0% full
-2014.05.03-21:14:35.565340: station "station 3" (3) is 5.0% full
-2014.05.03-21:15:35.609413: water source is 5.0% full
-2014.05.03-21:15:35.609529: station "stweekly" (0) is 5.0% full
-2014.05.03-21:15:35.609593: station "station 1" (1) is 5.0% full
-2014.05.03-21:15:35.609650: station "station 2" (2) is 5.0% full
-2014.05.03-21:15:35.609705: station "station 3" (3) is 5.0% full
-2014.05.03-21:16:35.655211: water source is 5.0% full
-2014.05.03-21:16:35.655337: station "stweekly" (0) is 5.0% full
-2014.05.03-21:16:35.655407: station "station 1" (1) is 5.0% full
-2014.05.03-21:16:35.655467: station "station 2" (2) is 5.0% full
-2014.05.03-21:16:35.655525: station "station 3" (3) is 5.0% full
-2014.05.03-21:17:35.700922: water source is 5.0% full
-2014.05.03-21:17:35.701074: station "stweekly" (0) is 5.0% full
-2014.05.03-21:17:35.701145: station "station 1" (1) is 5.0% full
-2014.05.03-21:17:35.701205: station "station 2" (2) is 5.0% full
-2014.05.03-21:17:35.701266: station "station 3" (3) is 5.0% full
-2014.05.03-21:18:35.752238: water source is 5.0% full
-2014.05.03-21:18:35.752356: station "stweekly" (0) is 5.0% full
-2014.05.03-21:18:35.752420: station "station 1" (1) is 5.0% full
-2014.05.03-21:18:35.752493: station "station 2" (2) is 5.0% full
-2014.05.03-21:18:35.752549: station "station 3" (3) is 5.0% full
-2014.05.03-21:19:35.798291: water source is 5.0% full
-2014.05.03-21:19:35.798407: station "stweekly" (0) is 5.0% full
-2014.05.03-21:19:35.798471: station "station 1" (1) is 5.0% full
-2014.05.03-21:19:35.798526: station "station 2" (2) is 5.0% full
-2014.05.03-21:19:35.798580: station "station 3" (3) is 5.0% full
-2014.05.03-21:20:35.842174: water source is 5.0% full
-2014.05.03-21:20:35.842288: station "stweekly" (0) is 5.0% full
-2014.05.03-21:20:35.842352: station "station 1" (1) is 5.0% full
-2014.05.03-21:20:35.842407: station "station 2" (2) is 5.0% full
-2014.05.03-21:20:35.842460: station "station 3" (3) is 5.0% full
-2014.05.03-21:21:35.885998: water source is 5.0% full
-2014.05.03-21:21:35.886112: station "stweekly" (0) is 5.0% full
-2014.05.03-21:21:35.886174: station "station 1" (1) is 5.0% full
-2014.05.03-21:21:35.886228: station "station 2" (2) is 5.0% full
-2014.05.03-21:21:35.886280: station "station 3" (3) is 5.0% full
-2014.05.03-21:22:35.942285: water source is 5.0% full
-2014.05.03-21:22:35.942403: station "stweekly" (0) is 5.0% full
-2014.05.03-21:22:35.942471: station "station 1" (1) is 5.0% full
-2014.05.03-21:22:35.942530: station "station 2" (2) is 5.0% full
-2014.05.03-21:22:35.942588: station "station 3" (3) is 5.0% full
-2014.05.03-21:23:35.993228: water source is 5.0% full
-2014.05.03-21:23:35.993349: station "stweekly" (0) is 5.0% full
-2014.05.03-21:23:35.993416: station "station 1" (1) is 5.0% full
-2014.05.03-21:23:35.993487: station "station 2" (2) is 5.0% full
-2014.05.03-21:23:35.993545: station "station 3" (3) is 5.0% full
-2014.05.03-21:24:36.042493: water source is 5.0% full
-2014.05.03-21:24:36.042611: station "stweekly" (0) is 5.0% full
-2014.05.03-21:24:36.042679: station "station 1" (1) is 5.0% full
-2014.05.03-21:24:36.042738: station "station 2" (2) is 5.0% full
-2014.05.03-21:24:36.042820: station "station 3" (3) is 5.0% full
-2014.05.03-21:25:36.091817: water source is 5.0% full
-2014.05.03-21:25:36.091943: station "stweekly" (0) is 5.0% full
-2014.05.03-21:25:36.092012: station "station 1" (1) is 5.0% full
-2014.05.03-21:25:36.092073: station "station 2" (2) is 5.0% full
-2014.05.03-21:25:36.092132: station "station 3" (3) is 5.0% full
-2014.05.03-21:26:36.138719: water source is 5.0% full
-2014.05.03-21:26:36.138840: station "stweekly" (0) is 5.0% full
-2014.05.03-21:26:36.138903: station "station 1" (1) is 5.0% full
-2014.05.03-21:26:36.138960: station "station 2" (2) is 5.0% full
-2014.05.03-21:26:36.139015: station "station 3" (3) is 5.0% full
-2014.05.03-21:27:36.185611: water source is 5.0% full
-2014.05.03-21:27:36.185726: station "stweekly" (0) is 5.0% full
-2014.05.03-21:27:36.185788: station "station 1" (1) is 5.0% full
-2014.05.03-21:27:36.185843: station "station 2" (2) is 5.0% full
-2014.05.03-21:27:36.185902: station "station 3" (3) is 5.0% full
-2014.05.03-21:28:36.237108: water source is 5.0% full
-2014.05.03-21:28:36.237230: station "stweekly" (0) is 5.0% full
-2014.05.03-21:28:36.237296: station "station 1" (1) is 5.0% full
-2014.05.03-21:28:36.237355: station "station 2" (2) is 5.0% full
-2014.05.03-21:28:36.237413: station "station 3" (3) is 5.0% full
-2014.05.03-21:29:36.286281: water source is 5.0% full
-2014.05.03-21:29:36.286398: station "stweekly" (0) is 5.0% full
-2014.05.03-21:29:36.286460: station "station 1" (1) is 5.0% full
-2014.05.03-21:29:36.286514: station "station 2" (2) is 5.0% full
-2014.05.03-21:29:36.286566: station "station 3" (3) is 5.0% full
-2014.05.03-21:30:36.338417: water source is 5.0% full
-2014.05.03-21:30:36.338530: station "stweekly" (0) is 5.0% full
-2014.05.03-21:30:36.338595: station "station 1" (1) is 5.0% full
-2014.05.03-21:30:36.338662: station "station 2" (2) is 5.0% full
-2014.05.03-21:30:36.338717: station "station 3" (3) is 5.0% full
-2014.05.03-21:31:36.390220: water source is 5.0% full
-2014.05.03-21:31:36.390342: station "stweekly" (0) is 5.0% full
-2014.05.03-21:31:36.390411: station "station 1" (1) is 5.0% full
-2014.05.03-21:31:36.390472: station "station 2" (2) is 5.0% full
-2014.05.03-21:31:36.390530: station "station 3" (3) is 5.0% full
-2014.05.03-21:32:36.444645: water source is 5.0% full
-2014.05.03-21:32:36.444766: station "stweekly" (0) is 5.0% full
-2014.05.03-21:32:36.444836: station "station 1" (1) is 5.0% full
-2014.05.03-21:32:36.444897: station "station 2" (2) is 5.0% full
-2014.05.03-21:32:36.444955: station "station 3" (3) is 5.0% full
-2014.05.03-21:33:36.496096: water source is 5.0% full
-2014.05.03-21:33:36.496210: station "stweekly" (0) is 5.0% full
-2014.05.03-21:33:36.496274: station "station 1" (1) is 5.0% full
-2014.05.03-21:33:36.496331: station "station 2" (2) is 5.0% full
-2014.05.03-21:33:36.496385: station "station 3" (3) is 5.0% full
-2014.05.03-21:34:36.545929: water source is 5.0% full
-2014.05.03-21:34:36.546045: station "stweekly" (0) is 5.0% full
-2014.05.03-21:34:36.546110: station "station 1" (1) is 5.0% full
-2014.05.03-21:34:36.546167: station "station 2" (2) is 5.0% full
-2014.05.03-21:34:36.546222: station "station 3" (3) is 5.0% full
-2014.05.03-21:35:36.594184: water source is 5.0% full
-2014.05.03-21:35:36.594305: station "stweekly" (0) is 5.0% full
-2014.05.03-21:35:36.594374: station "station 1" (1) is 5.0% full
-2014.05.03-21:35:36.594435: station "station 2" (2) is 5.0% full
-2014.05.03-21:35:36.594493: station "station 3" (3) is 5.0% full
-2014.05.03-21:36:36.646755: water source is 5.0% full
-2014.05.03-21:36:36.646873: station "stweekly" (0) is 5.0% full
-2014.05.03-21:36:36.646939: station "station 1" (1) is 5.0% full
-2014.05.03-21:36:36.646999: station "station 2" (2) is 5.0% full
-2014.05.03-21:36:36.647065: station "station 3" (3) is 5.0% full
-2014.05.03-21:37:36.696693: water source is 5.0% full
-2014.05.03-21:37:36.696810: station "stweekly" (0) is 5.0% full
-2014.05.03-21:37:36.696872: station "station 1" (1) is 5.0% full
-2014.05.03-21:37:36.696927: station "station 2" (2) is 5.0% full
-2014.05.03-21:37:36.696979: station "station 3" (3) is 5.0% full
-2014.05.03-21:38:36.746575: water source is 5.0% full
-2014.05.03-21:38:36.746702: station "stweekly" (0) is 5.0% full
-2014.05.03-21:38:36.746771: station "station 1" (1) is 5.0% full
-2014.05.03-21:38:36.746830: station "station 2" (2) is 5.0% full
-2014.05.03-21:38:36.746888: station "station 3" (3) is 5.0% full
-2014.05.03-21:39:36.795633: water source is 5.0% full
-2014.05.03-21:39:36.795767: station "stweekly" (0) is 5.0% full
-2014.05.03-21:39:36.795834: station "station 1" (1) is 5.0% full
-2014.05.03-21:39:36.795895: station "station 2" (2) is 5.0% full
-2014.05.03-21:39:36.795953: station "station 3" (3) is 5.0% full
-2014.05.03-21:40:36.844568: water source is 5.0% full
-2014.05.03-21:40:36.844687: station "stweekly" (0) is 5.0% full
-2014.05.03-21:40:36.844756: station "station 1" (1) is 5.0% full
-2014.05.03-21:40:36.844817: station "station 2" (2) is 5.0% full
-2014.05.03-21:40:36.844875: station "station 3" (3) is 5.0% full
-2014.05.03-21:41:36.890884: water source is 5.0% full
-2014.05.03-21:41:36.890995: station "stweekly" (0) is 5.0% full
-2014.05.03-21:41:36.891057: station "station 1" (1) is 5.0% full
-2014.05.03-21:41:36.891111: station "station 2" (2) is 5.0% full
-2014.05.03-21:41:36.891164: station "station 3" (3) is 5.0% full
-2014.05.03-21:42:36.941225: water source is 5.0% full
-2014.05.03-21:42:36.941351: station "stweekly" (0) is 5.0% full
-2014.05.03-21:42:36.941415: station "station 1" (1) is 5.0% full
-2014.05.03-21:42:36.941473: station "station 2" (2) is 5.0% full
-2014.05.03-21:42:36.941527: station "station 3" (3) is 5.0% full
-2014.05.03-21:43:36.993877: water source is 5.0% full
-2014.05.03-21:43:36.993996: station "stweekly" (0) is 5.0% full
-2014.05.03-21:43:36.994061: station "station 1" (1) is 5.0% full
-2014.05.03-21:43:36.994121: station "station 2" (2) is 5.0% full
-2014.05.03-21:43:36.994178: station "station 3" (3) is 5.0% full
-2014.05.03-21:44:37.043073: water source is 5.0% full
-2014.05.03-21:44:37.043191: station "stweekly" (0) is 5.0% full
-2014.05.03-21:44:37.043253: station "station 1" (1) is 5.0% full
-2014.05.03-21:44:37.043308: station "station 2" (2) is 5.0% full
-2014.05.03-21:44:37.043361: station "station 3" (3) is 5.0% full
-2014.05.03-21:45:37.093510: water source is 5.0% full
-2014.05.03-21:45:37.093623: station "stweekly" (0) is 5.0% full
-2014.05.03-21:45:37.093685: station "station 1" (1) is 5.0% full
-2014.05.03-21:45:37.093741: station "station 2" (2) is 5.0% full
-2014.05.03-21:45:37.093794: station "station 3" (3) is 5.0% full
-2014.05.03-21:46:37.148856: water source is 5.0% full
-2014.05.03-21:46:37.148972: station "stweekly" (0) is 5.0% full
-2014.05.03-21:46:37.149071: station "station 1" (1) is 5.0% full
-2014.05.03-21:46:37.149129: station "station 2" (2) is 5.0% full
-2014.05.03-21:46:37.149183: station "station 3" (3) is 5.0% full
-2014.05.03-21:47:37.199499: water source is 5.0% full
-2014.05.03-21:47:37.199611: station "stweekly" (0) is 5.0% full
-2014.05.03-21:47:37.199673: station "station 1" (1) is 5.0% full
-2014.05.03-21:47:37.199728: station "station 2" (2) is 5.0% full
-2014.05.03-21:47:37.199781: station "station 3" (3) is 5.0% full
-2014.05.03-21:48:37.249561: water source is 5.0% full
-2014.05.03-21:48:37.249683: station "stweekly" (0) is 5.0% full
-2014.05.03-21:48:37.249755: station "station 1" (1) is 5.0% full
-2014.05.03-21:48:37.249830: station "station 2" (2) is 5.0% full
-2014.05.03-21:48:37.249889: station "station 3" (3) is 5.0% full
-2014.05.03-21:49:37.297204: water source is 5.0% full
-2014.05.03-21:49:37.297321: station "stweekly" (0) is 5.0% full
-2014.05.03-21:49:37.297385: station "station 1" (1) is 5.0% full
-2014.05.03-21:49:37.297441: station "station 2" (2) is 5.0% full
-2014.05.03-21:49:37.297495: station "station 3" (3) is 5.0% full
-2014.05.03-21:50:18.473963: settings of program 0 (prgweekly) was changed by user
-2014.05.03-21:50:37.357937: water source is 5.0% full
-2014.05.03-21:50:37.358056: station "stweekly" (0) is 5.0% full
-2014.05.03-21:50:37.358123: station "station 1" (1) is 5.0% full
-2014.05.03-21:50:37.358182: station "station 2" (2) is 5.0% full
-2014.05.03-21:50:37.358239: station "station 3" (3) is 5.0% full
-2014.05.03-21:51:31.674334: settings of program 0 (prgweekly) was changed by user
-2014.05.03-21:51:37.427021: water source is 5.0% full
-2014.05.03-21:51:37.427138: station "stweekly" (0) is 5.0% full
-2014.05.03-21:51:37.427206: station "station 1" (1) is 5.0% full
-2014.05.03-21:51:37.427266: station "station 2" (2) is 5.0% full
-2014.05.03-21:51:37.427325: station "station 3" (3) is 5.0% full
-2014.05.03-21:52:37.496316: water source is 5.0% full
-2014.05.03-21:52:37.496430: station "stweekly" (0) is 5.0% full
-2014.05.03-21:52:37.496496: station "station 1" (1) is 5.0% full
-2014.05.03-21:52:37.496556: station "station 2" (2) is 5.0% full
-2014.05.03-21:52:37.496614: station "station 3" (3) is 5.0% full
-2014.05.03-21:53:37.565324: water source is 5.0% full
-2014.05.03-21:53:37.565438: station "stweekly" (0) is 5.0% full
-2014.05.03-21:53:37.565505: station "station 1" (1) is 5.0% full
-2014.05.03-21:53:37.565565: station "station 2" (2) is 5.0% full
-2014.05.03-21:53:37.565624: station "station 3" (3) is 5.0% full
-2014.05.03-21:54:37.632159: water source is 5.0% full
-2014.05.03-21:54:37.632280: station "stweekly" (0) is 5.0% full
-2014.05.03-21:54:37.632348: station "station 1" (1) is 5.0% full
-2014.05.03-21:54:37.632407: station "station 2" (2) is 5.0% full
-2014.05.03-21:54:37.632465: station "station 3" (3) is 5.0% full
-2014.05.03-21:55:37.700306: water source is 5.0% full
-2014.05.03-21:55:37.700424: station "stweekly" (0) is 5.0% full
-2014.05.03-21:55:37.700492: station "station 1" (1) is 5.0% full
-2014.05.03-21:55:37.700551: station "station 2" (2) is 5.0% full
-2014.05.03-21:55:37.700609: station "station 3" (3) is 5.0% full
-2014.05.03-21:56:37.768114: water source is 5.0% full
-2014.05.03-21:56:37.768232: station "stweekly" (0) is 5.0% full
-2014.05.03-21:56:37.768299: station "station 1" (1) is 5.0% full
-2014.05.03-21:56:37.768358: station "station 2" (2) is 5.0% full
-2014.05.03-21:56:37.768415: station "station 3" (3) is 5.0% full
-2014.05.03-21:57:37.834408: water source is 5.0% full
-2014.05.03-21:57:37.834529: station "stweekly" (0) is 5.0% full
-2014.05.03-21:57:37.834595: station "station 1" (1) is 5.0% full
-2014.05.03-21:57:37.834655: station "station 2" (2) is 5.0% full
-2014.05.03-21:57:37.834712: station "station 3" (3) is 5.0% full
-2014.05.03-21:58:37.902528: water source is 5.0% full
-2014.05.03-21:58:37.902649: station "stweekly" (0) is 5.0% full
-2014.05.03-21:58:37.902716: station "station 1" (1) is 5.0% full
-2014.05.03-21:58:37.902776: station "station 2" (2) is 5.0% full
-2014.05.03-21:58:37.902834: station "station 3" (3) is 5.0% full
-2014.05.03-21:59:04.280387: settings of program 0 (prgweekly) was changed by user
-2014.05.03-21:59:11.172724: settings of program 0 (prgweekly) was changed by user
-2014.05.03-21:59:19.510112: settings of program 0 (prgweekly) was changed by user
-2014.05.03-21:59:25.445265: settings of program 0 (prgweekly) was changed by user
-2014.05.03-21:59:37.969655: water source is 5.0% full
-2014.05.03-21:59:37.969775: station "stweekly" (0) is 5.0% full
-2014.05.03-21:59:37.969842: station "station 1" (1) is 5.0% full
-2014.05.03-21:59:37.969903: station "station 2" (2) is 5.0% full
-2014.05.03-21:59:37.969961: station "station 3" (3) is 5.0% full
-2014.05.03-22:00:38.037347: water source is 5.0% full
-2014.05.03-22:00:38.037467: station "stweekly" (0) is 5.0% full
-2014.05.03-22:00:38.037534: station "station 1" (1) is 5.0% full
-2014.05.03-22:00:38.037594: station "station 2" (2) is 5.0% full
-2014.05.03-22:00:38.037652: station "station 3" (3) is 5.0% full
-2014.05.03-22:01:02.135913: settings of program 0 (prgweekly) was changed by user
-2014.05.03-22:01:05.761458: settings of program 0 (prgweekly) was changed by user
-2014.05.03-22:01:38.105005: water source is 5.0% full
-2014.05.03-22:01:38.105146: station "stweekly" (0) is 5.0% full
-2014.05.03-22:01:38.105214: station "station 1" (1) is 5.0% full
-2014.05.03-22:01:38.105273: station "station 2" (2) is 5.0% full
-2014.05.03-22:01:38.105331: station "station 3" (3) is 5.0% full
-2014.05.03-22:02:20.485327: settings of program 0 (prgweekly) was changed by user
-2014.05.03-22:02:38.171598: water source is 5.0% full
-2014.05.03-22:02:38.171721: station "stweekly" (0) is 5.0% full
-2014.05.03-22:02:38.171789: station "station 1" (1) is 5.0% full
-2014.05.03-22:02:38.171850: station "station 2" (2) is 5.0% full
-2014.05.03-22:02:38.171907: station "station 3" (3) is 5.0% full
-2014.05.03-22:02:40.616466: settings of program 0 (prgweekly) was changed by user
-2014.05.03-22:03:00.177932: settings of program 0 (prgweekly) was changed by user
-2014.05.03-22:03:03.024729: settings of program 0 (prgweekly) was changed by user
-2014.05.03-22:03:38.246397: water source is 5.0% full
-2014.05.03-22:03:38.246516: station "stweekly" (0) is 5.0% full
-2014.05.03-22:03:38.246582: station "station 1" (1) is 5.0% full
-2014.05.03-22:03:38.246642: station "station 2" (2) is 5.0% full
-2014.05.03-22:03:38.246700: station "station 3" (3) is 5.0% full
-2014.05.03-22:04:38.315065: water source is 5.0% full
-2014.05.03-22:04:38.315183: station "stweekly" (0) is 5.0% full
-2014.05.03-22:04:38.315250: station "station 1" (1) is 5.0% full
-2014.05.03-22:04:38.315309: station "station 2" (2) is 5.0% full
-2014.05.03-22:04:38.315366: station "station 3" (3) is 5.0% full
-2014.05.03-22:04:46.837622: general settings saved to file
-2014.05.03-22:04:46.838161: programs saved to file
-2014.05.03-22:04:46.838680: hardware settings saved to file
-2014.05.03-22:04:46.838720: quitting
-2014.05.03-22:29:24.883401: general settings loaded from file
-2014.05.03-22:29:24.884567: no GPIO module was loaded, running in no-hardware mode
-2014.05.03-22:29:24.885079: hardware settings loaded from file
-2014.05.03-22:29:24.885463: programs loaded from file
-2014.05.03-22:29:24.885826: water source is 5.0% full
-2014.05.03-22:29:24.885914: station "stweekly" (0) is 5.0% full
-2014.05.03-22:29:24.885976: station "station 1" (1) is 5.0% full
-2014.05.03-22:29:24.886031: station "station 2" (2) is 5.0% full
-2014.05.03-22:29:24.886085: station "station 3" (3) is 5.0% full
-2014.05.03-22:30:24.933176: water source is 5.0% full
-2014.05.03-22:30:24.933298: station "stweekly" (0) is 5.0% full
-2014.05.03-22:30:24.933369: station "station 1" (1) is 5.0% full
-2014.05.03-22:30:24.933430: station "station 2" (2) is 5.0% full
-2014.05.03-22:30:24.933489: station "station 3" (3) is 5.0% full
-2014.05.03-22:31:24.988725: water source is 5.0% full
-2014.05.03-22:31:24.988837: station "stweekly" (0) is 5.0% full
-2014.05.03-22:31:24.988899: station "station 1" (1) is 5.0% full
-2014.05.03-22:31:24.988953: station "station 2" (2) is 5.0% full
-2014.05.03-22:31:24.989006: station "station 3" (3) is 5.0% full
-2014.05.03-22:32:25.056358: water source is 5.0% full
-2014.05.03-22:32:25.056473: station "stweekly" (0) is 5.0% full
-2014.05.03-22:32:25.056542: station "station 1" (1) is 5.0% full
-2014.05.03-22:32:25.056600: station "station 2" (2) is 5.0% full
-2014.05.03-22:32:25.056658: station "station 3" (3) is 5.0% full
-2014.05.03-22:37:29.276124: water source is 5.0% full
-2014.05.03-22:37:29.276239: station "stweekly" (0) is 5.0% full
-2014.05.03-22:37:29.276302: station "station 1" (1) is 5.0% full
-2014.05.03-22:37:29.276357: station "station 2" (2) is 5.0% full
-2014.05.03-22:37:29.276411: station "station 3" (3) is 5.0% full
-2014.05.03-22:38:29.325659: water source is 5.0% full
-2014.05.03-22:38:29.325778: station "stweekly" (0) is 5.0% full
-2014.05.03-22:38:29.325847: station "station 1" (1) is 5.0% full
-2014.05.03-22:38:29.325907: station "station 2" (2) is 5.0% full
-2014.05.03-22:38:29.325965: station "station 3" (3) is 5.0% full
-2014.05.03-22:39:29.371161: water source is 5.0% full
-2014.05.03-22:39:29.371280: station "stweekly" (0) is 5.0% full
-2014.05.03-22:39:29.371346: station "station 1" (1) is 5.0% full
-2014.05.03-22:39:29.371405: station "station 2" (2) is 5.0% full
-2014.05.03-22:39:29.371463: station "station 3" (3) is 5.0% full
-2014.05.03-22:40:29.422003: water source is 5.0% full
-2014.05.03-22:40:29.422118: station "stweekly" (0) is 5.0% full
-2014.05.03-22:40:29.422186: station "station 1" (1) is 5.0% full
-2014.05.03-22:40:29.422245: station "station 2" (2) is 5.0% full
-2014.05.03-22:40:29.422302: station "station 3" (3) is 5.0% full
-2014.05.03-22:41:29.470593: water source is 5.0% full
-2014.05.03-22:41:29.470708: station "stweekly" (0) is 5.0% full
-2014.05.03-22:41:29.470770: station "station 1" (1) is 5.0% full
-2014.05.03-22:41:29.470824: station "station 2" (2) is 5.0% full
-2014.05.03-22:41:29.470877: station "station 3" (3) is 5.0% full
-2014.05.03-22:42:29.516932: water source is 5.0% full
-2014.05.03-22:42:29.517052: station "stweekly" (0) is 5.0% full
-2014.05.03-22:42:29.517119: station "station 1" (1) is 5.0% full
-2014.05.03-22:42:29.517177: station "station 2" (2) is 5.0% full
-2014.05.03-22:42:29.517235: station "station 3" (3) is 5.0% full
-2014.05.03-22:43:29.564653: water source is 5.0% full
-2014.05.03-22:43:29.564777: station "stweekly" (0) is 5.0% full
-2014.05.03-22:43:29.564873: station "station 1" (1) is 5.0% full
-2014.05.03-22:43:29.564934: station "station 2" (2) is 5.0% full
-2014.05.03-22:43:29.564994: station "station 3" (3) is 5.0% full
-2014.05.03-22:44:29.615260: water source is 5.0% full
-2014.05.03-22:44:29.615381: station "stweekly" (0) is 5.0% full
-2014.05.03-22:44:29.615447: station "station 1" (1) is 5.0% full
-2014.05.03-22:44:29.615506: station "station 2" (2) is 5.0% full
-2014.05.03-22:44:29.615564: station "station 3" (3) is 5.0% full
-2014.05.04-13:45:17.700186: water source is 5.0% full
-2014.05.04-13:45:17.700298: station "stweekly" (0) is 5.0% full
-2014.05.04-13:45:17.700360: station "station 1" (1) is 5.0% full
-2014.05.04-13:45:17.700415: station "station 2" (2) is 5.0% full
-2014.05.04-13:45:17.700469: station "station 3" (3) is 5.0% full
-2014.05.04-13:46:17.764394: water source is 5.0% full
-2014.05.04-13:46:17.764516: station "stweekly" (0) is 5.0% full
-2014.05.04-13:46:17.764585: station "station 1" (1) is 5.0% full
-2014.05.04-13:46:17.764644: station "station 2" (2) is 5.0% full
-2014.05.04-13:46:17.764702: station "station 3" (3) is 5.0% full
-2014.05.04-13:47:18.488622: water source is 5.0% full
-2014.05.04-13:47:18.488735: station "stweekly" (0) is 5.0% full
-2014.05.04-13:47:18.488802: station "station 1" (1) is 5.0% full
-2014.05.04-13:47:18.488862: station "station 2" (2) is 5.0% full
-2014.05.04-13:47:18.488919: station "station 3" (3) is 5.0% full
-2014.05.04-13:48:18.548555: water source is 5.0% full
-2014.05.04-13:48:18.548666: station "stweekly" (0) is 5.0% full
-2014.05.04-13:48:18.548728: station "station 1" (1) is 5.0% full
-2014.05.04-13:48:18.548784: station "station 2" (2) is 5.0% full
-2014.05.04-13:48:18.548837: station "station 3" (3) is 5.0% full
-2014.05.04-13:49:18.613645: water source is 5.0% full
-2014.05.04-13:49:18.613762: station "stweekly" (0) is 5.0% full
-2014.05.04-13:49:18.613828: station "station 1" (1) is 5.0% full
-2014.05.04-13:49:18.613887: station "station 2" (2) is 5.0% full
-2014.05.04-13:49:18.613945: station "station 3" (3) is 5.0% full
-2014.05.04-13:50:18.678109: water source is 5.0% full
-2014.05.04-13:50:18.678225: station "stweekly" (0) is 5.0% full
-2014.05.04-13:50:18.678290: station "station 1" (1) is 5.0% full
-2014.05.04-13:50:18.678349: station "station 2" (2) is 5.0% full
-2014.05.04-13:50:18.678406: station "station 3" (3) is 5.0% full
-2014.05.04-13:51:18.748891: water source is 5.0% full
-2014.05.04-13:51:18.749001: station "stweekly" (0) is 5.0% full
-2014.05.04-13:51:18.749061: station "station 1" (1) is 5.0% full
-2014.05.04-13:51:18.749116: station "station 2" (2) is 5.0% full
-2014.05.04-13:51:18.749170: station "station 3" (3) is 5.0% full
-2014.05.04-13:52:18.814677: water source is 5.0% full
-2014.05.04-13:52:18.814790: station "stweekly" (0) is 5.0% full
-2014.05.04-13:52:18.814851: station "station 1" (1) is 5.0% full
-2014.05.04-13:52:18.814905: station "station 2" (2) is 5.0% full
-2014.05.04-13:52:18.814958: station "station 3" (3) is 5.0% full
-2014.05.04-13:53:18.879613: water source is 5.0% full
-2014.05.04-13:53:18.879730: station "stweekly" (0) is 5.0% full
-2014.05.04-13:53:18.879796: station "station 1" (1) is 5.0% full
-2014.05.04-13:53:18.879855: station "station 2" (2) is 5.0% full
-2014.05.04-13:53:18.879912: station "station 3" (3) is 5.0% full
-2014.05.04-13:54:18.944086: water source is 5.0% full
-2014.05.04-13:54:18.944200: station "stweekly" (0) is 5.0% full
-2014.05.04-13:54:18.944263: station "station 1" (1) is 5.0% full
-2014.05.04-13:54:18.944318: station "station 2" (2) is 5.0% full
-2014.05.04-13:54:18.944398: station "station 3" (3) is 5.0% full
-2014.05.04-13:55:19.008164: water source is 5.0% full
-2014.05.04-13:55:19.008282: station "stweekly" (0) is 5.0% full
-2014.05.04-13:55:19.008347: station "station 1" (1) is 5.0% full
-2014.05.04-13:55:19.008432: station "station 2" (2) is 5.0% full
-2014.05.04-13:55:19.008490: station "station 3" (3) is 5.0% full
-2014.05.04-13:56:19.072949: water source is 5.0% full
-2014.05.04-13:56:19.073066: station "stweekly" (0) is 5.0% full
-2014.05.04-13:56:19.073133: station "station 1" (1) is 5.0% full
-2014.05.04-13:56:19.073192: station "station 2" (2) is 5.0% full
-2014.05.04-13:56:19.073249: station "station 3" (3) is 5.0% full
-2014.05.04-13:57:19.137501: water source is 5.0% full
-2014.05.04-13:57:19.137618: station "stweekly" (0) is 5.0% full
-2014.05.04-13:57:19.137685: station "station 1" (1) is 5.0% full
-2014.05.04-13:57:19.137744: station "station 2" (2) is 5.0% full
-2014.05.04-13:57:19.137801: station "station 3" (3) is 5.0% full
-2014.05.04-13:58:19.198684: water source is 5.0% full
-2014.05.04-13:58:19.198798: station "stweekly" (0) is 5.0% full
-2014.05.04-13:58:19.198859: station "station 1" (1) is 5.0% full
-2014.05.04-13:58:19.198914: station "station 2" (2) is 5.0% full
-2014.05.04-13:58:19.198966: station "station 3" (3) is 5.0% full
-2014.05.04-13:59:19.260211: water source is 5.0% full
-2014.05.04-13:59:19.260332: station "stweekly" (0) is 5.0% full
-2014.05.04-13:59:19.260436: station "station 1" (1) is 5.0% full
-2014.05.04-13:59:19.260496: station "station 2" (2) is 5.0% full
-2014.05.04-13:59:19.260553: station "station 3" (3) is 5.0% full
-2014.05.04-14:00:19.323969: water source is 5.0% full
-2014.05.04-14:00:19.324076: station "stweekly" (0) is 5.0% full
-2014.05.04-14:00:19.324137: station "station 1" (1) is 5.0% full
-2014.05.04-14:00:19.324192: station "station 2" (2) is 5.0% full
-2014.05.04-14:00:19.324245: station "station 3" (3) is 5.0% full
-2014.05.04-14:01:19.386440: water source is 5.0% full
-2014.05.04-14:01:19.386558: station "stweekly" (0) is 5.0% full
-2014.05.04-14:01:19.386625: station "station 1" (1) is 5.0% full
-2014.05.04-14:01:19.386686: station "station 2" (2) is 5.0% full
-2014.05.04-14:01:19.386745: station "station 3" (3) is 5.0% full
-2014.05.04-14:02:19.449041: water source is 5.0% full
-2014.05.04-14:02:19.449164: station "stweekly" (0) is 5.0% full
-2014.05.04-14:02:19.449232: station "station 1" (1) is 5.0% full
-2014.05.04-14:02:19.449292: station "station 2" (2) is 5.0% full
-2014.05.04-14:02:19.449351: station "station 3" (3) is 5.0% full
-2014.05.04-14:03:19.507744: water source is 5.0% full
-2014.05.04-14:03:19.507862: station "stweekly" (0) is 5.0% full
-2014.05.04-14:03:19.507929: station "station 1" (1) is 5.0% full
-2014.05.04-14:03:19.507989: station "station 2" (2) is 5.0% full
-2014.05.04-14:03:19.508047: station "station 3" (3) is 5.0% full
-2014.05.04-14:04:19.568009: water source is 5.0% full
-2014.05.04-14:04:19.568129: station "stweekly" (0) is 5.0% full
-2014.05.04-14:04:19.568197: station "station 1" (1) is 5.0% full
-2014.05.04-14:04:19.568256: station "station 2" (2) is 5.0% full
-2014.05.04-14:04:19.568315: station "station 3" (3) is 5.0% full
-2014.05.04-14:05:19.627753: water source is 5.0% full
-2014.05.04-14:05:19.627866: station "stweekly" (0) is 5.0% full
-2014.05.04-14:05:19.627929: station "station 1" (1) is 5.0% full
-2014.05.04-14:05:19.627984: station "station 2" (2) is 5.0% full
-2014.05.04-14:05:19.628038: station "station 3" (3) is 5.0% full
-2014.05.04-14:06:19.689433: water source is 5.0% full
-2014.05.04-14:06:19.689543: station "stweekly" (0) is 5.0% full
-2014.05.04-14:06:19.689605: station "station 1" (1) is 5.0% full
-2014.05.04-14:06:19.689660: station "station 2" (2) is 5.0% full
-2014.05.04-14:06:19.689713: station "station 3" (3) is 5.0% full
-2014.05.04-14:07:19.750625: water source is 5.0% full
-2014.05.04-14:07:19.750740: station "stweekly" (0) is 5.0% full
-2014.05.04-14:07:19.750807: station "station 1" (1) is 5.0% full
-2014.05.04-14:07:19.750865: station "station 2" (2) is 5.0% full
-2014.05.04-14:07:19.750922: station "station 3" (3) is 5.0% full
-2014.05.04-14:08:19.815596: water source is 5.0% full
-2014.05.04-14:08:19.815714: station "stweekly" (0) is 5.0% full
-2014.05.04-14:08:19.815781: station "station 1" (1) is 5.0% full
-2014.05.04-14:08:19.815840: station "station 2" (2) is 5.0% full
-2014.05.04-14:08:19.815897: station "station 3" (3) is 5.0% full
-2014.05.04-14:09:19.882431: water source is 5.0% full
-2014.05.04-14:09:19.882548: station "stweekly" (0) is 5.0% full
-2014.05.04-14:09:19.882614: station "station 1" (1) is 5.0% full
-2014.05.04-14:09:19.882674: station "station 2" (2) is 5.0% full
-2014.05.04-14:09:19.882732: station "station 3" (3) is 5.0% full
-2014.05.04-14:10:19.946180: water source is 5.0% full
-2014.05.04-14:10:19.946295: station "stweekly" (0) is 5.0% full
-2014.05.04-14:10:19.946361: station "station 1" (1) is 5.0% full
-2014.05.04-14:10:19.946420: station "station 2" (2) is 5.0% full
-2014.05.04-14:10:19.946476: station "station 3" (3) is 5.0% full
-2014.05.04-14:11:20.007931: water source is 5.0% full
-2014.05.04-14:11:20.008048: station "stweekly" (0) is 5.0% full
-2014.05.04-14:11:20.008116: station "station 1" (1) is 5.0% full
-2014.05.04-14:11:20.008174: station "station 2" (2) is 5.0% full
-2014.05.04-14:11:20.008231: station "station 3" (3) is 5.0% full
-2014.05.04-14:12:20.073725: water source is 5.0% full
-2014.05.04-14:12:20.073844: station "stweekly" (0) is 5.0% full
-2014.05.04-14:12:20.073911: station "station 1" (1) is 5.0% full
-2014.05.04-14:12:20.073970: station "station 2" (2) is 5.0% full
-2014.05.04-14:12:20.074027: station "station 3" (3) is 5.0% full
-2014.05.04-14:13:20.139152: water source is 5.0% full
-2014.05.04-14:13:20.139270: station "stweekly" (0) is 5.0% full
-2014.05.04-14:13:20.139337: station "station 1" (1) is 5.0% full
-2014.05.04-14:13:20.139395: station "station 2" (2) is 5.0% full
-2014.05.04-14:13:20.139452: station "station 3" (3) is 5.0% full
-2014.05.04-14:14:20.206771: water source is 5.0% full
-2014.05.04-14:14:20.206885: station "stweekly" (0) is 5.0% full
-2014.05.04-14:14:20.206951: station "station 1" (1) is 5.0% full
-2014.05.04-14:14:20.207009: station "station 2" (2) is 5.0% full
-2014.05.04-14:14:20.207066: station "station 3" (3) is 5.0% full
-2014.05.04-14:15:20.269059: water source is 5.0% full
-2014.05.04-14:15:20.269175: station "stweekly" (0) is 5.0% full
-2014.05.04-14:15:20.269240: station "station 1" (1) is 5.0% full
-2014.05.04-14:15:20.269300: station "station 2" (2) is 5.0% full
-2014.05.04-14:15:20.269357: station "station 3" (3) is 5.0% full
-2014.05.04-14:16:20.332317: water source is 5.0% full
-2014.05.04-14:16:20.332462: station "stweekly" (0) is 5.0% full
-2014.05.04-14:16:20.332530: station "station 1" (1) is 5.0% full
-2014.05.04-14:16:20.332590: station "station 2" (2) is 5.0% full
-2014.05.04-14:16:20.332649: station "station 3" (3) is 5.0% full
-2014.05.04-14:17:20.393631: water source is 5.0% full
-2014.05.04-14:17:20.393743: station "stweekly" (0) is 5.0% full
-2014.05.04-14:17:20.393807: station "station 1" (1) is 5.0% full
-2014.05.04-14:17:20.393861: station "station 2" (2) is 5.0% full
-2014.05.04-14:17:20.393914: station "station 3" (3) is 5.0% full
-2014.05.04-14:18:20.456162: water source is 5.0% full
-2014.05.04-14:18:20.456285: station "stweekly" (0) is 5.0% full
-2014.05.04-14:18:20.456348: station "station 1" (1) is 5.0% full
-2014.05.04-14:18:20.456444: station "station 2" (2) is 5.0% full
-2014.05.04-14:18:20.456504: station "station 3" (3) is 5.0% full
-2014.05.04-14:19:20.520837: water source is 5.0% full
-2014.05.04-14:19:20.520954: station "stweekly" (0) is 5.0% full
-2014.05.04-14:19:20.521021: station "station 1" (1) is 5.0% full
-2014.05.04-14:19:20.521081: station "station 2" (2) is 5.0% full
-2014.05.04-14:19:20.521139: station "station 3" (3) is 5.0% full
-2014.05.04-14:20:20.580559: water source is 5.0% full
-2014.05.04-14:20:20.580672: station "stweekly" (0) is 5.0% full
-2014.05.04-14:20:20.580733: station "station 1" (1) is 5.0% full
-2014.05.04-14:20:20.580788: station "station 2" (2) is 5.0% full
-2014.05.04-14:20:20.580841: station "station 3" (3) is 5.0% full
-2014.05.04-14:21:20.645335: water source is 5.0% full
-2014.05.04-14:21:20.645452: station "stweekly" (0) is 5.0% full
-2014.05.04-14:21:20.645518: station "station 1" (1) is 5.0% full
-2014.05.04-14:21:20.645578: station "station 2" (2) is 5.0% full
-2014.05.04-14:21:20.645637: station "station 3" (3) is 5.0% full
-2014.05.04-14:22:20.708564: water source is 5.0% full
-2014.05.04-14:22:20.708681: station "stweekly" (0) is 5.0% full
-2014.05.04-14:22:20.708743: station "station 1" (1) is 5.0% full
-2014.05.04-14:22:20.708799: station "station 2" (2) is 5.0% full
-2014.05.04-14:22:20.708852: station "station 3" (3) is 5.0% full
-2014.05.04-14:23:20.773810: water source is 5.0% full
-2014.05.04-14:23:20.773923: station "stweekly" (0) is 5.0% full
-2014.05.04-14:23:20.773990: station "station 1" (1) is 5.0% full
-2014.05.04-14:23:20.774048: station "station 2" (2) is 5.0% full
-2014.05.04-14:23:20.774106: station "station 3" (3) is 5.0% full
-2014.05.04-14:24:20.836101: water source is 5.0% full
-2014.05.04-14:24:20.836217: station "stweekly" (0) is 5.0% full
-2014.05.04-14:24:20.836284: station "station 1" (1) is 5.0% full
-2014.05.04-14:24:20.836343: station "station 2" (2) is 5.0% full
-2014.05.04-14:24:20.836426: station "station 3" (3) is 5.0% full
-2014.05.04-14:25:20.903321: water source is 5.0% full
-2014.05.04-14:25:20.903436: station "stweekly" (0) is 5.0% full
-2014.05.04-14:25:20.903501: station "station 1" (1) is 5.0% full
-2014.05.04-14:25:20.903560: station "station 2" (2) is 5.0% full
-2014.05.04-14:25:20.903617: station "station 3" (3) is 5.0% full
-2014.05.04-14:26:20.967312: water source is 5.0% full
-2014.05.04-14:26:20.967427: station "stweekly" (0) is 5.0% full
-2014.05.04-14:26:20.967493: station "station 1" (1) is 5.0% full
-2014.05.04-14:26:20.967552: station "station 2" (2) is 5.0% full
-2014.05.04-14:26:20.967609: station "station 3" (3) is 5.0% full
-2014.05.04-14:27:21.034300: water source is 5.0% full
-2014.05.04-14:27:21.034416: station "stweekly" (0) is 5.0% full
-2014.05.04-14:27:21.034481: station "station 1" (1) is 5.0% full
-2014.05.04-14:27:21.034540: station "station 2" (2) is 5.0% full
-2014.05.04-14:27:21.034598: station "station 3" (3) is 5.0% full
-2014.05.04-14:28:21.099992: water source is 5.0% full
-2014.05.04-14:28:21.100110: station "stweekly" (0) is 5.0% full
-2014.05.04-14:28:21.100176: station "station 1" (1) is 5.0% full
-2014.05.04-14:28:21.100236: station "station 2" (2) is 5.0% full
-2014.05.04-14:28:21.100293: station "station 3" (3) is 5.0% full
-2014.05.04-14:29:21.168129: water source is 5.0% full
-2014.05.04-14:29:21.168239: station "stweekly" (0) is 5.0% full
-2014.05.04-14:29:21.168300: station "station 1" (1) is 5.0% full
-2014.05.04-14:29:21.168375: station "station 2" (2) is 5.0% full
-2014.05.04-14:29:21.168431: station "station 3" (3) is 5.0% full
-2014.05.04-14:30:21.235123: water source is 5.0% full
-2014.05.04-14:30:21.235241: station "stweekly" (0) is 5.0% full
-2014.05.04-14:30:21.235307: station "station 1" (1) is 5.0% full
-2014.05.04-14:30:21.235368: station "station 2" (2) is 5.0% full
-2014.05.04-14:30:21.235424: station "station 3" (3) is 5.0% full
-2014.05.04-14:31:21.301519: water source is 5.0% full
-2014.05.04-14:31:21.301635: station "stweekly" (0) is 5.0% full
-2014.05.04-14:31:21.301701: station "station 1" (1) is 5.0% full
-2014.05.04-14:31:21.301760: station "station 2" (2) is 5.0% full
-2014.05.04-14:31:21.301818: station "station 3" (3) is 5.0% full
-2014.05.04-14:32:21.364799: water source is 5.0% full
-2014.05.04-14:32:21.364914: station "stweekly" (0) is 5.0% full
-2014.05.04-14:32:21.364980: station "station 1" (1) is 5.0% full
-2014.05.04-14:32:21.365039: station "station 2" (2) is 5.0% full
-2014.05.04-14:32:21.365096: station "station 3" (3) is 5.0% full
-2014.05.04-14:33:21.430109: water source is 5.0% full
-2014.05.04-14:33:21.430226: station "stweekly" (0) is 5.0% full
-2014.05.04-14:33:21.430292: station "station 1" (1) is 5.0% full
-2014.05.04-14:33:21.430351: station "station 2" (2) is 5.0% full
-2014.05.04-14:33:21.430409: station "station 3" (3) is 5.0% full
-2014.05.04-14:34:21.495838: water source is 5.0% full
-2014.05.04-14:34:21.495954: station "stweekly" (0) is 5.0% full
-2014.05.04-14:34:21.496020: station "station 1" (1) is 5.0% full
-2014.05.04-14:34:21.496079: station "station 2" (2) is 5.0% full
-2014.05.04-14:34:21.496136: station "station 3" (3) is 5.0% full
-2014.05.04-14:35:21.561685: water source is 5.0% full
-2014.05.04-14:35:21.561805: station "stweekly" (0) is 5.0% full
-2014.05.04-14:35:21.561869: station "station 1" (1) is 5.0% full
-2014.05.04-14:35:21.561925: station "station 2" (2) is 5.0% full
-2014.05.04-14:35:21.561979: station "station 3" (3) is 5.0% full
-2014.05.04-14:36:21.627019: water source is 5.0% full
-2014.05.04-14:36:21.627128: station "stweekly" (0) is 5.0% full
-2014.05.04-14:36:21.627190: station "station 1" (1) is 5.0% full
-2014.05.04-14:36:21.627244: station "station 2" (2) is 5.0% full
-2014.05.04-14:36:21.627297: station "station 3" (3) is 5.0% full
-2014.05.04-14:37:21.691514: water source is 5.0% full
-2014.05.04-14:37:21.691630: station "stweekly" (0) is 5.0% full
-2014.05.04-14:37:21.691696: station "station 1" (1) is 5.0% full
-2014.05.04-14:37:21.691757: station "station 2" (2) is 5.0% full
-2014.05.04-14:37:21.691814: station "station 3" (3) is 5.0% full
-2014.05.04-14:38:21.753036: water source is 5.0% full
-2014.05.04-14:38:21.753147: station "stweekly" (0) is 5.0% full
-2014.05.04-14:38:21.753208: station "station 1" (1) is 5.0% full
-2014.05.04-14:38:21.753262: station "station 2" (2) is 5.0% full
-2014.05.04-14:38:21.753314: station "station 3" (3) is 5.0% full
-2014.05.04-14:39:21.818677: water source is 5.0% full
-2014.05.04-14:39:21.818793: station "stweekly" (0) is 5.0% full
-2014.05.04-14:39:21.818860: station "station 1" (1) is 5.0% full
-2014.05.04-14:39:21.818918: station "station 2" (2) is 5.0% full
-2014.05.04-14:39:21.818975: station "station 3" (3) is 5.0% full
-2014.05.04-14:40:21.883140: water source is 5.0% full
-2014.05.04-14:40:21.883257: station "stweekly" (0) is 5.0% full
-2014.05.04-14:40:21.883322: station "station 1" (1) is 5.0% full
-2014.05.04-14:40:21.883380: station "station 2" (2) is 5.0% full
-2014.05.04-14:40:21.883438: station "station 3" (3) is 5.0% full
-2014.05.04-14:41:21.947995: water source is 5.0% full
-2014.05.04-14:41:21.948120: station "stweekly" (0) is 5.0% full
-2014.05.04-14:41:21.948190: station "station 1" (1) is 5.0% full
-2014.05.04-14:41:21.948250: station "station 2" (2) is 5.0% full
-2014.05.04-14:41:21.948306: station "station 3" (3) is 5.0% full
-2014.05.04-14:42:22.013393: water source is 5.0% full
-2014.05.04-14:42:22.013510: station "stweekly" (0) is 5.0% full
-2014.05.04-14:42:22.013576: station "station 1" (1) is 5.0% full
-2014.05.04-14:42:22.013635: station "station 2" (2) is 5.0% full
-2014.05.04-14:42:22.013692: station "station 3" (3) is 5.0% full
-2014.05.04-14:43:22.080396: water source is 5.0% full
-2014.05.04-14:43:22.080515: station "stweekly" (0) is 5.0% full
-2014.05.04-14:43:22.080582: station "station 1" (1) is 5.0% full
-2014.05.04-14:43:22.080641: station "station 2" (2) is 5.0% full
-2014.05.04-14:43:22.080699: station "station 3" (3) is 5.0% full
-2014.05.04-14:44:22.146817: water source is 5.0% full
-2014.05.04-14:44:22.146934: station "stweekly" (0) is 5.0% full
-2014.05.04-14:44:22.147000: station "station 1" (1) is 5.0% full
-2014.05.04-14:44:22.147061: station "station 2" (2) is 5.0% full
-2014.05.04-14:44:22.147117: station "station 3" (3) is 5.0% full
-2014.05.04-14:45:22.210735: water source is 5.0% full
-2014.05.04-14:45:22.210850: station "stweekly" (0) is 5.0% full
-2014.05.04-14:45:22.210916: station "station 1" (1) is 5.0% full
-2014.05.04-14:45:22.210974: station "station 2" (2) is 5.0% full
-2014.05.04-14:45:22.211032: station "station 3" (3) is 5.0% full
-2014.05.04-14:46:22.277146: water source is 5.0% full
-2014.05.04-14:46:22.277263: station "stweekly" (0) is 5.0% full
-2014.05.04-14:46:22.277330: station "station 1" (1) is 5.0% full
-2014.05.04-14:46:22.277389: station "station 2" (2) is 5.0% full
-2014.05.04-14:46:22.277447: station "station 3" (3) is 5.0% full
-2014.05.04-14:47:22.343399: water source is 5.0% full
-2014.05.04-14:47:22.343514: station "stweekly" (0) is 5.0% full
-2014.05.04-14:47:22.343582: station "station 1" (1) is 5.0% full
-2014.05.04-14:47:22.343640: station "station 2" (2) is 5.0% full
-2014.05.04-14:47:22.343697: station "station 3" (3) is 5.0% full
-2014.05.04-14:48:22.406960: water source is 5.0% full
-2014.05.04-14:48:22.407071: station "stweekly" (0) is 5.0% full
-2014.05.04-14:48:22.407132: station "station 1" (1) is 5.0% full
-2014.05.04-14:48:22.407188: station "station 2" (2) is 5.0% full
-2014.05.04-14:48:22.407241: station "station 3" (3) is 5.0% full
-2014.05.04-14:49:22.472558: water source is 5.0% full
-2014.05.04-14:49:22.472673: station "stweekly" (0) is 5.0% full
-2014.05.04-14:49:22.472736: station "station 1" (1) is 5.0% full
-2014.05.04-14:49:22.472791: station "station 2" (2) is 5.0% full
-2014.05.04-14:49:22.472845: station "station 3" (3) is 5.0% full
-2014.05.04-14:50:22.539567: water source is 5.0% full
-2014.05.04-14:50:22.539677: station "stweekly" (0) is 5.0% full
-2014.05.04-14:50:22.539740: station "station 1" (1) is 5.0% full
-2014.05.04-14:50:22.539795: station "station 2" (2) is 5.0% full
-2014.05.04-14:50:22.539850: station "station 3" (3) is 5.0% full
-2014.05.04-14:51:22.606199: water source is 5.0% full
-2014.05.04-14:51:22.606314: station "stweekly" (0) is 5.0% full
-2014.05.04-14:51:22.606381: station "station 1" (1) is 5.0% full
-2014.05.04-14:51:22.606439: station "station 2" (2) is 5.0% full
-2014.05.04-14:51:22.606497: station "station 3" (3) is 5.0% full
-2014.05.04-14:52:22.671334: water source is 5.0% full
-2014.05.04-14:52:22.671450: station "stweekly" (0) is 5.0% full
-2014.05.04-14:52:22.671596: station "station 1" (1) is 5.0% full
-2014.05.04-14:52:22.671658: station "station 2" (2) is 5.0% full
-2014.05.04-14:52:22.671716: station "station 3" (3) is 5.0% full
-2014.05.04-14:53:22.736074: water source is 5.0% full
-2014.05.04-14:53:22.736189: station "stweekly" (0) is 5.0% full
-2014.05.04-14:53:22.736255: station "station 1" (1) is 5.0% full
-2014.05.04-14:53:22.736314: station "station 2" (2) is 5.0% full
-2014.05.04-14:53:22.736401: station "station 3" (3) is 5.0% full
-2014.05.04-14:54:22.802176: water source is 5.0% full
-2014.05.04-14:54:22.802294: station "stweekly" (0) is 5.0% full
-2014.05.04-14:54:22.802360: station "station 1" (1) is 5.0% full
-2014.05.04-14:54:22.802419: station "station 2" (2) is 5.0% full
-2014.05.04-14:54:22.802476: station "station 3" (3) is 5.0% full
-2014.05.04-14:55:22.868535: water source is 5.0% full
-2014.05.04-14:55:22.868653: station "stweekly" (0) is 5.0% full
-2014.05.04-14:55:22.868718: station "station 1" (1) is 5.0% full
-2014.05.04-14:55:22.868777: station "station 2" (2) is 5.0% full
-2014.05.04-14:55:22.868835: station "station 3" (3) is 5.0% full
-2014.05.04-14:56:22.935672: water source is 5.0% full
-2014.05.04-14:56:22.935782: station "stweekly" (0) is 5.0% full
-2014.05.04-14:56:22.935845: station "station 1" (1) is 5.0% full
-2014.05.04-14:56:22.935911: station "station 2" (2) is 5.0% full
-2014.05.04-14:56:22.935965: station "station 3" (3) is 5.0% full
-2014.05.04-14:57:22.998014: water source is 5.0% full
-2014.05.04-14:57:22.998132: station "stweekly" (0) is 5.0% full
-2014.05.04-14:57:22.998198: station "station 1" (1) is 5.0% full
-2014.05.04-14:57:22.998257: station "station 2" (2) is 5.0% full
-2014.05.04-14:57:22.998315: station "station 3" (3) is 5.0% full
-2014.05.04-14:58:23.064393: water source is 5.0% full
-2014.05.04-14:58:23.064506: station "stweekly" (0) is 5.0% full
-2014.05.04-14:58:23.064568: station "station 1" (1) is 5.0% full
-2014.05.04-14:58:23.064622: station "station 2" (2) is 5.0% full
-2014.05.04-14:58:23.064675: station "station 3" (3) is 5.0% full
-2014.05.04-14:59:23.131407: water source is 5.0% full
-2014.05.04-14:59:23.131524: station "stweekly" (0) is 5.0% full
-2014.05.04-14:59:23.131590: station "station 1" (1) is 5.0% full
-2014.05.04-14:59:23.131650: station "station 2" (2) is 5.0% full
-2014.05.04-14:59:23.131707: station "station 3" (3) is 5.0% full
-2014.05.04-15:00:23.198255: water source is 5.0% full
-2014.05.04-15:00:23.198371: station "stweekly" (0) is 5.0% full
-2014.05.04-15:00:23.198437: station "station 1" (1) is 5.0% full
-2014.05.04-15:00:23.198495: station "station 2" (2) is 5.0% full
-2014.05.04-15:00:23.198552: station "station 3" (3) is 5.0% full
-2014.05.04-15:01:23.263160: water source is 5.0% full
-2014.05.04-15:01:23.263274: station "stweekly" (0) is 5.0% full
-2014.05.04-15:01:23.263341: station "station 1" (1) is 5.0% full
-2014.05.04-15:01:23.263400: station "station 2" (2) is 5.0% full
-2014.05.04-15:01:23.263457: station "station 3" (3) is 5.0% full
-2014.05.04-15:02:23.329690: water source is 5.0% full
-2014.05.04-15:02:23.329804: station "stweekly" (0) is 5.0% full
-2014.05.04-15:02:23.329871: station "station 1" (1) is 5.0% full
-2014.05.04-15:02:23.329930: station "station 2" (2) is 5.0% full
-2014.05.04-15:02:23.329987: station "station 3" (3) is 5.0% full
-2014.05.04-15:03:23.397913: water source is 5.0% full
-2014.05.04-15:03:23.398029: station "stweekly" (0) is 5.0% full
-2014.05.04-15:03:23.398095: station "station 1" (1) is 5.0% full
-2014.05.04-15:03:23.398154: station "station 2" (2) is 5.0% full
-2014.05.04-15:03:23.398212: station "station 3" (3) is 5.0% full
-2014.05.04-15:04:23.463427: water source is 5.0% full
-2014.05.04-15:04:23.463541: station "stweekly" (0) is 5.0% full
-2014.05.04-15:04:23.463608: station "station 1" (1) is 5.0% full
-2014.05.04-15:04:23.463666: station "station 2" (2) is 5.0% full
-2014.05.04-15:04:23.463724: station "station 3" (3) is 5.0% full
-2014.05.04-15:05:23.528048: water source is 5.0% full
-2014.05.04-15:05:23.528169: station "stweekly" (0) is 5.0% full
-2014.05.04-15:05:23.528236: station "station 1" (1) is 5.0% full
-2014.05.04-15:05:23.528296: station "station 2" (2) is 5.0% full
-2014.05.04-15:05:23.528384: station "station 3" (3) is 5.0% full
-2014.05.04-15:06:23.590831: water source is 5.0% full
-2014.05.04-15:06:23.590947: station "stweekly" (0) is 5.0% full
-2014.05.04-15:06:23.591013: station "station 1" (1) is 5.0% full
-2014.05.04-15:06:23.591072: station "station 2" (2) is 5.0% full
-2014.05.04-15:06:23.591129: station "station 3" (3) is 5.0% full
-2014.05.04-15:07:23.659098: water source is 5.0% full
-2014.05.04-15:07:23.659206: station "stweekly" (0) is 5.0% full
-2014.05.04-15:07:23.659268: station "station 1" (1) is 5.0% full
-2014.05.04-15:07:23.659322: station "station 2" (2) is 5.0% full
-2014.05.04-15:07:23.659375: station "station 3" (3) is 5.0% full
-2014.05.04-15:08:23.722956: water source is 5.0% full
-2014.05.04-15:08:23.723070: station "stweekly" (0) is 5.0% full
-2014.05.04-15:08:23.723135: station "station 1" (1) is 5.0% full
-2014.05.04-15:08:23.723194: station "station 2" (2) is 5.0% full
-2014.05.04-15:08:23.723252: station "station 3" (3) is 5.0% full
-2014.05.04-15:09:23.787938: water source is 5.0% full
-2014.05.04-15:09:23.788053: station "stweekly" (0) is 5.0% full
-2014.05.04-15:09:23.788119: station "station 1" (1) is 5.0% full
-2014.05.04-15:09:23.788178: station "station 2" (2) is 5.0% full
-2014.05.04-15:09:23.788236: station "station 3" (3) is 5.0% full
-2014.05.04-15:10:23.849259: water source is 5.0% full
-2014.05.04-15:10:23.849372: station "stweekly" (0) is 5.0% full
-2014.05.04-15:10:23.849438: station "station 1" (1) is 5.0% full
-2014.05.04-15:10:23.849497: station "station 2" (2) is 5.0% full
-2014.05.04-15:10:23.849554: station "station 3" (3) is 5.0% full
-2014.05.04-15:11:23.913013: water source is 5.0% full
-2014.05.04-15:11:23.913128: station "stweekly" (0) is 5.0% full
-2014.05.04-15:11:23.913194: station "station 1" (1) is 5.0% full
-2014.05.04-15:11:23.913254: station "station 2" (2) is 5.0% full
-2014.05.04-15:11:23.913311: station "station 3" (3) is 5.0% full
-2014.05.04-15:12:23.972013: water source is 5.0% full
-2014.05.04-15:12:23.972128: station "stweekly" (0) is 5.0% full
-2014.05.04-15:12:23.972200: station "station 1" (1) is 5.0% full
-2014.05.04-15:12:23.972259: station "station 2" (2) is 5.0% full
-2014.05.04-15:12:23.972317: station "station 3" (3) is 5.0% full
-2014.05.04-15:13:24.037586: water source is 5.0% full
-2014.05.04-15:13:24.037701: station "stweekly" (0) is 5.0% full
-2014.05.04-15:13:24.037767: station "station 1" (1) is 5.0% full
-2014.05.04-15:13:24.037826: station "station 2" (2) is 5.0% full
-2014.05.04-15:13:24.037884: station "station 3" (3) is 5.0% full
-2014.05.04-15:43:58.691295: water source is 5.0% full
-2014.05.04-15:43:58.691406: station "stweekly" (0) is 5.0% full
-2014.05.04-15:43:58.691469: station "station 1" (1) is 5.0% full
-2014.05.04-15:43:58.691523: station "station 2" (2) is 5.0% full
-2014.05.04-15:43:58.691577: station "station 3" (3) is 5.0% full
-2014.05.04-15:44:29.722963: general settings saved to file
-2014.05.04-15:44:29.723552: programs saved to file
-2014.05.04-15:44:29.724165: hardware settings saved to file
-2014.05.04-15:44:29.724220: quitting
-2014.05.04-17:02:08.776828: general settings loaded from file
-2014.05.04-17:02:08.800265: no GPIO module was loaded, running in no-hardware mode
-2014.05.04-17:02:08.800764: hardware settings loaded from file
-2014.05.04-17:02:08.801132: programs loaded from file
-2014.05.04-17:02:08.801486: water source is 5.0% full
-2014.05.04-17:02:08.801572: station "stweekly" (0) is 5.0% full
-2014.05.04-17:02:08.801636: station "station 1" (1) is 5.0% full
-2014.05.04-17:02:08.801692: station "station 2" (2) is 5.0% full
-2014.05.04-17:02:08.801750: station "station 3" (3) is 5.0% full
-2014.05.04-17:02:09.945968: general settings saved to file
-2014.05.04-17:02:09.946555: programs saved to file
-2014.05.04-17:02:09.947163: hardware settings saved to file
-2014.05.04-17:02:09.947225: quitting
-2014.05.04-17:05:22.966437: general settings loaded from file
-2014.05.04-17:05:22.967931: no GPIO module was loaded, running in no-hardware mode
-2014.05.04-17:05:22.968480: hardware settings loaded from file
-2014.05.04-17:05:22.968857: programs loaded from file
-2014.05.04-17:05:22.969255: water source is 5.0% full
-2014.05.04-17:05:22.969339: station "stweekly" (0) is 5.0% full
-2014.05.04-17:05:22.969402: station "station 1" (1) is 5.0% full
-2014.05.04-17:05:22.969456: station "station 2" (2) is 5.0% full
-2014.05.04-17:05:22.969509: station "station 3" (3) is 5.0% full
-2014.05.04-17:05:26.828338: general settings saved to file
-2014.05.04-17:05:26.828969: programs saved to file
-2014.05.04-17:05:26.829554: hardware settings saved to file
-2014.05.04-17:05:26.829608: quitting
-2014.12.22-13:37:15.570048: general settings loaded from file
-2014.12.22-13:37:15.663354: no GPIO module was loaded, running in no-hardware mode
-2014.12.22-13:37:15.667045: hardware settings loaded from file
-2014.12.22-13:37:15.671207: programs loaded from file
-2014.12.22-13:37:15.671573: water source is 5.0% full
-2014.12.22-13:37:15.671659: station "stweekly" (0) is 5.0% full
-2014.12.22-13:37:15.728230: station "station 1" (1) is 5.0% full
-2014.12.22-13:37:15.728361: station "station 2" (2) is 5.0% full
-2014.12.22-13:37:15.728423: station "station 3" (3) is 5.0% full
-2014.12.22-13:38:15.895752: water source is 5.0% full
-2014.12.22-13:38:15.895871: station "stweekly" (0) is 5.0% full
-2014.12.22-13:38:15.895937: station "station 1" (1) is 5.0% full
-2014.12.22-13:38:15.895995: station "station 2" (2) is 5.0% full
-2014.12.22-13:38:15.896076: station "station 3" (3) is 5.0% full
-2014.12.22-13:38:58.965939: water source is 5.0% full
-2014.12.22-13:38:58.966050: station "stweekly" (0) is 5.0% full
-2014.12.22-13:38:58.966111: station "station 1" (1) is 5.0% full
-2014.12.22-13:38:58.966164: station "station 2" (2) is 5.0% full
-2014.12.22-13:38:58.966217: station "station 3" (3) is 5.0% full
-2014.12.22-13:39:17.266943: general settings saved to file
-2014.12.22-13:39:17.270155: programs saved to file
-2014.12.22-13:39:17.271006: hardware settings saved to file
-2014.12.22-13:39:17.271093: quitting
-2014.12.25-11:48:50.905322: general settings loaded from file
-2014.12.25-11:48:50.917650: no GPIO module was loaded, running in no-hardware mode
-2014.12.25-11:48:50.932509: hardware settings loaded from file
-2014.12.25-11:48:50.945624: programs loaded from file
-2014.12.25-11:48:50.946273: water source is 5.0% full
-2014.12.25-11:48:50.946453: station "stweekly" (0) is 5.0% full
-2014.12.25-11:48:50.946503: station "station 1" (1) is 5.0% full
-2014.12.25-11:48:50.946546: station "station 2" (2) is 5.0% full
-2014.12.25-11:48:50.946586: station "station 3" (3) is 5.0% full
-2014.12.25-11:49:45.048864: general settings saved to file
-2014.12.25-11:49:45.049793: programs saved to file
-2014.12.25-11:49:45.067295: hardware settings saved to file
-2014.12.25-11:49:45.067407: quitting
-2014.12.25-11:49:57.358524: general settings loaded from file
-2014.12.25-11:49:57.359290: no GPIO module was loaded, running in no-hardware mode
-2014.12.25-11:49:57.359649: hardware settings loaded from file
-2014.12.25-11:49:57.359919: programs loaded from file
-2014.12.25-11:49:57.360315: water source is 5.0% full
-2014.12.25-11:49:57.360393: station "stweekly" (0) is 5.0% full
-2014.12.25-11:49:57.360438: station "station 1" (1) is 5.0% full
-2014.12.25-11:49:57.360479: station "station 2" (2) is 5.0% full
-2014.12.25-11:49:57.360518: station "station 3" (3) is 5.0% full
-2014.12.25-11:50:57.430478: water source is 5.0% full
-2014.12.25-11:50:57.430642: station "stweekly" (0) is 5.0% full
-2014.12.25-11:50:57.430728: station "station 1" (1) is 5.0% full
-2014.12.25-11:50:57.430802: station "station 2" (2) is 5.0% full
-2014.12.25-11:50:57.430873: station "station 3" (3) is 5.0% full
-2014.12.25-11:51:57.524818: water source is 5.0% full
-2014.12.25-11:51:57.524979: station "stweekly" (0) is 5.0% full
-2014.12.25-11:51:57.525066: station "station 1" (1) is 5.0% full
-2014.12.25-11:51:57.525173: station "station 2" (2) is 5.0% full
-2014.12.25-11:51:57.525245: station "station 3" (3) is 5.0% full
-2014.12.25-11:52:52.583302: general settings saved to file
-2014.12.25-11:52:52.584255: programs saved to file
-2014.12.25-11:52:52.585270: hardware settings saved to file
-2014.12.25-11:52:52.585347: quitting
-2014.12.25-22:48:41.341682: general settings loaded from file
-2014.12.25-22:48:41.369475: no GPIO module was loaded, running in no-hardware mode
-2014.12.25-22:48:41.386444: hardware settings loaded from file
-2014.12.25-22:48:41.395522: programs loaded from file
-2014.12.25-22:48:41.396000: water source is 5.0% full
-2014.12.25-22:48:41.396087: station "stweekly" (0) is 5.0% full
-2014.12.25-22:48:41.402936: station "station 1" (1) is 5.0% full
-2014.12.25-22:48:41.403038: station "station 2" (2) is 5.0% full
-2014.12.25-22:48:41.403100: station "station 3" (3) is 5.0% full
-2014.12.25-22:49:41.505419: water source is 5.0% full
-2014.12.25-22:49:41.505543: station "stweekly" (0) is 5.0% full
-2014.12.25-22:49:41.505613: station "station 1" (1) is 5.0% full
-2014.12.25-22:49:41.505674: station "station 2" (2) is 5.0% full
-2014.12.25-22:49:41.505734: station "station 3" (3) is 5.0% full
-2014.12.25-22:50:17.739037: general settings saved to file
-2014.12.25-22:50:17.764537: programs saved to file
-2014.12.25-22:50:17.827040: hardware settings saved to file
-2014.12.25-22:50:17.827114: quitting
-2014.12.25-23:05:03.488113: general settings loaded from file
-2014.12.25-23:05:03.489067: no GPIO module was loaded, running in no-hardware mode
-2014.12.25-23:05:03.489549: hardware settings loaded from file
-2014.12.25-23:05:03.489974: programs loaded from file
-2014.12.25-23:05:03.490398: water source is 5.0% full
-2014.12.25-23:05:03.490477: station "stweekly" (0) is 5.0% full
-2014.12.25-23:05:03.490538: station "station 1" (1) is 5.0% full
-2014.12.25-23:05:03.490593: station "station 2" (2) is 5.0% full
-2014.12.25-23:05:03.490646: station "station 3" (3) is 5.0% full
-2014.12.25-23:06:03.553444: water source is 5.0% full
-2014.12.25-23:06:03.553562: station "stweekly" (0) is 5.0% full
-2014.12.25-23:06:03.553630: station "station 1" (1) is 5.0% full
-2014.12.25-23:06:03.553690: station "station 2" (2) is 5.0% full
-2014.12.25-23:06:03.553748: station "station 3" (3) is 5.0% full
-2014.12.25-23:06:23.750353: general settings saved to file
-2014.12.25-23:06:23.751190: programs saved to file
-2014.12.25-23:06:23.772846: hardware settings saved to file
-2014.12.25-23:06:23.772918: quitting
-2014.12.25-23:07:49.677323: general settings loaded from file
-2014.12.25-23:07:49.679946: no GPIO module was loaded, running in no-hardware mode
-2014.12.25-23:07:49.680532: hardware settings loaded from file
-2014.12.25-23:07:49.680987: programs loaded from file
-2014.12.25-23:07:49.681437: water source is 5.0% full
-2014.12.25-23:07:49.681523: station "stweekly" (0) is 5.0% full
-2014.12.25-23:07:49.681583: station "station 1" (1) is 5.0% full
-2014.12.25-23:07:49.681638: station "station 2" (2) is 5.0% full
-2014.12.25-23:07:49.681691: station "station 3" (3) is 5.0% full
-2014.12.25-23:07:50.595111: general settings saved to file
-2014.12.25-23:07:50.596032: programs saved to file
-2014.12.25-23:07:50.596760: hardware settings saved to file
-2014.12.25-23:07:50.596818: quitting
+2015.04.20-18:27:56.847861: water source is 0% full
+2015.04.20-18:27:56.953886: station "station 0" (0) is 100% full
+2015.04.20-18:27:57.059765: station "station 1" (1) is 0% full
+2015.04.20-18:28:57.655465: water source is 0% full
+2015.04.20-18:28:57.686697: general settings saved to file
+2015.04.20-18:28:57.688235: programs saved to file
+2015.04.20-18:28:57.692817: hardware settings saved to file
+2015.04.20-18:28:57.693405: quitting
+2015.04.20-18:34:38.470686: general settings loaded from file
+2015.04.20-18:34:38.589094: hardware settings loaded from file
+2015.04.20-18:34:38.590404: programs loaded from file
+2015.04.20-18:34:38.694561: water source is 0% full
+2015.04.20-18:34:38.800584: station "station 0" (0) is 100% full
+2015.04.20-18:34:38.906527: station "station 1" (1) is 0% full
+2015.04.20-18:34:50.950806: general settings saved to file
+2015.04.20-18:34:50.952858: programs saved to file
+2015.04.20-18:34:50.958084: hardware settings saved to file
+2015.04.20-18:34:50.958496: quitting
+2015.04.20-18:35:08.054951: general settings loaded from file
+2015.04.20-18:35:08.173698: hardware settings loaded from file
+2015.04.20-18:35:08.175165: programs loaded from file
+2015.04.20-18:35:08.279236: water source is 0% full
+2015.04.20-18:35:08.385434: station "station 0" (0) is 100% full
+2015.04.20-18:35:08.491449: station "station 1" (1) is 0% full
+2015.04.20-18:35:15.057267: general settings saved to file
+2015.04.20-18:35:15.059154: programs saved to file
+2015.04.20-18:35:15.064336: hardware settings saved to file
+2015.04.20-18:35:15.064767: quitting
+2015.04.20-18:36:21.904180: general settings loaded from file
+2015.04.20-18:36:22.027972: hardware settings loaded from file
+2015.04.20-18:36:22.029315: programs loaded from file
+2015.04.20-18:36:22.133559: water source is 0% full
+2015.04.20-18:36:22.239654: station "station 0" (0) is 100% full
+2015.04.20-18:36:22.345752: station "station 1" (1) is 0% full
+2015.04.20-18:37:22.745987: water source is 0% full
+2015.04.20-18:37:22.852029: station "station 0" (0) is 100% full
+2015.04.20-18:37:22.958030: station "station 1" (1) is 0% full
+2015.04.20-18:37:25.727364: general settings saved to file
+2015.04.20-18:37:25.729227: programs saved to file
+2015.04.20-18:37:25.734417: hardware settings saved to file
+2015.04.20-18:37:25.734849: quitting
+2015.04.20-18:37:29.041369: general settings loaded from file
+2015.04.20-18:37:29.158265: hardware settings loaded from file
+2015.04.20-18:37:29.159599: programs loaded from file
+2015.04.20-18:37:29.263674: water source is 0% full
+2015.04.20-18:37:29.369715: station "station 0" (0) is 100% full
+2015.04.20-18:37:29.475684: station "station 1" (1) is 0% full
+2015.04.20-18:37:42.781167: general settings saved to file
+2015.04.20-18:37:42.783003: programs saved to file
+2015.04.20-18:37:42.788106: hardware settings saved to file
+2015.04.20-18:37:42.788521: quitting
+2015.04.20-18:38:00.407474: general settings loaded from file
+2015.04.20-18:38:00.524433: hardware settings loaded from file
+2015.04.20-18:38:00.525767: programs loaded from file
+2015.04.20-18:38:00.629796: water source is 0% full
+2015.04.20-18:38:00.735817: station "station 0" (0) is 100% full
+2015.04.20-18:38:00.841785: station "station 1" (1) is 0% full
+2015.04.20-18:39:01.667017: water source is 0% full
+2015.04.20-18:39:01.773121: station "station 0" (0) is 100% full
+2015.04.20-18:39:01.879080: station "station 1" (1) is 0% full
+2015.04.20-18:40:02.476723: water source is 0% full
+2015.04.20-18:40:02.582801: station "station 0" (0) is 100% full
+2015.04.20-18:40:02.689003: station "station 1" (1) is 0% full
+2015.04.20-18:41:03.080507: water source is 0% full
+2015.04.20-18:41:03.186536: station "station 0" (0) is 100% full
+2015.04.20-18:41:03.292489: station "station 1" (1) is 0% full
+2015.04.20-18:42:03.698656: water source is 0% full
+2015.04.20-18:42:03.804673: station "station 0" (0) is 100% full
+2015.04.20-18:42:03.910605: station "station 1" (1) is 0% full
+2015.04.20-18:42:10.139736: settings of program 0 (new program) was changed by user
+2015.04.20-18:42:36.270436: water source is 0% full
+2015.04.20-18:42:36.376526: station "station 0" (0) is 100% full
+2015.04.20-18:42:36.482546: station "station 1" (1) is 0% full
+2015.04.20-18:43:03.986007: settings of program 0 (new program) was changed by user
+2015.04.20-18:43:09.876524: water source is 0% full
+2015.04.20-18:43:09.982518: station "station 0" (0) is 100% full
+2015.04.20-18:43:10.088511: station "station 1" (1) is 0% full
+2015.04.20-18:58:47.945368: general settings loaded from file
+2015.04.20-18:58:48.070491: hardware settings loaded from file
+2015.04.20-18:58:48.071803: programs loaded from file
+2015.04.20-18:58:48.175903: water source is 0% full
+2015.04.20-18:58:48.281933: station "station 0" (0) is 100% full
+2015.04.20-18:58:48.387976: station "station 1" (1) is 0% full
+2015.04.20-18:59:14.193330: general settings saved to file
+2015.04.20-18:59:14.195191: programs saved to file
+2015.04.20-18:59:14.200318: hardware settings saved to file
+2015.04.20-18:59:14.200738: quitting
+2015.04.21-21:52:25.059427: general settings loaded from file
+2015.04.21-21:52:25.061741: no GPIO module was loaded, running in no-hardware mode
+2015.04.21-21:52:25.062150: hardware settings loaded from file
+2015.04.21-21:52:25.062302: programs loaded from file
+2015.04.21-21:52:25.062750: water source is 5.0% full
+2015.04.21-21:52:25.062846: station "station 0" (0) is 5.0% full
+2015.04.21-21:52:25.236256: station "station 1" (1) is 5.0% full
+2015.04.21-21:53:25.352380: water source is 5.0% full
+2015.04.21-21:53:25.352478: station "station 0" (0) is 5.0% full
+2015.04.21-21:53:25.352536: station "station 1" (1) is 5.0% full
+2015.04.21-21:54:25.416455: water source is 5.0% full
+2015.04.21-21:54:25.416558: station "station 0" (0) is 5.0% full
+2015.04.21-21:54:25.416619: station "station 1" (1) is 5.0% full
+2015.04.21-21:55:25.483206: water source is 5.0% full
+2015.04.21-21:55:25.483310: station "station 0" (0) is 5.0% full
+2015.04.21-21:55:25.483370: station "station 1" (1) is 5.0% full
+2015.04.21-21:56:25.542903: water source is 5.0% full
+2015.04.21-21:56:25.543012: station "station 0" (0) is 5.0% full
+2015.04.21-21:56:25.543078: station "station 1" (1) is 5.0% full
+2015.04.21-21:57:25.609134: water source is 5.0% full
+2015.04.21-21:57:25.609242: station "station 0" (0) is 5.0% full
+2015.04.21-21:57:25.609306: station "station 1" (1) is 5.0% full
+2015.04.21-21:57:26.885382: settings of program 0 (new program) was changed by user
+2015.04.21-21:57:41.589698: settings of program 0 (new program) was changed by user
+2015.04.21-21:58:25.685719: water source is 5.0% full
+2015.04.21-21:58:25.685832: station "station 0" (0) is 5.0% full
+2015.04.21-21:58:25.685897: station "station 1" (1) is 5.0% full
+2015.04.21-21:59:25.750627: water source is 5.0% full
+2015.04.21-21:59:25.750735: station "station 0" (0) is 5.0% full
+2015.04.21-21:59:25.750800: station "station 1" (1) is 5.0% full
+2015.04.21-22:00:25.816864: water source is 5.0% full
+2015.04.21-22:00:25.816973: station "station 0" (0) is 5.0% full
+2015.04.21-22:00:25.817037: station "station 1" (1) is 5.0% full
+2015.04.21-22:01:25.880862: water source is 5.0% full
+2015.04.21-22:01:25.880969: station "station 0" (0) is 5.0% full
+2015.04.21-22:01:25.881034: station "station 1" (1) is 5.0% full
+2015.04.21-22:02:25.947238: water source is 5.0% full
+2015.04.21-22:02:25.947343: station "station 0" (0) is 5.0% full
+2015.04.21-22:02:25.947407: station "station 1" (1) is 5.0% full
+2015.04.21-22:03:26.012629: water source is 5.0% full
+2015.04.21-22:03:26.012737: station "station 0" (0) is 5.0% full
+2015.04.21-22:03:26.012802: station "station 1" (1) is 5.0% full
+2015.04.21-22:04:26.078834: water source is 5.0% full
+2015.04.21-22:04:26.078939: station "station 0" (0) is 5.0% full
+2015.04.21-22:04:26.079004: station "station 1" (1) is 5.0% full
+2015.04.21-22:05:26.145242: water source is 5.0% full
+2015.04.21-22:05:26.145345: station "station 0" (0) is 5.0% full
+2015.04.21-22:05:26.145409: station "station 1" (1) is 5.0% full
+2015.04.21-22:06:26.197914: water source is 5.0% full
+2015.04.21-22:06:26.198014: station "station 0" (0) is 5.0% full
+2015.04.21-22:06:26.198074: station "station 1" (1) is 5.0% full
+2015.04.21-22:07:26.248313: water source is 5.0% full
+2015.04.21-22:07:26.248420: station "station 0" (0) is 5.0% full
+2015.04.21-22:07:26.248486: station "station 1" (1) is 5.0% full
+2015.04.21-22:08:26.311413: water source is 5.0% full
+2015.04.21-22:08:26.311517: station "station 0" (0) is 5.0% full
+2015.04.21-22:08:26.311582: station "station 1" (1) is 5.0% full
+2015.04.21-22:09:26.377140: water source is 5.0% full
+2015.04.21-22:09:26.377248: station "station 0" (0) is 5.0% full
+2015.04.21-22:09:26.377308: station "station 1" (1) is 5.0% full
+2015.04.21-22:10:26.440261: water source is 5.0% full
+2015.04.21-22:10:26.440363: station "station 0" (0) is 5.0% full
+2015.04.21-22:10:26.440423: station "station 1" (1) is 5.0% full
+2015.04.21-22:11:26.503907: water source is 5.0% full
+2015.04.21-22:11:26.504014: station "station 0" (0) is 5.0% full
+2015.04.21-22:11:26.504079: station "station 1" (1) is 5.0% full
+2015.04.21-22:12:26.567643: water source is 5.0% full
+2015.04.21-22:12:26.567749: station "station 0" (0) is 5.0% full
+2015.04.21-22:12:26.567812: station "station 1" (1) is 5.0% full
+2015.04.21-22:13:26.632266: water source is 5.0% full
+2015.04.21-22:13:26.632368: station "station 0" (0) is 5.0% full
+2015.04.21-22:13:26.632430: station "station 1" (1) is 5.0% full
+2015.04.21-22:14:26.716397: water source is 5.0% full
+2015.04.21-22:14:26.716503: station "station 0" (0) is 5.0% full
+2015.04.21-22:14:26.716569: station "station 1" (1) is 5.0% full
+2015.04.21-22:15:26.778290: water source is 5.0% full
+2015.04.21-22:15:26.778399: station "station 0" (0) is 5.0% full
+2015.04.21-22:15:26.778463: station "station 1" (1) is 5.0% full
+2015.04.21-22:16:26.841592: water source is 5.0% full
+2015.04.21-22:16:26.841699: station "station 0" (0) is 5.0% full
+2015.04.21-22:16:26.841762: station "station 1" (1) is 5.0% full
+2015.04.21-22:17:26.863103: water source is 5.0% full
+2015.04.21-22:17:26.863209: station "station 0" (0) is 5.0% full
+2015.04.21-22:17:26.863271: station "station 1" (1) is 5.0% full
+2015.04.21-22:18:26.917639: water source is 5.0% full
+2015.04.21-22:18:26.917749: station "station 0" (0) is 5.0% full
+2015.04.21-22:18:26.917813: station "station 1" (1) is 5.0% full
+2015.04.21-22:19:26.978363: water source is 5.0% full
+2015.04.21-22:19:26.978471: station "station 0" (0) is 5.0% full
+2015.04.21-22:19:26.978534: station "station 1" (1) is 5.0% full
+2015.04.21-22:20:27.041907: water source is 5.0% full
+2015.04.21-22:20:27.042012: station "station 0" (0) is 5.0% full
+2015.04.21-22:20:27.042075: station "station 1" (1) is 5.0% full
+2015.04.21-22:21:27.107619: water source is 5.0% full
+2015.04.21-22:21:27.107728: station "station 0" (0) is 5.0% full
+2015.04.21-22:21:27.107788: station "station 1" (1) is 5.0% full
+2015.04.21-22:22:27.170427: water source is 5.0% full
+2015.04.21-22:22:27.170533: station "station 0" (0) is 5.0% full
+2015.04.21-22:22:27.170596: station "station 1" (1) is 5.0% full
+2015.04.21-22:23:27.232544: water source is 5.0% full
+2015.04.21-22:23:27.232652: station "station 0" (0) is 5.0% full
+2015.04.21-22:23:27.232716: station "station 1" (1) is 5.0% full
+2015.04.21-22:24:27.296469: water source is 5.0% full
+2015.04.21-22:24:27.296579: station "station 0" (0) is 5.0% full
+2015.04.21-22:24:27.296642: station "station 1" (1) is 5.0% full
+2015.04.21-22:25:27.360092: water source is 5.0% full
+2015.04.21-22:25:27.360240: station "station 0" (0) is 5.0% full
+2015.04.21-22:25:27.360306: station "station 1" (1) is 5.0% full
+2015.04.21-22:26:27.424776: water source is 5.0% full
+2015.04.21-22:26:27.424887: station "station 0" (0) is 5.0% full
+2015.04.21-22:26:27.424951: station "station 1" (1) is 5.0% full
+2015.04.21-22:27:27.485161: water source is 5.0% full
+2015.04.21-22:27:27.485269: station "station 0" (0) is 5.0% full
+2015.04.21-22:27:27.485332: station "station 1" (1) is 5.0% full
+2015.04.21-22:28:27.540745: water source is 5.0% full
+2015.04.21-22:28:27.540851: station "station 0" (0) is 5.0% full
+2015.04.21-22:28:27.540911: station "station 1" (1) is 5.0% full
+2015.04.21-22:29:27.604728: water source is 5.0% full
+2015.04.21-22:29:27.604830: station "station 0" (0) is 5.0% full
+2015.04.21-22:29:27.604889: station "station 1" (1) is 5.0% full
+2015.04.21-22:30:27.697222: water source is 5.0% full
+2015.04.21-22:30:27.697325: station "station 0" (0) is 5.0% full
+2015.04.21-22:30:27.697386: station "station 1" (1) is 5.0% full
+2015.04.21-22:31:27.759580: water source is 5.0% full
+2015.04.21-22:31:27.759686: station "station 0" (0) is 5.0% full
+2015.04.21-22:31:27.759745: station "station 1" (1) is 5.0% full
+2015.04.21-22:32:27.826170: water source is 5.0% full
+2015.04.21-22:32:27.826279: station "station 0" (0) is 5.0% full
+2015.04.21-22:32:27.826343: station "station 1" (1) is 5.0% full
+2015.04.21-22:33:27.914792: water source is 5.0% full
+2015.04.21-22:33:27.914896: station "station 0" (0) is 5.0% full
+2015.04.21-22:33:27.914960: station "station 1" (1) is 5.0% full
+2015.04.21-22:34:27.981044: water source is 5.0% full
+2015.04.21-22:34:27.981147: station "station 0" (0) is 5.0% full
+2015.04.21-22:34:27.981210: station "station 1" (1) is 5.0% full
+2015.04.21-22:35:28.046411: water source is 5.0% full
+2015.04.21-22:35:28.046513: station "station 0" (0) is 5.0% full
+2015.04.21-22:35:28.046570: station "station 1" (1) is 5.0% full
+2015.04.21-22:36:28.110105: water source is 5.0% full
+2015.04.21-22:36:28.110213: station "station 0" (0) is 5.0% full
+2015.04.21-22:36:28.110275: station "station 1" (1) is 5.0% full
+2015.04.21-22:37:28.170359: water source is 5.0% full
+2015.04.21-22:37:28.170475: station "station 0" (0) is 5.0% full
+2015.04.21-22:37:28.170534: station "station 1" (1) is 5.0% full
+2015.04.21-22:38:28.235171: water source is 5.0% full
+2015.04.21-22:38:28.235269: station "station 0" (0) is 5.0% full
+2015.04.21-22:38:28.235329: station "station 1" (1) is 5.0% full
+2015.04.21-22:39:28.299728: water source is 5.0% full
+2015.04.21-22:39:28.299835: station "station 0" (0) is 5.0% full
+2015.04.21-22:39:28.299897: station "station 1" (1) is 5.0% full
+2015.04.21-22:40:28.364268: water source is 5.0% full
+2015.04.21-22:40:28.364375: station "station 0" (0) is 5.0% full
+2015.04.21-22:40:28.364439: station "station 1" (1) is 5.0% full
+2015.04.21-22:41:28.429847: water source is 5.0% full
+2015.04.21-22:41:28.429953: station "station 0" (0) is 5.0% full
+2015.04.21-22:41:28.430017: station "station 1" (1) is 5.0% full
+2015.04.21-22:42:28.491141: water source is 5.0% full
+2015.04.21-22:42:28.491249: station "station 0" (0) is 5.0% full
+2015.04.21-22:42:28.491313: station "station 1" (1) is 5.0% full
+2015.04.21-22:43:28.552432: water source is 5.0% full
+2015.04.21-22:43:28.552536: station "station 0" (0) is 5.0% full
+2015.04.21-22:43:28.552601: station "station 1" (1) is 5.0% full
+2015.04.21-22:44:28.618295: water source is 5.0% full
+2015.04.21-22:44:28.618404: station "station 0" (0) is 5.0% full
+2015.04.21-22:44:28.618468: station "station 1" (1) is 5.0% full
+2015.04.21-22:45:28.683749: water source is 5.0% full
+2015.04.21-22:45:28.683852: station "station 0" (0) is 5.0% full
+2015.04.21-22:45:28.683911: station "station 1" (1) is 5.0% full
+2015.04.21-22:46:28.746342: water source is 5.0% full
+2015.04.21-22:46:28.746450: station "station 0" (0) is 5.0% full
+2015.04.21-22:46:28.746515: station "station 1" (1) is 5.0% full
+2015.04.21-22:47:28.809966: water source is 5.0% full
+2015.04.21-22:47:28.810071: station "station 0" (0) is 5.0% full
+2015.04.21-22:47:28.810131: station "station 1" (1) is 5.0% full
+2015.04.21-22:48:29.194280: water source is 5.0% full
+2015.04.21-22:48:29.194391: station "station 0" (0) is 5.0% full
+2015.04.21-22:48:29.194455: station "station 1" (1) is 5.0% full
+2015.04.21-22:49:26.112090: water source is 5.0% full
+2015.04.21-22:49:26.112193: station "station 0" (0) is 5.0% full
+2015.04.21-22:49:26.112297: station "station 1" (1) is 5.0% full
+2015.04.21-22:49:34.450545: general settings loaded from file
+2015.04.21-22:49:34.453142: no GPIO module was loaded, running in no-hardware mode
+2015.04.21-22:49:34.453564: hardware settings loaded from file
+2015.04.21-22:49:34.453690: programs loaded from file
+2015.04.21-22:49:34.454117: water source is 5.0% full
+2015.04.21-22:49:34.454195: station "station 0" (0) is 5.0% full
+2015.04.21-22:49:34.454256: station "station 1" (1) is 5.0% full
+2015.04.21-22:49:51.479863: general settings saved to file
+2015.04.21-22:49:51.508276: programs saved to file
+2015.04.21-22:49:51.508870: hardware settings saved to file
+2015.04.21-22:49:51.508936: quitting
+2015.04.21-22:49:55.858969: general settings loaded from file
+2015.04.21-22:49:55.859832: no GPIO module was loaded, running in no-hardware mode
+2015.04.21-22:49:55.860255: hardware settings loaded from file
+2015.04.21-22:49:55.860393: programs loaded from file
+2015.04.21-22:49:55.860832: water source is 5.0% full
+2015.04.21-22:49:55.860911: station "station 0" (0) is 5.0% full
+2015.04.21-22:49:55.860974: station "station 1" (1) is 5.0% full
+2015.04.21-22:50:03.875748: water source is 5.0% full
+2015.04.21-22:50:03.875855: station "station 0" (0) is 5.0% full
+2015.04.21-22:50:03.875921: station "station 1" (1) is 5.0% full
+2015.04.21-22:50:28.903075: water source is 5.0% full
+2015.04.21-22:50:28.903180: station "station 0" (0) is 5.0% full
+2015.04.21-22:50:28.903244: station "station 1" (1) is 5.0% full
+2015.04.21-22:51:00.815122: general settings saved to file
+2015.04.21-22:51:00.815647: programs saved to file
+2015.04.21-22:51:00.816078: hardware settings saved to file
+2015.04.21-22:51:00.816116: quitting
+2015.04.22-10:51:02.180580: general settings loaded from file
+2015.04.22-10:51:02.180913: no GPIO module was loaded, running in no-hardware mode
+2015.04.22-10:51:02.181049: hardware settings loaded from file
+2015.04.22-10:51:02.181200: programs loaded from file
+2015.04.22-10:51:02.181378: water source is 5.0% full
+2015.04.22-10:51:02.184495: station "station 0" (0) is 5.0% full
+2015.04.22-10:51:02.184538: station "station 1" (1) is 5.0% full
+2015.04.22-10:52:02.245574: water source is 5.0% full
+2015.04.22-10:52:02.245648: station "station 0" (0) is 5.0% full
+2015.04.22-10:52:02.245687: station "station 1" (1) is 5.0% full
+2015.04.22-10:52:30.185413: settings of program 0 (new program) was changed by user
+2015.04.22-10:53:02.775405: water source is 5.0% full
+2015.04.22-10:53:02.775473: station "station 0" (0) is 5.0% full
+2015.04.22-10:53:02.775500: station "station 1" (1) is 5.0% full
+2015.04.22-10:53:02.800233: program "new program" (0): not valid time of a day
+2015.04.22-10:54:02.865738: water source is 5.0% full
+2015.04.22-10:54:02.865814: station "station 0" (0) is 5.0% full
+2015.04.22-10:54:02.865852: station "station 1" (1) is 5.0% full
+2015.04.22-10:54:02.893206: program "new program" (0): not valid time of a day
+2015.04.22-10:55:02.959127: water source is 5.0% full
+2015.04.22-10:55:02.959216: station "station 0" (0) is 5.0% full
+2015.04.22-10:55:02.959257: station "station 1" (1) is 5.0% full
+2015.04.22-10:55:02.987973: program "new program" (0): not valid time of a day
+2015.04.22-10:56:03.050990: water source is 5.0% full
+2015.04.22-10:56:03.051070: station "station 0" (0) is 5.0% full
+2015.04.22-10:56:03.051108: station "station 1" (1) is 5.0% full
+2015.04.22-10:56:03.076009: program "new program" (0): not valid time of a day
+2015.04.22-10:57:03.139798: water source is 5.0% full
+2015.04.22-10:57:03.139872: station "station 0" (0) is 5.0% full
+2015.04.22-10:57:03.139911: station "station 1" (1) is 5.0% full
+2015.04.22-10:57:03.168303: program "new program" (0): not valid time of a day
+2015.04.22-10:58:03.231520: water source is 5.0% full
+2015.04.22-10:58:03.231593: station "station 0" (0) is 5.0% full
+2015.04.22-10:58:03.231632: station "station 1" (1) is 5.0% full
+2015.04.22-10:58:03.262231: program "new program" (0): ready for watering
+2015.04.22-10:58:03.262248: preparing to fill station "station 0" (0)
+2015.04.22-10:58:03.262266: station "station 0" (0) was filled, time of filling was 2 s, time limit was -0.0666666666667 s, limit EXCEEDED!
+2015.04.22-10:59:03.326791: water source is 5.0% full
+2015.04.22-10:59:03.326864: station "station 0" (0) is 5.0% full
+2015.04.22-10:59:03.326885: station "station 1" (1) is 5.0% full
+2015.04.22-10:59:03.326952: program "new program" (0): not valid time of a day
+2015.04.22-11:00:03.390663: water source is 5.0% full
+2015.04.22-11:00:03.390737: station "station 0" (0) is 5.0% full
+2015.04.22-11:00:03.390776: station "station 1" (1) is 5.0% full
+2015.04.22-11:00:03.390888: program "new program" (0): not valid time of a day
+2015.04.22-11:01:03.455078: water source is 5.0% full
+2015.04.22-11:01:03.455151: station "station 0" (0) is 5.0% full
+2015.04.22-11:01:03.455229: station "station 1" (1) is 5.0% full
+2015.04.22-11:01:03.455347: program "new program" (0): not valid time of a day
+2015.04.22-11:02:03.520376: water source is 5.0% full
+2015.04.22-11:02:03.520451: station "station 0" (0) is 5.0% full
+2015.04.22-11:02:03.520490: station "station 1" (1) is 5.0% full
+2015.04.22-11:02:03.520601: program "new program" (0): not valid time of a day
+2015.04.22-11:03:03.584765: water source is 5.0% full
+2015.04.22-11:03:03.584838: station "station 0" (0) is 5.0% full
+2015.04.22-11:03:03.584877: station "station 1" (1) is 5.0% full
+2015.04.22-11:03:03.584989: program "new program" (0): not valid time of a day
+2015.04.22-11:04:03.648035: water source is 5.0% full
+2015.04.22-11:04:03.648100: station "station 0" (0) is 5.0% full
+2015.04.22-11:04:03.648123: station "station 1" (1) is 5.0% full
+2015.04.22-11:04:03.648195: program "new program" (0): not valid time of a day
+2015.04.22-11:05:03.709418: water source is 5.0% full
+2015.04.22-11:05:03.709481: station "station 0" (0) is 5.0% full
+2015.04.22-11:05:03.709513: station "station 1" (1) is 5.0% full
+2015.04.22-11:05:03.709614: program "new program" (0): not valid time of a day
+2015.04.22-11:06:03.775637: water source is 5.0% full
+2015.04.22-11:06:03.775711: station "station 0" (0) is 5.0% full
+2015.04.22-11:06:03.775749: station "station 1" (1) is 5.0% full
+2015.04.22-11:06:03.775860: program "new program" (0): not valid time of a day
+2015.04.22-11:07:03.842000: water source is 5.0% full
+2015.04.22-11:07:03.842076: station "station 0" (0) is 5.0% full
+2015.04.22-11:07:03.842115: station "station 1" (1) is 5.0% full
+2015.04.22-11:07:03.842233: program "new program" (0): not valid time of a day
+2015.04.22-11:07:05.465075: settings of program 0 (new program) was changed by user
+2015.04.22-11:08:03.907161: water source is 5.0% full
+2015.04.22-11:08:03.907237: station "station 0" (0) is 5.0% full
+2015.04.22-11:08:03.907259: station "station 1" (1) is 5.0% full
+2015.04.22-11:08:03.907458: program "new program" (0): ready for watering
+2015.04.22-11:08:03.907473: preparing to fill station "station 0" (0)
+2015.04.22-11:08:03.907490: station "station 0" (0) was filled, time of filling was 2 s, time limit was -0.0666666666667 s, limit EXCEEDED!
+2015.04.22-11:09:03.975730: water source is 5.0% full
+2015.04.22-11:09:03.975805: station "station 0" (0) is 5.0% full
+2015.04.22-11:09:03.975844: station "station 1" (1) is 5.0% full
+2015.04.22-11:09:03.976215: program "new program" (0): not valid time of a day
+2015.04.22-11:10:04.040124: water source is 5.0% full
+2015.04.22-11:10:04.040199: station "station 0" (0) is 5.0% full
+2015.04.22-11:10:04.040238: station "station 1" (1) is 5.0% full
+2015.04.22-11:10:04.040609: program "new program" (0): not valid time of a day
+2015.04.22-11:11:04.102767: water source is 5.0% full
+2015.04.22-11:11:04.102844: station "station 0" (0) is 5.0% full
+2015.04.22-11:11:04.102883: station "station 1" (1) is 5.0% full
+2015.04.22-11:11:04.103325: program "new program" (0): not valid time of a day
+2015.04.22-11:12:04.181989: water source is 5.0% full
+2015.04.22-11:12:04.182067: station "station 0" (0) is 5.0% full
+2015.04.22-11:12:04.182105: station "station 1" (1) is 5.0% full
+2015.04.22-11:12:04.182488: program "new program" (0): not valid time of a day
+2015.04.22-11:13:04.245547: water source is 5.0% full
+2015.04.22-11:13:04.245616: station "station 0" (0) is 5.0% full
+2015.04.22-11:13:04.245649: station "station 1" (1) is 5.0% full
+2015.04.22-11:13:04.245971: program "new program" (0): ready for watering
+2015.04.22-11:13:04.245994: preparing to fill station "station 0" (0)
+2015.04.22-11:13:04.246020: station "station 0" (0) was filled, time of filling was 2 s, time limit was -0.0666666666667 s, limit EXCEEDED!
+2015.04.22-11:14:04.309034: water source is 5.0% full
+2015.04.22-11:14:04.309108: station "station 0" (0) is 5.0% full
+2015.04.22-11:14:04.309141: station "station 1" (1) is 5.0% full
+2015.04.22-11:14:04.309464: program "new program" (0): not valid time of a day
+2015.04.22-11:15:04.373620: water source is 5.0% full
+2015.04.22-11:15:04.373695: station "station 0" (0) is 5.0% full
+2015.04.22-11:15:04.373734: station "station 1" (1) is 5.0% full
+2015.04.22-11:15:04.374112: program "new program" (0): not valid time of a day
+2015.04.22-11:16:04.436564: water source is 5.0% full
+2015.04.22-11:16:04.436641: station "station 0" (0) is 5.0% full
+2015.04.22-11:16:04.436679: station "station 1" (1) is 5.0% full
+2015.04.22-11:16:04.437065: program "new program" (0): not valid time of a day
+2015.04.22-11:17:04.496375: water source is 5.0% full
+2015.04.22-11:17:04.496426: station "station 0" (0) is 5.0% full
+2015.04.22-11:17:04.496447: station "station 1" (1) is 5.0% full
+2015.04.22-11:17:04.496656: program "new program" (0): not valid time of a day
+2015.04.22-11:18:04.561036: water source is 5.0% full
+2015.04.22-11:18:04.561121: station "station 0" (0) is 5.0% full
+2015.04.22-11:18:04.561171: station "station 1" (1) is 5.0% full
+2015.04.22-11:18:04.561742: program "new program" (0): ready for watering
+2015.04.22-11:18:04.561774: preparing to fill station "station 0" (0)
+2015.04.22-11:18:04.561814: station "station 0" (0) was filled, time of filling was 2 s, time limit was -0.0666666666667 s, limit EXCEEDED!
+2015.04.22-11:18:30.589582: water source is 5.0% full
+2015.04.22-11:18:30.589648: station "station 0" (0) is 5.0% full
+2015.04.22-11:18:30.589670: station "station 1" (1) is 5.0% full
+2015.04.22-11:18:30.589871: program "new program" (0): not valid time of a day
+2015.04.22-11:19:30.653921: water source is 5.0% full
+2015.04.22-11:19:30.653996: station "station 0" (0) is 5.0% full
+2015.04.22-11:19:30.654035: station "station 1" (1) is 5.0% full
+2015.04.22-11:19:30.654406: program "new program" (0): not valid time of a day
+2015.04.22-11:20:30.718876: water source is 5.0% full
+2015.04.22-11:20:30.718953: station "station 0" (0) is 5.0% full
+2015.04.22-11:20:30.718991: station "station 1" (1) is 5.0% full
+2015.04.22-11:20:30.719391: program "new program" (0): not valid time of a day
+2015.04.22-11:20:33.475406: general settings saved to file
+2015.04.22-11:20:33.476393: programs saved to file
+2015.04.22-11:20:33.476672: hardware settings saved to file
+2015.04.22-11:20:33.476702: quitting

@@ -11,7 +11,7 @@ import time
 
 
 def bin2dec(string_num):
-    return str(int(string_num, 2))
+    return int(string_num, 2)
 
 
 class DHT11(object):
