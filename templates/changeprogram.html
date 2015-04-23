@@ -34,13 +34,13 @@ $def with (gv,frm,index,indexerror)
             <b>Water level</b> mode of operation:
             <br>
             Water stations when all stations are empty at least for 
-            $:frm.wlMinDelay.render()
-            $if frm.wlMinDelay.note:
-                <strong class="wrong">$frm.wlMinDelay.note</strong>
+            $:frm.wlMinDelayH.render()
+            $if frm.wlMinDelayH.note:
+                <strong class="wrong">$frm.wlMinDelayH.note</strong>
             hours, but not sooner than 
-            $:frm.wlEmptyDelay.render()
-            $if frm.wlEmptyDelay.note:
-                <strong class="wrong">$frm.wlEmptyDelay.note</strong>
+            $:frm.wlEmptyDelayH.render()
+            $if frm.wlEmptyDelayH.note:
+                <strong class="wrong">$frm.wlEmptyDelayH.note</strong>
             hours from last watering.
             <p></p>
             $if gv.prg[index]['Mode'] == 'weekly':
@@ -58,9 +58,9 @@ $def with (gv,frm,index,indexerror)
             $:frm.calwDays6.render() Sa, 
             $:frm.calwDays7.render() Su,
             and every 
-            $:frm.calRepeatW.render()
-            $if frm.calRepeatW.note:
-                <strong class="wrong">$frm.calRepeatW.note</strong>
+            $:frm.calwRepeatH.render()
+            $if frm.calwRepeatH.note:
+                <strong class="wrong">$frm.calwRepeatH.note</strong>
             hours during a day (start from beginning time of program valid).
             <p></p>
             $if gv.prg[index]['Mode'] == 'interval':
@@ -70,13 +70,13 @@ $def with (gv,frm,index,indexerror)
             <b>Interval</b> mode of operation:
             <br>
             Water stations every
-            $:frm.caliInterval.render()
-            $if frm.caliInterval.note:
+            $:frm.caliIntervalD.render()
+            $if frm.caliIntervalD.note:
                 <strong class="wrong">$frm.caliInterval.note</strong>
             days (start today) and every 
-            $:frm.calRepeatI.render()
-            $if frm.calRepeatI.note:
-                <strong class="wrong">$frm.calRepeatI.note</strong>
+            $:frm.caliRepeatH.render()
+            $if frm.caliRepeatH.note:
+                <strong class="wrong">$frm.caliRepeatH.note</strong>
             hours during a day (start from beginning time of program valid).
             <hr>
             Program is <b>valid</b> from
@@ -97,7 +97,7 @@ $def with (gv,frm,index,indexerror)
                 <strong class="wrong">$frm.TimeToM.note</strong>
             (hour:minute) of every day.
             <hr>
-            <b>Select stations:</b>
+            <b>Select stations controlled by this program:</b>
             <br>
             <table border="0"> 
             <tbody>

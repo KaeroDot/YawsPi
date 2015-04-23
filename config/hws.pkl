@@ -14,26 +14,26 @@ ssS'StData'
 p7
 (lp8
 (dp9
-S'LowThr'
+S'HighThr'
 p10
+F0.9
+sS'LowThr'
+p11
 F0.1
+sS'Name'
+p12
+S'station 0'
+p13
 sg3
 I01
-sS'Name'
-p11
-S'station 0'
-p12
-sS'HighThr'
-p13
-F0.9
 sa(dp14
 g10
-F0.1
-sg3
-I01
+F0.9
 sg11
+F0.1
+sg12
 S'station 1'
 p15
-sg13
-F0.9
+sg3
+I01
 sas.

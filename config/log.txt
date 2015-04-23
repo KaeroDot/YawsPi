@@ -1,435 +1,646 @@
-2015.04.20-18:27:56.847861: water source is 0% full
-2015.04.20-18:27:56.953886: station "station 0" (0) is 100% full
-2015.04.20-18:27:57.059765: station "station 1" (1) is 0% full
-2015.04.20-18:28:57.655465: water source is 0% full
-2015.04.20-18:28:57.686697: general settings saved to file
-2015.04.20-18:28:57.688235: programs saved to file
-2015.04.20-18:28:57.692817: hardware settings saved to file
-2015.04.20-18:28:57.693405: quitting
-2015.04.20-18:34:38.470686: general settings loaded from file
-2015.04.20-18:34:38.589094: hardware settings loaded from file
-2015.04.20-18:34:38.590404: programs loaded from file
-2015.04.20-18:34:38.694561: water source is 0% full
-2015.04.20-18:34:38.800584: station "station 0" (0) is 100% full
-2015.04.20-18:34:38.906527: station "station 1" (1) is 0% full
-2015.04.20-18:34:50.950806: general settings saved to file
-2015.04.20-18:34:50.952858: programs saved to file
-2015.04.20-18:34:50.958084: hardware settings saved to file
-2015.04.20-18:34:50.958496: quitting
-2015.04.20-18:35:08.054951: general settings loaded from file
-2015.04.20-18:35:08.173698: hardware settings loaded from file
-2015.04.20-18:35:08.175165: programs loaded from file
-2015.04.20-18:35:08.279236: water source is 0% full
-2015.04.20-18:35:08.385434: station "station 0" (0) is 100% full
-2015.04.20-18:35:08.491449: station "station 1" (1) is 0% full
-2015.04.20-18:35:15.057267: general settings saved to file
-2015.04.20-18:35:15.059154: programs saved to file
-2015.04.20-18:35:15.064336: hardware settings saved to file
-2015.04.20-18:35:15.064767: quitting
-2015.04.20-18:36:21.904180: general settings loaded from file
-2015.04.20-18:36:22.027972: hardware settings loaded from file
-2015.04.20-18:36:22.029315: programs loaded from file
-2015.04.20-18:36:22.133559: water source is 0% full
-2015.04.20-18:36:22.239654: station "station 0" (0) is 100% full
-2015.04.20-18:36:22.345752: station "station 1" (1) is 0% full
-2015.04.20-18:37:22.745987: water source is 0% full
-2015.04.20-18:37:22.852029: station "station 0" (0) is 100% full
-2015.04.20-18:37:22.958030: station "station 1" (1) is 0% full
-2015.04.20-18:37:25.727364: general settings saved to file
-2015.04.20-18:37:25.729227: programs saved to file
-2015.04.20-18:37:25.734417: hardware settings saved to file
-2015.04.20-18:37:25.734849: quitting
-2015.04.20-18:37:29.041369: general settings loaded from file
-2015.04.20-18:37:29.158265: hardware settings loaded from file
-2015.04.20-18:37:29.159599: programs loaded from file
-2015.04.20-18:37:29.263674: water source is 0% full
-2015.04.20-18:37:29.369715: station "station 0" (0) is 100% full
-2015.04.20-18:37:29.475684: station "station 1" (1) is 0% full
-2015.04.20-18:37:42.781167: general settings saved to file
-2015.04.20-18:37:42.783003: programs saved to file
-2015.04.20-18:37:42.788106: hardware settings saved to file
-2015.04.20-18:37:42.788521: quitting
-2015.04.20-18:38:00.407474: general settings loaded from file
-2015.04.20-18:38:00.524433: hardware settings loaded from file
-2015.04.20-18:38:00.525767: programs loaded from file
-2015.04.20-18:38:00.629796: water source is 0% full
-2015.04.20-18:38:00.735817: station "station 0" (0) is 100% full
-2015.04.20-18:38:00.841785: station "station 1" (1) is 0% full
-2015.04.20-18:39:01.667017: water source is 0% full
-2015.04.20-18:39:01.773121: station "station 0" (0) is 100% full
-2015.04.20-18:39:01.879080: station "station 1" (1) is 0% full
-2015.04.20-18:40:02.476723: water source is 0% full
-2015.04.20-18:40:02.582801: station "station 0" (0) is 100% full
-2015.04.20-18:40:02.689003: station "station 1" (1) is 0% full
-2015.04.20-18:41:03.080507: water source is 0% full
-2015.04.20-18:41:03.186536: station "station 0" (0) is 100% full
-2015.04.20-18:41:03.292489: station "station 1" (1) is 0% full
-2015.04.20-18:42:03.698656: water source is 0% full
-2015.04.20-18:42:03.804673: station "station 0" (0) is 100% full
-2015.04.20-18:42:03.910605: station "station 1" (1) is 0% full
-2015.04.20-18:42:10.139736: settings of program 0 (new program) was changed by user
-2015.04.20-18:42:36.270436: water source is 0% full
-2015.04.20-18:42:36.376526: station "station 0" (0) is 100% full
-2015.04.20-18:42:36.482546: station "station 1" (1) is 0% full
-2015.04.20-18:43:03.986007: settings of program 0 (new program) was changed by user
-2015.04.20-18:43:09.876524: water source is 0% full
-2015.04.20-18:43:09.982518: station "station 0" (0) is 100% full
-2015.04.20-18:43:10.088511: station "station 1" (1) is 0% full
-2015.04.20-18:58:47.945368: general settings loaded from file
-2015.04.20-18:58:48.070491: hardware settings loaded from file
-2015.04.20-18:58:48.071803: programs loaded from file
-2015.04.20-18:58:48.175903: water source is 0% full
-2015.04.20-18:58:48.281933: station "station 0" (0) is 100% full
-2015.04.20-18:58:48.387976: station "station 1" (1) is 0% full
-2015.04.20-18:59:14.193330: general settings saved to file
-2015.04.20-18:59:14.195191: programs saved to file
-2015.04.20-18:59:14.200318: hardware settings saved to file
-2015.04.20-18:59:14.200738: quitting
-2015.04.21-21:52:25.059427: general settings loaded from file
-2015.04.21-21:52:25.061741: no GPIO module was loaded, running in no-hardware mode
-2015.04.21-21:52:25.062150: hardware settings loaded from file
-2015.04.21-21:52:25.062302: programs loaded from file
-2015.04.21-21:52:25.062750: water source is 5.0% full
-2015.04.21-21:52:25.062846: station "station 0" (0) is 5.0% full
-2015.04.21-21:52:25.236256: station "station 1" (1) is 5.0% full
-2015.04.21-21:53:25.352380: water source is 5.0% full
-2015.04.21-21:53:25.352478: station "station 0" (0) is 5.0% full
-2015.04.21-21:53:25.352536: station "station 1" (1) is 5.0% full
-2015.04.21-21:54:25.416455: water source is 5.0% full
-2015.04.21-21:54:25.416558: station "station 0" (0) is 5.0% full
-2015.04.21-21:54:25.416619: station "station 1" (1) is 5.0% full
-2015.04.21-21:55:25.483206: water source is 5.0% full
-2015.04.21-21:55:25.483310: station "station 0" (0) is 5.0% full
-2015.04.21-21:55:25.483370: station "station 1" (1) is 5.0% full
-2015.04.21-21:56:25.542903: water source is 5.0% full
-2015.04.21-21:56:25.543012: station "station 0" (0) is 5.0% full
-2015.04.21-21:56:25.543078: station "station 1" (1) is 5.0% full
-2015.04.21-21:57:25.609134: water source is 5.0% full
-2015.04.21-21:57:25.609242: station "station 0" (0) is 5.0% full
-2015.04.21-21:57:25.609306: station "station 1" (1) is 5.0% full
-2015.04.21-21:57:26.885382: settings of program 0 (new program) was changed by user
-2015.04.21-21:57:41.589698: settings of program 0 (new program) was changed by user
-2015.04.21-21:58:25.685719: water source is 5.0% full
-2015.04.21-21:58:25.685832: station "station 0" (0) is 5.0% full
-2015.04.21-21:58:25.685897: station "station 1" (1) is 5.0% full
-2015.04.21-21:59:25.750627: water source is 5.0% full
-2015.04.21-21:59:25.750735: station "station 0" (0) is 5.0% full
-2015.04.21-21:59:25.750800: station "station 1" (1) is 5.0% full
-2015.04.21-22:00:25.816864: water source is 5.0% full
-2015.04.21-22:00:25.816973: station "station 0" (0) is 5.0% full
-2015.04.21-22:00:25.817037: station "station 1" (1) is 5.0% full
-2015.04.21-22:01:25.880862: water source is 5.0% full
-2015.04.21-22:01:25.880969: station "station 0" (0) is 5.0% full
-2015.04.21-22:01:25.881034: station "station 1" (1) is 5.0% full
-2015.04.21-22:02:25.947238: water source is 5.0% full
-2015.04.21-22:02:25.947343: station "station 0" (0) is 5.0% full
-2015.04.21-22:02:25.947407: station "station 1" (1) is 5.0% full
-2015.04.21-22:03:26.012629: water source is 5.0% full
-2015.04.21-22:03:26.012737: station "station 0" (0) is 5.0% full
-2015.04.21-22:03:26.012802: station "station 1" (1) is 5.0% full
-2015.04.21-22:04:26.078834: water source is 5.0% full
-2015.04.21-22:04:26.078939: station "station 0" (0) is 5.0% full
-2015.04.21-22:04:26.079004: station "station 1" (1) is 5.0% full
-2015.04.21-22:05:26.145242: water source is 5.0% full
-2015.04.21-22:05:26.145345: station "station 0" (0) is 5.0% full
-2015.04.21-22:05:26.145409: station "station 1" (1) is 5.0% full
-2015.04.21-22:06:26.197914: water source is 5.0% full
-2015.04.21-22:06:26.198014: station "station 0" (0) is 5.0% full
-2015.04.21-22:06:26.198074: station "station 1" (1) is 5.0% full
-2015.04.21-22:07:26.248313: water source is 5.0% full
-2015.04.21-22:07:26.248420: station "station 0" (0) is 5.0% full
-2015.04.21-22:07:26.248486: station "station 1" (1) is 5.0% full
-2015.04.21-22:08:26.311413: water source is 5.0% full
-2015.04.21-22:08:26.311517: station "station 0" (0) is 5.0% full
-2015.04.21-22:08:26.311582: station "station 1" (1) is 5.0% full
-2015.04.21-22:09:26.377140: water source is 5.0% full
-2015.04.21-22:09:26.377248: station "station 0" (0) is 5.0% full
-2015.04.21-22:09:26.377308: station "station 1" (1) is 5.0% full
-2015.04.21-22:10:26.440261: water source is 5.0% full
-2015.04.21-22:10:26.440363: station "station 0" (0) is 5.0% full
-2015.04.21-22:10:26.440423: station "station 1" (1) is 5.0% full
-2015.04.21-22:11:26.503907: water source is 5.0% full
-2015.04.21-22:11:26.504014: station "station 0" (0) is 5.0% full
-2015.04.21-22:11:26.504079: station "station 1" (1) is 5.0% full
-2015.04.21-22:12:26.567643: water source is 5.0% full
-2015.04.21-22:12:26.567749: station "station 0" (0) is 5.0% full
-2015.04.21-22:12:26.567812: station "station 1" (1) is 5.0% full
-2015.04.21-22:13:26.632266: water source is 5.0% full
-2015.04.21-22:13:26.632368: station "station 0" (0) is 5.0% full
-2015.04.21-22:13:26.632430: station "station 1" (1) is 5.0% full
-2015.04.21-22:14:26.716397: water source is 5.0% full
-2015.04.21-22:14:26.716503: station "station 0" (0) is 5.0% full
-2015.04.21-22:14:26.716569: station "station 1" (1) is 5.0% full
-2015.04.21-22:15:26.778290: water source is 5.0% full
-2015.04.21-22:15:26.778399: station "station 0" (0) is 5.0% full
-2015.04.21-22:15:26.778463: station "station 1" (1) is 5.0% full
-2015.04.21-22:16:26.841592: water source is 5.0% full
-2015.04.21-22:16:26.841699: station "station 0" (0) is 5.0% full
-2015.04.21-22:16:26.841762: station "station 1" (1) is 5.0% full
-2015.04.21-22:17:26.863103: water source is 5.0% full
-2015.04.21-22:17:26.863209: station "station 0" (0) is 5.0% full
-2015.04.21-22:17:26.863271: station "station 1" (1) is 5.0% full
-2015.04.21-22:18:26.917639: water source is 5.0% full
-2015.04.21-22:18:26.917749: station "station 0" (0) is 5.0% full
-2015.04.21-22:18:26.917813: station "station 1" (1) is 5.0% full
-2015.04.21-22:19:26.978363: water source is 5.0% full
-2015.04.21-22:19:26.978471: station "station 0" (0) is 5.0% full
-2015.04.21-22:19:26.978534: station "station 1" (1) is 5.0% full
-2015.04.21-22:20:27.041907: water source is 5.0% full
-2015.04.21-22:20:27.042012: station "station 0" (0) is 5.0% full
-2015.04.21-22:20:27.042075: station "station 1" (1) is 5.0% full
-2015.04.21-22:21:27.107619: water source is 5.0% full
-2015.04.21-22:21:27.107728: station "station 0" (0) is 5.0% full
-2015.04.21-22:21:27.107788: station "station 1" (1) is 5.0% full
-2015.04.21-22:22:27.170427: water source is 5.0% full
-2015.04.21-22:22:27.170533: station "station 0" (0) is 5.0% full
-2015.04.21-22:22:27.170596: station "station 1" (1) is 5.0% full
-2015.04.21-22:23:27.232544: water source is 5.0% full
-2015.04.21-22:23:27.232652: station "station 0" (0) is 5.0% full
-2015.04.21-22:23:27.232716: station "station 1" (1) is 5.0% full
-2015.04.21-22:24:27.296469: water source is 5.0% full
-2015.04.21-22:24:27.296579: station "station 0" (0) is 5.0% full
-2015.04.21-22:24:27.296642: station "station 1" (1) is 5.0% full
-2015.04.21-22:25:27.360092: water source is 5.0% full
-2015.04.21-22:25:27.360240: station "station 0" (0) is 5.0% full
-2015.04.21-22:25:27.360306: station "station 1" (1) is 5.0% full
-2015.04.21-22:26:27.424776: water source is 5.0% full
-2015.04.21-22:26:27.424887: station "station 0" (0) is 5.0% full
-2015.04.21-22:26:27.424951: station "station 1" (1) is 5.0% full
-2015.04.21-22:27:27.485161: water source is 5.0% full
-2015.04.21-22:27:27.485269: station "station 0" (0) is 5.0% full
-2015.04.21-22:27:27.485332: station "station 1" (1) is 5.0% full
-2015.04.21-22:28:27.540745: water source is 5.0% full
-2015.04.21-22:28:27.540851: station "station 0" (0) is 5.0% full
-2015.04.21-22:28:27.540911: station "station 1" (1) is 5.0% full
-2015.04.21-22:29:27.604728: water source is 5.0% full
-2015.04.21-22:29:27.604830: station "station 0" (0) is 5.0% full
-2015.04.21-22:29:27.604889: station "station 1" (1) is 5.0% full
-2015.04.21-22:30:27.697222: water source is 5.0% full
-2015.04.21-22:30:27.697325: station "station 0" (0) is 5.0% full
-2015.04.21-22:30:27.697386: station "station 1" (1) is 5.0% full
-2015.04.21-22:31:27.759580: water source is 5.0% full
-2015.04.21-22:31:27.759686: station "station 0" (0) is 5.0% full
-2015.04.21-22:31:27.759745: station "station 1" (1) is 5.0% full
-2015.04.21-22:32:27.826170: water source is 5.0% full
-2015.04.21-22:32:27.826279: station "station 0" (0) is 5.0% full
-2015.04.21-22:32:27.826343: station "station 1" (1) is 5.0% full
-2015.04.21-22:33:27.914792: water source is 5.0% full
-2015.04.21-22:33:27.914896: station "station 0" (0) is 5.0% full
-2015.04.21-22:33:27.914960: station "station 1" (1) is 5.0% full
-2015.04.21-22:34:27.981044: water source is 5.0% full
-2015.04.21-22:34:27.981147: station "station 0" (0) is 5.0% full
-2015.04.21-22:34:27.981210: station "station 1" (1) is 5.0% full
-2015.04.21-22:35:28.046411: water source is 5.0% full
-2015.04.21-22:35:28.046513: station "station 0" (0) is 5.0% full
-2015.04.21-22:35:28.046570: station "station 1" (1) is 5.0% full
-2015.04.21-22:36:28.110105: water source is 5.0% full
-2015.04.21-22:36:28.110213: station "station 0" (0) is 5.0% full
-2015.04.21-22:36:28.110275: station "station 1" (1) is 5.0% full
-2015.04.21-22:37:28.170359: water source is 5.0% full
-2015.04.21-22:37:28.170475: station "station 0" (0) is 5.0% full
-2015.04.21-22:37:28.170534: station "station 1" (1) is 5.0% full
-2015.04.21-22:38:28.235171: water source is 5.0% full
-2015.04.21-22:38:28.235269: station "station 0" (0) is 5.0% full
-2015.04.21-22:38:28.235329: station "station 1" (1) is 5.0% full
-2015.04.21-22:39:28.299728: water source is 5.0% full
-2015.04.21-22:39:28.299835: station "station 0" (0) is 5.0% full
-2015.04.21-22:39:28.299897: station "station 1" (1) is 5.0% full
-2015.04.21-22:40:28.364268: water source is 5.0% full
-2015.04.21-22:40:28.364375: station "station 0" (0) is 5.0% full
-2015.04.21-22:40:28.364439: station "station 1" (1) is 5.0% full
-2015.04.21-22:41:28.429847: water source is 5.0% full
-2015.04.21-22:41:28.429953: station "station 0" (0) is 5.0% full
-2015.04.21-22:41:28.430017: station "station 1" (1) is 5.0% full
-2015.04.21-22:42:28.491141: water source is 5.0% full
-2015.04.21-22:42:28.491249: station "station 0" (0) is 5.0% full
-2015.04.21-22:42:28.491313: station "station 1" (1) is 5.0% full
-2015.04.21-22:43:28.552432: water source is 5.0% full
-2015.04.21-22:43:28.552536: station "station 0" (0) is 5.0% full
-2015.04.21-22:43:28.552601: station "station 1" (1) is 5.0% full
-2015.04.21-22:44:28.618295: water source is 5.0% full
-2015.04.21-22:44:28.618404: station "station 0" (0) is 5.0% full
-2015.04.21-22:44:28.618468: station "station 1" (1) is 5.0% full
-2015.04.21-22:45:28.683749: water source is 5.0% full
-2015.04.21-22:45:28.683852: station "station 0" (0) is 5.0% full
-2015.04.21-22:45:28.683911: station "station 1" (1) is 5.0% full
-2015.04.21-22:46:28.746342: water source is 5.0% full
-2015.04.21-22:46:28.746450: station "station 0" (0) is 5.0% full
-2015.04.21-22:46:28.746515: station "station 1" (1) is 5.0% full
-2015.04.21-22:47:28.809966: water source is 5.0% full
-2015.04.21-22:47:28.810071: station "station 0" (0) is 5.0% full
-2015.04.21-22:47:28.810131: station "station 1" (1) is 5.0% full
-2015.04.21-22:48:29.194280: water source is 5.0% full
-2015.04.21-22:48:29.194391: station "station 0" (0) is 5.0% full
-2015.04.21-22:48:29.194455: station "station 1" (1) is 5.0% full
-2015.04.21-22:49:26.112090: water source is 5.0% full
-2015.04.21-22:49:26.112193: station "station 0" (0) is 5.0% full
-2015.04.21-22:49:26.112297: station "station 1" (1) is 5.0% full
-2015.04.21-22:49:34.450545: general settings loaded from file
-2015.04.21-22:49:34.453142: no GPIO module was loaded, running in no-hardware mode
-2015.04.21-22:49:34.453564: hardware settings loaded from file
-2015.04.21-22:49:34.453690: programs loaded from file
-2015.04.21-22:49:34.454117: water source is 5.0% full
-2015.04.21-22:49:34.454195: station "station 0" (0) is 5.0% full
-2015.04.21-22:49:34.454256: station "station 1" (1) is 5.0% full
-2015.04.21-22:49:51.479863: general settings saved to file
-2015.04.21-22:49:51.508276: programs saved to file
-2015.04.21-22:49:51.508870: hardware settings saved to file
-2015.04.21-22:49:51.508936: quitting
-2015.04.21-22:49:55.858969: general settings loaded from file
-2015.04.21-22:49:55.859832: no GPIO module was loaded, running in no-hardware mode
-2015.04.21-22:49:55.860255: hardware settings loaded from file
-2015.04.21-22:49:55.860393: programs loaded from file
-2015.04.21-22:49:55.860832: water source is 5.0% full
-2015.04.21-22:49:55.860911: station "station 0" (0) is 5.0% full
-2015.04.21-22:49:55.860974: station "station 1" (1) is 5.0% full
-2015.04.21-22:50:03.875748: water source is 5.0% full
-2015.04.21-22:50:03.875855: station "station 0" (0) is 5.0% full
-2015.04.21-22:50:03.875921: station "station 1" (1) is 5.0% full
-2015.04.21-22:50:28.903075: water source is 5.0% full
-2015.04.21-22:50:28.903180: station "station 0" (0) is 5.0% full
-2015.04.21-22:50:28.903244: station "station 1" (1) is 5.0% full
-2015.04.21-22:51:00.815122: general settings saved to file
-2015.04.21-22:51:00.815647: programs saved to file
-2015.04.21-22:51:00.816078: hardware settings saved to file
-2015.04.21-22:51:00.816116: quitting
-2015.04.22-10:51:02.180580: general settings loaded from file
-2015.04.22-10:51:02.180913: no GPIO module was loaded, running in no-hardware mode
-2015.04.22-10:51:02.181049: hardware settings loaded from file
-2015.04.22-10:51:02.181200: programs loaded from file
-2015.04.22-10:51:02.181378: water source is 5.0% full
-2015.04.22-10:51:02.184495: station "station 0" (0) is 5.0% full
-2015.04.22-10:51:02.184538: station "station 1" (1) is 5.0% full
-2015.04.22-10:52:02.245574: water source is 5.0% full
-2015.04.22-10:52:02.245648: station "station 0" (0) is 5.0% full
-2015.04.22-10:52:02.245687: station "station 1" (1) is 5.0% full
-2015.04.22-10:52:30.185413: settings of program 0 (new program) was changed by user
-2015.04.22-10:53:02.775405: water source is 5.0% full
-2015.04.22-10:53:02.775473: station "station 0" (0) is 5.0% full
-2015.04.22-10:53:02.775500: station "station 1" (1) is 5.0% full
-2015.04.22-10:53:02.800233: program "new program" (0): not valid time of a day
-2015.04.22-10:54:02.865738: water source is 5.0% full
-2015.04.22-10:54:02.865814: station "station 0" (0) is 5.0% full
-2015.04.22-10:54:02.865852: station "station 1" (1) is 5.0% full
-2015.04.22-10:54:02.893206: program "new program" (0): not valid time of a day
-2015.04.22-10:55:02.959127: water source is 5.0% full
-2015.04.22-10:55:02.959216: station "station 0" (0) is 5.0% full
-2015.04.22-10:55:02.959257: station "station 1" (1) is 5.0% full
-2015.04.22-10:55:02.987973: program "new program" (0): not valid time of a day
-2015.04.22-10:56:03.050990: water source is 5.0% full
-2015.04.22-10:56:03.051070: station "station 0" (0) is 5.0% full
-2015.04.22-10:56:03.051108: station "station 1" (1) is 5.0% full
-2015.04.22-10:56:03.076009: program "new program" (0): not valid time of a day
-2015.04.22-10:57:03.139798: water source is 5.0% full
-2015.04.22-10:57:03.139872: station "station 0" (0) is 5.0% full
-2015.04.22-10:57:03.139911: station "station 1" (1) is 5.0% full
-2015.04.22-10:57:03.168303: program "new program" (0): not valid time of a day
-2015.04.22-10:58:03.231520: water source is 5.0% full
-2015.04.22-10:58:03.231593: station "station 0" (0) is 5.0% full
-2015.04.22-10:58:03.231632: station "station 1" (1) is 5.0% full
-2015.04.22-10:58:03.262231: program "new program" (0): ready for watering
-2015.04.22-10:58:03.262248: preparing to fill station "station 0" (0)
-2015.04.22-10:58:03.262266: station "station 0" (0) was filled, time of filling was 2 s, time limit was -0.0666666666667 s, limit EXCEEDED!
-2015.04.22-10:59:03.326791: water source is 5.0% full
-2015.04.22-10:59:03.326864: station "station 0" (0) is 5.0% full
-2015.04.22-10:59:03.326885: station "station 1" (1) is 5.0% full
-2015.04.22-10:59:03.326952: program "new program" (0): not valid time of a day
-2015.04.22-11:00:03.390663: water source is 5.0% full
-2015.04.22-11:00:03.390737: station "station 0" (0) is 5.0% full
-2015.04.22-11:00:03.390776: station "station 1" (1) is 5.0% full
-2015.04.22-11:00:03.390888: program "new program" (0): not valid time of a day
-2015.04.22-11:01:03.455078: water source is 5.0% full
-2015.04.22-11:01:03.455151: station "station 0" (0) is 5.0% full
-2015.04.22-11:01:03.455229: station "station 1" (1) is 5.0% full
-2015.04.22-11:01:03.455347: program "new program" (0): not valid time of a day
-2015.04.22-11:02:03.520376: water source is 5.0% full
-2015.04.22-11:02:03.520451: station "station 0" (0) is 5.0% full
-2015.04.22-11:02:03.520490: station "station 1" (1) is 5.0% full
-2015.04.22-11:02:03.520601: program "new program" (0): not valid time of a day
-2015.04.22-11:03:03.584765: water source is 5.0% full
-2015.04.22-11:03:03.584838: station "station 0" (0) is 5.0% full
-2015.04.22-11:03:03.584877: station "station 1" (1) is 5.0% full
-2015.04.22-11:03:03.584989: program "new program" (0): not valid time of a day
-2015.04.22-11:04:03.648035: water source is 5.0% full
-2015.04.22-11:04:03.648100: station "station 0" (0) is 5.0% full
-2015.04.22-11:04:03.648123: station "station 1" (1) is 5.0% full
-2015.04.22-11:04:03.648195: program "new program" (0): not valid time of a day
-2015.04.22-11:05:03.709418: water source is 5.0% full
-2015.04.22-11:05:03.709481: station "station 0" (0) is 5.0% full
-2015.04.22-11:05:03.709513: station "station 1" (1) is 5.0% full
-2015.04.22-11:05:03.709614: program "new program" (0): not valid time of a day
-2015.04.22-11:06:03.775637: water source is 5.0% full
-2015.04.22-11:06:03.775711: station "station 0" (0) is 5.0% full
-2015.04.22-11:06:03.775749: station "station 1" (1) is 5.0% full
-2015.04.22-11:06:03.775860: program "new program" (0): not valid time of a day
-2015.04.22-11:07:03.842000: water source is 5.0% full
-2015.04.22-11:07:03.842076: station "station 0" (0) is 5.0% full
-2015.04.22-11:07:03.842115: station "station 1" (1) is 5.0% full
-2015.04.22-11:07:03.842233: program "new program" (0): not valid time of a day
-2015.04.22-11:07:05.465075: settings of program 0 (new program) was changed by user
-2015.04.22-11:08:03.907161: water source is 5.0% full
-2015.04.22-11:08:03.907237: station "station 0" (0) is 5.0% full
-2015.04.22-11:08:03.907259: station "station 1" (1) is 5.0% full
-2015.04.22-11:08:03.907458: program "new program" (0): ready for watering
-2015.04.22-11:08:03.907473: preparing to fill station "station 0" (0)
-2015.04.22-11:08:03.907490: station "station 0" (0) was filled, time of filling was 2 s, time limit was -0.0666666666667 s, limit EXCEEDED!
-2015.04.22-11:09:03.975730: water source is 5.0% full
-2015.04.22-11:09:03.975805: station "station 0" (0) is 5.0% full
-2015.04.22-11:09:03.975844: station "station 1" (1) is 5.0% full
-2015.04.22-11:09:03.976215: program "new program" (0): not valid time of a day
-2015.04.22-11:10:04.040124: water source is 5.0% full
-2015.04.22-11:10:04.040199: station "station 0" (0) is 5.0% full
-2015.04.22-11:10:04.040238: station "station 1" (1) is 5.0% full
-2015.04.22-11:10:04.040609: program "new program" (0): not valid time of a day
-2015.04.22-11:11:04.102767: water source is 5.0% full
-2015.04.22-11:11:04.102844: station "station 0" (0) is 5.0% full
-2015.04.22-11:11:04.102883: station "station 1" (1) is 5.0% full
-2015.04.22-11:11:04.103325: program "new program" (0): not valid time of a day
-2015.04.22-11:12:04.181989: water source is 5.0% full
-2015.04.22-11:12:04.182067: station "station 0" (0) is 5.0% full
-2015.04.22-11:12:04.182105: station "station 1" (1) is 5.0% full
-2015.04.22-11:12:04.182488: program "new program" (0): not valid time of a day
-2015.04.22-11:13:04.245547: water source is 5.0% full
-2015.04.22-11:13:04.245616: station "station 0" (0) is 5.0% full
-2015.04.22-11:13:04.245649: station "station 1" (1) is 5.0% full
-2015.04.22-11:13:04.245971: program "new program" (0): ready for watering
-2015.04.22-11:13:04.245994: preparing to fill station "station 0" (0)
-2015.04.22-11:13:04.246020: station "station 0" (0) was filled, time of filling was 2 s, time limit was -0.0666666666667 s, limit EXCEEDED!
-2015.04.22-11:14:04.309034: water source is 5.0% full
-2015.04.22-11:14:04.309108: station "station 0" (0) is 5.0% full
-2015.04.22-11:14:04.309141: station "station 1" (1) is 5.0% full
-2015.04.22-11:14:04.309464: program "new program" (0): not valid time of a day
-2015.04.22-11:15:04.373620: water source is 5.0% full
-2015.04.22-11:15:04.373695: station "station 0" (0) is 5.0% full
-2015.04.22-11:15:04.373734: station "station 1" (1) is 5.0% full
-2015.04.22-11:15:04.374112: program "new program" (0): not valid time of a day
-2015.04.22-11:16:04.436564: water source is 5.0% full
-2015.04.22-11:16:04.436641: station "station 0" (0) is 5.0% full
-2015.04.22-11:16:04.436679: station "station 1" (1) is 5.0% full
-2015.04.22-11:16:04.437065: program "new program" (0): not valid time of a day
-2015.04.22-11:17:04.496375: water source is 5.0% full
-2015.04.22-11:17:04.496426: station "station 0" (0) is 5.0% full
-2015.04.22-11:17:04.496447: station "station 1" (1) is 5.0% full
-2015.04.22-11:17:04.496656: program "new program" (0): not valid time of a day
-2015.04.22-11:18:04.561036: water source is 5.0% full
-2015.04.22-11:18:04.561121: station "station 0" (0) is 5.0% full
-2015.04.22-11:18:04.561171: station "station 1" (1) is 5.0% full
-2015.04.22-11:18:04.561742: program "new program" (0): ready for watering
-2015.04.22-11:18:04.561774: preparing to fill station "station 0" (0)
-2015.04.22-11:18:04.561814: station "station 0" (0) was filled, time of filling was 2 s, time limit was -0.0666666666667 s, limit EXCEEDED!
-2015.04.22-11:18:30.589582: water source is 5.0% full
-2015.04.22-11:18:30.589648: station "station 0" (0) is 5.0% full
-2015.04.22-11:18:30.589670: station "station 1" (1) is 5.0% full
-2015.04.22-11:18:30.589871: program "new program" (0): not valid time of a day
-2015.04.22-11:19:30.653921: water source is 5.0% full
-2015.04.22-11:19:30.653996: station "station 0" (0) is 5.0% full
-2015.04.22-11:19:30.654035: station "station 1" (1) is 5.0% full
-2015.04.22-11:19:30.654406: program "new program" (0): not valid time of a day
-2015.04.22-11:20:30.718876: water source is 5.0% full
-2015.04.22-11:20:30.718953: station "station 0" (0) is 5.0% full
-2015.04.22-11:20:30.718991: station "station 1" (1) is 5.0% full
-2015.04.22-11:20:30.719391: program "new program" (0): not valid time of a day
-2015.04.22-11:20:33.475406: general settings saved to file
-2015.04.22-11:20:33.476393: programs saved to file
-2015.04.22-11:20:33.476672: hardware settings saved to file
-2015.04.22-11:20:33.476702: quitting
+2015.04.23-08:14:35.874063: water source is 5.0% full
+2015.04.23-08:14:35.874166: station "station 0" (0) is 5.0% full
+2015.04.23-08:14:35.874205: station "station 1" (1) is 5.0% full
+2015.04.23-08:15:22.789953: general settings saved to file
+2015.04.23-08:15:22.790647: programs saved to file
+2015.04.23-08:15:22.790894: hardware settings saved to file
+2015.04.23-08:15:22.790919: quitting
+2015.04.23-08:15:23.486516: general settings loaded from file
+2015.04.23-08:15:23.486800: no GPIO module was loaded, running in no-hardware mode
+2015.04.23-08:15:23.486941: hardware settings loaded from file
+2015.04.23-08:15:23.487240: programs loaded from file
+2015.04.23-08:15:23.487635: water source is 5.0% full
+2015.04.23-08:15:23.487668: station "station 0" (0) is 5.0% full
+2015.04.23-08:15:23.487691: station "station 1" (1) is 5.0% full
+2015.04.23-08:16:23.560046: water source is 5.0% full
+2015.04.23-08:16:23.560082: station "station 0" (0) is 5.0% full
+2015.04.23-08:16:23.560103: station "station 1" (1) is 5.0% full
+2015.04.23-08:16:25.181241: settings of program 0 (new program) was changed by user
+2015.04.23-08:16:31.923837: settings of program 0 (new program) was changed by user
+2015.04.23-08:17:10.860070: general settings saved to file
+2015.04.23-08:17:10.860597: programs saved to file
+2015.04.23-08:17:10.860791: hardware settings saved to file
+2015.04.23-08:17:10.860810: quitting
+2015.04.23-08:17:17.755702: general settings loaded from file
+2015.04.23-08:17:17.755986: no GPIO module was loaded, running in no-hardware mode
+2015.04.23-08:17:17.756118: hardware settings loaded from file
+2015.04.23-08:17:17.756399: programs loaded from file
+2015.04.23-08:17:17.756806: water source is 5.0% full
+2015.04.23-08:17:17.756838: station "station 0" (0) is 5.0% full
+2015.04.23-08:17:17.756860: station "station 1" (1) is 5.0% full
+2015.04.23-08:18:17.828374: water source is 5.0% full
+2015.04.23-08:18:17.828434: station "station 0" (0) is 5.0% full
+2015.04.23-08:18:17.828474: station "station 1" (1) is 5.0% full
+2015.04.23-08:19:17.900921: water source is 5.0% full
+2015.04.23-08:19:17.900981: station "station 0" (0) is 5.0% full
+2015.04.23-08:19:17.901021: station "station 1" (1) is 5.0% full
+2015.04.23-08:20:17.969503: water source is 5.0% full
+2015.04.23-08:20:17.969563: station "station 0" (0) is 5.0% full
+2015.04.23-08:20:17.969602: station "station 1" (1) is 5.0% full
+2015.04.23-08:21:18.039452: water source is 5.0% full
+2015.04.23-08:21:18.039513: station "station 0" (0) is 5.0% full
+2015.04.23-08:21:18.039552: station "station 1" (1) is 5.0% full
+2015.04.23-08:22:18.107685: water source is 5.0% full
+2015.04.23-08:22:18.107745: station "station 0" (0) is 5.0% full
+2015.04.23-08:22:18.107784: station "station 1" (1) is 5.0% full
+2015.04.23-08:23:18.175877: water source is 5.0% full
+2015.04.23-08:23:18.175936: station "station 0" (0) is 5.0% full
+2015.04.23-08:23:18.175976: station "station 1" (1) is 5.0% full
+2015.04.23-08:24:18.242709: water source is 5.0% full
+2015.04.23-08:24:18.242769: station "station 0" (0) is 5.0% full
+2015.04.23-08:24:18.242809: station "station 1" (1) is 5.0% full
+2015.04.23-08:25:06.139943: general settings saved to file
+2015.04.23-08:25:06.141267: programs saved to file
+2015.04.23-08:25:06.141746: hardware settings saved to file
+2015.04.23-08:25:06.141790: quitting
+2015.04.23-08:25:06.932057: general settings loaded from file
+2015.04.23-08:25:06.932339: no GPIO module was loaded, running in no-hardware mode
+2015.04.23-08:25:06.932473: hardware settings loaded from file
+2015.04.23-08:25:06.932761: programs loaded from file
+2015.04.23-08:25:06.937396: water source is 5.0% full
+2015.04.23-08:25:06.937507: station "station 0" (0) is 5.0% full
+2015.04.23-08:25:06.937596: station "station 1" (1) is 5.0% full
+2015.04.23-08:26:07.008165: water source is 5.0% full
+2015.04.23-08:26:07.008226: station "station 0" (0) is 5.0% full
+2015.04.23-08:26:07.008266: station "station 1" (1) is 5.0% full
+2015.04.23-08:26:48.193064: general settings saved to file
+2015.04.23-08:26:48.194121: programs saved to file
+2015.04.23-08:26:48.194499: hardware settings saved to file
+2015.04.23-08:26:48.194529: quitting
+2015.04.23-08:27:07.192338: general settings loaded from file
+2015.04.23-08:27:07.192641: no GPIO module was loaded, running in no-hardware mode
+2015.04.23-08:27:07.192777: hardware settings loaded from file
+2015.04.23-08:27:07.193063: programs loaded from file
+2015.04.23-08:27:07.198650: water source is 5.0% full
+2015.04.23-08:27:07.198725: station "station 0" (0) is 5.0% full
+2015.04.23-08:27:07.198775: station "station 1" (1) is 5.0% full
+2015.04.23-08:28:07.267822: water source is 5.0% full
+2015.04.23-08:28:07.267880: station "station 0" (0) is 5.0% full
+2015.04.23-08:28:07.267919: station "station 1" (1) is 5.0% full
+2015.04.23-08:28:21.520467: general settings saved to file
+2015.04.23-08:28:21.520983: programs saved to file
+2015.04.23-08:28:21.521171: hardware settings saved to file
+2015.04.23-08:28:21.521190: quitting
+2015.04.23-08:28:22.200488: general settings loaded from file
+2015.04.23-08:28:22.200769: no GPIO module was loaded, running in no-hardware mode
+2015.04.23-08:28:22.200966: hardware settings loaded from file
+2015.04.23-08:28:22.201245: programs loaded from file
+2015.04.23-08:28:22.201650: water source is 5.0% full
+2015.04.23-08:28:22.201685: station "station 0" (0) is 5.0% full
+2015.04.23-08:28:22.201710: station "station 1" (1) is 5.0% full
+2015.04.23-08:29:22.272364: water source is 5.0% full
+2015.04.23-08:29:22.272423: station "station 0" (0) is 5.0% full
+2015.04.23-08:29:22.272462: station "station 1" (1) is 5.0% full
+2015.04.23-08:30:22.338558: water source is 5.0% full
+2015.04.23-08:30:22.338617: station "station 0" (0) is 5.0% full
+2015.04.23-08:30:22.338656: station "station 1" (1) is 5.0% full
+2015.04.23-08:31:22.411486: water source is 5.0% full
+2015.04.23-08:31:22.411521: station "station 0" (0) is 5.0% full
+2015.04.23-08:31:22.411542: station "station 1" (1) is 5.0% full
+2015.04.23-08:32:22.479644: water source is 5.0% full
+2015.04.23-08:32:22.479703: station "station 0" (0) is 5.0% full
+2015.04.23-08:32:22.479742: station "station 1" (1) is 5.0% full
+2015.04.23-08:33:22.551788: water source is 5.0% full
+2015.04.23-08:33:22.551847: station "station 0" (0) is 5.0% full
+2015.04.23-08:33:22.551886: station "station 1" (1) is 5.0% full
+2015.04.23-08:34:22.619733: water source is 5.0% full
+2015.04.23-08:34:22.619770: station "station 0" (0) is 5.0% full
+2015.04.23-08:34:22.619791: station "station 1" (1) is 5.0% full
+2015.04.23-08:35:22.687797: water source is 5.0% full
+2015.04.23-08:35:22.687857: station "station 0" (0) is 5.0% full
+2015.04.23-08:35:22.687895: station "station 1" (1) is 5.0% full
+2015.04.23-08:36:22.755903: water source is 5.0% full
+2015.04.23-08:36:22.755961: station "station 0" (0) is 5.0% full
+2015.04.23-08:36:22.756000: station "station 1" (1) is 5.0% full
+2015.04.23-08:36:24.670446: general settings saved to file
+2015.04.23-08:36:24.671304: programs saved to file
+2015.04.23-08:36:24.671587: hardware settings saved to file
+2015.04.23-08:36:24.671614: quitting
+2015.04.23-08:37:47.697073: general settings loaded from file
+2015.04.23-08:37:47.697357: no GPIO module was loaded, running in no-hardware mode
+2015.04.23-08:37:47.697490: hardware settings loaded from file
+2015.04.23-08:37:47.697772: programs loaded from file
+2015.04.23-08:37:47.703420: water source is 5.0% full
+2015.04.23-08:37:47.703490: station "station 0" (0) is 5.0% full
+2015.04.23-08:37:47.703569: station "station 1" (1) is 5.0% full
+2015.04.23-08:38:43.287765: general settings saved to file
+2015.04.23-08:38:43.288349: programs saved to file
+2015.04.23-08:38:43.288714: hardware settings saved to file
+2015.04.23-08:38:43.288734: quitting
+2015.04.23-08:38:43.781334: general settings loaded from file
+2015.04.23-08:38:43.781618: no GPIO module was loaded, running in no-hardware mode
+2015.04.23-08:38:43.781755: hardware settings loaded from file
+2015.04.23-08:38:43.782099: programs loaded from file
+2015.04.23-08:38:43.787369: water source is 5.0% full
+2015.04.23-08:38:43.787416: station "station 0" (0) is 5.0% full
+2015.04.23-08:38:43.787442: station "station 1" (1) is 5.0% full
+2015.04.23-08:39:10.831464: general settings saved to file
+2015.04.23-08:39:10.832313: programs saved to file
+2015.04.23-08:39:10.832586: hardware settings saved to file
+2015.04.23-08:39:10.832604: quitting
+2015.04.23-08:39:11.293490: general settings loaded from file
+2015.04.23-08:39:11.293774: no GPIO module was loaded, running in no-hardware mode
+2015.04.23-08:39:11.293912: hardware settings loaded from file
+2015.04.23-08:39:11.294199: programs loaded from file
+2015.04.23-08:39:11.297678: water source is 5.0% full
+2015.04.23-08:39:11.297723: station "station 0" (0) is 5.0% full
+2015.04.23-08:39:11.297753: station "station 1" (1) is 5.0% full
+2015.04.23-08:40:00.039243: general settings saved to file
+2015.04.23-08:40:00.040114: programs saved to file
+2015.04.23-08:40:00.040474: hardware settings saved to file
+2015.04.23-08:40:00.040505: quitting
+2015.04.23-08:40:00.740387: general settings loaded from file
+2015.04.23-08:40:00.740668: no GPIO module was loaded, running in no-hardware mode
+2015.04.23-08:40:00.740803: hardware settings loaded from file
+2015.04.23-08:40:00.741088: programs loaded from file
+2015.04.23-08:40:00.744783: water source is 5.0% full
+2015.04.23-08:40:00.744854: station "station 0" (0) is 5.0% full
+2015.04.23-08:40:00.744900: station "station 1" (1) is 5.0% full
+2015.04.23-08:41:00.809280: water source is 5.0% full
+2015.04.23-08:41:00.809338: station "station 0" (0) is 5.0% full
+2015.04.23-08:41:00.809377: station "station 1" (1) is 5.0% full
+2015.04.23-08:42:00.880266: water source is 5.0% full
+2015.04.23-08:42:00.880302: station "station 0" (0) is 5.0% full
+2015.04.23-08:42:00.880323: station "station 1" (1) is 5.0% full
+2015.04.23-08:43:00.954373: water source is 5.0% full
+2015.04.23-08:43:00.954430: station "station 0" (0) is 5.0% full
+2015.04.23-08:43:00.954468: station "station 1" (1) is 5.0% full
+2015.04.23-08:44:01.025392: water source is 5.0% full
+2015.04.23-08:44:01.025450: station "station 0" (0) is 5.0% full
+2015.04.23-08:44:01.025487: station "station 1" (1) is 5.0% full
+2015.04.23-08:45:01.095713: water source is 5.0% full
+2015.04.23-08:45:01.095771: station "station 0" (0) is 5.0% full
+2015.04.23-08:45:01.095808: station "station 1" (1) is 5.0% full
+2015.04.23-08:45:34.697353: general settings saved to file
+2015.04.23-08:45:34.698254: programs saved to file
+2015.04.23-08:45:34.698656: hardware settings saved to file
+2015.04.23-08:45:34.698689: quitting
+2015.04.23-08:45:35.442237: general settings loaded from file
+2015.04.23-08:45:35.442525: no GPIO module was loaded, running in no-hardware mode
+2015.04.23-08:45:35.442660: hardware settings loaded from file
+2015.04.23-08:45:35.442949: programs loaded from file
+2015.04.23-08:45:35.443366: water source is 5.0% full
+2015.04.23-08:45:35.443398: station "station 0" (0) is 5.0% full
+2015.04.23-08:45:35.443423: station "station 1" (1) is 5.0% full
+2015.04.23-08:45:55.911597: general settings saved to file
+2015.04.23-08:45:55.916823: programs saved to file
+2015.04.23-08:45:55.919659: hardware settings saved to file
+2015.04.23-08:45:55.919686: quitting
+2015.04.23-08:46:03.595377: general settings loaded from file
+2015.04.23-08:46:03.595658: no GPIO module was loaded, running in no-hardware mode
+2015.04.23-08:46:03.595788: hardware settings loaded from file
+2015.04.23-08:46:03.596069: programs loaded from file
+2015.04.23-08:46:03.596458: water source is 5.0% full
+2015.04.23-08:46:03.596489: station "station 0" (0) is 5.0% full
+2015.04.23-08:46:03.596510: station "station 1" (1) is 5.0% full
+2015.04.23-08:47:04.576018: water source is 5.0% full
+2015.04.23-08:47:04.576056: station "station 0" (0) is 5.0% full
+2015.04.23-08:47:04.576082: station "station 1" (1) is 5.0% full
+2015.04.23-08:47:52.119173: general settings saved to file
+2015.04.23-08:47:52.504081: programs saved to file
+2015.04.23-08:47:52.612975: hardware settings saved to file
+2015.04.23-08:47:52.612998: quitting
+2015.04.23-08:48:23.809336: general settings loaded from file
+2015.04.23-08:48:23.809623: no GPIO module was loaded, running in no-hardware mode
+2015.04.23-08:48:23.809757: hardware settings loaded from file
+2015.04.23-08:48:23.810046: programs loaded from file
+2015.04.23-08:48:23.814809: water source is 5.0% full
+2015.04.23-08:48:23.814925: station "station 0" (0) is 5.0% full
+2015.04.23-08:48:23.814985: station "station 1" (1) is 5.0% full
+2015.04.23-08:48:33.452215: general settings saved to file
+2015.04.23-08:48:33.460160: programs saved to file
+2015.04.23-08:48:33.465266: hardware settings saved to file
+2015.04.23-08:48:33.465297: quitting
+2015.04.23-08:49:16.520844: general settings loaded from file
+2015.04.23-08:49:16.521129: no GPIO module was loaded, running in no-hardware mode
+2015.04.23-08:49:16.521263: hardware settings loaded from file
+2015.04.23-08:49:16.521547: programs loaded from file
+2015.04.23-08:49:16.521999: water source is 5.0% full
+2015.04.23-08:49:16.522028: station "station 0" (0) is 5.0% full
+2015.04.23-08:49:16.522052: station "station 1" (1) is 5.0% full
+2015.04.23-08:49:22.628546: general settings saved to file
+2015.04.23-08:49:22.634103: programs saved to file
+2015.04.23-08:49:22.635907: hardware settings saved to file
+2015.04.23-08:49:22.635931: quitting
+2015.04.23-08:50:51.445697: general settings loaded from file
+2015.04.23-08:50:51.445984: no GPIO module was loaded, running in no-hardware mode
+2015.04.23-08:50:51.446121: hardware settings loaded from file
+2015.04.23-08:50:51.446414: programs loaded from file
+2015.04.23-08:50:51.452154: water source is 5.0% full
+2015.04.23-08:50:51.452226: station "station 0" (0) is 5.0% full
+2015.04.23-08:50:51.452278: station "station 1" (1) is 5.0% full
+2015.04.23-08:51:03.366702: general settings saved to file
+2015.04.23-08:51:03.367588: programs saved to file
+2015.04.23-08:51:03.367951: hardware settings saved to file
+2015.04.23-08:51:03.367982: quitting
+2015.04.23-08:51:05.027720: general settings loaded from file
+2015.04.23-08:51:05.028015: no GPIO module was loaded, running in no-hardware mode
+2015.04.23-08:51:05.028149: hardware settings loaded from file
+2015.04.23-08:51:05.028430: programs loaded from file
+2015.04.23-08:51:05.028817: water source is 5.0% full
+2015.04.23-08:51:05.028849: station "station 0" (0) is 5.0% full
+2015.04.23-08:51:05.028871: station "station 1" (1) is 5.0% full
+2015.04.23-08:51:26.131439: general settings saved to file
+2015.04.23-08:51:26.175809: programs saved to file
+2015.04.23-08:51:26.181615: hardware settings saved to file
+2015.04.23-08:51:26.181640: quitting
+2015.04.23-08:51:34.595084: general settings loaded from file
+2015.04.23-08:51:34.595386: no GPIO module was loaded, running in no-hardware mode
+2015.04.23-08:51:34.595522: hardware settings loaded from file
+2015.04.23-08:51:34.595809: programs loaded from file
+2015.04.23-08:51:34.600955: water source is 5.0% full
+2015.04.23-08:51:34.601075: station "station 0" (0) is 5.0% full
+2015.04.23-08:51:34.601135: station "station 1" (1) is 5.0% full
+2015.04.23-08:51:48.802287: settings of program 0 (new program) was changed by user
+2015.04.23-08:52:34.671445: water source is 5.0% full
+2015.04.23-08:52:34.671493: station "station 0" (0) is 5.0% full
+2015.04.23-08:52:34.671523: station "station 1" (1) is 5.0% full
+2015.04.23-08:52:51.826697: general settings saved to file
+2015.04.23-08:52:51.827413: programs saved to file
+2015.04.23-08:52:51.827668: hardware settings saved to file
+2015.04.23-08:52:51.827692: quitting
+2015.04.23-08:52:54.945570: general settings loaded from file
+2015.04.23-08:52:54.945870: no GPIO module was loaded, running in no-hardware mode
+2015.04.23-08:52:54.946005: hardware settings loaded from file
+2015.04.23-08:52:54.946310: programs loaded from file
+2015.04.23-08:52:54.949775: water source is 5.0% full
+2015.04.23-08:52:54.949815: station "station 0" (0) is 5.0% full
+2015.04.23-08:52:54.949837: station "station 1" (1) is 5.0% full
+2015.04.23-08:53:07.505213: general settings saved to file
+2015.04.23-08:53:07.506096: programs saved to file
+2015.04.23-08:53:07.506408: hardware settings saved to file
+2015.04.23-08:53:07.506528: quitting
+2015.04.23-08:53:08.602969: general settings loaded from file
+2015.04.23-08:53:08.603263: no GPIO module was loaded, running in no-hardware mode
+2015.04.23-08:53:08.603395: hardware settings loaded from file
+2015.04.23-08:53:08.603675: programs loaded from file
+2015.04.23-08:53:08.607046: water source is 5.0% full
+2015.04.23-08:53:08.607109: station "station 0" (0) is 5.0% full
+2015.04.23-08:53:08.607139: station "station 1" (1) is 5.0% full
+2015.04.23-08:53:17.506656: settings of program 0 (new program) was changed by user
+2015.04.23-08:53:38.327780: general settings saved to file
+2015.04.23-08:53:38.330836: programs saved to file
+2015.04.23-08:53:38.332646: hardware settings saved to file
+2015.04.23-08:53:38.332666: quitting
+2015.04.23-08:57:10.607437: general settings loaded from file
+2015.04.23-08:57:10.607719: no GPIO module was loaded, running in no-hardware mode
+2015.04.23-08:57:10.607851: hardware settings loaded from file
+2015.04.23-08:57:10.608133: programs loaded from file
+2015.04.23-08:57:10.611529: water source is 5.0% full
+2015.04.23-08:57:10.611561: station "station 0" (0) is 5.0% full
+2015.04.23-08:57:10.611588: station "station 1" (1) is 5.0% full
+2015.04.23-08:57:28.868307: general settings saved to file
+2015.04.23-08:57:28.869129: programs saved to file
+2015.04.23-08:57:28.869438: hardware settings saved to file
+2015.04.23-08:57:28.869467: quitting
+2015.04.23-10:28:06.012101: general settings loaded from file
+2015.04.23-10:28:06.012384: no GPIO module was loaded, running in no-hardware mode
+2015.04.23-10:28:06.012515: hardware settings loaded from file
+2015.04.23-10:28:06.012797: programs loaded from file
+2015.04.23-10:28:06.013203: water source is 5.0% full
+2015.04.23-10:28:06.013235: station "station 0" (0) is 5.0% full
+2015.04.23-10:28:06.013259: station "station 1" (1) is 5.0% full
+2015.04.23-10:29:06.090047: water source is 5.0% full
+2015.04.23-10:29:06.090107: station "station 0" (0) is 5.0% full
+2015.04.23-10:29:06.090145: station "station 1" (1) is 5.0% full
+2015.04.23-10:29:16.587214: settings of program 0 (new program) was changed by user
+2015.04.23-10:30:06.176446: water source is 5.0% full
+2015.04.23-10:30:06.176505: station "station 0" (0) is 5.0% full
+2015.04.23-10:30:06.176544: station "station 1" (1) is 5.0% full
+2015.04.23-10:30:11.259115: settings of program 0 (new program) was changed by user
+2015.04.23-10:31:06.248333: water source is 5.0% full
+2015.04.23-10:31:06.248392: station "station 0" (0) is 5.0% full
+2015.04.23-10:31:06.248431: station "station 1" (1) is 5.0% full
+2015.04.23-10:31:51.789331: general settings saved to file
+2015.04.23-10:31:51.789935: programs saved to file
+2015.04.23-10:31:51.790138: hardware settings saved to file
+2015.04.23-10:31:51.790161: quitting
+2015.04.23-10:31:52.915354: general settings loaded from file
+2015.04.23-10:31:52.915711: no GPIO module was loaded, running in no-hardware mode
+2015.04.23-10:31:52.915863: hardware settings loaded from file
+2015.04.23-10:31:52.916147: programs loaded from file
+2015.04.23-10:31:52.920121: water source is 5.0% full
+2015.04.23-10:31:52.920201: station "station 0" (0) is 5.0% full
+2015.04.23-10:31:52.920247: station "station 1" (1) is 5.0% full
+2015.04.23-10:32:04.578211: general settings saved to file
+2015.04.23-10:32:04.579195: programs saved to file
+2015.04.23-10:32:04.579495: hardware settings saved to file
+2015.04.23-10:32:04.579527: quitting
+2015.04.23-10:32:05.969764: general settings loaded from file
+2015.04.23-10:32:05.970122: no GPIO module was loaded, running in no-hardware mode
+2015.04.23-10:32:05.970275: hardware settings loaded from file
+2015.04.23-10:32:05.970565: programs loaded from file
+2015.04.23-10:32:05.970969: water source is 5.0% full
+2015.04.23-10:32:05.971000: station "station 0" (0) is 5.0% full
+2015.04.23-10:32:05.971025: station "station 1" (1) is 5.0% full
+2015.04.23-10:33:06.048900: water source is 5.0% full
+2015.04.23-10:33:06.048958: station "station 0" (0) is 5.0% full
+2015.04.23-10:33:06.048996: station "station 1" (1) is 5.0% full
+2015.04.23-10:34:06.119477: water source is 5.0% full
+2015.04.23-10:34:06.119534: station "station 0" (0) is 5.0% full
+2015.04.23-10:34:06.119571: station "station 1" (1) is 5.0% full
+2015.04.23-10:34:26.641578: general settings saved to file
+2015.04.23-10:34:26.642498: programs saved to file
+2015.04.23-10:34:26.642839: hardware settings saved to file
+2015.04.23-10:34:26.642871: quitting
+2015.04.23-10:34:27.241570: general settings loaded from file
+2015.04.23-10:34:27.241855: no GPIO module was loaded, running in no-hardware mode
+2015.04.23-10:34:27.241990: hardware settings loaded from file
+2015.04.23-10:34:27.242274: programs loaded from file
+2015.04.23-10:34:27.245664: water source is 5.0% full
+2015.04.23-10:34:27.245701: station "station 0" (0) is 5.0% full
+2015.04.23-10:34:27.245749: station "station 1" (1) is 5.0% full
+2015.04.23-10:34:53.045206: settings of program 0 (new program) was changed by user
+2015.04.23-10:35:27.317837: water source is 5.0% full
+2015.04.23-10:35:27.317873: station "station 0" (0) is 5.0% full
+2015.04.23-10:35:27.317894: station "station 1" (1) is 5.0% full
+2015.04.23-10:36:27.389970: water source is 5.0% full
+2015.04.23-10:36:27.390028: station "station 0" (0) is 5.0% full
+2015.04.23-10:36:27.390066: station "station 1" (1) is 5.0% full
+2015.04.23-10:37:27.461231: water source is 5.0% full
+2015.04.23-10:37:27.461289: station "station 0" (0) is 5.0% full
+2015.04.23-10:37:27.461327: station "station 1" (1) is 5.0% full
+2015.04.23-10:37:28.249814: general settings saved to file
+2015.04.23-10:37:28.250644: programs saved to file
+2015.04.23-10:37:28.250979: hardware settings saved to file
+2015.04.23-10:37:28.250998: quitting
+2015.04.23-10:38:40.058680: general settings loaded from file
+2015.04.23-10:38:40.058967: no GPIO module was loaded, running in no-hardware mode
+2015.04.23-10:38:40.059107: hardware settings loaded from file
+2015.04.23-10:38:40.059444: programs loaded from file
+2015.04.23-10:38:40.059831: water source is 5.0% full
+2015.04.23-10:38:40.059863: station "station 0" (0) is 5.0% full
+2015.04.23-10:38:40.059885: station "station 1" (1) is 5.0% full
+2015.04.23-10:38:52.559987: settings of program 0 (new program) was changed by user
+2015.04.23-10:39:40.138178: water source is 5.0% full
+2015.04.23-10:39:40.138237: station "station 0" (0) is 5.0% full
+2015.04.23-10:39:40.138277: station "station 1" (1) is 5.0% full
+2015.04.23-10:40:40.209599: water source is 5.0% full
+2015.04.23-10:40:40.209658: station "station 0" (0) is 5.0% full
+2015.04.23-10:40:40.209699: station "station 1" (1) is 5.0% full
+2015.04.23-10:41:40.281925: water source is 5.0% full
+2015.04.23-10:41:40.281985: station "station 0" (0) is 5.0% full
+2015.04.23-10:41:40.282025: station "station 1" (1) is 5.0% full
+2015.04.23-10:42:40.349580: water source is 5.0% full
+2015.04.23-10:42:40.349639: station "station 0" (0) is 5.0% full
+2015.04.23-10:42:40.349680: station "station 1" (1) is 5.0% full
+2015.04.23-10:43:40.419653: water source is 5.0% full
+2015.04.23-10:43:40.419690: station "station 0" (0) is 5.0% full
+2015.04.23-10:43:40.419711: station "station 1" (1) is 5.0% full
+2015.04.23-10:44:40.489774: water source is 5.0% full
+2015.04.23-10:44:40.489833: station "station 0" (0) is 5.0% full
+2015.04.23-10:44:40.489872: station "station 1" (1) is 5.0% full
+2015.04.23-10:45:40.558231: water source is 5.0% full
+2015.04.23-10:45:40.558269: station "station 0" (0) is 5.0% full
+2015.04.23-10:45:40.558291: station "station 1" (1) is 5.0% full
+2015.04.23-10:46:40.628578: water source is 5.0% full
+2015.04.23-10:46:40.628637: station "station 0" (0) is 5.0% full
+2015.04.23-10:46:40.628677: station "station 1" (1) is 5.0% full
+2015.04.23-10:47:40.700158: water source is 5.0% full
+2015.04.23-10:47:40.700217: station "station 0" (0) is 5.0% full
+2015.04.23-10:47:40.700257: station "station 1" (1) is 5.0% full
+2015.04.23-10:48:40.771038: water source is 5.0% full
+2015.04.23-10:48:40.771096: station "station 0" (0) is 5.0% full
+2015.04.23-10:48:40.771136: station "station 1" (1) is 5.0% full
+2015.04.23-10:49:40.842295: water source is 5.0% full
+2015.04.23-10:49:40.842331: station "station 0" (0) is 5.0% full
+2015.04.23-10:49:40.842353: station "station 1" (1) is 5.0% full
+2015.04.23-10:50:40.915095: water source is 5.0% full
+2015.04.23-10:50:40.915132: station "station 0" (0) is 5.0% full
+2015.04.23-10:50:40.915153: station "station 1" (1) is 5.0% full
+2015.04.23-10:51:40.987414: water source is 5.0% full
+2015.04.23-10:51:40.987473: station "station 0" (0) is 5.0% full
+2015.04.23-10:51:40.987513: station "station 1" (1) is 5.0% full
+2015.04.23-10:52:41.059913: water source is 5.0% full
+2015.04.23-10:52:41.059957: station "station 0" (0) is 5.0% full
+2015.04.23-10:52:41.059984: station "station 1" (1) is 5.0% full
+2015.04.23-10:53:41.129663: water source is 5.0% full
+2015.04.23-10:53:41.129722: station "station 0" (0) is 5.0% full
+2015.04.23-10:53:41.129762: station "station 1" (1) is 5.0% full
+2015.04.23-10:54:41.199086: water source is 5.0% full
+2015.04.23-10:54:41.199122: station "station 0" (0) is 5.0% full
+2015.04.23-10:54:41.199144: station "station 1" (1) is 5.0% full
+2015.04.23-10:55:41.271446: water source is 5.0% full
+2015.04.23-10:55:41.271483: station "station 0" (0) is 5.0% full
+2015.04.23-10:55:41.271504: station "station 1" (1) is 5.0% full
+2015.04.23-10:56:41.342159: water source is 5.0% full
+2015.04.23-10:56:41.342218: station "station 0" (0) is 5.0% full
+2015.04.23-10:56:41.342258: station "station 1" (1) is 5.0% full
+2015.04.23-10:57:41.412588: water source is 5.0% full
+2015.04.23-10:57:41.412647: station "station 0" (0) is 5.0% full
+2015.04.23-10:57:41.412687: station "station 1" (1) is 5.0% full
+2015.04.23-10:58:41.484023: water source is 5.0% full
+2015.04.23-10:58:41.484082: station "station 0" (0) is 5.0% full
+2015.04.23-10:58:41.484121: station "station 1" (1) is 5.0% full
+2015.04.23-10:59:41.553307: water source is 5.0% full
+2015.04.23-10:59:41.553366: station "station 0" (0) is 5.0% full
+2015.04.23-10:59:41.553406: station "station 1" (1) is 5.0% full
+2015.04.23-11:00:41.623459: water source is 5.0% full
+2015.04.23-11:00:41.623518: station "station 0" (0) is 5.0% full
+2015.04.23-11:00:41.623557: station "station 1" (1) is 5.0% full
+2015.04.23-11:01:41.696081: water source is 5.0% full
+2015.04.23-11:01:41.696141: station "station 0" (0) is 5.0% full
+2015.04.23-11:01:41.696181: station "station 1" (1) is 5.0% full
+2015.04.23-11:02:41.766800: water source is 5.0% full
+2015.04.23-11:02:41.766859: station "station 0" (0) is 5.0% full
+2015.04.23-11:02:41.766898: station "station 1" (1) is 5.0% full
+2015.04.23-11:03:41.835441: water source is 5.0% full
+2015.04.23-11:03:41.835501: station "station 0" (0) is 5.0% full
+2015.04.23-11:03:41.835542: station "station 1" (1) is 5.0% full
+2015.04.23-11:04:41.905300: water source is 5.0% full
+2015.04.23-11:04:41.905359: station "station 0" (0) is 5.0% full
+2015.04.23-11:04:41.905399: station "station 1" (1) is 5.0% full
+2015.04.23-11:05:41.971279: water source is 5.0% full
+2015.04.23-11:05:41.971339: station "station 0" (0) is 5.0% full
+2015.04.23-11:05:41.971379: station "station 1" (1) is 5.0% full
+2015.04.23-11:06:42.041344: water source is 5.0% full
+2015.04.23-11:06:42.041404: station "station 0" (0) is 5.0% full
+2015.04.23-11:06:42.041444: station "station 1" (1) is 5.0% full
+2015.04.23-11:07:42.110910: water source is 5.0% full
+2015.04.23-11:07:42.110955: station "station 0" (0) is 5.0% full
+2015.04.23-11:07:42.110985: station "station 1" (1) is 5.0% full
+2015.04.23-11:08:42.183734: water source is 5.0% full
+2015.04.23-11:08:42.183794: station "station 0" (0) is 5.0% full
+2015.04.23-11:08:42.183834: station "station 1" (1) is 5.0% full
+2015.04.23-11:09:32.084869: general settings saved to file
+2015.04.23-11:09:32.085467: programs saved to file
+2015.04.23-11:09:32.085719: hardware settings saved to file
+2015.04.23-11:09:32.085737: quitting
+2015.04.23-11:09:33.201221: general settings loaded from file
+2015.04.23-11:09:33.201577: no GPIO module was loaded, running in no-hardware mode
+2015.04.23-11:09:33.201733: hardware settings loaded from file
+2015.04.23-11:09:33.202025: programs loaded from file
+2015.04.23-11:09:33.202433: water source is 5.0% full
+2015.04.23-11:09:33.202462: station "station 0" (0) is 5.0% full
+2015.04.23-11:09:33.235514: station "station 1" (1) is 5.0% full
+2015.04.23-11:10:33.320266: water source is 5.0% full
+2015.04.23-11:10:33.320303: station "station 0" (0) is 5.0% full
+2015.04.23-11:10:33.320324: station "station 1" (1) is 5.0% full
+2015.04.23-11:11:33.392026: water source is 5.0% full
+2015.04.23-11:11:33.392085: station "station 0" (0) is 5.0% full
+2015.04.23-11:11:33.392124: station "station 1" (1) is 5.0% full
+2015.04.23-11:12:33.464135: water source is 5.0% full
+2015.04.23-11:12:33.464194: station "station 0" (0) is 5.0% full
+2015.04.23-11:12:33.464233: station "station 1" (1) is 5.0% full
+2015.04.23-11:13:28.937009: general settings saved to file
+2015.04.23-11:13:28.938374: programs saved to file
+2015.04.23-11:13:28.938932: hardware settings saved to file
+2015.04.23-11:13:28.938974: quitting
+2015.04.23-11:13:30.350836: general settings loaded from file
+2015.04.23-11:13:30.351120: no GPIO module was loaded, running in no-hardware mode
+2015.04.23-11:13:30.351280: hardware settings loaded from file
+2015.04.23-11:13:30.351571: programs loaded from file
+2015.04.23-11:13:30.351956: water source is 5.0% full
+2015.04.23-11:13:30.351988: station "station 0" (0) is 5.0% full
+2015.04.23-11:13:30.352010: station "station 1" (1) is 5.0% full
+2015.04.23-11:13:31.881633: general settings saved to file
+2015.04.23-11:13:31.882453: programs saved to file
+2015.04.23-11:13:31.882804: hardware settings saved to file
+2015.04.23-11:13:31.882842: quitting
+2015.04.23-11:42:30.257988: general settings loaded from file
+2015.04.23-11:42:30.258275: no GPIO module was loaded, running in no-hardware mode
+2015.04.23-11:42:30.258413: hardware settings loaded from file
+2015.04.23-11:42:30.258710: programs loaded from file
+2015.04.23-11:42:30.259123: water source is 5.0% full
+2015.04.23-11:42:30.262945: station "station 0" (0) is 5.0% full
+2015.04.23-11:42:30.262979: station "station 1" (1) is 5.0% full
+2015.04.23-11:43:09.522509: general settings saved to file
+2015.04.23-11:43:09.523409: programs saved to file
+2015.04.23-11:43:09.523769: hardware settings saved to file
+2015.04.23-11:43:09.523809: quitting
+2015.04.23-11:49:53.446518: general settings loaded from file
+2015.04.23-11:49:53.446804: no GPIO module was loaded, running in no-hardware mode
+2015.04.23-11:49:53.446938: hardware settings loaded from file
+2015.04.23-11:49:53.447254: programs loaded from file
+2015.04.23-11:49:53.447666: water source is 5.0% full
+2015.04.23-11:49:53.447697: station "station 0" (0) is 5.0% full
+2015.04.23-11:49:53.447722: station "station 1" (1) is 5.0% full
+2015.04.23-11:50:11.188606: general settings saved to file
+2015.04.23-11:50:11.189967: programs saved to file
+2015.04.23-11:50:11.190503: hardware settings saved to file
+2015.04.23-11:50:11.190547: quitting
+2015.04.23-11:50:30.271787: general settings loaded from file
+2015.04.23-11:50:30.272068: no GPIO module was loaded, running in no-hardware mode
+2015.04.23-11:50:30.272201: hardware settings loaded from file
+2015.04.23-11:50:30.272484: programs loaded from file
+2015.04.23-11:50:30.277015: water source is 5.0% full
+2015.04.23-11:50:30.277084: station "station 0" (0) is 5.0% full
+2015.04.23-11:50:30.277131: station "station 1" (1) is 5.0% full
+2015.04.23-11:50:57.088252: settings of program 0 (weekly program) was changed by user
+2015.04.23-11:51:17.888697: settings of program 1 (interval program) was changed by user
+2015.04.23-11:51:30.348565: water source is 5.0% full
+2015.04.23-11:51:30.348625: station "station 0" (0) is 5.0% full
+2015.04.23-11:51:30.348664: station "station 1" (1) is 5.0% full
+2015.04.23-11:52:30.420278: water source is 5.0% full
+2015.04.23-11:52:30.420337: station "station 0" (0) is 5.0% full
+2015.04.23-11:52:30.420375: station "station 1" (1) is 5.0% full
+2015.04.23-11:53:30.491339: water source is 5.0% full
+2015.04.23-11:53:30.491397: station "station 0" (0) is 5.0% full
+2015.04.23-11:53:30.491436: station "station 1" (1) is 5.0% full
+2015.04.23-11:54:30.565482: water source is 5.0% full
+2015.04.23-11:54:30.565541: station "station 0" (0) is 5.0% full
+2015.04.23-11:54:30.565578: station "station 1" (1) is 5.0% full
+2015.04.23-11:55:30.638589: water source is 5.0% full
+2015.04.23-11:55:30.638625: station "station 0" (0) is 5.0% full
+2015.04.23-11:55:30.638646: station "station 1" (1) is 5.0% full
+2015.04.23-11:56:30.709646: water source is 5.0% full
+2015.04.23-11:56:30.709704: station "station 0" (0) is 5.0% full
+2015.04.23-11:56:30.709741: station "station 1" (1) is 5.0% full
+2015.04.23-11:56:55.007768: general settings saved to file
+2015.04.23-11:56:55.008743: programs saved to file
+2015.04.23-11:56:55.008925: hardware settings saved to file
+2015.04.23-11:56:55.008943: quitting
+2015.04.23-11:57:13.732879: general settings loaded from file
+2015.04.23-11:57:13.733166: no GPIO module was loaded, running in no-hardware mode
+2015.04.23-11:57:13.733296: hardware settings loaded from file
+2015.04.23-11:57:13.733756: programs loaded from file
+2015.04.23-11:57:13.734154: water source is 5.0% full
+2015.04.23-11:57:13.734184: station "station 0" (0) is 5.0% full
+2015.04.23-11:57:13.734207: station "station 1" (1) is 5.0% full
+2015.04.23-11:57:35.037196: general settings saved to file
+2015.04.23-11:57:35.037924: programs saved to file
+2015.04.23-11:57:35.038097: hardware settings saved to file
+2015.04.23-11:57:35.038114: quitting
+2015.04.23-11:57:36.016630: general settings loaded from file
+2015.04.23-11:57:36.016915: no GPIO module was loaded, running in no-hardware mode
+2015.04.23-11:57:36.017050: hardware settings loaded from file
+2015.04.23-11:57:36.017530: programs loaded from file
+2015.04.23-11:57:36.017918: water source is 5.0% full
+2015.04.23-11:57:36.017949: station "station 0" (0) is 5.0% full
+2015.04.23-11:57:36.017970: station "station 1" (1) is 5.0% full
+2015.04.23-11:57:52.978453: general settings saved to file
+2015.04.23-11:57:52.979933: programs saved to file
+2015.04.23-11:57:52.980243: hardware settings saved to file
+2015.04.23-11:57:52.980273: quitting
+2015.04.23-11:57:54.062238: general settings loaded from file
+2015.04.23-11:57:54.062541: no GPIO module was loaded, running in no-hardware mode
+2015.04.23-11:57:54.062673: hardware settings loaded from file
+2015.04.23-11:57:54.063142: programs loaded from file
+2015.04.23-11:57:54.066700: water source is 5.0% full
+2015.04.23-11:57:54.066760: station "station 0" (0) is 5.0% full
+2015.04.23-11:57:54.066784: station "station 1" (1) is 5.0% full
+2015.04.23-11:58:51.943985: general settings saved to file
+2015.04.23-11:58:51.944952: programs saved to file
+2015.04.23-11:58:51.945127: hardware settings saved to file
+2015.04.23-11:58:51.945144: quitting
+2015.04.23-11:59:00.668340: general settings loaded from file
+2015.04.23-11:59:00.668622: no GPIO module was loaded, running in no-hardware mode
+2015.04.23-11:59:00.668755: hardware settings loaded from file
+2015.04.23-11:59:00.669229: programs loaded from file
+2015.04.23-11:59:00.669617: water source is 5.0% full
+2015.04.23-11:59:00.669648: station "station 0" (0) is 5.0% full
+2015.04.23-11:59:00.669669: station "station 1" (1) is 5.0% full
+2015.04.23-11:59:39.634318: general settings saved to file
+2015.04.23-11:59:39.635642: programs saved to file
+2015.04.23-11:59:39.636004: hardware settings saved to file
+2015.04.23-11:59:39.636045: quitting
+2015.04.23-11:59:40.460902: general settings loaded from file
+2015.04.23-11:59:40.461206: no GPIO module was loaded, running in no-hardware mode
+2015.04.23-11:59:40.461343: hardware settings loaded from file
+2015.04.23-11:59:40.461872: programs loaded from file
+2015.04.23-11:59:40.462287: water source is 5.0% full
+2015.04.23-11:59:40.462323: station "station 0" (0) is 5.0% full
+2015.04.23-11:59:40.462346: station "station 1" (1) is 5.0% full
+2015.04.23-12:00:28.083631: general settings saved to file
+2015.04.23-12:00:28.085056: programs saved to file
+2015.04.23-12:00:28.085450: hardware settings saved to file
+2015.04.23-12:00:28.085482: quitting
+2015.04.23-12:00:28.851854: general settings loaded from file
+2015.04.23-12:00:28.852140: no GPIO module was loaded, running in no-hardware mode
+2015.04.23-12:00:28.852272: hardware settings loaded from file
+2015.04.23-12:00:28.852737: programs loaded from file
+2015.04.23-12:00:28.853146: water source is 5.0% full
+2015.04.23-12:00:28.853180: station "station 0" (0) is 5.0% full
+2015.04.23-12:00:28.853203: station "station 1" (1) is 5.0% full
+2015.04.23-12:00:59.185122: general settings saved to file
+2015.04.23-12:00:59.185909: programs saved to file
+2015.04.23-12:00:59.186133: hardware settings saved to file
+2015.04.23-12:00:59.186150: quitting
+2015.04.23-12:00:59.851523: general settings loaded from file
+2015.04.23-12:00:59.851804: no GPIO module was loaded, running in no-hardware mode
+2015.04.23-12:00:59.851940: hardware settings loaded from file
+2015.04.23-12:00:59.852423: programs loaded from file
+2015.04.23-12:00:59.852823: water source is 5.0% full
+2015.04.23-12:00:59.852855: station "station 0" (0) is 5.0% full
+2015.04.23-12:00:59.852879: station "station 1" (1) is 5.0% full
+2015.04.23-12:01:59.928679: water source is 5.0% full
+2015.04.23-12:01:59.928739: station "station 0" (0) is 5.0% full
+2015.04.23-12:01:59.928778: station "station 1" (1) is 5.0% full
+2015.04.23-12:03:00.001115: water source is 5.0% full
+2015.04.23-12:03:00.001174: station "station 0" (0) is 5.0% full
+2015.04.23-12:03:00.001213: station "station 1" (1) is 5.0% full
+2015.04.23-12:03:03.089161: general settings saved to file
+2015.04.23-12:03:03.090170: programs saved to file
+2015.04.23-12:03:03.090381: hardware settings saved to file
+2015.04.23-12:03:03.090405: quitting
+2015.04.23-12:03:04.379166: general settings loaded from file
+2015.04.23-12:03:04.379465: no GPIO module was loaded, running in no-hardware mode
+2015.04.23-12:03:04.379600: hardware settings loaded from file
+2015.04.23-12:03:04.380079: programs loaded from file
+2015.04.23-12:03:04.380478: water source is 5.0% full
+2015.04.23-12:03:04.380508: station "station 0" (0) is 5.0% full
+2015.04.23-12:03:04.385071: station "station 1" (1) is 5.0% full
+2015.04.23-12:03:16.401468: general settings saved to file
+2015.04.23-12:03:16.402882: programs saved to file
+2015.04.23-12:03:16.403263: hardware settings saved to file
+2015.04.23-12:03:16.403293: quitting
