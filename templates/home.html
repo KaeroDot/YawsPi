@@ -39,29 +39,41 @@ $def with (gv)
         </b>
     <br>
     <p></p>
-    <b>Sensors: </b>
-    $if 'temp' in gv.hw.Sensors:
-            <br>
-            Temperature sensor: <b>$gv.cv['SeTemp'] &deg</b>
-    $if 'press' in gv.hw.Sensors:
-            <br>
-            Pressure sensor: <b>$"{:.0f}".format(gv.cv['SePress']) Pa</b>
-    $if 'humid' in gv.hw.Sensors:
-            <br>
-            Humidity sensor: <b>$"{:.0f}".format(gv.cv['SeHumid']) %</b>
-    $if 'rain' in gv.hw.Sensors:
-            <br>
-            Rain sensor: <b>$gv.cv['SeRain'] mm</b>
-    $if 'illum' in gv.hw.Sensors:
-            <br>
-            Illuminance sensor: <b>$"{:.0f}".format(gv.cv['SeIllum']) lux</b>
+    <b>Weather sensors: </b>
+    <table border="1">
+            <tr><td>
+            $if 'temp' in gv.hw.Sensors:
+                    <br>
+                    Temperature: <b>$gv.cv['SeTemp'] &deg</b>
+            </td><td>
+            $if 'press' in gv.hw.Sensors:
+                    <br>
+                    Pressure: <b>$"{:.0f}".format(gv.cv['SePress']) Pa</b>
+            </td><td>
+            $if 'humid' in gv.hw.Sensors:
+                    <br>
+                    Humidity: <b>$"{:.0f}".format(gv.cv['SeHumid']) %</b>
+            </td><td>
+            $if 'illum' in gv.hw.Sensors:
+                    <br>
+                    Illuminance: <b>$"{:.0f}".format(gv.cv['SeIllum']) lux</b>
+            </td><td>
+            $if 'rain' in gv.hw.Sensors:
+                    <br>
+                    Rain: <b>$gv.cv['SeRain'] mm</b>
+            </td></tr>
+    </table>
     <p></p>
     <b>Source:</b>
     <br>
     Water level: <b>$'{:.0f}'.format(gv.cv['SoWL'] * 100) %</b>
     <p></p>
-    <b>Stations status</b>
+    <!-- table to put stations and programs beside each other -->
+    <table border="0">
+    <tr><td>
+
     <table border="1">
+        <b>Stations status</b>
         <tbody>
             <tr>
                 <td>
@@ -72,12 +84,6 @@ $def with (gv)
                 </td>
                 <td>
                     Water Level
-                </td>
-                <td>
-                    Running
-                </td>
-                <td>
-                    Next Run
                 </td>
             </tr>
             $for i in range(gv.hw.StNo)
@@ -91,32 +97,82 @@ $def with (gv)
                     <td>
                         $'{:.0f}'.format(gv.cv['StWL'][i] * 100) %
                     </td>
-                    <td>
-                        $if gv.hw.StStatus[i]:
-                            <font color='red'>Yes</font>
-                        $else:
-                            No
-                    </td>
-                    <td>
-                       - 
-                    </td>
                 </tr>
         </tbody>
     </table>
+
+    </td><td>
+
+    <table border="1">
+        <b>Programs status</b>
+        <tbody>
+            <tr>
+                <td>
+                    No
+                </td>
+                <td>
+                    Name
+                </td>
+                <td>
+                    Enabled
+                </td>
+                <td>
+                    Next Run In
+                </td>
+            </tr>
+            $for i in range(len(gv.prg))
+                <tr>
+                    <td>
+                        $i
+                    </td>
+                    <td>
+                        $gv.prg[i]['Name']
+                    </td>
+                    <td>
+                       $if gv.prg[i]['Enabled']:
+                           <font color='green'>Yes</font>
+                       $else:
+                           <font color='red'>No</font>
+                    </td>
+                    <td>
+                        $if gv.gs['Enabled']:
+                                $if gv.prg[i]['Enabled']:
+                                        $gv.cv['PrgNR'][i]
+                                $else:
+                                        -
+                        $else:
+                                Operation Stopped
+                    </tr>
+                </tr>
+        </tbody>
+    </table>
+
+
+    </td></tr>
+    </table>
     <p></p>
+    Control:
     <form method="post"> 
-        <button name="reload" title="Refresh this page"><img src="static/icons/update.png" align="absmiddle"> Refresh</button>
-        <button name="runnow" title="Run now"><img src="static/icons/run_now.png" align="absmiddle"> Run now</button>
-        <button name="options" title="Change options"><img src="static/icons/options.png" align="absmiddle"> Options</button>
-        <button name="stations" title="List of stations and change settings"><img src="static/icons/stations.png" align="absmiddle"> Stations</button>
-        <button name="programs" title="Show programs and change settings"><img src="static/icons/programs.png" align="absmiddle"> Programs</button>
-        <button name="log" title="Show log of events"><img src="static/icons/log.png" align="absmiddle"> Log</button>
-        <button name="history" title="Show history"><img src="static/icons/history.png" align="absmiddle"> History</button>
+        <button name="reload" title="Refresh this page"><img src="static/icons/update.png" align="absmiddle"> Refresh page</button>
+        <button name="breakmainloop" title="Checks water levels. If system started, check programs whether watering needed."><img src="static/icons/update.png" align="absmiddle">Check now</button>
         $if gv.gs['Enabled']:
             <button name="stop" title="Stop all programs"><img src="static/icons/stop.png" align="absmiddle"> Stop</button>
         $else:
             <button name="start" title="Start enabled programs"><img src="static/icons/start.png" align="absmiddle"> Start</button>
         <button name="reboot" title="Reboot system"><img src="static/icons/quit.png" align="absmiddle"> Reboot</button>
+    </form>
+    <p></p>
+    Configurate:
+    <form method="post"> 
+        <button name="options" title="Change options"><img src="static/icons/options.png" align="absmiddle"> Options</button>
+        <button name="stations" title="List of stations and change settings"><img src="static/icons/stations.png" align="absmiddle"> Stations</button>
+        <button name="programs" title="Show programs and change settings"><img src="static/icons/programs.png" align="absmiddle"> Programs</button>
+    </form>
+    <p></p>
+    Check:
+    <form method="post"> 
+        <button name="log" title="Show log of events"><img src="static/icons/log.png" align="absmiddle"> Log</button>
+        <button name="history" title="Show history"><img src="static/icons/history.png" align="absmiddle"> History</button>
     </form>
 </body>
 </html>

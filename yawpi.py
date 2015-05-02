@@ -1,27 +1,25 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
+#
 # vim modeline: vim: shiftwidth=4 tabstop=4
 #=================================================================
 # main yawpi program
 #=================================================================
 
 # XXX todo:
-# save config and programs on change
 # bugs:
-# 1,saving of measured source level, station level do not work
-# 2,station settings should show station hardware  informations (senzor type,
-# set capacity)
-# 3, station settings - thershold - does it change grad sensor slope? it should
-# 4, check program generates too long, and generates errors
-# 5, run now - does it work?
-# replace standard datetime and timedelta by arrow?
-# http://crsmithdev.com/arrow/
+# 3, station settings - threshold - does it change grad sensor slope? should
+# it?
 # 6, ensure the smallest main loop time is one minute otherwise looking for
-# next running times will fail
+# next running times could fail - really?
+# 7, show webpage 'wait' if user wants water station NOW from stations web
+# page?
+# 8, home page, table programs: when 'next run in' is now, nothing is
+# shown
+# 9, kdyz ukladani hladin do specialniho souboru, zrusit zapis do logu?
 
 # standard modules:
-import time
-# XXX datetime should be deleted after removing dependencies:
-from datetime import datetime
+from time import sleep
 import arrow
 import sys
 import web
@@ -41,10 +39,6 @@ def get_now_str_web():  # returns current date/time as string for home web page
     return arrow.now('local').format('DD. MM. YYYY HH:MM:ss, dddd, MMMM, ZZ')
 
 
-def get_now_str_data():  # returns current date/time as string for logs etc
-    return arrow.now('local').isoformat()
-
-
 def quit():  # performs safe quit
     gv.hw.so_switch(0)  # set water source off
     for i in range(gv.hw.StNo):
@@ -55,6 +49,31 @@ def quit():  # performs safe quit
     hws_save()  # save hardware settings
     log_add('quitting')
     log_save()  # save log
+
+
+def td_format(td_object):  # formats timedelta to nice string
+        seconds = int(td_object.total_seconds())
+        periods = [
+            ('year',        60 * 60 * 24 * 365),
+            ('month',       60 * 60 * 24 * 30),
+            ('day',         60 * 60 * 24),
+            ('hour',        60 * 60),
+            ('minute',      60),
+        ]
+            #('second',      1)
+        strings = []
+        for period_name, period_seconds in periods:
+                if seconds > period_seconds:
+                        period_value, seconds = divmod(seconds, period_seconds)
+                        if period_value == 1:
+                                strings.append("%s %s" %
+                                               (period_value, period_name)
+                                               )
+                        else:
+                                strings.append("%s %ss" %
+                                               (period_value, period_name)
+                                               )
+        return ", ".join(strings)
 
 
 # ------------------- variables initializations/definitions:
@@ -100,8 +119,10 @@ def init_hws():  # initialize dictionary with hw settings:
             # upper threshold - if sensors value is above, station is
             # considered full:
             'HighThr': 0.9,
-            # save measured and filling data:
-            'SaveData': True
+            # saving measured and filling data:
+            'SaveData': True,
+            # sensor description:
+            'Desc': gv.hw.se_description(x)
         })
 
 
@@ -114,6 +135,8 @@ def init_cv():  # initialize dictionary with current values
         'SoWL': 0,
         # StWL: current water level of stations
         'StWL': [0] * gv.hw.StNo,
+        # PrgNR: next watering time of a program
+        'PrgNR': [arrow.now('local')] * len(gv.prg),
         # sensors status
         'SeTemp': -300,
         'SeRain': -300,
@@ -150,15 +173,14 @@ def prg_get_new():  # returns dict with a new program
         'caliIntervalD': 1,
         # for interval mode - repeat during day every (hours):
         'caliRepeatH': 5,
-        # XXX check that nowhere exists calRepeat or calRepeatW or calRepeatI or calRepeatH
         # program valid from time of day (Hours and Minutes):
         'TimeFromH': 6,
         'TimeFromM': 0,
         # program valid to time of day (Hours and Minutes):
         'TimeToH': 19,
         'TimeToM': 0,
-        # last run of program (arrow):
-        # (for a new program is set 1 day to the past - i.e. equal to caliIntervalD)
+        # last run of program (arrow) (for a new program is set 1 day to the
+        # past - i.e. equal to caliIntervalD):
         'TimeLastRun': arrow.now('local').replace(days=-1),
         # all stations of the program was already found as empty?
         # (for a new program is set as not yet found empty (False))
@@ -170,18 +192,34 @@ def prg_get_new():  # returns dict with a new program
 
 
 # ------------------- watering program handling:
+def prg_add():  # add a new program
+    # append new program:
+    gv.prg.append(prg_get_new())
+    # increase list with next watering time for web server:
+    gv.cv['PrgNR'].append(arrow.now('local'))
+
+
+def prg_remove(index):  # remove a program
+    # remove program:
+    gv.prg.pop(index)
+    # decrease list with next watering time for web server:
+    gv.cv['PrgNR'].pop(index)
+
+
 def prg_is_water_time(index):  # return boolean if watering should start
     # also adds log if watering should start or not and why not
     prg = gv.prg[index]
     now = arrow.now('local')
     if prg['Enabled']:
         now = arrow.now('local')
-        isreadystr = log_add('program "' + prg['Name'] +
-                '" (' + str(index) + '): ready for watering')
+        isreadystr = 'program "' + prg['Name'] + \
+                     '" (' + str(index) + '): ready for watering'
         notreadystr = 'program "' + prg['Name'] + '" (' + str(index) + '): '
         if prg['Mode'] == 'waterlevel':
             # water level mode:
             tmp = prg_lev_is_water_time(index, now)
+            # generate next run in string for web:
+            gv.cv['PrgNR'][index] = td_format(tmp[0] - arrow.now('local'))
             if tmp[0]:
                 log_add(isreadystr)
                 return True
@@ -191,7 +229,9 @@ def prg_is_water_time(index):  # return boolean if watering should start
         elif prg['Mode'] == 'weekly':
             # weekly calendar mode:
             tmp = prg_wee_next_water_time(index, now)
-            if is_in_time_range(index, now, tmp[0]):
+            # generate next run in string for web:
+            gv.cv['PrgNR'][index] = td_format(tmp[0] - arrow.now('local'))
+            if is_in_time_span(index, now, tmp[0]):
                 log_add(isreadystr)
                 return True
             else:
@@ -200,7 +240,9 @@ def prg_is_water_time(index):  # return boolean if watering should start
         elif prg['Mode'] == 'interval':
             # interval mode:
             tmp = prg_int_next_water_time(index, now)
-            if is_in_time_range(index, now, tmp[0]):
+            # generate next run in string for web:
+            gv.cv['PrgNR'][index] = td_format(tmp[0] - arrow.now('local'))
+            if is_in_time_span(index, now, tmp[0]):
                 log_add(isreadystr)
                 return True
             else:
@@ -210,7 +252,7 @@ def prg_is_water_time(index):  # return boolean if watering should start
             raise NameError('unknown program type')
 
 
-def prg_lev_is_water_time(index, now):  # subpart of prg_is_water_time
+def prg_lev_is_water_time(index, now):  # returns next watering time
     # only for programs with mode 'waterlevel'
     # returns tuple with boolean and reason why is not water time if not
     prg = gv.prg[index]
@@ -239,16 +281,28 @@ def prg_lev_is_water_time(index, now):  # subpart of prg_is_water_time
     return (True, 'ready for watering')
 
 
-def is_in_time_range(index, querytime, watertime):
-    # divny nazev prejmenovat... XXX
-    # checks if next water time is equal to query time
+def is_in_time_span(index, querytime, nextwatertime):
+    # checks if querytime is equal to nextwatertime with limits given by main
+    # loop interval gv.gs['MLInterval']
+    # index - index of program
+    # querytime is time for which should be determined if is watering time
+    # nextwatertime is watering time later than query time
+    mli = gv.gs['MLInterval']
+    tlr = gv.prg[index]['TimeLastRun']
     tmp = (
-        # is last watering far away?
-        watertime > gv.prg[index]['TimeLastRun'] + 2 * gv.gs['MLInterval']
-        # is next watering time near query time?
-        and watertime > querytime - 2 * gv.gs['MLInterval']
-        and watertime < querytime + 2 * gv.gs['MLInterval']
+        querytime > tlr.replace(seconds=2 * mli)
+        and
+        nextwatertime > querytime.replace(seconds=-2 * mli)
+        and
+        nextwatertime < querytime.replace(seconds=+2 * mli)
     )
+    #tmp = (
+    #    # is last watering far in the past?
+    #    watertime > gv.prg[index]['TimeLastRun'] + 2 * gv.gs['MLInterval']
+    #    # is next watering time near query time?
+    #    and watertime > querytime - 2 * gv.gs['MLInterval']
+    #    and watertime < querytime + 2 * gv.gs['MLInterval']
+    #)
     return tmp
 
 
@@ -318,27 +372,22 @@ def prg_int_next_water_time(index, starttime):  # returns next watering time
     # add days till found day greater or equal to starttime:
     while t.floor('day') < starttime.floor('day'):
         t = t.replace(days=prg['caliIntervalD'])
-    print t
     # found day is not equal to starttime?
     if not t.day == starttime.day:
         # found time is later day than starttime, return it:
-        print 'return 1'
         return (t, 'not valid day')
     # found day is equal to starttime, add hours till found time equal or
     # greater than starttime
     ts = t
     while ts < starttime:
         ts = ts.replace(hours=prg['caliRepeatH'])
-    print ts
     pvt = starttime.replace(hour=prg['TimeToH'], minute=prg['TimeToH'])
     # found time is greater then 'program valid to' time?
     if ts > pvt:
         # add caliIntervalD to previous found day and return it:
         t = t.replace(days=prg['caliIntervalD'])
-        print 'return 2'
         return(t,  'later than TimeTo')
     # found time is not grater then 'program valid to' time, return it:
-    print 'return 3'
     return(ts, 'not valid time of a day')
 
 
@@ -347,7 +396,7 @@ def prg_water(index):  # starts watering all stations in the program
     for st in gv.prg[index]['Stations']:
         station_fill(st)
     # save time of filling:
-    gv.prg[index]['TimeLastRun'] = time.time()
+    gv.prg[index]['TimeLastRun'] = arrow.now('local')
     # set that station was not yet found empty:
     gv.prg[index]['TimeFoundEmpty'] = 0
 
@@ -431,54 +480,70 @@ def prg_save():  # save program file
 
 
 # ------------------- watering data related:
-def data_filename(name):
-    # returns filename with measured data for station, source or sensor
-    try:
-        if int(name) in range(gv.hw.StNo):
-            return gv.datadir + '/' + str(name).format('%03d') + '.csv'
-    except ValueError:
-        return gv.datadir + '/' + name + '.csv'
-
-
-def save_station_data_point(index, value):  # save water level of a station
-    # create data folder if missing:
+def check_data_folder():  # check folder with data files (creates it if needed)
     if not os.path.isdir(gv.datadir):
         os.mkdir(gv.datadir)
+
+
+def data_filename(name):  # returns filename with/for measured data for
+    # station, source or sensor
+    # name can be either a name:
+    if type(name) == str:
+        return gv.datadir + '/' + name + '.csv'
+    # or it can be a number:
+    elif type(name) == int:
+        index = int(name)
+        if index in range(gv.hw.StNo):
+            return gv.datadir + '/' + str(name).format('%03d') + '.csv'
+    else:
+        raise NameError('unknown input into the data_filename(): ' + str(name))
+
+
+def save_station_level(index, value):  # save water level of a station
     if index in range(gv.hw.StNo):
         # saving data for this station enabled?:
         if gv.hws['StData'][index]['SaveData']:
-            if not data_filename(str(index)):
-                datafile = open(data_filename(str(index)), 'a')
-                tmp = get_now_str_data() + '; ' + str(value) + '\n'
-                datafile.writelines(tmp)
-                datafile.close()
+            save_station_data_line(index, str(value) + '; water level (a. u.)')
 
 
-def save_source_data_point(value):  # save measured source water level
-    # create data folder if missing:
-    if not os.path.isdir(gv.datadir):
-        os.mkdir(gv.datadir)
-    # saving data for source enabled?:
-    if gv.hws['SoData']['SaveData']:
-        if not data_filename('source'):
-            datafile = open(data_filename('source'), 'a')
-            tmp = get_now_str_data() + '; ' + str(value) + '\n'
+def save_station_fill(index, value):  # save filled volume of a station
+    # value is filled volume in liters
+    if index in range(gv.hw.StNo):
+        # saving data for this station enabled?:
+        if gv.hws['StData'][index]['SaveData']:
+            save_station_data_line(index, str(value) + '; fill volume (l)')
+
+
+def save_station_data_line(index, string):  # save data line of a station
+    check_data_folder()
+    if index in range(gv.hw.StNo):
+        # saving data for this station enabled?:
+        if gv.hws['StData'][index]['SaveData']:
+            datafile = open(data_filename(str(index)), 'a')
+            tmp = arrow.now('local').isoformat() + '; ' + string + '\n'
             datafile.writelines(tmp)
             datafile.close()
 
 
-def save_sensor_data_point(name, value):  # save measured sensor value
-    # create data folder if missing:
-    if not os.path.isdir(gv.datadir):
-        os.mkdir(gv.datadir)
+def save_source_level(value):  # save measured source water level
+    check_data_folder()
+    # saving data for source enabled?:
+    if gv.hws['SoData']['SaveData']:
+        datafile = open(data_filename('source'), 'a')
+        tmp = arrow.now('local').isoformat() + '; ' + str(value) + '\n'
+        datafile.writelines(tmp)
+        datafile.close()
+
+
+def save_sensor_value(name, value):  # save measured sensor value
+    check_data_folder()
     if name in gv.hw.Sensors:
         # save data for this sensor enabled?:
         if name in gv.hws['SeData']['SaveData']:
-            if not data_filename(name):
-                datafile = open(data_filename(name), 'a')
-                tmp = get_now_str_data() + '; ' + str(value) + '\n'
-                datafile.writelines(tmp)
-                datafile.close()
+            datafile = open(data_filename(name), 'a')
+            tmp = arrow.now('local').isoformat() + '; ' + str(value) + '\n'
+            datafile.writelines(tmp)
+            datafile.close()
 
 
 def load_data_file(name):
@@ -487,39 +552,103 @@ def load_data_file(name):
         # file should be closed automatically when using with statement
         with open(data_filename(name)) as f:
             for line in f:
-                data.append([datetime.strptime(line[:19], '%Y-%m-%d %H:%M:%S'),
-                            float(line[20:])])
+                # parse and convert data:
+                line = line.split(';')
+                line[0] = arrow.get(line[0])
+                line[1] = float(line[1])
+                # parse possible other data
+                data.append(line)
     return data
 
 
 def make_graphs(name):  # generate graphs with history
     # returns svg graph with measured data for station, source or sensor
     # XXX finish: generates 3 graphs: last 7 days, last 30 days and all
-    # measured data
+    # measured data:
     data = load_data_file(name)
-    if name == 'source':
-        gtitle = 'water source'
-    elif name == 'temp':
-        gtitle = 'ambient temperature'
-    elif name == 'humid':
-        gtitle = 'ambient humidity'
-    elif name == 'press':
-        gtitle = 'ambient pressure'
-    elif name == 'rain':
-        gtitle = 'rain'
-    elif name == 'illum':
-        gtitle = 'ambient light'
-    else:
-        gtitle = gv.hws['StData'][int(name)]['Name'] + '(' + str(name) + ')'
-    if len(data) == 0:
-        data = [datetime.now(), 0]
-    graphall = pygal.DateY(x_label_rotation=20,
-                           style=pygal.style.RedBlueStyle,
+    ax1 = []
+    ax2 = []
+    # secondary axis will be used?
+    secondY = False
+    # set values according what to plot
+    try:
+        if int(name) in range(gv.hw.StNo):
+            gtitle = gv.hws['StData'][int(name)]['Name'] + \
+                '(' + str(name) + ')'
+            y1title = 'water level (a. u.)'
+            # parse station data:
+            for tmp in data:
+                if tmp[2].find('level') > -1:
+                    # found water level data:
+                    ax1.append((tmp[0].datetime, tmp[1]))
+                elif tmp[2].find('fill') > -1:
+                    # found water filling data:
+                    ax2.append((tmp[0].datetime, tmp[1]))
+            if len(ax2) > 0:
+                y2title = 'fill volume (l)'
+                secondY = True
+        else:
+            # not identified which station to plot:
+            raise NameError('Error - number in name not in '
+                            'rage of station numbers')
+    except ValueError:
+        if name == 'source':
+            gtitle = 'water source'
+            y1title = 'water level (a. u.)'
+        elif name == 'temp':
+            gtitle = 'ambient temperature'
+            y1title = 'deg C'
+        elif name == 'humid':
+            gtitle = 'ambient humidity'
+            y1title = '%'
+        elif name == 'press':
+            gtitle = 'ambient pressure'
+            y1title = 'Pa'
+        elif name == 'rain':
+            gtitle = 'rain'
+            y1title = '(a. u.)'
+        elif name == 'illum':
+            gtitle = 'ambient light'
+            y1title = 'lux'
+        else:
+            # not identified what to plot:
+            raise NameError('Error - unknown string in name in make_graphs')
+        # change arrow datatype to datetime:
+        for tmp in data:
+            ax1.append((tmp[0].datetime, tmp[1]))
+    graphall = pygal.DateY(style=pygal.style.CleanStyle,
                            legend_at_bottom=True,
-                           # human_readable=True, - this has no sense probably
-                           x_label_format="%H:%M, %a %d.%m.",
+                           print_values=False,
+                           show_x_guides=True,
+                           show_y_guides=True,
+                           x_label_rotation=20,
+                           x_label_format="%a %d.%m. %H:%M",
                            title=gtitle,
+                           y_title=y1title,
+                           show_legend=False,
                            )
+                           # human_readable=True, - this has no sense probably
+    # plot lines:
+    graphall.add('water level', ax1)
+    if secondY:
+        graphall.add('filling', ax2)  # secondary=True)
+        graphall.config(show_legend=True, y_title=y1title + ' | ' + y2title)
+        #graphall.config(y2_title=y2title, secondary=True)
+    # XXX
+    # XXX pygal cannot have different ranges and axes on primary and secondary
+    # axis
+    # check if all data are not the same, else ranging would be
+    # incorrect
+    # # (pygal problem)
+    # tmp1 = []
+    # for tmp in ax1:
+    #     tmp1.append(tmp[1])
+    # if len(set(tmp1)) == 1:
+    #     # all data are the same, y axis range must be set manually:
+    #     print 'manual range'
+    #     #graphall.config(range=(0, ax1[0][1]))
+    # jakykoliv input na secondary nefunguje!!!!!! XXX
+    # graphall.config(range=(0, 3),secondary=True)
     return graphall.render()
 
 
@@ -527,8 +656,7 @@ def make_graphs(name):  # generate graphs with history
 def log_add(line):  # add string to a log buffer
     if gv.gs['Logging']:
         # add time to the log line:
-        tmp = datetime.now().strftime('%Y.%m.%d-%H:%M:%S.%f') + \
-            ': ' + line + '\n'
+        tmp = arrow.now('local').isoformat() + '; ' + line + '\n'
         # hopefully this is atomic operation so no collisions between threads
         # can occur:
         gv.logbuffer = gv.logbuffer + [tmp]
@@ -571,42 +699,50 @@ def sensors_get_all():  # measures water levels of barrel and all stations
         raise NameError('sensors_get_all() called outside main thread!')
     # get source water level:
     gv.cv['SoWL'] = gv.hw.so_level()
-    save_source_data_point(gv.cv['SoWL'])
+    save_source_level(gv.cv['SoWL'])
     log_add('water source is ' + str(gv.cv['SoWL'] * 100) + '% full')
     # stations water level:
     for i in range(gv.hw.StNo):
         # XXX tady dat threshold (nebo nekam jinam)?
         gv.cv['StWL'][i] = gv.hw.se_level(i)
-        save_station_data_point(i, gv.cv['StWL'][i])
+        save_station_level(i, gv.cv['StWL'][i])
         log_add('station "' + gv.hws['StData'][i]['Name'] + '" (' + str(i) +
                 ') is ' + str(gv.cv['StWL'][i] * 100) + '% full')
     # weather sensors:
     gv.cv['SeTemp'] = gv.hw.se_temp()
+    save_sensor_value('temp', gv.cv['SeTemp'])
     gv.cv['SeHumid'] = gv.hw.se_humid()
+    save_sensor_value('humid', gv.cv['SeHumid'])
     gv.cv['SeRain'] = gv.hw.se_rain()
+    save_sensor_value('rain', gv.cv['SeRain'])
     gv.cv['SePress'] = gv.hw.se_press()
+    save_sensor_value('press', gv.cv['SePress'])
     gv.cv['SeIllum'] = gv.hw.se_illum()
-    # weather XXX logging
+    save_sensor_value('illum', gv.cv['SeIllum'])
 
 
 def station_fill(index):  # fill water into one station
+    # XXX st_fill by mel vracet i odhadnuty objem, a ten pak ukladat do dat
     if __name__ != "__main__":
         raise NameError('station_fill() called outside main thread!')
     log_add('preparing to fill station "' + gv.hws['StData'][i]['Name'] +
             '" (' + str(index) + ')')
     # get filling time in seconds according to station capacity:
     filltime = gv.hw.fill_time(index)
-    gv.hw.st_fill(index, gv.hws['StData'][index]['HighThr'])
+    # set sssafety bound to 10 %:
+    filltime = filltime * 1.1
     try:
         realfilltime = gv.hw.st_fill(index, gv.hws['StData'][index]['HighThr'])
     except:   # XXX tohle je mozna blbost, try mozna uvnitr station fill?
         gv.hw.so_switch(0)
         raise NameError('Error when filling station!')
     tmp = 'station "' + gv.hws['StData'][i]['Name'] + '" (' + str(index) + \
-          ') was filled, time of filling was ' + str(realfilltime) + \
-          ' s, time limit was ' + str(filltime) + ' s'
+          ') was filled, filled volume was ' + \
+          str(gv.hw.filled_volume(realfilltime)) + ' l, filling time was ' + \
+          str(realfilltime) + ' s, time limit was ' + str(filltime) + ' s'
     if realfilltime > filltime:
-        tmp = tmp + ', limit EXCEEDED!'
+        tmp = tmp + ', time limit EXCEEDED!'
+    save_station_fill(i, gv.hw.filled_volume(realfilltime))
     log_add(tmp)
 
 
@@ -630,15 +766,11 @@ class WebHome:  # home page with status informations
         }
         if response.keys()[0] in simpleredirect:
             raise web.seeother(simpleredirect[response.keys()[0]])
-        elif 'runnow' in response:
-            if not 'askforRun' in gv.flags:
-                gv.flags = gv.flags + ['askforRun']
-            # wait for refresh maximally 5 seconds:
-            waittill = time.time() + 5
-            while time.time() < waittill:
-                if not 'askforRun' in gv.flags:
-                    break
-                time.sleep(0.1)
+        elif 'breakmainloop' in response:
+            # user required for main loop break, add flag:
+            if not 'askforbreak' in gv.flags:
+                gv.flags = gv.flags + ['askforbreak']
+            # reload this page
             raise web.seeother('/')
         elif 'start' in response:
             gv.gs['Enabled'] = 1
@@ -777,6 +909,8 @@ class WebOptions:  # options page to change settings
                 if 'IllumData' in response:
                     gv.hws['SeData']['SaveData'].append('illum')
                 log_add('options changed by user')
+                # save configuration to a file:
+                gs_save()
                 raise web.seeother('/')
         # if cancel or any unknown response, go to home page:
         raise web.seeother('/')
@@ -791,6 +925,10 @@ class WebReboot:  # show reboot question
         if 'reboot' in response:
             # send keyboard interrupt to main thread:
             thread.interrupt_main()
+            # call system reboot in 1 minute
+            # XXX causes error, but it is working. it is some problem of
+            # threading package?
+            os.system('/sbin/shutdown -r +1')
             # quit this thread with webserver:
             sys.exit(0)
         # if cancel or any unknown response, go to home page:
@@ -823,6 +961,11 @@ class WebStations:  # shows list of stations
         for i in range(gv.hw.StNo):
             if str(i) in response:
                 return web.seeother('changestation' + str(i))
+            flag = 'askforrun' + str(i)
+            if flag in response:
+                if not flag in gv.flags:
+                    gv.flags = gv.flags + [flag]
+                raise web.seeother('/')
         # if cancel or any unknown response, go to home page:
         raise web.seeother('/')
 
@@ -904,6 +1047,8 @@ class WebChangeStation:  # change station settings
                     log_add('settings of station "' +
                             gv.hws['StData'][index]['Name'] + '" (' +
                             str(index) + ') was changed by user')
+                    # save configuration:
+                    hws_save()
                     raise web.seeother('/stations')
             else:
                 index = -1
@@ -919,7 +1064,7 @@ class WebPrograms:  # shows list of programs
     def POST(self):
         response = web.input()  # get user response
         if 'add' in response:
-            gv.prg.append(prg_get_new())
+            prg_add()
             return web.seeother('programs')
         if 'check' in response:
             return web.seeother('checkprograms')
@@ -928,7 +1073,7 @@ class WebPrograms:  # shows list of programs
             return web.seeother('changeprogram' + response.keys()[0][1:])
         if response.keys()[0] in ['r' + str(i) for i in range(len(gv.prg))]:
             # remove program and reload page:
-            gv.prg.pop(int(response.keys()[0][1:]))
+            prg_remove(int(response.keys()[0][1:]))
             return web.seeother('programs')
         # if cancel or any unknown response, go to home page:
         raise web.seeother('/')
@@ -1119,9 +1264,11 @@ class WebChangeProgram:  # change program settings
                     # minus caliIntervalD:
                     if p['Mode'] == 'interval':
                         t = arrow.now('local')
-                        t = t.replace(hour=p['TimeFromH'], minute=p['TimeFromM'])
+                        t = t.replace(hour=p['TimeFromH'],
+                                      minute=p['TimeFromM'])
                         t = t.floor('minute')
-                        p['TimeLastRun'] = t.replace(days=-1 * p['caliIntervalD'])
+                        t = t.replace(days=-1 * p['caliIntervalD'])
+                        p['TimeLastRun'] = t
                     # parse selected stations
                     tmp = []
                     for i in response:
@@ -1138,6 +1285,8 @@ class WebChangeProgram:  # change program settings
                     log_add('settings of program ' + str(index)
                             + ' (' + gv.prg[index]['Name'] + ')'
                             + ' was changed by user')
+                    # save configuration
+                    prg_save()
                     raise web.seeother('/programs')
             else:
                 index = -1
@@ -1164,7 +1313,8 @@ class WebCheckPrograms:  # shows plan of programs for next 2 weeks
                     # to prevent infinite loop:
                     cnt = cnt + 1
                     if cnt > 1400:
-                        raise NameError('Too many waterings in two weeks, probably internal error')
+                        raise NameError('Too many waterings in two weeks,' +
+                                        ' probably internal error')
                     # get next watering according program mode:
                     if gv.prg[i]['Mode'] == 'weekly':
                         tmp = prg_wee_next_water_time(i, t)
@@ -1201,12 +1351,14 @@ class WebHistory:  # shows list of stations
         response = web.input()  # get user response
         resp = response.keys()[0]
         try:
-            # XXX tohle pujde lip pomoci str(range)
+            # check if response contains number of station:
             if int(resp) in range(gv.hw.StNo):
                 return make_graphs(resp)
             else:
                 raise NameError('Error - unknown response in history page')
         except ValueError:
+            # if no number, check if response contains one of other
+            # possibilities:
             if (resp in gv.hw.Sensors) | (resp == 'source'):
                 return make_graphs(resp)
             elif 'cancel' in response:  # if back pressed, go to home page
@@ -1243,9 +1395,11 @@ if __name__ == "__main__":
     gv.logfilepath = gv.configdir + "/log.txt"
     gv.logbuffer = []
     gv.flags = []
-
     # load system configuration:
     gs_load()
+    # cannot add log line before knowing logging is enabled, and this settings
+    # was loaded by gs_load():
+    log_add('starting')
     # initialize hw:
     gv.hw = yawpihw()
     if gv.hw.WithHW != 1:
@@ -1270,17 +1424,15 @@ if __name__ == "__main__":
 
     # -------------------------------- main program loop
     try:
+        # generate time of next loop iteration
+        loopendtime = arrow.now('local')
+        loopendtime = loopendtime.replace(seconds=+gv.gs['MLInterval'])
+        loopendtime = loopendtime.floor('second')
         while True:
-            # generate time of next loop iteration
-            loopendtime = arrow.now('local')
-            loopendtime = loopendtime.replace(seconds=+gv.gs['MLInterval'])
-
             # generate values for web:
             # measure water levels:
             sensors_get_all()
-            # if web thread asked for refresh, remove flag:
-            if 'askforRun' in gv.flags:
-                gv.flags.remove('askforRun')
+            # if web thread asked for break, do it:
 
             # watering
             if gv.gs['Enabled']:
@@ -1289,9 +1441,6 @@ if __name__ == "__main__":
                     if prg_is_water_time(i):
                         # if program should water now, do it:
                         prg_water(i)
-
-                # XXX generate next runs - only if watering
-
             # dump log buffer into a file
             log_save()
 
@@ -1299,15 +1448,35 @@ if __name__ == "__main__":
             # (time.sleep(60) is not good because catching KeyboardInterrupt
             # exception (end from web thread) would take up to 60 seconds)
             while arrow.now('local') < loopendtime:
-                # if web thread asked for refresh, break loop:
-                if 'askforRun' in gv.flags:
-                    break
-                time.sleep(1)
+                # if some flag from webserver:
+                if len(gv.flags):
+                    # if web thread asked for break, do it:
+                    if 'askforbreak' in gv.flags:
+                        gv.flags.remove('askforbreak')
+                        break
+                    # if web thread asked for watering of station:
+                    for i in range(gv.hw.StNo):
+                        flag = 'askforrun' + str(i)
+                        if flag in gv.flags:
+                            # water now!
+                            station_fill(i)
+                            gv.flags.remove(flag)
+                sleep(1)
+            # generate next loopend time
+            loopendtime = loopendtime.replace(seconds=+gv.gs['MLInterval'])
+            loopendtime = loopendtime.floor('second')
+            # ensure loopendtime is not in the past, some watering can take
+            # loooong time:
+            while loopendtime < arrow.now('local'):
+                loopendtime = loopendtime.replace(seconds=+gv.gs['MLInterval'])
     except KeyboardInterrupt:
         # keyboard interrupt or reboot pressed in webserver
         quit()  # perform safe quit
         # and this is the end of the script
+        # system is rebooted when called from web page, but not when python is
+        # run from command line and Ctrl+c is pressed
 else:
     # ------------------- code run only in web thread:
     # render of templates:
+    # (this runs webserver)
     render = web.template.render('templates/')

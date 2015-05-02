@@ -175,7 +175,7 @@ class yawpihw:
             self.gpio.setmode(self.gpio.BOARD)
             self.RPiRevision = self.gpio.RPI_REVISION
         else:
-            self.RPiRevision = 'no hardware mode'
+            self.RPiRevision = 'hardware emulation mode'
 
         # import humidity sensor:
         if self.WithHW:
@@ -190,6 +190,13 @@ class yawpihw:
                 from BMP180 import BMP180
                 self.press = BMP180(self.RPiRevision - 1, 3)
                 self.Sensors.append('press')
+
+        # setup temperature sensor:
+        if self.WithHW:
+            if self.hwc['SeTemp']:
+                # correct setting for temperature sensor is done in
+                # _check_config
+                self.Sensors.append('temp')
 
         # import illuminance sensor:
         if self.WithHW:
@@ -236,7 +243,7 @@ class yawpihw:
             for x in range(len(self.hwc['St'])):  # switch off valves
                 self.st_switch(x, 0)
             for x in range(len(self.hwc['SeWL'])):  # switch off all sensors
-                self.se_switch(x, 0)
+                self._se_switch(x, 0)
 
     def _pin_config(self, pin, direction):  # configure pin as output or input
         # direction: 0 == output, 1 == input
@@ -294,31 +301,7 @@ class yawpihw:
             # ad converters:
             return self.adc[-1 * pin[0] - 1].readadcv(pin[1], 5) / 5
 
-    def so_switch(self, value):  # set water source on or off
-        if self.WithHW:
-            if value:
-                # switch on
-                self._pin_set(self.hwc['So']['Pin'], 1)
-                self.SoStatus = 1
-            else:
-                # switch off
-                self._pin_set(self.hwc['So']['Pin'], 0)
-                self.SoStatus = 0
-
-    def st_switch(self, index,  value):  # sets station valve on or off
-        if index < 0 or index > len(self.hwc['St']) - 1:
-            raise NameError('incorrect valve index')
-        if self.WithHW:
-            if value:
-                # switch valve on
-                self._pin_set(self.hwc['St'][index]['Pin'], 1)
-                self.StStatus[index] = 1
-            else:
-                # switch valve off
-                self._pin_set(self.hwc['St'][index]['Pin'], 0)
-                self.StStatus[index] = 0
-
-    def se_switch(self, index, value):  # switch sensor on or off
+    def _se_switch(self, index, value):  # switch sensor on or off
         if index < 0 or index > len(self.hwc['SeWL']) - 1:
             raise NameError('incorrect sensor index')
         if self.WithHW:
@@ -372,6 +355,30 @@ class yawpihw:
             # if no hardware, do nothing
             pass
 
+    def so_switch(self, value):  # set water source on or off
+        if self.WithHW:
+            if value:
+                # switch on
+                self._pin_set(self.hwc['So']['Pin'], 1)
+                self.SoStatus = 1
+            else:
+                # switch off
+                self._pin_set(self.hwc['So']['Pin'], 0)
+                self.SoStatus = 0
+
+    def st_switch(self, index,  value):  # sets station valve on or off
+        if index < 0 or index > len(self.hwc['St']) - 1:
+            raise NameError('incorrect valve index')
+        if self.WithHW:
+            if value:
+                # switch valve on
+                self._pin_set(self.hwc['St'][index]['Pin'], 1)
+                self.StStatus[index] = 1
+            else:
+                # switch valve off
+                self._pin_set(self.hwc['St'][index]['Pin'], 0)
+                self.StStatus[index] = 0
+
     def so_level(self):  # returns water level of water in the water source
         # barrel sensor is the last one
         if self.hwc['So']['Cap'] == -1:
@@ -386,7 +393,7 @@ class yawpihw:
             raise NameError('incorrect sensor index: ' + str(index))
         if self.WithHW:
             # first switch sensor on:
-            self.se_switch(index, 1)
+            self._se_switch(index, 1)
             # let voltages stabilize:
             sleep(0.1)
             # second get sensor value
@@ -431,23 +438,52 @@ class yawpihw:
             else:
                 raise NameError('unknown Water Level Sensor Type!')
             # third switch sensor off:
-            self.se_switch(index, 0)
+            self._se_switch(index, 0)
             # fourth return value:
             return val
         else:
             # if no hardware, return part of hour
             # what is it? XXX
-            ##hour = time.time() // 3600
-            ##rest = time.time() - hour * 3600
+            ##hour = time() // 3600
+            ##rest = time() - hour * 3600
             ##minute = rest // 60.0
             ##return minute / 60.0
             return 0.05
 
-    def fill_time(self, index):  # return filling time (s) of a station
+    def se_description(self, index):  # return sensor description
+        # return description of sensor type
+        d = 'volume is ' + str(self.hwc['St'][index]['Cap']) + ' l, '
+        d = d + 'fill time is ' + \
+            '{:.1f}'.format(self.fill_time(index)) + \
+            ' s, '
+        if index < 0 or index > len(self.hwc['SeWL']) - 1:
+            raise NameError('incorrect sensor index: ' + str(index))
+        if self.hwc['SeWL'][index]['Type'] == 'none':
+            d = d + 'no sensor attached'
+        elif self.hwc['SeWL'][index]['Type'] == 'min':
+            d = d + 'sensor detects station is empty'
+        elif self.hwc['SeWL'][index]['Type'] == 'max':
+            d = d + 'sensor detects station is full'
+        elif self.hwc['SeWL'][index]['Type'] == 'minmax':
+            d = d + 'sensor detects station is empty or full'
+        elif self.hwc['SeWL'][index]['Type'] == 'grad':
+            d = d + 'sensor detects level of water'
+        return d
+
+    def fill_time(self, index):  # return expected filling time of a station
+        # time is in seconds, calculated from nominal values
         V = self.hwc['St'][index]['Cap']   # volume
+        O = self.hwc['So']['FlowRateRev'][0]  # offset
+        R1 = self.hwc['So']['FlowRateRev'][1]  # rate1
+        R2 = self.hwc['So']['FlowRateRev'][2]  # rate2
+        return O + R1 * V + R2 * V * V
+
+    def filled_volume(self, filltime):  # return calculated filled volume
+        # calculated from filling time in seconds
         O = self.hwc['So']['FlowRate'][0]  # offset
-        R = self.hwc['So']['FlowRate'][1]  # rate
-        return (V - O) / R
+        R1 = self.hwc['So']['FlowRate'][1]  # rate1
+        R2 = self.hwc['So']['FlowRate'][2]  # rate2
+        return O + R1 * filltime + R2 * filltime * filltime
 
     def st_fill(self, index, upthreshold):  # fill water into one station
         if self.WithHW:
@@ -458,19 +494,19 @@ class yawpihw:
             # type of sensor
             sensortype = self.hwc['SeWL'][index]['Type']
             stsettlet = self.hwc['St'][index]['SettleT']
-            sosettlet = self.hwc['So'][index]['SettleT']
+            sosettlet = self.hwc['So']['SettleT']
             self.st_switch(index, 1)  # switch valve on
             sleep(stsettlet)  # wait to valve settle
             self.so_switch(1)  # set pump on
-            tmp = time.time()
+            tmp = time()
             if sensortype == 'none':
                 # if no sensor, just wait filltime:
                 sleep(filltime)
             else:
                 # if sensor, wait for sensor showing full or if time is 1.1
                 # times greater than filltime
-                endtime = time.time() + filltime * 1.1
-                while time.time() < endtime:
+                endtime = time() + filltime * 1.1
+                while time() < endtime:
                     # periodically detect wl:
                     if self.se_level(index) > upthreshold:
                         break
@@ -479,14 +515,16 @@ class yawpihw:
                         # XXX wait time could be changed?
                         sleep(0.05)
             self.so_switch(0)            # set pump off
-            realfilltime = time.time() - tmp
+            realfilltime = time() - tmp
             sleep(sosettlet)                # wait to stop the water flow
             self.st_switch(index, 0)        # switch valve off
             sleep(stsettlet)                # wait to valve settle
             return realfilltime
         else:
-            # if no hardware, return some dummy value:
-            return 2
+            # if no hardware, return ideal filling time:
+            t = self.fill_time(index)
+            sleep(t)
+            return t
 
     def se_temp(self):  # return temperature
         if self.WithHW and self.hwc['SeTemp']:

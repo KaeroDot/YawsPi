@@ -20,6 +20,12 @@ $def with (gv)
                 <td>
                     Edit
                 </td>
+                <td>
+                    Description
+                </td>
+                <td>
+                    Water now
+                </td>
             </tr>
             $for i in range(gv.hw.StNo)
                 <tr>
@@ -32,6 +38,14 @@ $def with (gv)
                     <td>
                         <form method="post"> 
                             <button name="$:i" title="Change settings of station $:i"><img src="static/icons/edit.png" align="absmiddle"></button>
+                        </form>
+                    </td>
+                    <td>
+                        $gv.hws['StData'][i]['Desc']
+                    </td>
+                    <td>
+                        <form method="post"> 
+                            <button name="askforrun$:i" title="Water station $:i now"><img src="static/icons/run_now.png" align="absmiddle"></button>
                         </form>
                     </td>
                 </tr>

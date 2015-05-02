@@ -49,13 +49,20 @@ def yawpi_hw_config():
     # pin of pump relay or valve connected to port expander
     # Speed is speed of pump or flow rate of the source approx. flowrate of the
     # pump in litres per second, volume of pumped water is calculated according
-    # equation: volume = offset + rate * time
-    # (offset, rate)
+    # equation: volume = offset + rate1 * time
+    # equation: volume = offset + rate1 * time + rate2 * time^2
+    # (offset, rate1)
+    # (offset, rate1, rate2)
     # SettleT is time source needs to stop the water flow after switching off
+    # 'FlowRate': (0.047501, 0.027133),
+    # 'FlowRateRev': (-1.7126, 36.7918),
+    # 'FLowRate': (6.0297e-03, 3.2421e-02, -1.2655e-04),
+    # 'FlowRateRev': (0.061503, 29.188514, 6.336059),
     tmp['So'] = {
         'Cap': 50,
         'Pin': (1, 0),
-        'FlowRate': (2, 15),
+        'FlowRate': (6.0297e-03, 3.2421e-02, -1.2655e-04),
+        'FlowRateRev': (0.061503, 29.188514, 6.336059),
         'SettleT': 0.1,
     }
 
