@@ -1,6 +1,5 @@
-# vim modeline: vim: shiftwidth=4 tabstop=4
 #=================================================================
-# hardware abstraction layer
+# YAWSPI hardware abstraction layer
 #=================================================================
 
 # variables which should be accessed outside this class: see _init_vars()
@@ -18,18 +17,34 @@ from time import time
 # AND in _inithw is import DHT11
 
 
-class yawpihw:
-    def __init__(self):
-        # load hardware configuration:
+class YawspiHW:
+    """ Hardware abstraction layer.
+
+    Loads hardware configuration, checks it, and controls the YAWSPI hardware.
+    """
+
+    def __init__(self):  # initialize class
+        """ Initialize class.
+
+        1. imports hardware configuration
+        2. calls variables initialization
+        3. calls hardware configuration check
+        4. calls GPIO check
+        5. calls hardware initialization
+
+        \param Nothing
+        \return Nothing
+        """
         try:
-            from yawpi_hw_config import yawpi_hw_config
+            from hw_config import hw_config
             # for different python versions different error occurs
             # version 2.7.3: ImportError occurs
             # some other version: RuntimeError occurs
         except (ImportError, RuntimeError):
             # if missing, load demo configuration:
-            from yawpi_hw_config_demo import yawpi_hw_config
-        self.hwc = yawpi_hw_config()
+            print 'hw_config.py missing, loading demo configuration...'
+            from hw_config_demo import hw_config
+        self.hwc = hw_config()
         # initialize variables
         self._init_vars()
         # check hardware configuration:
@@ -39,7 +54,14 @@ class yawpihw:
         # initialize hardware
         self._init_hw()
 
-    def _init_vars(self):  # initialization of variables
+    def _init_vars(self):  # initialize variables
+        """ Initialize variables with default values.
+
+        Initialized variables are intended to be accessible outside the class.
+
+        \param Nothing
+        \return Nothing
+        """
         # outside this class only following variables should be accessed
         # revision number of raspberry pi:
         self.RPiRevision = ''
@@ -56,7 +78,20 @@ class yawpihw:
         # installed ambient sensors:
         self.Sensors = []
 
-    def _check_config(self):  # check hw config
+    def _check_config(self):  # checks hw config
+        """ Checks hardware configuration loaded from configuration file.
+
+        Checks for:
+        1. pin collisions
+        2. i2c/spi adresses duplicates
+        3. number of stations equal to number of sensors
+        4. temperature sensor source
+
+        If hardware is OK prints summary to the console.
+
+        \param Nothing
+        \return bool: True if successful.
+        """
         # for pin collisions/correct configuration
         # check for port expander addresses duplicates:
         x = self.hwc['PeAddresses']
@@ -117,6 +152,11 @@ class yawpihw:
         return True
 
     def _get_all_gpio_pins(self):  # returns all pins addressed on GPIO
+        """ Returns all pins addressed on GPIO by hardware configuration.
+
+        \param Nothing
+        \return list: numbers of GPIO pins
+        """
         pinsgpio = []
         # humidity sensor:
         if self.hwc['SeHumid']:
@@ -127,6 +167,12 @@ class yawpihw:
         return pinsgpio
 
     def _get_all_pe_pins(self):  # returns all pins addressed on port expanders
+        """ Returns all pins addressed on port expanders by hardware
+        configuration.
+
+        \param Nothing
+        \return list: list of tuples of pins (device, pin)
+        """
         pinspe = []
         # source pin:
         pinspe.append(self.hwc['So']['Pin'])
@@ -145,6 +191,12 @@ class yawpihw:
         return pinspe
 
     def _get_all_adc_pins(self):  # returns all pins addressed on ad converters
+        """ Returns all pins addressed on ad converters by hardware
+        configuration.
+
+        \param Nothing
+        \return list: list of tuples of pins (device, pin)
+        """
         pinsadc = []
         # grad water level sensors:
         for x in self.hwc['SeWL']:
@@ -156,9 +208,18 @@ class yawpihw:
         return pinsadc
 
     def _check_gpio(self):  # tests if gpio present, else simulated mode is set
-        # self.WithHW  - if set, runs with pumps and valves and real sensors,
-        # if unset, no hardware access is performed. If import GPIO failes it
-        # is unset:
+        """ Tests for GPIO presence.
+
+        If GPIO is present, self.WithHW is set to 1, and this class will
+        control real pump and valves and sensors. Otherwise is set to 0, it
+        means hardware simulation mode is set and no hardware access is
+        performed.
+
+        \param Nothing
+        \return Nothing
+
+        \todo{change .WithHW to .with_hw and change to boolean}
+        """
         self.WithHW = 1
         try:
             import RPi.GPIO as GPIO  # RPi general purpose input/output library
@@ -170,6 +231,14 @@ class yawpihw:
             self.WithHW = 0
 
     def _init_hw(self):  # initialization of hw
+        """ Imports classes and initialize hardware.
+
+        Imports classes required by hardware configuration, setup pins to input
+        or output and switches everything off.
+
+        \param Nothing
+        \return Nothing
+        """
         # set RPi revision
         if self.WithHW:
             self.gpio.setmode(self.gpio.BOARD)
@@ -221,9 +290,6 @@ class yawpihw:
             for id in self.hwc['AdcPins']:
                 self.adc.append(MCP3008(id[0], id[1], id[2], id[3]))
 
-            # XXX check IDs of stations and sensors!
-            # what does it means? deprecated?
-
             # setup port expanders:
             # first set all as inputs
             for p in range(1, len(self.pe) + 1):
@@ -246,10 +312,18 @@ class yawpihw:
                 self._se_switch(x, 0)
 
     def _pin_config(self, pin, direction):  # configure pin as output or input
+        """
+        Confiure pin as output or input.
+
+        \param pin pin tuple to set direction
+        \param direction value of direction of a pin, 1 is input, 0 is output
+        \return Nothing
+        # \todo{finish setting of direction for GPIO}
+        """
         # direction: 0 == output, 1 == input
         if pin[0] == 0:
             # GPIO pin:
-            # XXX finish it
+            # finish it XXX
             pass
         elif pin[0] > 0:
             # port expanders:
@@ -263,6 +337,12 @@ class yawpihw:
             pass
 
     def _pin_pullup(self, pin, value):  # configure pullup of a pin
+        """
+        Configure pullup of a pin.
+        \param pin pin tuple to set pullup
+        \param value pullup value, 1 is to set pullup, 0 is to unset
+        \return Nothing
+        """
         if pin[0] == 0:
             # GPIO pin:
             # XXX finish it
@@ -278,6 +358,14 @@ class yawpihw:
             pass
 
     def _pin_set(self, pin, value):  # set pin to a value
+        """
+        Set output pin to a value.
+
+        \param pin pin tuple to set value
+        \param value pin value, 1, is high, 0 is low
+        \return Nothing
+        \todo{pin_set for GPIO}
+        """
         if pin[0] == 0:
             # GPIO pin:
             # XXX finish it
@@ -290,9 +378,16 @@ class yawpihw:
             pass
 
     def _pin_get(self, pin):  # returns value of a pin
-        # pin is tuple with two numbers
+        """
+        Get value of an input pin.
+
+        \param pin pin tuple to get value of.
+        \return Nothing
+        \todo{get value of gpio pin}
+        """
         if pin[0] == 0:
             # GPIO pin
+            # finish it XXX?
             pass
         elif pin[0] > 0:
             # port expanders:
@@ -563,11 +658,15 @@ class yawpihw:
 
 
 if __name__ == "__main__":  # this routine checks system
+    """ Checks the YAWSPI hardware.
+
+    This is only to check the YAWSPI hardware from the python command line.
+    """
     try:
         # this routine is not used during normal run
         # initialize:
         print 'initialization:'
-        hw = yawpihw()
+        hw = YawspiHW()
         print '----------'
         print 'hw mode: ' + str(hw.WithHW)
         # print all sensors:
@@ -614,3 +713,5 @@ if __name__ == "__main__":  # this routine checks system
             sleep(0.5)
     except KeyboardInterrupt:
         print ' -- user interrupt'
+
+# vim modeline: vim: shiftwidth=4 tabstop=4

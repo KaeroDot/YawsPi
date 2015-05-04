@@ -3,7 +3,7 @@
 #
 # vim modeline: vim: shiftwidth=4 tabstop=4
 #=================================================================
-# main yawpi program
+# main yawspi program
 #=================================================================
 
 # XXX todo:
@@ -30,8 +30,8 @@ import pygal
 # gv - 'global vars' - an empty module, used for storing vars (as attributes),
 # that need to be 'global' across threads and between functions and classes:
 import gv
-# yawpi hardware control (hardware abstraction layer):
-from yawpi_hw_control import yawpihw
+# yawspi hardware control (hardware abstraction layer):
+from hw_control import YawspiHW
 
 
 # ------------------- various functions:
@@ -80,8 +80,8 @@ def td_format(td_object):  # formats timedelta to nice string
 def init_gs():  # initialize dictionary with general settings:
     gv.gs = {
         # Name: configurable name of the system
-        'Name': u'YAWPI',
-        # Version: yawpi version
+        'Name': u'YAWSPI',
+        # Version: yawspi version
         'Version': u'0.1',
         # Enabled: operation enabled
         'Enabled': True,
@@ -797,7 +797,7 @@ class WebOptions:  # options page to change settings
                                    lambda x: int(x) >= 0),
                 description='http port of web pages:',
                 title='Port of the web server. Default is 8080. Web ' +
-                'address of YAWPI is http://xxx.xxx.xxx.xxx:port/ .',
+                'address of YAWSPI is http://xxx.xxx.xxx.xxx:port/ .',
             ),
             web.form.Textbox(
                 'Location',
@@ -823,7 +823,7 @@ class WebOptions:  # options page to change settings
                 web.form.Validator('(integer greater than 1)',
                                    lambda x: int(x) > 1),
                 description='Main loop interval in seconds:',
-                title='How often YAWPI checks for water levels and ' +
+                title='How often YAWSPI checks for water levels and ' +
                 'if watering is due',
             ),
             web.form.Checkbox(
@@ -1401,7 +1401,7 @@ if __name__ == "__main__":
     # was loaded by gs_load():
     log_add('starting')
     # initialize hw:
-    gv.hw = yawpihw()
+    gv.hw = YawspiHW()
     if gv.hw.WithHW != 1:
             # not running on RPi, simulaition mode set
             tmp = 'no GPIO module was loaded, running in no-hardware mode'

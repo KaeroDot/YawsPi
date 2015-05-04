@@ -1,5 +1,5 @@
 #=================================================================
-# yawpi hardware configuration
+# yawspi hardware configuration
 #=================================================================
 
 # hw adress is composed of two numbers - first one is index of the hw device,
@@ -11,14 +11,15 @@
 # ADC2: [-2, X]
 
 
-def yawpi_hw_config():
+def hw_config():
 
     # initialize dictionary with hardware settings:
     tmp = {}
 
     # ------------------- IO outputs:
+    # first adrress is RPi GPIO, next adresses are I2C addresses of port
     # expanders MCP23017 (multiple port expanders possible)
-    tmp['PeAddresses'] = (0x27, 0x21)
+    tmp['PeAddresses'] = (0x27, 0x22)
 
     # ------------------- Analog to Digital Converter:
     # Pins on Raspberry Pi GPIO of the clockpin, misopin, mosipin, cspin for AD
@@ -27,17 +28,12 @@ def yawpi_hw_config():
 
     # ------------------- Weather Sensors:
     tmp['SeTemp'] = 0     # temperature sensor present
-    # temperature value take from:
-    #       'humid': DHT11 (humidity sensor)
-    #       'press': BMP180 (pressure sensor)
-    tmp['SeTempSource'] = 'press'
-    tmp['SeRain'] = 0     # rain sensor present
+    tmp['SeRain'] = 1     # rain sensor present
     tmp['SeRainPin'] = (-2, 1)  # rain sensor pin
     tmp['SeHumid'] = 0    # humidity sensor present
-    tmp['SeHumidPin'] = (0, 13)  # humidity sensor present
-    tmp['SePress'] = 0    # pressure sensor present
-    tmp['SeIllum'] = 0    # illuminance sensor present
-    tmp['SeIllumAddrToHigh'] = 0    # illuminance address pin set to high?
+    tmp['SePress'] = 1    # pressure sensor present
+    tmp['SeIllum'] = 1    # illuminance sensor present
+    tmp['SeIllumAddrToHigh'] = 1    # illuminance address pin set to high?
 
     # ------------------- Water Source:
     # source of water with pump (or valve)
@@ -51,8 +47,8 @@ def yawpi_hw_config():
     # SettleT is time source needs to stop the water flow after switching off
     tmp['So'] = {
         'Cap': 10,
-        'Pin': (1, 0),
-        'FlowRate': (2, 15),
+        'Pin': (1, 7),
+        'FlowRate': (0, 1),
         'SettleT': 0.1,
     }
 
@@ -63,23 +59,13 @@ def yawpi_hw_config():
     # SettleT is time valve needs to fully open
     tmp['St'] = (
         {
-            'Cap': 0.1,
-            'Pin': (1, 1),
+            'Cap': 1.0,
+            'Pin': (1, 2),
             'SettleT': 0.1,
         },
         {
             'Cap':  0.5,
-            'Pin':  (1, 2),
-            'SettleT': 0.1,
-        },
-        {
-            'Cap':  1.0,
-            'Pin':  (1, 3),
-            'SettleT': 0.1,
-        },
-        {
-            'Cap':  2.0,
-            'Pin':  (1, 4),
+            'Pin':  (2, 7),
             'SettleT': 0.1,
         },
     )
@@ -99,26 +85,34 @@ def yawpi_hw_config():
     # last sensor is water source sensor (if source is unlimited, set sensor
     # type none.
     tmp['SeWL'] = (
+        #{
+        #    'Type':  'none',
+        #},
+        #{
+        #    'Type':  'min',
+        #    'Pin':  (1, 0),
+        #},
+        #{
+        #    'Type':  'max',
+        #    'Pin':  (1, 1),
+        #},
+        #{
+        #    'Type':  'minmax',
+        #    'MinPin':  (1, 2),
+        #    'MaxPin':  (1, 3),
+        #},
         {
-            'Type':  'none',
-        },
-        {
-            'Type':  'min',
-            'Pin':  (1, 5),
-        },
-        {
-            'Type':  'max',
-            'Pin':  (1, 6),
-        },
-        {
-            'Type':  'minmax',
-            'MinPin':  (1, 7),
-            'MaxPin':  (1, 8),
+            'Type':  'grad',
+            'ValuePin':  (-1, 0),
+            'OnOffPin':  (1, 0),
         },
         {
             'Type':  'grad',
-            'ValuePin':  (0, 0),
-            'OnOffPin':  (1, 9),
+            'ValuePin':  (-2, 0),
+            'OnOffPin':  (2, 8),
+        },
+        {
+            'Type':  'none',
         },
     )
 

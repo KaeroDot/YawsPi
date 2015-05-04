@@ -1,5 +1,5 @@
 #=================================================================
-# yawpi hardware configuration
+# yawspi hardware configuration
 #=================================================================
 
 # hw adress is composed of two numbers - first one is index of the hw device,
@@ -11,7 +11,7 @@
 # ADC2: [-2, X]
 
 
-def yawpi_hw_config():
+def hw_config():
 
     # initialize dictionary with hardware settings:
     tmp = {}

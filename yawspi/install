@@ -1,4 +1,5 @@
 #!/bin/bash
+
 sudo apt-get install i2c-tools
 sudo apt-get install python-pip
 sudo apt-get install python-lxml
@@ -7,6 +8,6 @@ sudo pip install pygal
 sudo pip install arrow
 # user install:
 #pip install --user pygal
+#pip install --user arrow
 
-sudo modprobe i2c-dev
-sudo python yawpi.py
+# add to crontab/afterstart!
