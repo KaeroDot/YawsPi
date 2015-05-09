@@ -22,7 +22,6 @@ class YawspiHW:
 
     Loads hardware configuration, checks it, and controls the YAWSPI hardware.
     """
-
     def __init__(self):  # initialize class
         """ Initialize class.
 
@@ -95,27 +94,33 @@ class YawspiHW:
         # for pin collisions/correct configuration
         # check for port expander addresses duplicates:
         x = self.hwc['PeAddresses']
+        print x
         if not len(set(x)) == len(x):
+            print x
             raise NameError('hw config check: duplicates '
                             'in port expander adresses!')
         # check for ad converters addresses duplicates:
         x = self.hwc['AdcPins']
         if not len(set(x)) == len(x):
+            print x
             raise NameError('hw config check: duplicates in '
                             'analog to digital pins!')
         # check duplicate pins on GPIO
         pinsgpio = self._get_all_gpio_pins()
         if not len(set(pinsgpio)) == len(pinsgpio):
+            print pinsgpio
             raise NameError('hw config check: duplicates in '
                             'pins assigned on gpio!')
         # find duplicates in port expander pins:
         pinspe = self._get_all_pe_pins()
         if not len(set(pinspe)) == len(pinspe):
+            print pinspe
             raise NameError('hw config check: duplicates in pins '
                             'assigned on port expanders!')
         # find duplicates in ad converter pins:
         pinsadc = self._get_all_adc_pins()
         if not len(set(pinsadc)) == len(pinsadc):
+            print pinsadc
             raise NameError('hw config check: duplicates in pins '
                             'assigned on adcs!')
         # check number of stations is equal to number of sensors:
@@ -167,8 +172,7 @@ class YawspiHW:
         return pinsgpio
 
     def _get_all_pe_pins(self):  # returns all pins addressed on port expanders
-        """ Returns all pins addressed on port expanders by hardware
-        configuration.
+        """ Return all pins addressed on port expanders by hardware configuration.
 
         \param Nothing
         \return list: list of tuples of pins (device, pin)
@@ -191,8 +195,7 @@ class YawspiHW:
         return pinspe
 
     def _get_all_adc_pins(self):  # returns all pins addressed on ad converters
-        """ Returns all pins addressed on ad converters by hardware
-        configuration.
+        """ Return all pins addressed on ad converters by hardware configuration.
 
         \param Nothing
         \return list: list of tuples of pins (device, pin)
@@ -312,8 +315,7 @@ class YawspiHW:
                 self._se_switch(x, 0)
 
     def _pin_config(self, pin, direction):  # configure pin as output or input
-        """
-        Confiure pin as output or input.
+        """ Confiure pin as output or input.
 
         \param pin pin tuple to set direction
         \param direction value of direction of a pin, 1 is input, 0 is output
@@ -337,8 +339,8 @@ class YawspiHW:
             pass
 
     def _pin_pullup(self, pin, value):  # configure pullup of a pin
-        """
-        Configure pullup of a pin.
+        """ Configure pullup of a pin.
+
         \param pin pin tuple to set pullup
         \param value pullup value, 1 is to set pullup, 0 is to unset
         \return Nothing
@@ -357,9 +359,8 @@ class YawspiHW:
             # ad converters: no action:
             pass
 
-    def _pin_set(self, pin, value):  # set pin to a value
-        """
-        Set output pin to a value.
+    def _pin_set(self, pin, value):  # set output pin to a value
+        """ Set output pin to a value.
 
         \param pin pin tuple to set value
         \param value pin value, 1, is high, 0 is low
@@ -378,8 +379,7 @@ class YawspiHW:
             pass
 
     def _pin_get(self, pin):  # returns value of a pin
-        """
-        Get value of an input pin.
+        """ Get value of an input pin.
 
         \param pin pin tuple to get value of.
         \return Nothing
@@ -397,6 +397,12 @@ class YawspiHW:
             return self.adc[-1 * pin[0] - 1].readadcv(pin[1], 5) / 5
 
     def _se_switch(self, index, value):  # switch sensor on or off
+        """ Switch power of water level sensor on or off
+
+        \param index index of sensor to switch
+        \param value 0 to switch off, otherwise on
+        \return Nothing
+        """
         if index < 0 or index > len(self.hwc['SeWL']) - 1:
             raise NameError('incorrect sensor index')
         if self.WithHW:
@@ -451,6 +457,11 @@ class YawspiHW:
             pass
 
     def so_switch(self, value):  # set water source on or off
+        """ Switch water source on or off
+
+        \param value 0 to switch off, otherwise on
+        \return Nothing
+        """
         if self.WithHW:
             if value:
                 # switch on
@@ -462,6 +473,12 @@ class YawspiHW:
                 self.SoStatus = 0
 
     def st_switch(self, index,  value):  # sets station valve on or off
+        """ Switch station valve on or off
+
+        \param index index of station valve to switch
+        \param value 0 to switch off, otherwise on
+        \return Nothing
+        """
         if index < 0 or index > len(self.hwc['St']) - 1:
             raise NameError('incorrect valve index')
         if self.WithHW:
@@ -475,6 +492,12 @@ class YawspiHW:
                 self.StStatus[index] = 0
 
     def so_level(self):  # returns water level of water in the water source
+        """ Get water level of water source.
+
+        If water source capacity is set to -1, always returns 1 (full)
+        \param Nothing
+        \return float water level in range 0 - 1
+        """
         # barrel sensor is the last one
         if self.hwc['So']['Cap'] == -1:
             return 1
@@ -482,8 +505,16 @@ class YawspiHW:
             return self.se_level(len(self.hwc['SeWL']) - 1)
 
     def se_level(self, index):  # returns water level of water source
-    # returns amount of water sensed by the sensor, returned value is in
-    # interval <0, 1> (empty to full)
+        """ Return water level indicated by a sensor
+
+        According the type of the sesnor switch the power of the sensor, gets
+        value of the sensor, switch off the sensor, calculate the water level
+        and return float in the range from 0 (empty) to 1 (full).
+        \param index integer, index of a sensor
+        \return float water level in range 0 - 1
+        """
+        # returns amount of water sensed by the sensor, returned value is in
+        # interval <0, 1> (empty to full)
         if index < 0 or index > len(self.hwc['SeWL']) - 1:
             raise NameError('incorrect sensor index: ' + str(index))
         if self.WithHW:
@@ -504,9 +535,9 @@ class YawspiHW:
             elif self.hwc['SeWL'][index]['Type'] == 'max':
                 val = self._pin_get(self.hwc['SeWL'][index]['Pin'])
                 if val:  # because PE driver returns various values
-                    val = 0
-                else:
                     val = 1
+                else:
+                    val = 0
             elif self.hwc['SeWL'][index]['Type'] == 'minmax':
                 #read both sensors
                 x = self._pin_get(self.hwc['SeWL'][index]['MinPin'])
@@ -537,15 +568,16 @@ class YawspiHW:
             # fourth return value:
             return val
         else:
-            # if no hardware, return part of hour
-            # what is it? XXX
-            ##hour = time() // 3600
-            ##rest = time() - hour * 3600
-            ##minute = rest // 60.0
-            ##return minute / 60.0
             return 0.05
 
     def se_description(self, index):  # return sensor description
+        """ Return sensor description according hardware configuration
+
+        Description is defined by hardware configuration, thus should be static
+        during run of the software. Description is for user info.
+        \param index index of sensor
+        \return string sensor description
+        """
         # return description of sensor type
         d = 'volume is ' + str(self.hwc['St'][index]['Cap']) + ' l, '
         d = d + 'fill time is ' + \
@@ -566,6 +598,14 @@ class YawspiHW:
         return d
 
     def fill_time(self, index):  # return expected filling time of a station
+        """ Return expected filling time of a station
+
+        Filling time is calculated and based on the hardware configuration: on
+        the volume of the station and on the speed of the water pump in the
+        water source.
+        \param index index of a station
+        \return float time in seconds
+        """
         # time is in seconds, calculated from nominal values
         V = self.hwc['St'][index]['Cap']   # volume
         O = self.hwc['So']['FlowRateRev'][0]  # offset
@@ -574,6 +614,14 @@ class YawspiHW:
         return O + R1 * V + R2 * V * V
 
     def filled_volume(self, filltime):  # return calculated filled volume
+        """ Return calulated filled volume
+
+        Filled volume is calculated and based on the hardware configuration: on
+        the filling time of the station and on the speed of the water pump in the
+        water source.
+        \param index index of a station
+        \return float water volume
+        """
         # calculated from filling time in seconds
         O = self.hwc['So']['FlowRate'][0]  # offset
         R1 = self.hwc['So']['FlowRate'][1]  # rate1
@@ -581,6 +629,18 @@ class YawspiHW:
         return O + R1 * filltime + R2 * filltime * filltime
 
     def st_fill(self, index, upthreshold):  # fill water into one station
+        """ Fill water into the station.
+
+        1. starts water pump
+        2. checks water level by sensor reaches upper threshold or bcalculated
+        filling time occurs. if actual filling time is by 10% greater than
+        calculated, filling stops independently on water level.
+        3. stops water pump
+
+        \param index index of station to fill
+        \param upthreshold float, upper threshold 0 - 1
+        \return float filling time in seconds
+        """
         if self.WithHW:
             # index is index of station, upthreshold is value if reached,
             # station is considered filled.
@@ -622,6 +682,13 @@ class YawspiHW:
             return t
 
     def se_temp(self):  # return temperature
+        """ Measure ambient temperature by weather sensor
+
+        If sensor is not available according hardware configuration, return
+        value is -300.
+        \param Nothing
+        \return float temperature in degree of celsius
+        """
         if self.WithHW and self.hwc['SeTemp']:
             if self.hwc['SeTempSource'] == 'humid':
                 return self.humid.meas()[1]
@@ -630,6 +697,13 @@ class YawspiHW:
         return -300
 
     def se_rain(self):  # return rain status
+        """ Measure rain by weather sensor
+
+        If sensor is not available according hardware configuration, return
+        value is -300.
+        \param Nothing
+        \return float value of rain sensor
+        """
         if self.WithHW and self.hwc['SeRain']:
             value = self._pin_get(self.hwc['SeRainPin'])
             # rain is only if voltage is greater than 0.2:
@@ -637,22 +711,49 @@ class YawspiHW:
         return -300
 
     def se_humid(self):  # return humidity
+        """ Measure ambient humidity by weather sensor
+
+        If sensor is not available according hardware configuration, return
+        value is -300.
+        \param Nothing
+        \return float relative humidity in percent
+        """
         if self.WithHW and self.hwc['SeHumid']:
             return self.humid.meas()[0]
         return -300
 
     def se_press(self):  # return pressure
+        """ Measure ambient pressure by weather sensor
+
+        If sensor is not available according hardware configuration, return
+        value is -300.
+        \param Nothing
+        \return float pressure in pascals
+        """
         if self.WithHW and self.hwc['SePress']:
             self.press.meas_temp()
             return self.press.meas_press()
         return -300
 
     def se_illum(self):  # return illuminance
+        """ Measure ambient illuminance by weather sensor
+
+        If sensor is not available according hardware configuration, return
+        value is -300.
+        \param Nothing
+        \return float illuminance in lux
+        """
         if self.WithHW and self.hwc['SeIllum']:
             return self.illum.meas()
         return -300
 
     def clean_up(self):  # cleans GPIO
+        """ cleans GPIO
+
+        Tells operating system GPIO is free to use.
+        \param Nothing
+        \return Nothing
+        """
         if self.WithHW:
             self.gpio.cleanup()
 
@@ -662,56 +763,80 @@ if __name__ == "__main__":  # this routine checks system
 
     This is only to check the YAWSPI hardware from the python command line.
     """
-    try:
-        # this routine is not used during normal run
-        # initialize:
-        print 'initialization:'
-        hw = YawspiHW()
-        print '----------'
-        print 'hw mode: ' + str(hw.WithHW)
-        # print all sensors:
-        print '----------'
-        print 'ambient sensors:'
-        print 'temp=' + str(hw.se_temp())
-        print 'humid=' + str(hw.se_humid())
-        print 'press=' + str(hw.se_press())
-        print 'rain=' + str(hw.se_rain())
-        print 'illum=' + str(hw.se_illum())
-        # check valves:
-        print '----------'
-        print 'station valves one by one on and off:'
-        for i in range(hw.StNo):
-            print 'valve of station ' + str(i) + ' on...'
-            hw.st_switch(i, 1)
-            sleep(1)
-            print 'valve of station ' + str(i) + ' off...'
-            hw.st_switch(i, 0)
-            sleep(1)
-        # check source:
-        print '----------'
-        print 'set valve of station 0 on and source on...'
-        print 'valve of station 0 on...'
-        hw.st_switch(0, 1)
-        sleep(1)
-        print 'source on...'
-        hw.so_switch(1)
-        sleep(1)
-        print 'source off...'
-        hw.so_switch(0)
-        sleep(1)
-        print 'valve of station 0 off...'
-        hw.st_switch(0, 0)
-        # print water level sensors:
-        print '----------'
-        print 'sensors:'
-        while True:
-            for i in range(hw.StNo):
-                print 'sensor of station ' + str(i) + \
-                      ', type ' + hw.hwc['SeWL'][i]['Type'] + \
-                      ': ' + str(hw.se_level(i))
-            print 'source: ' + str(hw.se_level(i + 1))
-            sleep(0.5)
-    except KeyboardInterrupt:
-        print ' -- user interrupt'
+    import sys
+    # get input parameter
+    try:                      # catch the error when no input parameter
+        par = sys.argv[1]      # get input parameter
+    except:                   # if no input parameter
+        par = ""
+
+    par = par.lower()       # input parameter to lowercase
+
+    # permited input parameters:
+    permittedpar = ['-all', '-nowater', '-showi2c']
+    if not par in permittedpar:
+        # print help if unknown or empty input parameter
+        print "Help: add input parameter, one of:"
+        print "-all         tests all the hardware"
+        print "-nowater     do not test valves and water source"
+        print "-showi2c     show map of i2c devices"
+    else:
+        try:
+            if par == "-showi2c":
+                #XXX sudo i2cdetect -y 1
+                pass
+            else:
+                # this routine is not used during normal run
+                # initialize:
+                print 'initialization:'
+                hw = YawspiHW()
+                print '----------'
+                print 'hw mode: ' + str(hw.WithHW)
+                # print all sensors:
+                print '----------'
+                print 'ambient sensors:'
+                print 'temp=' + str(hw.se_temp())
+                print 'humid=' + str(hw.se_humid())
+                print 'press=' + str(hw.se_press())
+                print 'rain=' + str(hw.se_rain())
+                print 'illum=' + str(hw.se_illum())
+                if not par == "-nowater":
+                    # next section is tested only if required by user:
+                    # check valves:
+                    print '----------'
+                    print 'station valves one by one on and off:'
+                    for i in range(hw.StNo):
+                        print 'valve of station ' + str(i) + ' on...'
+                        hw.st_switch(i, 1)
+                        sleep(1)
+                        print 'valve of station ' + str(i) + ' off...'
+                        hw.st_switch(i, 0)
+                        sleep(1)
+                    # check source:
+                    print '----------'
+                    print 'set valve of station 0 on and source on...'
+                    print 'valve of station 0 on...'
+                    hw.st_switch(0, 1)
+                    sleep(1)
+                    print 'source on...'
+                    hw.so_switch(1)
+                    sleep(1)
+                    print 'source off...'
+                    hw.so_switch(0)
+                    sleep(1)
+                    print 'valve of station 0 off...'
+                    hw.st_switch(0, 0)
+                # print water level sensors:
+                print '----------'
+                print 'sensors:'
+                while True:
+                    for i in range(hw.StNo):
+                        print 'sensor of station ' + str(i) + \
+                              ', type ' + hw.hwc['SeWL'][i]['Type'] + \
+                              ': ' + str(hw.se_level(i))
+                    print 'source: ' + str(hw.se_level(i + 1))
+                    sleep(0.5)
+        except KeyboardInterrupt:
+            print ' -- user interrupt'
 
 # vim modeline: vim: shiftwidth=4 tabstop=4

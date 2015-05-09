@@ -18,7 +18,8 @@ def hw_config():
 
     # ------------------- IO outputs:
     # expanders MCP23017 (multiple port expanders possible)
-    tmp['PeAddresses'] = (0x27, 0x21)
+    # this must be tuple!, if only one item, add comma after it: (xx,)
+    tmp['PeAddresses'] = (0x20, 0x21)
 
     # ------------------- Analog to Digital Converter:
     # Pins on Raspberry Pi GPIO of the clockpin, misopin, mosipin, cspin for AD
@@ -128,21 +129,20 @@ def hw_config():
         #    'Type':  'none',
         #},
         {
-            'Type':  'min',
-            'Pin':  (2, 8),
-        },
-        {
             'Type':  'max',
-            'Pin':  (1, 9),
+            'Pin':  (1, 8),
         },
+        #{
+        #    'Type':  'none',
+        #},
         #{
         #    'Type':  'min',
         #    'Pin':  (1, 10),
         #},
         #{
         #    'Type':  'minmax',
-        #    'MinPin':  (1, 11),
-        #    'MaxPin':  (1, 12),
+        #    'MinPin':  (1, 8),
+        #    'MaxPin':  (1, 9),
         #},
         #{
         #    'Type':  'minmax',
@@ -153,11 +153,11 @@ def hw_config():
         #    'Type':  'max',
         #    'Pin':  (1, 15),
         #},
-        #{
-        #    'Type':  'grad',
-        #    'ValuePin':  (-1, 0),
-        #    'OnOffPin':  (2, 7),
-        #},
+        {
+            'Type':  'grad',
+            'ValuePin':  (-1, 6),
+            'OnOffPin':  (2, 1),
+        },
         #{
         #    'Type':  'grad',
         #    'ValuePin':  (-2, 0),
