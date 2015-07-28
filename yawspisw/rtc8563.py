@@ -31,13 +31,13 @@ class RTC8563(object):
         self.verbose = verbose
 
     def addr(self):  # return i2c address
-        return ADR
-    """
-    Return i2c address of the RTC8563
+        """
+        Return i2c address of the RTC8563
 
-    \param None
-    \return address integer, hexadecimal
-    """
+        \param None
+        \return address integer, hexadecimal
+        """
+        return ADR
 
     def write(self):  # set time OS->RTC
         """
@@ -187,6 +187,7 @@ class RTC8563(object):
         # generate rtc time as datetime:
         return (datetime.datetime(stoleti + rok, mes, den, hod, min, int(sek)),
                 napeti)
+
 
 if __name__ == '__main__':  # testing code
     s = RTC8563(True)

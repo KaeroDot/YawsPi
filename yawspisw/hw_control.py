@@ -97,7 +97,6 @@ class YawspiHW:
         # RTC
         # check for port expander addresses duplicates:
         x = self.hwc['PeAddresses']
-        print x
         if not len(set(x)) == len(x):
             print x
             raise NameError('hw config check: duplicates '
@@ -500,10 +499,9 @@ class YawspiHW:
         """
         if self.WithHW:
             res = self.RTC.info(False)
+            return res[1]
         else:
-            res = True
-            # XXX nema vracet tuple misto cisteho true?
-        return res[1]
+            return True
 
     def so_switch(self, value):  # set water source on or off
         """ Switch water source on or off

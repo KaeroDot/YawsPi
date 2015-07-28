@@ -337,8 +337,8 @@ def prg_is_water_time(index):  # return boolean if watering should start
             # water level mode:
             tmp = prg_lev_is_water_time(index, now)
             # next run not available in water level mode, string for web:
-            gv.cv['PrgNR'][index] = 'next watering by water level'
-            if tmp[0]:
+            gv.cv['PrgNR'][index] = td_format(tmp[0] - arrow.now('local'))
+            if tmp[2]:
                 log_add(isreadystr)
                 return True
             else:
@@ -372,7 +372,8 @@ def prg_is_water_time(index):  # return boolean if watering should start
 
 def prg_lev_is_water_time(index, now):  # returns next watering time
     # only for programs with mode 'waterlevel'
-    # returns tuple with boolean and reason why is not water time if not
+    # returns tuple with boolean, reason why is not water time if not,
+    # and arrow of next watering if available
     prg = gv.prg[index]
     # check if all stations empty. if FoundEmpty is false, routine still did
     # not found all stations to be empty
@@ -384,19 +385,25 @@ def prg_lev_is_water_time(index, now):  # returns next watering time
             if gv.cv['StWL'][st] > gv.hws['StData'][st]['LowThr']:
                 allempty = False
         if not allempty:
-            return (False, 'some stations still not empty')
+            # return time in history to represent that it is impossible to know
+            # when next watering will be
+            tmp = now.replace(days=-1)
+            return (tmp, 'some stations still not empty', False)
         else:
             # all stations empty, remember time:
             gv.prg[index]['TimeFoundEmpty'] = now
+            gv.prg[index]['FoundEmpty'] = True
     # stations found empty, so:
     # check if time from last watering is long enough:
-    if now <= prg['TimeLastRun'].replace(hours=prg['wlMinDelayH']):
-        return (False, 'not long enough from last watering')
+    tmp = prg['TimeLastRun'].replace(hours=prg['wlMinDelayH'])
+    if now <= tmp:
+        return (tmp, 'not long enough from last watering', False)
     # check if stations are empty long enough:
-    if now < prg['TimeFoundEmpty'].replace(hours=prg['wlEmptyDelayH']):
-        return (False, 'stations not empty long enough')
+    tmp = prg['TimeFoundEmpty'].replace(hours=prg['wlEmptyDelayH'])
+    if now < tmp:
+        return (tmp, 'stations not empty long enough', False)
     # all conditions ok, program is ready for watering:
-    return (True, 'ready for watering')
+    return (now, 'ready for watering', True)
 
 
 def is_in_time_span(index, querytime, nextwatertime):
@@ -516,7 +523,8 @@ def prg_water(index):  # starts watering all stations in the program
     # save time of filling:
     gv.prg[index]['TimeLastRun'] = arrow.now('local')
     # set that station was not yet found empty:
-    gv.prg[index]['TimeFoundEmpty'] = 0
+    gv.prg[index]['FoundEmpty'] = False
+    gv.prg[index]['TimeFoundEmpty'] = arrow.now('local').replace(days=-1)
 
 
 # ------------------- configurations saving and loading:
