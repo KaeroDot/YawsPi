@@ -8,6 +8,7 @@
 # timing for filling
 from time import sleep
 from time import time
+import arrow
 # hw configuration:
 # AND in check_gpio is import RPi.GPIO
 # AND in _inithw is import Adafruit_MCP23017
@@ -92,6 +93,8 @@ class YawspiHW:
         \return bool: True if successful.
         """
         # for pin collisions/correct configuration
+        # XXX optionally add here checking addresses of i2c weather sensors and
+        # RTC
         # check for port expander addresses duplicates:
         x = self.hwc['PeAddresses']
         print x
@@ -146,6 +149,7 @@ class YawspiHW:
         # print summary:
         print 'number of port expanders: ' + str(len(self.hwc['PeAddresses']))
         print 'number of AD converters: ' + str(len(self.hwc['AdcPins']))
+        print 'RTC: ' + str(self.hwc['RTC'])
         print 'temperature sensor: ' + str(self.hwc['SeTemp'])
         print 'temperature sensor source: ' + self.hwc['SeTempSource']
         print 'rain sensor: ' + str(self.hwc['SeRain'])
@@ -172,7 +176,8 @@ class YawspiHW:
         return pinsgpio
 
     def _get_all_pe_pins(self):  # returns all pins addressed on port expanders
-        """ Return all pins addressed on port expanders by hardware configuration.
+        """ Return all pins addressed on port expanders by hardware
+        configuration.
 
         \param Nothing
         \return list: list of tuples of pins (device, pin)
@@ -195,7 +200,8 @@ class YawspiHW:
         return pinspe
 
     def _get_all_adc_pins(self):  # returns all pins addressed on ad converters
-        """ Return all pins addressed on ad converters by hardware configuration.
+        """ Return all pins addressed on ad converters by hardware
+        configuration.
 
         \param Nothing
         \return list: list of tuples of pins (device, pin)
@@ -249,43 +255,38 @@ class YawspiHW:
         else:
             self.RPiRevision = 'hardware emulation mode'
 
-        # import humidity sensor:
         if self.WithHW:
+            # import RTC:
+            if self.hwc['RTC']:
+                from RTC8563 import RTC8563
+                self.RTC = RTC8563(False)
+            # import humidity sensor:
             if self.hwc['SeHumid']:
                 from DHT11 import DHT11
                 self.humid = DHT11(self.hwc['SeHumidPin'][1])
                 self.Sensors.append('humid')
-
-        # import pressure sensor:
-        if self.WithHW:
+            # import pressure sensor:
             if self.hwc['SePress']:
                 from BMP180 import BMP180
                 self.press = BMP180(self.RPiRevision - 1, 3)
                 self.Sensors.append('press')
-
-        # setup temperature sensor:
-        if self.WithHW:
+            # setup temperature sensor:
             if self.hwc['SeTemp']:
                 # correct setting for temperature sensor is done in
                 # _check_config
                 self.Sensors.append('temp')
-
-        # import illuminance sensor:
-        if self.WithHW:
+            # import illuminance sensor:
             if self.hwc['SeIllum']:
                 from BH1750 import BH1750
                 self.illum = BH1750(self.RPiRevision - 1,
                                     self.hwc['SeIllumAddrToHigh'])
                 self.Sensors.append('illum')
-
-        # import port expanders and ad converters libraries:
-        if self.WithHW:
+            # import port expanders and ad converters libraries:
             # port expanders:
             from Adafruit_MCP230XX import Adafruit_MCP230XX
             self.pe = []
             for id in self.hwc['PeAddresses']:
                 self.pe.append(Adafruit_MCP230XX(address=id, num_gpios=16))
-
             # ad converter:
             from MCP3008 import MCP3008
             # self.adc = class_MCP32008(address=self.hwc['PeAddress'])
@@ -456,6 +457,54 @@ class YawspiHW:
             # if no hardware, do nothing
             pass
 
+    def RTC_get(self):  # return time from RTC
+        """
+        Return time from RTC
+
+        \param None
+        \return datetime RTC time
+        """
+        if self.WithHW:
+            res = self.RTC.info(False)
+            res = arrow.get(res[0])
+        else:
+            res = arrow.utcnow()
+        return res
+
+    def RTC_set_local(self):  # set RTC -> local time
+        """
+        set RTC time according local time
+
+        \param None
+        \return None
+        """
+        if self.WithHW:
+            self.RTC.info(True)
+
+    def RTC_set_RTC(self):  # set local time -> RTC
+        """
+        set local time according RTC time
+
+        \param None
+        \return None
+        """
+        if self.WithHW:
+            self.RTC.write()
+
+    def RTC_get_bat(self):  # return battery status of RTC
+        """
+        Return battery status of RTC
+
+        \param None
+        \return status boolean, True - battery is ok
+        """
+        if self.WithHW:
+            res = self.RTC.info(False)
+        else:
+            res = True
+            # XXX nema vracet tuple misto cisteho true?
+        return res[1]
+
     def so_switch(self, value):  # set water source on or off
         """ Switch water source on or off
 
@@ -543,7 +592,7 @@ class YawspiHW:
                 x = self._pin_get(self.hwc['SeWL'][index]['MinPin'])
                 y = self._pin_get(self.hwc['SeWL'][index]['MaxPin'])
                 # decide station status:
-                if x == 0:
+                if x != 0:     # because PE driver returns various values
                     # min sensor is switched, station is empty
                     val = 0
                 elif y == 0:  # because PE driver returns various values
@@ -617,8 +666,8 @@ class YawspiHW:
         """ Return calulated filled volume
 
         Filled volume is calculated and based on the hardware configuration: on
-        the filling time of the station and on the speed of the water pump in the
-        water source.
+        the filling time of the station and on the speed of the water pump in
+        the water source.
         \param index index of a station
         \return float water volume
         """
@@ -794,6 +843,7 @@ if __name__ == "__main__":  # this routine checks system
                 print 'hw mode: ' + str(hw.WithHW)
                 # print all sensors:
                 print '----------'
+                print 'RTC time:' + str(hw.RTC_get().isoformat())
                 print 'ambient sensors:'
                 print 'temp=' + str(hw.se_temp())
                 print 'humid=' + str(hw.se_humid())

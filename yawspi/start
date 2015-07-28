@@ -1,4 +1,0 @@
-#!/bin/bash
-
-sudo modprobe i2c-dev
-sudo python yawpi.py

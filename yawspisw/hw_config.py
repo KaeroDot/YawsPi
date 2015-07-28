@@ -1,3 +1,4 @@
+#XXX vsude - water station, container to water pot!
 #=================================================================
 # yawspi hardware configuration
 #=================================================================
@@ -15,6 +16,10 @@ def hw_config():
 
     # initialize dictionary with hardware settings:
     tmp = {}
+    # ------------------- RTC:
+    # is Real Time Clock installed?
+    tmp['RTC'] = 1
+    #tmp['RTC'] = 0
 
     # ------------------- IO outputs:
     # expanders MCP23017 (multiple port expanders possible)
@@ -74,15 +79,15 @@ def hw_config():
     # SettleT is time valve needs to fully open
     tmp['St'] = (
         {
-            'Cap': 1.0,
+            'Cap': 0.5,
             'Pin': (1, 1),
             'SettleT': 0.1,
         },
-        {
-            'Cap': 1.0,
-            'Pin': (1, 2),
-            'SettleT': 0.1,
-        },
+        #{
+        #    'Cap': 1.0,
+        #    'Pin': (1, 2),
+        #    'SettleT': 0.1,
+        #},
         #{
         #    'Cap':  0.5,
         #    'Pin': (1, 3),
@@ -128,44 +133,44 @@ def hw_config():
         #{
         #    'Type':  'none',
         #},
-        {
-            'Type':  'max',
-            'Pin':  (1, 8),
-        },
+        #{
+        #    'Type':  'max',
+        #    'Pin':  (1, 8),
+        #},
         #{
         #    'Type':  'none',
         #},
-        #{
-        #    'Type':  'min',
-        #    'Pin':  (1, 10),
-        #},
+        {
+            'Type':  'min',
+            'Pin':  (1, 10),
+        },
         #{
         #    'Type':  'minmax',
         #    'MinPin':  (1, 8),
         #    'MaxPin':  (1, 9),
         #},
-        #{
-        #    'Type':  'minmax',
-        #    'MinPin':  (1, 13),
-        #    'MaxPin':  (1, 14),
-        #},
+        {
+            'Type':  'minmax',
+            'MinPin':  (1, 9),
+            'MaxPin':  (1, 8),
+        },
         #{
         #    'Type':  'max',
         #    'Pin':  (1, 15),
         #},
-        {
-            'Type':  'grad',
-            'ValuePin':  (-1, 6),
-            'OnOffPin':  (2, 1),
-        },
+        #{
+        #    'Type':  'grad',
+        #    'ValuePin':  (-1, 6),
+        #    'OnOffPin':  (2, 1),
+        #},
         #{
         #    'Type':  'grad',
         #    'ValuePin':  (-2, 0),
         #    'OnOffPin':  (2, 8),
         #},
-        {
-            'Type':  'none',
-        },
+        #{
+        #    'Type':  'none',
+        #},
     )
 
     return tmp

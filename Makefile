@@ -1,4 +1,6 @@
 # documentation:
-doxygen doxy_config
-rm README.html
-markdown README.md >> README.html
+doxygen:
+	doxygen doxy_config
+markdown:
+	rm README.html
+	markdown README.md >> README.html

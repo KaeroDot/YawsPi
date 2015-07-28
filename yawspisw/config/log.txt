@@ -1,0 +1,148 @@
+<br>2015-07-26T14:17:47.170659+00:00; settings of station "test vana" (0) was changed by user
+<br>2015-07-26T14:17:47.176585+00:00; hardware settings saved to file
+<br>2015-07-26T14:18:32.099915+00:00; water source is 0% full
+<br>2015-07-26T14:18:32.208636+00:00; station "test vana" (0) is 0% full
+<br>2015-07-26T14:18:39.241561+00:00; general settings saved to file
+<br>2015-07-26T14:18:39.244099+00:00; programs saved to file
+<br>2015-07-26T14:18:39.250123+00:00; hardware settings saved to file
+<br>2015-07-26T14:18:39.251340+00:00; quitting, got signal kill
+<br>2015-07-26T14:17:36.343652+00:00; general settings loaded from file
+<br>2015-07-26T14:17:36.344944+00:00; <b>starting</b>
+<br>2015-07-26T14:17:36.598354+00:00; RTC time updated from local
+<br>2015-07-26T14:17:36.605899+00:00; hardware settings loaded from file
+<br>2015-07-26T14:17:36.619872+00:00; programs loaded from file
+<br>2015-07-26T14:17:36.814159+00:00; water source is 0% full
+<br>2015-07-26T14:17:36.937814+00:00; station "test vana" (0) is 100% full
+<br>2015-07-26T18:39:23.904354+00:00; water source is 0% full
+<br>2015-07-26T18:39:24.017741+00:00; station "test vana" (0) is 100% full
+<br>2015-07-26T18:39:36.654809+00:00; water source is 0% full
+<br>2015-07-26T18:39:36.764134+00:00; station "test vana" (0) is 100% full
+<br>2015-07-26T18:39:38.827755+00:00; general settings saved to file
+<br>2015-07-26T18:39:38.830380+00:00; programs saved to file
+<br>2015-07-26T18:39:38.836445+00:00; hardware settings saved to file
+<br>2015-07-26T18:39:38.837658+00:00; quitting, got signal kill
+<br>2015-07-26T14:17:35.089428+00:00; general settings loaded from file
+<br>2015-07-26T14:17:35.090812+00:00; <b>starting</b>
+<br>2015-07-26T14:17:35.278163+00:00; RTC time updated from local
+<br>2015-07-26T14:17:35.295803+00:00; hardware settings loaded from file
+<br>2015-07-26T14:17:35.299330+00:00; programs loaded from file
+<br>2015-07-26T14:17:35.478874+00:00; water source is 50.0% full
+<br>2015-07-26T14:17:35.604827+00:00; station "test vana" (0) is 100% full
+<br>2015-07-26T19:16:29.350014+00:00; water source is 50.0% full
+<br>2015-07-26T19:16:29.460737+00:00; station "test vana" (0) is 100% full
+<br>2015-07-26T19:16:36.791717+00:00; water source is 50.0% full
+<br>2015-07-26T19:16:36.900654+00:00; station "test vana" (0) is 100% full
+<br>2015-07-26T19:16:39.927369+00:00; general settings saved to file
+<br>2015-07-26T19:16:39.930192+00:00; programs saved to file
+<br>2015-07-26T19:16:39.936208+00:00; hardware settings saved to file
+<br>2015-07-26T19:16:39.937426+00:00; quitting, got signal kill
+<br>2015-07-26T19:22:28.014613+00:00; general settings loaded from file
+<br>2015-07-26T19:22:28.015970+00:00; <b>starting</b>
+<br>2015-07-26T19:22:28.199991+00:00; RTC time updated from local
+<br>2015-07-26T19:22:28.218062+00:00; hardware settings loaded from file
+<br>2015-07-26T19:22:28.221502+00:00; programs loaded from file
+<br>2015-07-26T19:22:28.411145+00:00; water source is 50.0% full
+<br>2015-07-26T19:22:28.537231+00:00; station "test vana" (0) is 100% full
+<br>2015-07-26T19:39:37.631738+00:00; general settings saved to file
+<br>2015-07-26T19:39:37.634648+00:00; programs saved to file
+<br>2015-07-26T19:39:37.643757+00:00; hardware settings saved to file
+<br>2015-07-26T19:39:37.645254+00:00; quitting, got signal kill
+<br>2015-07-26T19:22:28.022579+00:00; general settings loaded from file
+<br>2015-07-26T19:22:28.023863+00:00; <b>starting</b>
+<br>2015-07-26T19:22:28.209161+00:00; RTC time updated from local
+<br>2015-07-26T19:22:28.226801+00:00; hardware settings loaded from file
+<br>2015-07-26T19:22:28.230288+00:00; programs loaded from file
+<br>2015-07-26T19:22:28.419955+00:00; water source is 50.0% full
+<br>2015-07-26T19:22:28.546379+00:00; station "test vana" (0) is 100% full
+<br>2015-07-27T16:55:10.899204+00:00; water source is 50.0% full
+<br>2015-07-27T16:55:11.008035+00:00; station "test vana" (0) is 100% full
+<br>2015-07-27T16:55:28.625862+00:00; water source is 50.0% full
+<br>2015-07-27T16:55:28.734843+00:00; station "test vana" (0) is 100% full
+<br>2015-07-27T16:56:28.288290+00:00; water source is 50.0% full
+<br>2015-07-27T16:56:28.420835+00:00; station "test vana" (0) is 0% full
+<br>2015-07-27T16:56:28.868528+00:00; water source is 50.0% full
+<br>2015-07-27T16:56:28.980604+00:00; station "test vana" (0) is 0% full
+<br>2015-07-27T16:56:35.193098+00:00; water source is 50.0% full
+<br>2015-07-27T16:56:35.302671+00:00; station "test vana" (0) is 100% full
+<br>2015-07-27T16:57:18.089066+00:00; water source is 50.0% full
+<br>2015-07-27T16:57:18.202742+00:00; station "test vana" (0) is 0% full
+<br>2015-07-27T16:57:44.602278+00:00; preparing to fill station "test vana" (0)
+<br>2015-07-27T16:58:24.106697+00:00; station "test vana" (0) was filled, filled volume was 1.08237253774 l, filling time was 39.1956191063 s, time limit was 39.1446836 s, time limit EXCEEDED!
+<br>2015-07-27T16:59:26.902582+00:00; settings of program 0 (test kvetinac-igelitka) was changed by user
+<br>2015-07-27T16:59:26.918242+00:00; programs saved to file
+<br>2015-07-27T17:00:28.615542+00:00; water source is 50.0% full
+<br>2015-07-27T17:00:28.724344+00:00; station "test vana" (0) is 0% full
+<br>2015-07-27T17:01:28.863275+00:00; water source is 50.0% full
+<br>2015-07-27T17:01:28.972244+00:00; station "test vana" (0) is 100% full
+<br>2015-07-27T17:01:53.399336+00:00; water source is 50.0% full
+<br>2015-07-27T17:01:53.538349+00:00; station "test vana" (0) is 0% full
+<br>2015-07-27T17:01:53.907064+00:00; general settings saved to file
+<br>2015-07-27T17:01:53.933056+00:00; programs saved to file
+<br>2015-07-27T17:01:53.949596+00:00; hardware settings saved to file
+<br>2015-07-27T17:01:53.950954+00:00; quitting, unknown reason
+<br>2015-07-27T17:04:50.870785+00:00; general settings loaded from file
+<br>2015-07-27T17:04:50.872088+00:00; <b>starting</b>
+<br>2015-07-27T17:04:50.967632+00:00; RTC time updated from local
+<br>2015-07-27T17:04:50.973693+00:00; hardware settings loaded from file
+<br>2015-07-27T17:04:50.986055+00:00; programs loaded from file
+<br>2015-07-27T17:04:51.124417+00:00; water source is 50.0% full
+<br>2015-07-27T17:04:51.233172+00:00; station "test vana" (0) is 0% full
+<br>2015-07-27T17:04:51.907255+00:00; general settings saved to file
+<br>2015-07-27T17:04:51.932669+00:00; programs saved to file
+<br>2015-07-27T17:04:51.949020+00:00; hardware settings saved to file
+<br>2015-07-27T17:04:51.950239+00:00; quitting, unknown reason
+<br>2015-07-27T17:05:57.008368+00:00; general settings loaded from file
+<br>2015-07-27T17:05:57.009654+00:00; <b>starting</b>
+<br>2015-07-27T17:05:57.117587+00:00; RTC time updated from local
+<br>2015-07-27T17:05:57.123852+00:00; hardware settings loaded from file
+<br>2015-07-27T17:05:57.136623+00:00; programs loaded from file
+<br>2015-07-27T17:05:57.274404+00:00; water source is 50.0% full
+<br>2015-07-27T17:05:57.382990+00:00; station "test vana" (0) is 0% full
+<br>2015-07-27T17:05:57.625246+00:00; general settings saved to file
+<br>2015-07-27T17:05:57.640614+00:00; programs saved to file
+<br>2015-07-27T17:05:57.646653+00:00; hardware settings saved to file
+<br>2015-07-27T17:05:57.647940+00:00; quitting, unknown reason
+<br>2015-07-27T17:06:48.646390+00:00; general settings loaded from file
+<br>2015-07-27T17:06:48.647756+00:00; <b>starting</b>
+<br>2015-07-27T17:06:48.757145+00:00; RTC time updated from local
+<br>2015-07-27T17:06:48.763396+00:00; hardware settings loaded from file
+<br>2015-07-27T17:06:48.776210+00:00; programs loaded from file
+<br>2015-07-27T17:06:48.914066+00:00; water source is 50.0% full
+<br>2015-07-27T17:06:49.022777+00:00; station "test vana" (0) is 0% full
+<br>2015-07-27T17:06:49.264012+00:00; general settings saved to file
+<br>2015-07-27T17:06:49.279373+00:00; programs saved to file
+<br>2015-07-27T17:06:49.285272+00:00; hardware settings saved to file
+<br>2015-07-27T17:06:49.286500+00:00; quitting, unknown reason
+<br>2015-07-27T17:13:04.486909+00:00; general settings loaded from file
+<br>2015-07-27T17:13:04.488222+00:00; <b>starting</b>
+<br>2015-07-27T17:13:04.605363+00:00; RTC time updated from local
+<br>2015-07-27T17:13:04.611868+00:00; hardware settings loaded from file
+<br>2015-07-27T17:13:04.624363+00:00; programs loaded from file
+<br>2015-07-27T17:13:04.762001+00:00; water source is 50.0% full
+<br>2015-07-27T17:13:04.870631+00:00; station "test vana" (0) is 0% full
+<br>2015-07-27T17:13:05.523794+00:00; general settings saved to file
+<br>2015-07-27T17:13:05.539008+00:00; programs saved to file
+<br>2015-07-27T17:13:05.545020+00:00; hardware settings saved to file
+<br>2015-07-27T17:13:05.546246+00:00; quitting, unknown reason
+<br>2015-07-27T17:15:24.284396+00:00; general settings loaded from file
+<br>2015-07-27T17:15:24.285592+00:00; <b>starting</b>
+<br>2015-07-27T17:15:24.368182+00:00; RTC time updated from local
+<br>2015-07-27T17:15:24.374311+00:00; hardware settings loaded from file
+<br>2015-07-27T17:15:24.387995+00:00; programs loaded from file
+<br>2015-07-27T17:15:24.515214+00:00; water source is 50.0% full
+<br>2015-07-27T17:15:24.624054+00:00; station "test vana" (0) is 0% full
+<br>2015-07-27T17:15:24.865795+00:00; general settings saved to file
+<br>2015-07-27T17:15:24.881108+00:00; programs saved to file
+<br>2015-07-27T17:15:24.887257+00:00; hardware settings saved to file
+<br>2015-07-27T17:15:24.888478+00:00; quitting, unknown reason
+<br>2015-07-27T17:15:48.029180+00:00; general settings loaded from file
+<br>2015-07-27T17:15:48.030475+00:00; <b>starting</b>
+<br>2015-07-27T17:15:48.137780+00:00; RTC time updated from local
+<br>2015-07-27T17:15:48.143853+00:00; hardware settings loaded from file
+<br>2015-07-27T17:15:48.156470+00:00; programs loaded from file
+<br>2015-07-27T17:15:48.988603+00:00; water source is 50.0% full
+<br>2015-07-27T17:15:49.097419+00:00; station "test vana" (0) is 0% full
+<br>2015-07-27T17:15:49.753898+00:00; general settings saved to file
+<br>2015-07-27T17:15:49.769221+00:00; programs saved to file
+<br>2015-07-27T17:15:49.775296+00:00; hardware settings saved to file
+<br>2015-07-27T17:15:49.776514+00:00; quitting, unknown reason
