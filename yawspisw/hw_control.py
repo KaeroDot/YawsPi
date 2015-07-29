@@ -576,7 +576,7 @@ class YawspiHW:
             elif self.hwc['SeWL'][index]['Type'] == 'min':
                 val = self._pin_get(self.hwc['SeWL'][index]['Pin'])
                 if val:  # because PE driver returns various values
-                    val = 1
+                    val = 0.5
                 else:
                     val = 0
             elif self.hwc['SeWL'][index]['Type'] == 'max':
@@ -584,7 +584,7 @@ class YawspiHW:
                 if val:  # because PE driver returns various values
                     val = 1
                 else:
-                    val = 0
+                    val = 0.5
             elif self.hwc['SeWL'][index]['Type'] == 'minmax':
                 #read both sensors
                 x = self._pin_get(self.hwc['SeWL'][index]['MinPin'])
@@ -701,8 +701,9 @@ class YawspiHW:
             sleep(stsettlet)  # wait to valve settle
             self.so_switch(1)  # set pump on
             tmp = time()
-            if sensortype == 'none':
-                # if no sensor, just wait filltime:
+            if (sensortype == 'none') | (sensortype == 'min'):
+                # if no sensor, or sensor detects only bottom of station, just
+                # wait filltime:
                 sleep(filltime)
             else:
                 # if sensor, wait for sensor showing full or if time is 1.1
