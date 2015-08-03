@@ -1,5 +1,5 @@
 # documentation:
-doxygen:
+doc:
 	doxygen doxy_config
 markdown:
 	rm README.html
