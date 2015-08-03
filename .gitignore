@@ -1,4 +1,6 @@
+*.swp
 yawspisw/*.pyc
+yawspisw/.ropeproject
 yawspisw/config/*
 yawspisw/data/*
 doc/*
