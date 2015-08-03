@@ -48,8 +48,10 @@ System description
 The watering system is built in such way that: there is one water source (e.g. barrel of water, or
 water tap). A pump is used to pump water from water source. Water is leaded by tubes into several
 valves. From valves water is leaded to the plant pots. Control software always open only one valve,
-so it can direct water from water source to the desired plant pots. Every plant pot and water source
-can have one water level sensor of different types.
+so only one water pump is required and software can direct water from water source to the desired
+plant pots. Every plant pot and water source can have one water level sensor.
+
+![blockscheme](./images/block-scheme.png)
 
 System can be set to water plants in plant pots in three different ways:
 1, watering based on water level or soil humidity of the plant pot,
@@ -58,7 +60,7 @@ System can be set to water plants in plant pots in three different ways:
 
 The system logs watering and weather, so hopefully I will be able to relate temperature/humidity to
 the water consumption of particular plants. The plan is also to increase or decrease frequency of
-watering depending on the temperature/humidity/rain for the second and third mode of watering.
+watering depending on the temperature/humidity/rain.
 
 System consists of:
 
