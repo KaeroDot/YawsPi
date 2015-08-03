@@ -20,6 +20,13 @@
 # 10, pred zacatkem napousteni zmerit hodnotu sensoru jestli neni plna stanice
 # 11, po skonceni plneni upravit hodnoty pro web
 # 13, YawspiHW prejmenovat na YawspiHAL, hw_control na HAL.py
+# 14, kdyz se da water station now (z web stations), tak da status filling, pak
+# kdyz se da casem refresh page, tak ukaze ze skoncil filling, ale senzor ma
+# spatny stav, na to se musi dat check now. coz je napytel, protoze po filling
+# uz musi mit senzor zmereny ne?
+# 15, spatne zobrazuje cas na webove strance, proc?
+# 16, kdyz je prazdny source, umozni zalevani? co napise do logu?
+# 17, program water by level ignoruje cas platnosti programu
 
 # standard modules:
 from time import sleep
