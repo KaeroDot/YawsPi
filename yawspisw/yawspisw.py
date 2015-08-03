@@ -1610,13 +1610,20 @@ if __name__ == "__main__":
                         station_fill(i)
                         gv.flags.remove(flag)
                 sleep(1)
-            # generate next loopend time
-            loopendtime = loopendtime.replace(seconds=+gv.gs['MLInterval'])
-            loopendtime = loopendtime.floor('second')
-            # ensure loopendtime is not in the past, some watering can take
-            # loooong time:
-            while loopendtime < arrow.now('local'):
+            # generate next loopend time, and it will be multiple of MLInterval
+            # from last time. This prevents that a loop takes MLInterval +
+            # watering time (which can take loooong)
+            if arrow.now('local') >= loopendtime:
+                # this happens only if waiting for next iteration was not
+                # broken by web:
                 loopendtime = loopendtime.replace(seconds=+gv.gs['MLInterval'])
+                loopendtime = loopendtime.floor('second')
+                # ensure loopendtime is not in the past, some watering can take
+                # loooong time:
+                while loopendtime < arrow.now('local'):
+                    loopendtime = loopendtime.replace(
+                        seconds=+gv.gs['MLInterval']
+                    )
     except KeyboardInterrupt:
         # keyboard interrupt or reboot pressed in webserver
         # (system is rebooted when called from web page, but not when python is
