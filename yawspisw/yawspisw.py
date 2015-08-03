@@ -60,7 +60,7 @@ def get_now_str_web():  # returns current date/time as string for home web page
     \param Nothing
     \return string: date and time as string
     """
-    return arrow.now('local').format('DD. MM. YYYY HH:MM:ss, dddd, MMMM, ZZ')
+    return arrow.now('local').format('DD. MM. YYYY HH:mm:ss, dddd, MMMM, ZZ')
 
 
 def quit(reason):  # performs safe quit
