@@ -344,7 +344,11 @@ def prg_is_water_time(index):  # return boolean if watering should start
             # water level mode:
             tmp = prg_lev_is_water_time(index, now)
             # next run not available in water level mode, string for web:
-            gv.cv['PrgNR'][index] = td_format(tmp[0] - arrow.now('local'))
+            tim = tmp[0] - arrow.now('local')
+            if tim.total_seconds() < 0:
+                gv.cv['PrgNR'][index] = 'Not yet empty'
+            else:
+                gv.cv['PrgNR'][index] = td_format(tim)
             if tmp[2]:
                 log_add(isreadystr)
                 return True
@@ -382,23 +386,27 @@ def prg_lev_is_water_time(index, now):  # returns next watering time
     # returns tuple with boolean, reason why is not water time if not,
     # and arrow of next watering if available
     prg = gv.prg[index]
-    # check if all stations empty. if FoundEmpty is false, routine still did
-    # not found all stations to be empty
-    if prg['FoundEmpty'] is False:
-        # check if all stations in program are empty:
-        # (station is empty if value is lower than low threshold)
-        allempty = True
-        for st in prg['Stations']:
-            if gv.cv['StWL'][st] > gv.hws['StData'][st]['LowThr']:
-                allempty = False
-        if not allempty:
-            # return time in history to represent that it is impossible to know
-            # when next watering will be
-            tmp = now.replace(days=-1)
-            return (tmp, 'some stations still not empty', False)
-        else:
-            # all stations empty, remember time:
+    # check if all stations in program are empty:
+    # If FoundEmpty is false, routine still did not found all stations to be
+    # empty
+    allempty = True
+    for st in prg['Stations']:
+        # station is empty if value is lower than low threshold:
+        if gv.cv['StWL'][st] > gv.hws['StData'][st]['LowThr']:
+            allempty = False
+    if not allempty:
+        # return time in history to represent that it is impossible to know
+        # when next watering will be
+        tmp = now.replace(days=-1)
+        # someone other could water the pot instead of YawsPi, so just to be
+        # sure FoundEmpty is reseted:
+        gv.prg[index]['FoundEmpty'] = False
+        return (tmp, 'some stations still not empty', False)
+    else:
+        if prg['FoundEmpty'] is False:
+            # all stations found empty for first time, remember time:
             gv.prg[index]['TimeFoundEmpty'] = now
+            # and set it was already found empty:
             gv.prg[index]['FoundEmpty'] = True
     # stations found empty, so:
     # check if time from last watering is long enough:
