@@ -1,7 +1,8 @@
 #=================================================================
-# YAWSPI hardware abstraction layer
+# YawsPi hardware abstraction layer
 #=================================================================
 
+# vim modeline: vim: shiftwidth=4 tabstop=4
 # variables which should be accessed outside this class: see _init_vars()
 
 # imports:
@@ -21,7 +22,7 @@ import arrow
 class YawspiHW:
     """ Hardware abstraction layer.
 
-    Loads hardware configuration, checks it, and controls the YAWSPI hardware.
+    Loads hardware configuration, checks it, and controls the YawsPi hardware.
     """
     def __init__(self):  # initialize class
         """ Initialize class.
@@ -807,9 +808,11 @@ class YawspiHW:
 
 
 if __name__ == "__main__":  # this routine checks system
-    """ Checks the YAWSPI hardware.
+    """ Checks the YawsPi hardware.
 
-    This is only to check the YAWSPI hardware from the python command line.
+    This is only to check the YawsPi hardware from the python command line.
+    sudo python hw_control WHAT
+    \param string input parameter with values -all, -nowater, -showi2c
     """
     import sys
     # get input parameter
