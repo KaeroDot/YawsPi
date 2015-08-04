@@ -1,4 +1,5 @@
 *.swp
+*.*~
 yawspisw/*.pyc
 yawspisw/.ropeproject
 yawspisw/config/*
