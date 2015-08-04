@@ -1,9 +1,9 @@
-#=================================================================
-# YawsPi hardware abstraction layer
-#=================================================================
+"""
+YawsPi hardware abstraction layer. Provides separation of main code in yawspi
+and hardware modules.
 
-# vim modeline: vim: shiftwidth=4 tabstop=4
-# variables which should be accessed outside this class: see _init_vars()
+For variables which can be accessed outside this class: see _init_vars()
+"""
 
 # imports:
 # timing for filling
@@ -806,13 +806,14 @@ class YawspiHW:
         if self.WithHW:
             self.gpio.cleanup()
 
-
 if __name__ == "__main__":  # this routine checks system
     """ Checks the YawsPi hardware.
 
     This is only to check the YawsPi hardware from the python command line.
-    sudo python hw_control WHAT
-    \param string input parameter with values -all, -nowater, -showi2c
+    Run the script with following parameters:
+        -all        : tests all the hardware
+        -nowater    : tests hardware but valves and pump
+        -showi2c    : shows map of i2c devices
     """
     import sys
     # get input parameter
