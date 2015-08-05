@@ -1447,7 +1447,7 @@ class WebCheckPrograms:  # shows plan of programs for next 2 weeks
         tmax = tstart.replace(weeks=2)
         lst = []
         for i in range(len(gv.prg)):
-            if gv.prg[i]['Enabled']:
+            if gv.prg[i]['Enabled'] and gv.prg[i]['Mode'] != 'waterlevel':
                 # generate next waterings
                 t = tstart
                 # to prevent infinite loop:
@@ -1479,7 +1479,8 @@ class WebCheckPrograms:  # shows plan of programs for next 2 weeks
             # create full html table:
             s = s + '<tr><td>' + lst[i] + '</td></tr>'
         if len(s) == 0:
-            s = 'No programs or all programs are disabled.'
+            s = 'No programs exists, or only water level programs enabled ' + \
+                '(these are not shown), or all programs are disabled.'
         return render.checkprograms(s)
 
     def POST(self):

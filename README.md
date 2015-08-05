@@ -379,7 +379,7 @@ stations is determined by hardware settings.
 #### programs webpage ###
 
 New programs can be added here or settings of existing programs can be edited. By pressing button
-Check programs, a list of watering times of active watering programs for next days is shown.
+Check programs, a list of watering times of active watering programs for next 14 days is shown.
 Watering programs with water level mode of operation are ommited, because they are not driven
 primarily by date and time.
 
