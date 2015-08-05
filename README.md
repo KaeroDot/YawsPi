@@ -42,7 +42,7 @@ Compare this to the OpenSprinkler (145 euro for DIY version and zone expander), 
 pot by soil humidity. Anyway I owe a lot of inspiration and learned code to the OpenSprinkler and
 OpenSprinklerPi.
 
-System description
+Short description
 -------------------
 
 The watering system is built in such way that: there is one water source (e.g. barrel of water, or
@@ -54,9 +54,10 @@ plant pots. Every plant pot and water source can have one water level sensor.
 ![blockscheme](./images/block-scheme.png)
 
 System can be set to water plants in plant pots in three different ways:
-1, watering based on water level or soil humidity of the plant pot,
-2, watering based on the day of the week and hour of the day and on the water level or soil humidity of the pot,
-3, watering every Nth day and hour and on the water level or soil humidity of the pot.
+
+1. watering based on water level or soil humidity of the plant pot,
+2. watering based on the day of the week and hour of the day and on the water level or soil humidity of the pot,
+3. watering every Nth day and hour and on the water level or soil humidity of the pot.
 
 The system logs watering and weather, so hopefully I will be able to relate temperature/humidity to
 the water consumption of particular plants. The plan is also to increase or decrease frequency of
@@ -116,47 +117,45 @@ buy such valve in several shops, like: <http://www.sanela.cz/>.
 
 ![VE-RPE4115NC](./images/water_valve_VIVA_Sanela_VE-RPE4115NC.jpg)
 
-### water level sensors ###
+### Water level sensors ###
 
-XXX popis sensoru do softwaru XXX
-For now I have implemented following water level sensors:
+Water level sensors are two types: binary or gradual.
 
-1. none
-2. min
-3. max
-4. minmax
-5. grad
+#### Binary (1/0) water level sensors ####
 
-For min, max and minmax sensors I used these two:
-XXX
-For grad sensor I tested:
-XXX
+I used these two:
 
-#### none ####
+Hamlin sensor (or copies from <http://dx.com/>), which is based on floating magnet, and changes resistance
+from less than 1 Ohm to more than 10^9 Ohm. It is attached vertically and is good for pots.
+[Datasheet](./datasheets/Hamlin_Float_Sensor_59630-2-T-02-A.pdf)
 
-No water level sensor. Software always detects the water pot is empty. Amount of water needed to
-water the pot is determined by the water capacity of the water pot.
+![Hamlinsensor](./images/water_level_sensor_hamlin.png)
 
-#### min ####
+Gentech sensor (or copies from <http://dx.com/>), which is based on floating magnet similarly as
+previous sensor. It is attached horizontally and is good for barrel of water source.
+[Datasheet](./datasheets/gentech_FLCS-01_Float_Switch.pdf)
 
-Sensor changes state when water level reaches the bottom of the water pot. Sensor detects water pot
-is empty. Amount of water needed to water the pot is determined by the water capacity of the water
-pot.
+![Gentechsensor](./images/water_level_sensor_gentech.png)
 
-#### max ####
+Both sensors are just connected to digital input of a port expander.
 
-Sensor changes state when water level reaches the top of the water pot. Sensor detects water pot is
-full. Amount of water needed to water the pot is determined by the sensor.
+#### Gradual water level sensors ####
 
-#### minmax ####
+I am still testing gradual sensors, mainly this one for soil humidity:
+<http://www.dx.com/p/freaduino-soil-humidity-sensor-for-arduino-white-147817>
 
-Sensor changes state when water level reaches the top or the bottom of the water pot. Sensor detects
-water pot is full, empty or in between. Amount of water needed to water the pot is determined by the
-sensor.
+![](./images/water_level_sensor_octopus_soil_humidity.jpg)
 
-#### grad ####
-Analog sensor. Sensor directly detects the water level. Amount of water needed to water the pot is
-determined by the sensor.
+and this one for water level:
+<http://www.dx.com/p/062301-water-sensor-working-with-official-arduino-products-red-228292>.
+
+![](./images/water_level_sensor_funduino.jpg)
+
+Problem of such sensors is durability. Water or humid soil is corrosive. When switched on, it
+corodes even more. The first one is good because it is gold plated. It gives output of 0 V to 5 V in
+dry to humid soil (when powered by 5 V). The second one is much cheaper, it can sustain long time in water, but degrades
+quickly when powered. It gives output of 0 V to 5 V according water level. Corrosion is the reason
+why the power to gradual sensor is switched on only during measurement.
 
 ### weather sensors ###
 
@@ -247,29 +246,45 @@ This is electronics to interface power source, water pump, water level and weath
 Raspberry Pi. Generally it transform voltage levels and connects sensors, analogue to digital
 converters and port expander to the Raspberry Pi.
 
+#### Main board ####
+
 Main board contains connector to Raspberry Pi, connectors for weather sensors (all but rain sensor),
-RTC, voltage stabilizer to generate water pump voltage, bidirectional voltage converter and one way
-voltage converter. Raspberry Pi works with 3.3 V logic level. To convert logic to 5 V, bidirectional
-level converter XXX is used for I2C bus. It can convert only four wires, therefore for the rest a
-voltage converter with 74LVC8T245 chip was used.
+RTC, voltage stabilizer to generate water pump voltage, bidirectional voltage converter and
+unidirectional voltage converter. Raspberry Pi works with 3.3 V logic level. To convert logic to 5 V,
+bidirectional level converter JY-MCU is used for I2C bus. It can convert only four wires,
+therefore it is used only for wires where bidirectionality is required. For the rest a
+unidirectional voltage converter with 74LVC8T245 chip was used.
 
 ![](./images/pcb_main_small.jpg)
 
+#### Secondary board ####
+
 The secondary board contains two port expanders MCP23017, one AD converters MCP3008 for mesurement
-of grad sensors value, and two transistor arrays ULN2003A. One array is connected to 24 V and
-switches valves. Second one is connected to 5 V and switches grad sensors (why it is needed see grad
-sensors hardware). Secondary board also contain a relay to switch water pump. It electrically
-isolated by relay because the water pump is always immersed in water.
+of grad sensors value, two transistor arrays ULN2003A and one relay. One transistor array is connected to 24 V and one port expander. It is used to
+switch valves. Second transistor array is connected to 5 V and second port expander. It is used to switch grad sensors (why it is needed see grad
+sensors hardware). Rest of pins of port expanders are used for binary water level sensors. AD
+converter is used to read value of gradual water level sensors. A relay is used to switch water
+pump.
 
 ![](./images/pcb_sec_small.jpg)
 
-Multiple secondary boards can be connected. One have to ensure all I2C addresses of port expanders
-and sensors and SPI cable select wires are different on all boards.
+Multiple secondary boards can be (theoretically, not tested) connected and stacked. One have to
+ensure all I2C addresses of port expanders and sensors and SPI cable select wires are different on
+all boards.
 
 #### Bidirectional level converter ####
-XXX
-#### one way level converter ####
-XXX
+I used JY-MCU 5V 3V IIC UART SPI Level 4-Way Converter Module Adapter from 
+<http://www.dx.com/p/74lvc8t245-8-ch-ttl-coms-level-conversion-module-deep-blue-286606>.
+It is based on 4 MOSFETs. A lot of other similar boards can be found.
+
+![](./images/voltage_JY-MCU_4-way_converter.jpg)
+
+#### Unidirectional level converter ####
+I used 74LVC8T245 8-CH TTL COMS Level Conversion Module from <http://www.dx.com/p/74lvc8t245-8-ch-ttl-coms-level-conversion-module-deep-blue-286606>.
+It is based on chip 74LVC8T245. Level conversion direction is set by a jumper.
+
+![](./images/voltage_74LVC8T245_conversion_module.jpg)
+
 #### Port Expander ####
 MCP23017 has 16 I/O ports and is controlled by I2C bus.
 [Datasheet](./datasheets/MCP23017.pdf).
@@ -280,14 +295,179 @@ MCP3008 is 10-bit 8 channel AD converter and is controlled by SPI bus.
 
 #### Transistor array ####
 ULN2003A has 7 darlington transistors. It is controlled directly by TTL signal. It is used for
-switching water valves and power to the grad sensors. (It would be probably better to use TD62783
+binary water level sensors and power to the gradual sensors. (It would be probably better to use TD62783
 chip, maybe in next revision...)
 [Datasheet](./datasheets/uln2003a.pdf).
 
 Detailed description of software
 -------------------
 
-### hardware modules ###
-### hardware configuration ###
+Software is documented by doxygen. It is running in two threads. Main thread does watering, timing,
+data saving and loading etc. Second thread serve as a web server, and can set flags for first
+thread. Main thread reacts to these flags when possible (not immediately).
+
+Main thread runs in loops, time length of the loop can be set by user (e.g. one hour). At the
+beginning of the loop software first measures water levels and values of other sensors. Next it
+determines if watering of some pot should start. If so, it waters pots. Than it waits for next
+iteration of the loop.
+
+Software can be controlled by the user by means of a web page. 
+
+### watering programs ###
+
+Watering is driven by programs. Three types of programs are used:
+
+1. Water level mode of operation.
+2. Weekly mode of operation.
+3. Interval mode of operation.
+
+First one waters only if station is empty at least for specified amount of time, and not sooner than
+specified amount of time from last watering. Usefull when watering should be driven by water level
+with some binary water level sensors or by soil humidity, if gradual water level sensor is assigned.
+
+Second type of program waters only at specified days of week, and every specified amount of time
+during the day. Usefull for watering lawns every weekend. If water level sensor is assigned, the
+watering runs only if water level is measured as zero (empty).
+
+Third type of program is the same as second, but the day is specified by interval of days. I.e. if
+interval is 2 days, every second day watering will start. It means at first week it will be on
+Monday, Wednesday, Friday, Sunday, then second week on Tuesday, Thursday, Sunday and third week
+again Monday etc.
+
+For every program valid time during day can be specified. The program will commence only in
+specified time of day.
+
+To every program one or more stations must be assigned.
+
+Program can be switched on or off.
+
+Any number of programs can be created.
+
+### main part of software ###
+
+Main part of software is in yawspi.py. After startup the run is divided into two threads. To test
+the system, run following on a PC (not in Raspberry Pi) in yawspisw directory:
+
+        python yawspi.py
+
+Now the system will run in demo mode with demo hardware configuration. Take a look at webpage on
+address <http://127.0.0.1:8080>, you should see a home page.
+
+#### home webpage ###
+
+Home page shows basic status of the hardware, we separate the sets of brackets:
+
+This is [an example] [id] reference-style link.
+
+Then, anywhere in the document, you define your link label like this, on a line by itself:ather sensors, water level sensors and programs.
+
+Button refresh page just reloads this page. Button Check now asks the main thread to break waiting
+loop and to measure water levels now and commence any watering if needed.
+
+Buttons at the bottom of the page leads to other webpages.
+
+#### options webpage ###
+
+Several settings related to general system can be setup on this webpage.
+
+#### stations webpage ###
+
+A list of stations is here. By pressing button Water now this station will be filled by water
+independently on the watering program. Settings can by changed by pressing button Edit. Number of
+stations is determined by hardware settings.
+
+#### programs webpage ###
+
+New programs can be added here or settings of existing programs can be edited. By pressing button
+Check programs, a list of watering times of active watering programs for next days is shown.
+Watering programs with water level mode of operation are ommited, because they are not driven
+primarily by date and time.
+
+#### log webpage ###
+
+Log of the system is shown from newest to oldest. Usefull for determining problems.
+
+#### history webpage ###
+
+A chart of history of stations or weather sensors can be shown. Data are shown only if saving of
+particular data is switched in options webpage.
+
 ### hardware abstraction layer ###
-### main program ###
+
+The hw_control.py module serve as abstraction layer.
+
+### hardware modules ###
+
+Python modules for hardware were copied from <http://www.adafruit.com/>, from <http://www.astromik.org/malymenu/menuraspi.htm> or written by myself.
+List of modules:
+
+* Adafruit_I2C.py
+* Adafruit_MCP230XX.py
+* BH1750.py
+* BMP180.py
+* DHT11.py
+* MCP3008.py
+* rtc8563.py
+
+
+### hardware configuration ###
+
+Configuration of the hardware is written in hw_config.py. If the software is not run on raspberry,
+hw_config_demo.py is used. Because theoretically more secondary boards can be connected, there is
+used a simple syntax for pin numbering. Every pin is composed of tuple of two numbers. First number
+determines device - GPIO of Rapsberry Pi is 0, first port expander is 1, second is 2 etc. First AD
+converter is -1, second is -2 etc. Second number is a pin on the device itself. For example, fifth
+IO pin on second port expander is written as (2, 4), because pins are numbered from zero in python
+modules and datasheets. To help find out where is what connected, following figure can be used.
+
+![](./images/pins_numbering_yawspi-sec.png)
+
+In the configuration is written complete setup of the hardware. Please see hw_config_demo.py for
+explained and fully described example.
+
+For every water station (pot) there is dedicated one valve and one software water level sensor
+(which can be composed of several hardware water level sensors).
+
+#### software representation of water level sensors ####
+Hardware water level sensors are represented in the software as one of these types:
+
+1. none
+2. min
+3. max
+4. minmax
+5. grad
+
+This software representations can take data from zero, one or two hardware water level sensors.
+Other types can be implemented by modifying hardware abstraction layer. Final output of every sensor
+is between 0 (empty) to 1 (full). User can setup low and high thresholds. For example if output of
+sensor is below low threshold, output is considered as zero. This is to prevent measurement noise.
+
+#### none ####
+
+No water level sensor. Software always assume the water pot is always empty. Amount of water needed to
+water the pot is determined by the water capacity of the water pot.
+
+#### min ####
+
+Sensor changes state when water level reaches the bottom of the water pot. Sensor detects water pot
+is empty, otherwise software assume water pot is 50% full. Amount of water needed to water the pot
+is determined by the water capacity of the water pot. For this one binary water level sensor placed
+at the bottom of pot is needed.
+
+#### max ####
+
+Sensor changes state when water level reaches the top of the water pot. Sensor detects water pot is
+full, otherwise software assume water pot is 50% full. Amount of water needed to water the pot is
+determined by the sensor. For this one binary water level sensor placed at the top of pot is needed.
+
+#### minmax ####
+
+Sensor changes state when water level reaches the top or the bottom of the water pot. Sensor detects
+water pot is full, empty or 50%. Amount of water needed to water the pot is determined by the
+sensor. For this two binary sensors are needed, one placed at the bottom, second at the top of the
+pot.
+
+#### grad ####
+Analog sensor. Sensor directly detects the water level. Amount of water needed to water the pot is
+determined by the sensor. For this one gradual water sensor is needed.
+

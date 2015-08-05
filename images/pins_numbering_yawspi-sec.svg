@@ -16,10 +16,10 @@
    width="1052.5"
    height="743.75"
    xml:space="preserve"
-   sodipodi:docname="pins_numbering_yawspi-aux1.svg"
-   inkscape:export-filename="/home/martin/zal/Dropbox/docasne-doma/rpi/yawspi/images/pins_numbering_yawspi-aux1.png"
-   inkscape:export-xdpi="150"
-   inkscape:export-ydpi="150"><metadata
+   sodipodi:docname="pins_numbering_yawspi-sec.svg"
+   inkscape:export-filename="/home/martin/zal/Dropbox/docasne-doma/rpi/yawspi/images/pins_numbering_yawspi-sec.png"
+   inkscape:export-xdpi="75.064423"
+   inkscape:export-ydpi="75.064423"><metadata
      id="metadata8"><rdf:RDF><cc:Work
          rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
@@ -115,9 +115,9 @@
      inkscape:window-height="1030"
      id="namedview4"
      showgrid="false"
-     inkscape:zoom="0.60181323"
-     inkscape:cx="463.89708"
-     inkscape:cy="359.91413"
+     inkscape:zoom="1.2036265"
+     inkscape:cx="589.41599"
+     inkscape:cy="434.92098"
      inkscape:window-x="1020"
      inkscape:window-y="-3"
      inkscape:window-maximized="1"
@@ -11069,7 +11069,7 @@
          y="-445.77609"
          x="85.046158"
          sodipodi:role="line"
-         id="tspan9333">pumps:</tspan></text>
+         id="tspan9333">valves:</tspan></text>
 <g
        id="g9449"><text
          xml:space="preserve"
