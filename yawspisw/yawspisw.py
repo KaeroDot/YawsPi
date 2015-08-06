@@ -119,7 +119,7 @@ def td_format(td_object):  # formats timedelta to nice string
 
 def check_and_set_time():  # check local and RTC time
     """
-    Every week heck local and RTC time and set one.
+    Every week check local and RTC time and set one.
 
     If local time is smaller than 1.1.2000, set local according to RTC, else
     set RTC according local. It is done only once per week. Also checks RTC
@@ -228,6 +228,9 @@ def init_cv():  # initialize dictionary with current values
     8. SePress: pressure weather sensor value
     9. SeIllum: illuminance weather sensor value
     10. CurAct: what is software now doing
+    11. xConstrain: x axis in history chart is constrained to xMin and xMax
+    11. xMin: arrow time last shown x minimal value in history chart
+    12. xMax: arrow time last shown x maximal value in history chart
     \param Nothing
     \return Nothing
     """
@@ -242,6 +245,9 @@ def init_cv():  # initialize dictionary with current values
         'SePress': -300,
         'SeIllum': -300,
         'CurAct': '',
+        'xConstrain': False,
+        'xMin': arrow.now('local').replace(days=-2),
+        'xMax': arrow.now('local'),
     }
 
 
@@ -626,18 +632,22 @@ def check_data_folder():  # check folder with data files (creates it if needed)
         os.mkdir(gv.datadir)
 
 
-def data_filename(name):  # returns filename with/for measured data for
-    # station, source or sensor
-    # name can be either a name:
-    if type(name) == str:
-        return gv.datadir + '/' + name + '.csv'
-    # or it can be a number:
-    elif type(name) == int:
-        index = int(name)
-        if index in range(gv.hw.StNo):
-            return gv.datadir + '/' + str(name).format('%03d') + '.csv'
+def data_filename(dname):  # returns file path and name of measured data
+    """ Return file path and name of file with measured data
+
+    \param string name containing number of station or source or sensor
+    \return string path and name of data file
+    """
+    # station, source or sensor?
+    if check_data_name(dname):
+        # station?
+        if dname in [str(i) for i in range(gv.hw.StNo)]:
+            return gv.datadir + '/' + str(dname).format('%03d') + '.csv'
+        else:
+            return gv.datadir + '/' + dname + '.csv'
     else:
-        raise NameError('unknown input into the data_filename(): ' + str(name))
+        raise NameError('unknown input into the data_filename(): '
+                        + str(dname))
 
 
 def save_station_level(index, value):  # save water level of a station
@@ -655,7 +665,15 @@ def save_station_fill(index, value):  # save filled volume of a station
             save_station_data_line(index, str(value) + '; fill volume (l)')
 
 
-def save_station_data_line(index, string):  # save data line of a station
+def save_station_data_line(index, string):  # save w. level/filling of station
+    """ Save measured water level or filling amount of a station to a file
+    together with time stamp, only if enabled by settings.
+
+    \param int index with number of station
+    \param str string with value and water level or filling information and
+    unit
+    \return Nothing
+    """
     check_data_folder()
     if index in range(gv.hw.StNo):
         # saving data for this station enabled?:
@@ -666,7 +684,13 @@ def save_station_data_line(index, string):  # save data line of a station
             datafile.close()
 
 
-def save_source_level(value):  # save measured source water level
+def save_source_level(value):  # save source water level
+    """ Save measured water level of a source to a file together with
+    time stamp, only if enabled by settings.
+
+    \param float value of source water level
+    \return Nothing
+    """
     check_data_folder()
     # saving data for source enabled?:
     if gv.hws['SoData']['SaveData']:
@@ -676,22 +700,35 @@ def save_source_level(value):  # save measured source water level
         datafile.close()
 
 
-def save_sensor_value(name, value):  # save measured sensor value
+def save_sensor_value(dname, value):  # save measured sensor value
+    """ Save measured value of a sensor to a file together with time stamp,
+    only if enabled by settings.
+
+    \param str name of sensor
+    \param float value of sensor
+    \return Nothing
+    """
     check_data_folder()
-    if name in gv.hw.Sensors:
+    if dname in gv.hw.Sensors:
         # save data for this sensor enabled?:
-        if name in gv.hws['SeData']['SaveData']:
-            datafile = open(data_filename(name), 'a')
+        if dname in gv.hws['SeData']['SaveData']:
+            datafile = open(data_filename(dname), 'a')
             tmp = arrow.now('local').isoformat() + '; ' + str(value) + '\n'
             datafile.writelines(tmp)
             datafile.close()
 
 
-def load_data_file(name):
+def load_data_file(dname):  # loads data from data file
+    """ Loads data from saved data file with history of station, sensor or
+    source.
+
+    \param str name of station, sensor or source
+    \return list of lists: [arrow time, value, whole data line]
+    """
     data = []
-    if os.path.isfile(data_filename(name)):
+    if os.path.isfile(data_filename(dname)):
         # file should be closed automatically when using with statement
-        with open(data_filename(name)) as f:
+        with open(data_filename(dname)) as f:
             for line in f:
                 # parse and convert data:
                 line = line.split(';')
@@ -702,9 +739,46 @@ def load_data_file(name):
     return data
 
 
-def make_graphs(name):  # generate graphs with history
-    # returns svg graph with measured data for station, source or sensor
-    # XXX finish: generates 3 graphs: last 7 days, last 30 days and all
+def check_data_name(dname):  # checks string is station or sensor or source
+    """ Checks if input string is station or sensor or source
+
+    Correct input is '0', '1', '2', ... as station number (range of
+    gv.hw.StNo), or 'source' as source, or one of sensors: 'illum', 'temp',
+    'rain', 'humid', 'press' (one of in gv.hw.Sensors).
+
+    \param string name string to check
+    \return boolean true if input is station or sensor or source
+    """
+    # suppose name is not ok:
+    res = False
+    # check if indexstr contains number of station:
+    if dname in [str(i) for i in range(gv.hw.StNo)]:
+        res = True
+    # check if name contains sensor:
+    elif dname in gv.hw.Sensors:
+        res = True
+    # check if name contains source:
+    elif dname == 'source':
+        res = True
+    return res
+
+
+def make_chart(name, constrain, xmin, xmax):  # generate history chart
+    """ Generates history chart
+
+    Generates history chart of station or sensor or source. If constrain is
+    true, chart will be limited by times xmin and xmax.
+    \param string name - number of station or source or sensors like illum,
+    press etc.
+    \param bool constrain if true use xmin and xmax parameters as chart
+    constrains
+    \param arrow xmin low value of xaxis
+    \param arrow xmax high value of xaxis
+    \return string xml/svg chart for embedding into webpage
+    """
+    # check input:
+    if not check_data_name(name):
+        return 'Unknown station or sensor'
     # measured data:
     data = load_data_file(name)
     ax1 = []
@@ -712,27 +786,28 @@ def make_graphs(name):  # generate graphs with history
     # secondary axis will be used?
     secondY = False
     # set values according what to plot
-    try:
-        if int(name) in range(gv.hw.StNo):
-            gtitle = gv.hws['StData'][int(name)]['Name'] + \
-                '(' + str(name) + ')'
-            y1title = 'water level (a. u.)'
-            # parse station data:
-            for tmp in data:
-                if tmp[2].find('level') > -1:
-                    # found water level data:
+    if name in [str(i) for i in range(gv.hw.StNo)]:
+        # it is station:
+        gtitle = gv.hws['StData'][int(name)]['Name'] + \
+            ' (' + str(name) + ')'
+        y1title = 'water level (a. u.)'
+        # parse station data:
+        for tmp in data:
+            if tmp[2].find('level') > -1:
+                # found water level data, apply constrains:
+                if (constrain and tmp[0] >= xmin and tmp[0] <= xmax) \
+                        or (not constrain):
                     ax1.append((tmp[0].datetime, tmp[1]))
-                elif tmp[2].find('fill') > -1:
-                    # found water filling data:
+            elif tmp[2].find('fill') > -1:
+                # found water filling data, apply constrains:
+                if (constrain and tmp[0] >= xmin and tmp[0] <= xmax) \
+                        or (not constrain):
                     ax2.append((tmp[0].datetime, tmp[1]))
-            if len(ax2) > 0:
-                y2title = 'fill volume (l)'
-                secondY = True
-        else:
-            # not identified which station to plot:
-            raise NameError('Error - number in name not in '
-                            'rage of station numbers')
-    except ValueError:
+        if len(ax2) > 0:
+            y2title = 'fill volume (l)'
+            secondY = True
+    else:
+        # it is sensor or source:
         if name == 'source':
             gtitle = 'water source'
             y1title = 'water level (a. u.)'
@@ -752,45 +827,45 @@ def make_graphs(name):  # generate graphs with history
             gtitle = 'ambient light'
             y1title = 'lux'
         else:
-            # not identified what to plot:
-            raise NameError('Error - unknown string in name in make_graphs')
+            # not identified what to plot (shouldn't happen, just for sure):
+            raise NameError('Error - unknown string in name in make_chart')
         # change arrow datatype to datetime:
         for tmp in data:
-            ax1.append((tmp[0].datetime, tmp[1]))
-    graphall = pygal.DateY(style=pygal.style.CleanStyle,
-                           legend_at_bottom=True,
-                           print_values=False,
-                           show_x_guides=True,
-                           show_y_guides=True,
-                           x_label_rotation=20,
-                           x_label_format="%a %d.%m. %H:%M",
-                           title=gtitle,
-                           y_title=y1title,
-                           show_legend=False,
-                           )
-                           # human_readable=True, - this has no sense probably
-    # plot lines:
-    graphall.add('water level', ax1)
+            # apply constrains:
+            if (constrain and tmp[0] >= xmin and tmp[0] <= xmax) or \
+                    (not constrain):
+                ax1.append((tmp[0].datetime, tmp[1]))
+    # initialize chart:
+    chart = pygal.DateTimeLine(style=pygal.style.CleanStyle,
+                               legend_at_bottom=True,
+                               print_values=False,
+                               show_x_guides=True,
+                               show_y_guides=True,
+                               x_label_rotation=20,
+                               x_label_format='%a %d.%m. %H:%M',
+                               x_value_formatter=
+                               lambda dt: dt.strftime('%a %d.%m. %H:%M'),
+                               title=gtitle,
+                               y_title=y1title,
+                               show_legend=False,
+                               human_readable=True,
+                               )
+    # create line:
+    chart.add('water level', ax1, fill=True)
     if secondY:
-        graphall.add('filling', ax2)  # secondary=True)
-        graphall.config(show_legend=True, y_title=y1title + ' | ' + y2title)
-        #graphall.config(y2_title=y2title, secondary=True)
-    # XXX
-    # XXX pygal cannot have different ranges and axes on primary and secondary
-    # axis
-    # check if all data are not the same, else ranging would be
-    # incorrect
-    # # (pygal problem)
-    # tmp1 = []
-    # for tmp in ax1:
-    #     tmp1.append(tmp[1])
-    # if len(set(tmp1)) == 1:
-    #     # all data are the same, y axis range must be set manually:
-    #     print 'manual range'
-    #     #graphall.config(range=(0, ax1[0][1]))
-    # jakykoliv input na secondary nefunguje!!!!!! XXX
-    # graphall.config(range=(0, 3),secondary=True)
-    return graphall.render()
+        # add sedondary line and setup axes:
+        chart.add('filling',
+                  ax2, secondary=True,
+                  dots_size=6,
+                  stroke=False,
+                  )
+        # pygal do not shows secondary title:
+        chart.config(show_legend=True,
+                     y_title=y1title + ' / ' + y2title,
+                     # XXX not working in pygal:
+                     # secondary_title='aaa',
+                     )
+    return chart.render()
 
 
 # ------------------- log related:
@@ -1487,30 +1562,176 @@ class WebCheckPrograms:  # shows plan of programs for next 2 weeks
         raise web.seeother('/programs')
 
 
-class WebHistory:  # shows list of stations
+class WebHistory:  # to select history of what
     def GET(self):
         return render.history(gv)
 
     def POST(self):
         response = web.input()  # get user response
-        resp = response.keys()[0]
-        try:
-            # check if response contains number of station:
-            if int(resp) in range(gv.hw.StNo):
-                return make_graphs(resp)
+        # XXX check here correct web? not needed really
+        return web.seeother('historychart' + response.keys()[0])
+
+
+class WebHistoryChart:  # chart with history and xaxis change
+    def __init__(self):
+        self.frm = web.form.Form(  # definitions of all input fields
+            web.form.Textbox(
+                'xminY',
+                web.form.Validator('(integer 0 and greater)',
+                                   lambda x: int(x) >= 0),
+                size="4",
+            ),
+            web.form.Textbox(
+                'xminM',
+                web.form.Validator('(integer 1 to 12)',
+                                   lambda x: int(x) >= 1),
+                web.form.Validator('(integer 1 to 12)',
+                                   lambda x: int(x) <= 12),
+                size="2",
+            ),
+            web.form.Textbox(
+                'xminD',
+                web.form.Validator('(integer 1 to 31)',
+                                   lambda x: int(x) >= 1),
+                web.form.Validator('(integer 0 and greater)',
+                                   lambda x: int(x) <= 31),
+                size="2",
+            ),
+            web.form.Textbox(
+                'xminH',
+                web.form.Validator('(real number from 0 to 23.99)',
+                                   lambda x: float(x) >= 0),
+                web.form.Validator('(real number from 0 to 23.99)',
+                                   lambda x: float(x) < 24),
+                size="5",
+            ),
+            web.form.Textbox(
+                'xmaxY',
+                web.form.Validator('(integer 0 and greater)',
+                                   lambda x: int(x) >= 0),
+                size="4",
+            ),
+            web.form.Textbox(
+                'xmaxM',
+                web.form.Validator('(integer 1 to 12)',
+                                   lambda x: int(x) >= 1),
+                web.form.Validator('(integer 1 to 12)',
+                                   lambda x: int(x) <= 12),
+                size="2",
+            ),
+            web.form.Textbox(
+                'xmaxD',
+                web.form.Validator('(integer 1 to 31)',
+                                   lambda x: int(x) >= 1),
+                web.form.Validator('(integer 0 and greater)',
+                                   lambda x: int(x) <= 31),
+                size="2",
+            ),
+            web.form.Textbox(
+                'xmaxH',
+                web.form.Validator('(real number from 0 to 23.99)',
+                                   lambda x: float(x) >= 0),
+                web.form.Validator('(real number from 0 to 23.99)',
+                                   lambda x: float(x) < 24),
+                size="5",
+            ),
+        )
+
+    def GET(self, dname):
+        frm = self.frm()
+        # check if required web address is valid
+        if not check_data_name(dname):
+            # incorrect webpage, go to home page:
+            # XXX should generate error? and changestation? and changeprogram? one of these does!
+            raise web.seeother('/')
+        # set form values:
+        frm.xminY.value = gv.cv['xMin'].year
+        frm.xminM.value = gv.cv['xMin'].month
+        frm.xminD.value = gv.cv['xMin'].day
+        frm.xminH.value = gv.cv['xMin'].hour + gv.cv['xMin'].minute / 60 + \
+            gv.cv['xMin'].second / 3600
+        frm.xmaxY.value = gv.cv['xMax'].year
+        frm.xmaxM.value = gv.cv['xMax'].month
+        frm.xmaxD.value = gv.cv['xMax'].day
+        frm.xmaxH.value = gv.cv['xMax'].hour + gv.cv['xMax'].minute / 60 + \
+            gv.cv['xMax'].second / 3600
+        # get chart:
+        chartstr = make_chart(dname, gv.cv['xConstrain'],
+                              gv.cv['xMin'], gv.cv['xMax'])
+        # render web page:
+        return render.historychart(frm, chartstr)
+
+    def POST(self, dname):
+        frm = self.frm()
+        response = web.input()  # get user response
+        if 'setminmax' in response:
+            gv.cv['xConstrain'] = True
+            # set default values of forms to user response
+            frm.xminY.value = response['xminY']
+            frm.xminM.value = response['xminM']
+            frm.xminD.value = response['xminD']
+            frm.xminH.value = response['xminH']
+            frm.xmaxY.value = response['xmaxY']
+            frm.xmaxM.value = response['xmaxM']
+            frm.xmaxD.value = response['xmaxD']
+            frm.xmaxH.value = response['xmaxH']
+            if not frm.validates():  # if not validated
+                return render.historychart(frm, 'Incorrect input')
             else:
-                raise NameError('Error - unknown response in history page')
-        except ValueError:
-            # if no number, check if response contains one of other
-            # possibilities:
-            if (resp in gv.hw.Sensors) | (resp == 'source'):
-                return make_graphs(resp)
-            elif 'cancel' in response:  # if back pressed, go to home page
-                raise web.seeother('/')
+                # calculate xmin and xmax as arrow time
+                minutes = float(frm.xminH.value) % 1 % 60
+                seconds = minutes % 1 % 60
+                gv.cv['xMin'] = arrow.Arrow(int(frm.xminY.value),
+                                            int(frm.xminM.value),
+                                            int(frm.xminD.value),
+                                            int(frm.xminH.value),
+                                            int(minutes),
+                                            int(seconds)
+                                            )
+                minutes = float(frm.xmaxH.value) % 1 % 60
+                seconds = minutes % 1 % 60
+                gv.cv['xMax'] = arrow.Arrow(int(frm.xmaxY.value),
+                                            int(frm.xmaxM.value),
+                                            int(frm.xmaxD.value),
+                                            int(frm.xmaxH.value),
+                                            int(minutes),
+                                            int(seconds)
+                                            )
+        else:
+            if 'back' in response:
+                raise web.seeother('history')
+            elif 'last2days' in response:
+                gv.cv['xConstrain'] = True
+                gv.cv['xMax'] = arrow.now('local')
+                gv.cv['xMin'] = gv.cv['xMax'].replace(days=-2)
+            elif 'last2weeks' in response:
+                gv.cv['xConstrain'] = True
+                gv.cv['xMax'] = arrow.now('local')
+                gv.cv['xMin'] = gv.cv['xMax'].replace(days=-14)
+            elif 'fullrange' in response:
+                gv.cv['xConstrain'] = False
+                # if any unknown response, go to history page:
             else:
-                raise NameError('Error - unknown response in history page')
-        # if cancel or any unknown response, go to home page:
-        raise web.seeother('/')
+                raise NameError('Error - unknown response in history ' +
+                                'chart page')
+                raise web.seeother('/history')
+            frm.xminY.value = gv.cv['xMin'].year
+            frm.xminM.value = gv.cv['xMin'].month
+            frm.xminD.value = gv.cv['xMin'].day
+            frm.xminH.value = gv.cv['xMin'].hour + \
+                gv.cv['xMin'].minute / 60 + \
+                gv.cv['xMin'].second / 3600
+            frm.xmaxY.value = gv.cv['xMax'].year
+            frm.xmaxM.value = gv.cv['xMax'].month
+            frm.xmaxD.value = gv.cv['xMax'].day
+            frm.xmaxH.value = gv.cv['xMax'].hour + \
+                gv.cv['xMax'].minute / 60 + \
+                gv.cv['xMax'].second / 3600
+        # get chart:
+        chartstr = make_chart(dname, gv.cv['xConstrain'],
+                              gv.cv['xMin'], gv.cv['xMax'])
+        # render web page:
+        return render.historychart(frm, chartstr)
 
 
 # ------------------- code run in both threads:
@@ -1521,6 +1742,7 @@ urls = (
     '/reboot', 'WebReboot',
     '/log', 'WebLog',
     '/history', 'WebHistory',
+    '/historychart(.*)', 'WebHistoryChart',
     '/stations', 'WebStations',
     '/changestation(.*)', 'WebChangeStation',
     '/programs', 'WebPrograms',
