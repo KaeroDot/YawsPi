@@ -711,8 +711,11 @@ class YawspiHW:
                 # times greater than filltime
                 endtime = time() + filltime * 1.1
                 while time() < endtime:
-                    # periodically detect wl:
+                    # periodically detect wl of station:
                     if self.se_level(index) > upthreshold:
+                        break
+                    # periodically detect wl of source:
+                    if self.so_level == 0:
                         break
                     else:
                         # check sensor every 0.05 second:

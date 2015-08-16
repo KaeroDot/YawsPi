@@ -349,7 +349,17 @@ def prg_is_water_time(index):  # return boolean if watering should start
     """
     prg = gv.prg[index]
     now = arrow.now('local')
-    if prg['Enabled']:
+    if not prg['Enabled']:
+        # disabled program is not logged
+        return False
+    else:
+        # if source empty, no action:
+        if gv.cv['SoWL'] == 0:
+            log_add('program "' + prg['Name'] +
+                    '" (' + str(index) + '): ' +
+                    'not ready for watering, source is empty!'
+                    )
+            return False
         now = arrow.now('local')
         isreadystr = 'program "' + prg['Name'] + \
                      '" (' + str(index) + '): ready for watering'
@@ -989,7 +999,7 @@ def station_fill(index):  # fill water into one station
         gv.hw.so_switch(0)
         raise NameError('Error when filling station!')
     tmp = 'station "' + gv.hws['StData'][i]['Name'] + '" (' + str(index) + \
-          ') was filled, filled volume was ' + \
+          ') was filled, filled volume (calculated from time) was ' + \
           str(gv.hw.filled_volume(realfilltime)) + ' l, filling time was ' + \
           str(realfilltime) + ' s, time limit was ' + str(filltime) + ' s'
     if realfilltime > filltime:
