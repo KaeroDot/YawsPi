@@ -72,7 +72,7 @@ def quit(reason):  # performs safe quit
     4. save configuration, programs, hardware settings
     5. write quitting to log
     6. save log
-    \param reason string why quitting
+    \param string: reason why quitting
     \return Nothing
     """
     gv.hw.so_switch(0)  # set water source off
@@ -338,7 +338,15 @@ def prg_remove(index):  # remove a program
 
 
 def prg_is_water_time(index):  # return boolean if watering should start
-    # also adds log if watering should start or not and why not
+    """ finds if watering should start
+
+    Checks if program is enabled, than according program mode asks for watering
+    time later than now. Checks if watering time is_in_time_span. Adds log if
+    watering should start or not and why not
+
+    \param int: index of the program
+    \return bool: True if watering is due
+    """
     prg = gv.prg[index]
     now = arrow.now('local')
     if prg['Enabled']:
@@ -387,10 +395,23 @@ def prg_is_water_time(index):  # return boolean if watering should start
             raise NameError('unknown program type')
 
 
-def prg_lev_is_water_time(index, now):  # returns next watering time
-    # only for programs with mode 'waterlevel'
-    # returns tuple with boolean, reason why is not water time if not,
-    # and arrow of next watering if available
+def prg_lev_is_water_time(index, now):  # checks if is watering time
+    """ Checks if now is watering time for water level mode progam.
+
+    Checks if all stations are empty, if so set FoundEmpty to True, if not set
+    to False (also sets TimeFoundEmpty). Set to False is because if pot is
+    found empty, and program waits some time, and someone waters it in between,
+    than program would water even if stations are full.
+    Than checks time from last watering and if time from found empty is long
+    enough.
+
+    \param int: index of program
+    \param arrow: time after which next watering time is found
+    \return tuple: (bool, string, arrow), bool True if program is ready for
+    watering; string with description why program is not ready for watering if
+    so; arrow time of next watering if possible, if not reutrn time smaller
+    than input parameter
+    """
     prg = gv.prg[index]
     # check if all stations in program are empty:
     # If FoundEmpty is false, routine still did not found all stations to be
@@ -427,12 +448,22 @@ def prg_lev_is_water_time(index, now):  # returns next watering time
     return (now, 'ready for watering', True)
 
 
-def is_in_time_span(index, querytime, nextwatertime):
-    # checks if querytime is equal to nextwatertime with limits given by main
-    # loop interval gv.gs['MLInterval']
-    # index - index of program
-    # querytime is time for which should be determined if is watering time
-    # nextwatertime is watering time later than query time
+def is_in_time_span(index, querytime, nextwatertime):  # times are equal?
+    """ Checks if two times are equal within precision given by main loop
+    interval gv.gs['MLInterval'].
+
+    Precision is two times of mail loop interval (MLI).
+    So True is returned if:
+        1, querytime is later than TimeLastRun + 2*MLI
+        1, querytime is later than nextwatertime - 2*MLI
+        1, querytime is earlier than nextwatertime + 2*MLI
+
+    \param int: index of program
+    \param arrow: querytime is time for which should be determined if it is
+    watering time
+    \param arrow: nextwatertime is watering time later than query time
+    \return bool: True if times equal
+    """
     mli = gv.gs['MLInterval']
     tlr = gv.prg[index]['TimeLastRun']
     tmp = (
@@ -442,21 +473,18 @@ def is_in_time_span(index, querytime, nextwatertime):
         and
         nextwatertime < querytime.replace(seconds=+2 * mli)
     )
-    #tmp = (
-    #    # is last watering far in the past?
-    #    watertime > gv.prg[index]['TimeLastRun'] + 2 * gv.gs['MLInterval']
-    #    # is next watering time near query time?
-    #    and watertime > querytime - 2 * gv.gs['MLInterval']
-    #    and watertime < querytime + 2 * gv.gs['MLInterval']
-    #)
     return tmp
 
 
 def prg_wee_next_water_time(index, starttime):  # returns next watering time
-    # finds next watering time, search begins from starttime
-    # returns tuple with next time and a reason why starttime is not next
-    # watering time (in the case it is not)
-    # only for programs with mode 'weekly'
+    """ Returns next watering time for program with weekend mode.
+
+    Search for next watering time starts from starttime.
+    \param int: index of program
+    \param arrow: starttime after which next watering time is found
+    \return tuple: (arrow, string), time of next watering, string with
+    description why now is not next watering (in the case it is not).
+    """
     prg = gv.prg[index]
     # check variables to prevent infinite while loops:
     if not bool(set(prg['calwDays']) & set(range(1, 8))):
@@ -497,13 +525,19 @@ def prg_wee_next_water_time(index, starttime):  # returns next watering time
 
 
 def prg_int_next_water_time(index, starttime):  # returns next watering time
-    # finds next watering time later than starttime
-    # returns tuple with next time and a reason why starttime is not next
-    # watering time (in the case it is not)
-    # only for programs with mode 'interval'
+    """ Returns next watering time for program with interval mode.
 
+    Search for next watering time starts from TimeLastRun, than it search for
+    watering time later than starttime.
+
+    \param int: index of program
+    \param arrow: starttime after which next watering time is found
+    \return tuple: (arrow, string), time of next watering, string with
+    description why now is not next watering (in the case it is not).
+    """
     # searching starts from timelastrun. after a change of program a
     # timelastrun must be set to now minus caliIntervalD!
+    # XXX not finished description - is it correct description?
 
     prg = gv.prg[index]
     # check variables to prevent infinite while loops:
@@ -1642,7 +1676,8 @@ class WebHistoryChart:  # chart with history and xaxis change
         # check if required web address is valid
         if not check_data_name(dname):
             # incorrect webpage, go to home page:
-            # XXX should generate error? and changestation? and changeprogram? one of these does!
+            # XXX should generate error? and changestation? and changeprogram?
+            # one of these does!
             raise web.seeother('/')
         # set form values:
         frm.xminY.value = gv.cv['xMin'].year
