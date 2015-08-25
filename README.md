@@ -313,6 +313,24 @@ iteration of the loop.
 
 Software can be controlled by the user by means of a web page. 
 
+### operation scheme ###
+
+For a basic operation scheme, see following figure:
+
+![](./images/operation-scheme-all.png)
+
+The software runs in a main loop, main loop interval can be changed in options webpage. 
+If the waiting for next main loop iteration ends, the software:
+1. measures sensors
+2. water stations if required
+3. checks time and date
+4. saves log
+5. starts waiting for next main loop iteration.
+
+If user asks for Check now on home page, waiting for next main loop iteration is ended. If user asks
+for watering of particular station from stations webpage, main loop is paused and station is
+watered. Than main loop continues as usually.
+
 ### watering programs ###
 
 Watering is driven by programs. Three types of programs are used:
@@ -343,6 +361,13 @@ Program can be switched on or off.
 
 Any number of programs can be created.
 
+### watering ###
+
+If station should be watered is based on sensors and settings. See following figure for algorithm:
+
+![](./images/operation-scheme-iswatertime.png)
+
+
 ### main part of software ###
 
 Main part of software is in yawspi.py. After startup the run is divided into two threads. To test
@@ -355,11 +380,7 @@ address <http://127.0.0.1:8080>, you should see a home page.
 
 #### home webpage ###
 
-Home page shows basic status of the hardware, we separate the sets of brackets:
-
-This is [an example] [id] reference-style link.
-
-Then, anywhere in the document, you define your link label like this, on a line by itself:ather sensors, water level sensors and programs.
+Home page shows basic status of the hardware.
 
 Button refresh page just reloads this page. Button Check now asks the main thread to break waiting
 loop and to measure water levels now and commence any watering if needed.
