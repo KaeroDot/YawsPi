@@ -313,23 +313,6 @@ iteration of the loop.
 
 Software can be controlled by the user by means of a web page. 
 
-### operation scheme ###
-
-For a basic operation scheme, see following figure:
-
-![](./images/operation-scheme-all.png)
-
-The software runs in a main loop, main loop interval can be changed in options webpage. 
-If the waiting for next main loop iteration ends, the software:
-1. measures sensors
-2. water stations if required
-3. checks time and date
-4. saves log
-5. starts waiting for next main loop iteration.
-
-If user asks for Check now on home page, waiting for next main loop iteration is ended. If user asks
-for watering of particular station from stations webpage, main loop is paused and station is
-watered. Than main loop continues as usually.
 
 ### watering programs ###
 
@@ -361,12 +344,19 @@ Program can be switched on or off.
 
 Any number of programs can be created.
 
-### watering ###
+### operation scheme ###
 
-If station should be watered is based on sensors and settings. See following figure for algorithm:
+For a basic operation scheme of a main thread, see following figure:
+
+![](./images/operation-scheme-all.png)
+
+If user asks for Check now on home page, waiting for next main loop iteration is ended. If user asks
+for watering of particular station from stations webpage, main loop is paused and station is
+watered. Than main loop continues as usually.
+
+If station should be watered is based on sensors and settings. See following figure for an algorithm:
 
 ![](./images/operation-scheme-iswatertime.png)
-
 
 ### main part of software ###
 
@@ -382,42 +372,68 @@ address <http://127.0.0.1:8080>, you should see a home page.
 
 Home page shows basic status of the hardware.
 
-Button refresh page just reloads this page. Button Check now asks the main thread to break waiting
-loop and to measure water levels now and commence any watering if needed.
+Button *Refresh page* just reloads this page. Button *Check now* asks the main thread to break waiting
+loop and to measure water levels now and commence any watering if needed. Button *Stop*/*Start* stops
+or starts the operation - it means sensors are measured, but all watering programs are not working.
+You can reboot the Raspberry Pi by *Reboot* button.
 
-Buttons at the bottom of the page leads to other webpages.
+Buttons at the bottom of the page leads to other web pages.
+
+![](./images/webpage-home-brdr.png)
 
 #### options webpage ###
 
-Several settings related to general system can be setup on this webpage.
+Several settings related to general system can be setup on this web page.
+
+![](./images/webpage-options-brdr.png)
 
 #### stations webpage ###
 
-A list of stations is here. By pressing button Water now this station will be filled by water
-independently on the watering program. Settings can by changed by pressing button Edit. Number of
-stations is determined by hardware settings.
+All stations (defined by *hw_settings.py*) are listed here. By pressing button *Water now* this
+station will be filled by water independently on the watering program. Settings for particular
+station can by changed by pressing button *Edit*. Settings are:
+
+1. Station name - user defined name of the station.
+1. Low threshold (%) - if sensor reports water level below this value, the value is considered as zero.
+1. High threshold (%) - if sensor reports water level over this value, the value is considered as 100%.
+1. Save measured and filling data - systems saves water level measurements and data about water filling to a separate file, thus history can be showed in the chart.
+
+![](./images/webpage-stations-brdr.png)
+
+![](./images/webpage-stations-settings-brdr.png)
 
 #### programs webpage ###
 
-New programs can be added here or settings of existing programs can be edited. By pressing button
-Check programs, a list of watering times of active watering programs for next 14 days is shown.
-Watering programs with water level mode of operation are ommited, because they are not driven
-primarily by date and time.
+New programs can be added here or programs can be deleted. By pressing button *Check programs*, a
+list of watering times of active watering programs for next 14 days is shown. Watering programs with
+water level mode of operation are omitted, because they are not driven primarily by date and time.
+Pressing button *Edit* program shows a web page with settings for the particular program.
+
+![](./images/webpage-programs-brdr.png)
+
+![](./images/webpage-programs-settings-brdr.png)
 
 #### log webpage ###
 
-Log of the system is shown from newest to oldest. Usefull for determining problems.
+Log of the system is shown from newest messages to oldest ones. This is useful for determining problems.
+
+![](./images/webpage-log-brdr.png)
 
 #### history webpage ###
 
 A chart of history of stations or weather sensors can be shown. Data are shown only if saving of
-particular data is switched in options webpage.
+particular sensor is switched in options web page or saving of particular stations is switched in
+stations web page.
+
+![](./images/webpage-history-brdr.png)
+
+![](./images/webpage-history-chart-brdr.png)
 
 ### hardware abstraction layer ###
 
 The hw_control.py module serve as abstraction layer.
 
-### hardware modules ###
+### hardware control modules ###
 
 Python modules for hardware were copied from <http://www.adafruit.com/>, from <http://www.astromik.org/malymenu/menuraspi.htm> or written by myself.
 List of modules:
@@ -431,7 +447,7 @@ List of modules:
 * rtc8563.py
 
 
-### hardware configuration ###
+### hardware configuration syntax ###
 
 Configuration of the hardware is written in hw_config.py. If the software is not run on raspberry,
 hw_config_demo.py is used. Because theoretically more secondary boards can be connected, there is
