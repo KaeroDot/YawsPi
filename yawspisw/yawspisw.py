@@ -24,9 +24,9 @@
 # kdyz se da casem refresh page, tak ukaze ze skoncil filling, ale senzor ma
 # spatny stav, na to se musi dat check now. coz je napytel, protoze po filling
 # uz musi mit senzor zmereny ne?
-# 15, spatne zobrazuje cas na webove strance, proc?
-# 16, kdyz je prazdny source, umozni zalevani? co napise do logu?
 # 17, program water by level ignoruje cas platnosti programu
+# 18, 'Desc': gv.hw.se_description(x) is updated only once during
+# initialization
 
 # standard modules:
 from time import sleep
