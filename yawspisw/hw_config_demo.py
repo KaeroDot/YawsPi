@@ -26,17 +26,17 @@ def hw_config():
     tmp['AdcPins'] = ((23, 19, 21, 13), (23, 19, 21, 24))
 
     # ------------------- Weather Sensors:
-    tmp['SeTemp'] = 0     # temperature sensor present
+    tmp['SeTemp'] = 1     # temperature sensor present
     # temperature value take from:
     #       'humid': DHT11 (humidity sensor)
     #       'press': BMP180 (pressure sensor)
-    tmp['SeTempSource'] = 'press'
+    tmp['SeTempSource'] = 'humid'
     tmp['SeRain'] = 0     # rain sensor present
     tmp['SeRainPin'] = (-2, 1)  # rain sensor pin
-    tmp['SeHumid'] = 0    # humidity sensor present
+    tmp['SeHumid'] = 1    # humidity sensor present
     tmp['SeHumidPin'] = (0, 13)  # humidity sensor present
-    tmp['SePress'] = 0    # pressure sensor present
-    tmp['SeIllum'] = 0    # illuminance sensor present
+    tmp['SePress'] = 1    # pressure sensor present
+    tmp['SeIllum'] = 1    # illuminance sensor present
     tmp['SeIllumAddrToHigh'] = 0    # illuminance address pin set to high?
 
     # ------------------- Water Source:
@@ -50,9 +50,10 @@ def hw_config():
     # (offset, rate)
     # SettleT is time source needs to stop the water flow after switching off
     tmp['So'] = {
-        'Cap': 10,
+        'Cap': 50,
         'Pin': (1, 0),
-        'FlowRate': (2, 15),
+        'FlowRate': (6.0297e-03, 3.2421e-02, -1.2655e-04),
+        'FlowRateRev': (0.061503, 29.188514, 6.336059),
         'SettleT': 0.1,
     }
 
@@ -63,23 +64,13 @@ def hw_config():
     # SettleT is time valve needs to fully open
     tmp['St'] = (
         {
-            'Cap': 0.1,
+            'Cap': 2.5,
             'Pin': (1, 1),
             'SettleT': 0.1,
         },
         {
-            'Cap':  0.5,
-            'Pin':  (1, 2),
-            'SettleT': 0.1,
-        },
-        {
-            'Cap':  1.0,
-            'Pin':  (1, 3),
-            'SettleT': 0.1,
-        },
-        {
-            'Cap':  2.0,
-            'Pin':  (1, 4),
+            'Cap': 2.5,
+            'Pin': (1, 2),
             'SettleT': 0.1,
         },
     )
@@ -100,26 +91,39 @@ def hw_config():
     # type none.
     tmp['SeWL'] = (
         {
-            'Type':  'none',
+            'Type':  'min',
+            'Pin':  (1, 10),
         },
         {
             'Type':  'min',
-            'Pin':  (1, 5),
-        },
-        {
-            'Type':  'max',
-            'Pin':  (1, 6),
+            'Pin':  (1, 11),
         },
         {
             'Type':  'minmax',
-            'MinPin':  (1, 7),
+            'MinPin':  (1, 9),
             'MaxPin':  (1, 8),
         },
-        {
-            'Type':  'grad',
-            'ValuePin':  (0, 0),
-            'OnOffPin':  (1, 9),
-        },
+        #{
+        #    'Type':  'none',
+        #},
+        #{
+        #    'Type':  'min',
+        #    'Pin':  (1, 5),
+        #},
+        #{
+        #    'Type':  'max',
+        #    'Pin':  (1, 6),
+        #},
+        #{
+        #    'Type':  'minmax',
+        #    'MinPin':  (1, 7),
+        #    'MaxPin':  (1, 8),
+        #},
+        #{
+        #    'Type':  'grad',
+        #    'ValuePin':  (0, 0),
+        #    'OnOffPin':  (1, 9),
+        #},
     )
 
     return tmp

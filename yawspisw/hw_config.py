@@ -79,40 +79,40 @@ def hw_config():
     # SettleT is time valve needs to fully open
     tmp['St'] = (
         {
-            'Cap': 0.5,
+            'Cap': 2.0,
             'Pin': (1, 1),
             'SettleT': 0.1,
         },
-        #{
-        #    'Cap': 1.0,
-        #    'Pin': (1, 2),
-        #    'SettleT': 0.1,
-        #},
-        #{
-        #    'Cap':  0.5,
-        #    'Pin': (1, 3),
-        #    'SettleT': 0.1,
-        #},
-        #{
-        #    'Cap':  0.5,
-        #    'Pin': (1, 4),
-        #    'SettleT': 0.1,
-        #},
-        #{
-        #    'Cap':  0.5,
-        #    'Pin': (1, 5),
-        #    'SettleT': 0.1,
-        #},
-        #{
-        #    'Cap':  0.5,
-        #    'Pin': (1, 6),
-        #    'SettleT': 0.1,
-        #},
-        #{
-        #    'Cap':  0.5,
-        #    'Pin': (1, 7),
-        #    'SettleT': 0.1,
-        #},
+        {
+            'Cap': 3.0,
+            'Pin': (1, 2),
+            'SettleT': 0.1,
+        },
+        {
+            'Cap': 3.0,
+            'Pin': (1, 3),
+            'SettleT': 0.1,
+        },
+        {
+            'Cap': 0.5,
+            'Pin': (1, 4),
+            'SettleT': 0.1,
+        },
+        {
+            'Cap': 0.2,
+            'Pin': (1, 5),
+            'SettleT': 0.1,
+        },
+        {
+            'Cap': 0.5,
+            'Pin': (1, 6),
+            'SettleT': 0.1,
+        },
+        {
+            'Cap': 1.0,
+            'Pin': (1, 7),
+            'SettleT': 0.1,
+        },
     )
 
     # ------------------- Water Level Sensors:
@@ -130,47 +130,39 @@ def hw_config():
     # last sensor is water source sensor (if source is unlimited, set sensor
     # type none.
     tmp['SeWL'] = (
-        #{
-        #    'Type':  'none',
-        #},
-        #{
-        #    'Type':  'max',
-        #    'Pin':  (1, 8),
-        #},
-        #{
-        #    'Type':  'none',
-        #},
+        {
+            'Type':  'grad',
+            'ValuePin':  (-1, 6),
+            'OnOffPin':  (2, 1),
+        },
+        {
+            'Type':  'grad',
+            'ValuePin':  (-1, 5),
+            'OnOffPin':  (2, 2),
+        },
         {
             'Type':  'min',
             'Pin':  (1, 10),
         },
-        #{
-        #    'Type':  'minmax',
-        #    'MinPin':  (1, 8),
-        #    'MaxPin':  (1, 9),
-        #},
+        {
+            'Type':  'none',
+        },
+        {
+            'Type':  'none',
+        },
+        {
+            'Type':  'none',
+        },
+        {
+            'Type':  'grad',
+            'ValuePin':  (-1, 4),
+            'OnOffPin':  (2, 3),
+        },
         {
             'Type':  'minmax',
             'MinPin':  (1, 9),
             'MaxPin':  (1, 8),
         },
-        #{
-        #    'Type':  'max',
-        #    'Pin':  (1, 15),
-        #},
-        #{
-        #    'Type':  'grad',
-        #    'ValuePin':  (-1, 6),
-        #    'OnOffPin':  (2, 1),
-        #},
-        #{
-        #    'Type':  'grad',
-        #    'ValuePin':  (-2, 0),
-        #    'OnOffPin':  (2, 8),
-        #},
-        #{
-        #    'Type':  'none',
-        #},
     )
 
     return tmp
