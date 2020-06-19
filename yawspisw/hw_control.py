@@ -43,7 +43,7 @@ class YawspiHW:
             # some other version: RuntimeError occurs
         except (ImportError, RuntimeError):
             # if missing, load demo configuration:
-            print 'hw_config.py missing, loading demo configuration...'
+            print('hw_config.py missing, loading demo configuration...')
             from hw_config_demo import hw_config
         self.hwc = hw_config()
         # initialize variables
@@ -99,31 +99,31 @@ class YawspiHW:
         # check for port expander addresses duplicates:
         x = self.hwc['PeAddresses']
         if not len(set(x)) == len(x):
-            print x
+            print(x)
             raise NameError('hw config check: duplicates '
                             'in port expander adresses!')
         # check for ad converters addresses duplicates:
         x = self.hwc['AdcPins']
         if not len(set(x)) == len(x):
-            print x
+            print(x)
             raise NameError('hw config check: duplicates in '
                             'analog to digital pins!')
         # check duplicate pins on GPIO
         pinsgpio = self._get_all_gpio_pins()
         if not len(set(pinsgpio)) == len(pinsgpio):
-            print pinsgpio
+            print(pinsgpio)
             raise NameError('hw config check: duplicates in '
                             'pins assigned on gpio!')
         # find duplicates in port expander pins:
         pinspe = self._get_all_pe_pins()
         if not len(set(pinspe)) == len(pinspe):
-            print pinspe
+            print(pinspe)
             raise NameError('hw config check: duplicates in pins '
                             'assigned on port expanders!')
         # find duplicates in ad converter pins:
         pinsadc = self._get_all_adc_pins()
         if not len(set(pinsadc)) == len(pinsadc):
-            print pinsadc
+            print(pinsadc)
             raise NameError('hw config check: duplicates in pins '
                             'assigned on adcs!')
         # check number of stations is equal to number of sensors:
@@ -145,19 +145,19 @@ class YawspiHW:
             else:
                 raise NameError('unknown source of temperature sensor!')
         # all hw is OK!
-        print 'hardware configuration check is OK'
+        print('hardware configuration check is OK')
         # print summary:
-        print 'number of port expanders: ' + str(len(self.hwc['PeAddresses']))
-        print 'number of AD converters: ' + str(len(self.hwc['AdcPins']))
-        print 'RTC: ' + str(self.hwc['RTC'])
-        print 'temperature sensor: ' + str(self.hwc['SeTemp'])
-        print 'temperature sensor source: ' + self.hwc['SeTempSource']
-        print 'rain sensor: ' + str(self.hwc['SeRain'])
-        print 'humidity sensor: ' + str(self.hwc['SeHumid'])
-        print 'pressure sensor: ' + str(self.hwc['SePress'])
-        print 'illuminance sensor: ' + str(self.hwc['SeIllum'])
-        print 'number of stations: ' + str(len(self.hwc['St']))
-        print 'number of water level sensors: ' + str(len(self.hwc['SeWL']))
+        print('number of port expanders: ' + str(len(self.hwc['PeAddresses'])))
+        print('number of AD converters: ' + str(len(self.hwc['AdcPins'])))
+        print('RTC: ' + str(self.hwc['RTC']))
+        print('temperature sensor: ' + str(self.hwc['SeTemp']))
+        print('temperature sensor source: ' + self.hwc['SeTempSource'])
+        print('rain sensor: ' + str(self.hwc['SeRain']))
+        print('humidity sensor: ' + str(self.hwc['SeHumid']))
+        print('pressure sensor: ' + str(self.hwc['SePress']))
+        print('illuminance sensor: ' + str(self.hwc['SeIllum']))
+        print('number of stations: ' + str(len(self.hwc['St'])))
+        print('number of water level sensors: ' + str(len(self.hwc['SeWL'])))
         return True
 
     def _get_all_gpio_pins(self):  # returns all pins addressed on GPIO
@@ -587,7 +587,7 @@ class YawspiHW:
                 else:
                     val = 0.5
             elif self.hwc['SeWL'][index]['Type'] == 'minmax':
-                #read both sensors
+                # read both sensors
                 x = self._pin_get(self.hwc['SeWL'][index]['MinPin'])
                 y = self._pin_get(self.hwc['SeWL'][index]['MaxPin'])
                 # decide station status:
@@ -829,70 +829,70 @@ if __name__ == "__main__":  # this routine checks system
 
     # permited input parameters:
     permittedpar = ['-all', '-nowater', '-showi2c']
-    if not par in permittedpar:
+    if par not in permittedpar:
         # print help if unknown or empty input parameter
-        print "Help: add input parameter, one of:"
-        print "-all         tests all the hardware"
-        print "-nowater     do not test valves and water source"
-        print "-showi2c     show map of i2c devices"
+        print("Help: add input parameter, one of:")
+        print("-all         tests all the hardware")
+        print("-nowater     do not test valves and water source")
+        print("-showi2c     show map of i2c devices")
     else:
         try:
             if par == "-showi2c":
-                #XXX sudo i2cdetect -y 1
+                # XXX sudo i2cdetect -y 1
                 pass
             else:
                 # this routine is not used during normal run
                 # initialize:
-                print 'initialization:'
+                print('initialization:')
                 hw = YawspiHW()
-                print '----------'
-                print 'hw mode: ' + str(hw.WithHW)
+                print('----------')
+                print('hw mode: ' + str(hw.WithHW))
                 # print all sensors:
-                print '----------'
-                print 'RTC time:' + str(hw.RTC_get().isoformat())
-                print 'ambient sensors:'
-                print 'temp=' + str(hw.se_temp())
-                print 'humid=' + str(hw.se_humid())
-                print 'press=' + str(hw.se_press())
-                print 'rain=' + str(hw.se_rain())
-                print 'illum=' + str(hw.se_illum())
+                print('----------')
+                print('RTC time:' + str(hw.RTC_get().isoformat()))
+                print('ambient sensors:')
+                print('temp=' + str(hw.se_temp()))
+                print('humid=' + str(hw.se_humid()))
+                print('press=' + str(hw.se_press()))
+                print('rain=' + str(hw.se_rain()))
+                print('illum=' + str(hw.se_illum()))
                 if not par == "-nowater":
                     # next section is tested only if required by user:
                     # check valves:
-                    print '----------'
-                    print 'station valves one by one on and off:'
+                    print('----------')
+                    print('station valves one by one on and off:')
                     for i in range(hw.StNo):
-                        print 'valve of station ' + str(i) + ' on...'
+                        print('valve of station ' + str(i) + ' on...')
                         hw.st_switch(i, 1)
                         sleep(1)
-                        print 'valve of station ' + str(i) + ' off...'
+                        print('valve of station ' + str(i) + ' off...')
                         hw.st_switch(i, 0)
                         sleep(1)
                     # check source:
-                    print '----------'
-                    print 'set valve of station 0 on and source on...'
-                    print 'valve of station 0 on...'
+                    print('----------')
+                    print('set valve of station 0 on and source on...')
+                    print('valve of station 0 on...')
                     hw.st_switch(0, 1)
                     sleep(1)
-                    print 'source on...'
+                    print('source on...')
                     hw.so_switch(1)
                     sleep(1)
-                    print 'source off...'
+                    print('source off...')
                     hw.so_switch(0)
                     sleep(1)
-                    print 'valve of station 0 off...'
+                    print('valve of station 0 off...')
                     hw.st_switch(0, 0)
                 # print water level sensors:
-                print '----------'
-                print 'sensors:'
+                print('----------')
+                print('sensors:')
                 while True:
                     for i in range(hw.StNo):
-                        print 'sensor of station ' + str(i) + \
-                              ', type ' + hw.hwc['SeWL'][i]['Type'] + \
-                              ': ' + str(hw.se_level(i))
-                    print 'source: ' + str(hw.se_level(i + 1))
+                        print('sensor of station ' + str(i) +
+                              ', type ' + hw.hwc['SeWL'][i]['Type'] +
+                              ': ' + str(hw.se_level(i)))
+                    print('source: ' + str(hw.se_level(i + 1)))
                     sleep(0.5)
         except KeyboardInterrupt:
-            print ' -- user interrupt'
+            print(' -- user interrupt')
 
 # vim modeline: vim: shiftwidth=4 tabstop=4

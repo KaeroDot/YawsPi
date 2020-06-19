@@ -6,3 +6,4 @@ yawspisw/.ropeproject
 yawspisw/config/*
 yawspisw/data/*
 doc/*
+yawspisw/__pycache__/

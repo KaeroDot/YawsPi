@@ -21,10 +21,10 @@ h = yawpihw()
 vols = [0.2, 0.4, 0.6, 0.8, 1]
 times = []
 for v in vols:
-    print '---------------------------------'
-    print 'prepare to fill ' + str(v) + ' l'
+    print('---------------------------------')
+    print('prepare to fill ' + str(v) + ' l')
     raw_input('press enter when ready')
-    print 'Filling ' + str(v) + ' l ...'
+    print('Filling ' + str(v) + ' l ...')
     h.st_switch(0, 1)
     h.so_switch(1)
     start = arrow.now('local')
@@ -33,7 +33,7 @@ for v in vols:
     h.st_switch(0, 0)
     end = arrow.now('local')
     times.append((end - start).total_seconds())
-    print 'total time to fill ' + str(v) + ' l was ' + str(times[-1])
+    print('total time to fill ' + str(v) + ' l was ' + str(times[-1]))
 
 timvec = np.array(times)
 volvec = np.array(vols)
@@ -41,19 +41,19 @@ volvec = np.array(vols)
 p = np.polyfit(timvec, volvec, 2)
 # fit model: time = offset + rate1 * volume + rate2 * volume
 pr = np.polyfit(volvec, timvec, 2)
-print '================================='
-print 'fit to get liters per second:'
-print 'slope is: ' + str(p[2])
-print 'rate1 is: ' + str(p[1])
-print 'rate2 is: ' + str(p[0])
-print '---------------------------------'
-print 'fit to get seconds for liter'
-print 'slope is: ' + str(pr[2])
-print 'rate1 is: ' + str(pr[1])
-print 'rate2 is: ' + str(pr[0])
-print '---------------------------------'
-print 'the yawpi_hw_config.py should contain the following lines:'
-print '\'FlowRate\': (' + str(p[2]) + ', ' + str(p[1]) + ', ' + str(p[0]) + '),'
-print '\'FlowRateRev\': (' + str(pr[2]) + ', ' + str(pr[1]) + ', ' + str(pr[0]) + '),'
-print 'as part of the following list (add after such line):'
-print 'tmp[\'So\'] = {'
+print('=================================')
+print('fit to get liters per second:')
+print('slope is: ' + str(p[2]))
+print('rate1 is: ' + str(p[1]))
+print('rate2 is: ' + str(p[0]))
+print('---------------------------------')
+print('fit to get seconds for liter')
+print('slope is: ' + str(pr[2]))
+print('rate1 is: ' + str(pr[1]))
+print('rate2 is: ' + str(pr[0]))
+print('---------------------------------')
+print('the yawpi_hw_config.py should contain the following lines:')
+print('\'FlowRate\': (' + str(p[2]) + ', ' + str(p[1]) + ', ' + str(p[0]) + '),')
+print('\'FlowRateRev\': (' + str(pr[2]) + ', ' + str(pr[1]) + ', ' + str(pr[0]) + '),')
+print('as part of the following list (add after such line):')
+print('tmp[\'So\'] = {')

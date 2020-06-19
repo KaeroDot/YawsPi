@@ -2,10 +2,10 @@
 # -*- coding: utf-8 -*-
 #
 # vim modeline: vim: shiftwidth=4 tabstop=4
-#=================================================================
+# =================================================================
 # main yawspi program
-#=================================================================
-
+# =================================================================
+#
 # XXX todo:
 # bugs:
 # 3, station settings - threshold - does it change grad sensor slope? should
@@ -34,7 +34,9 @@ import arrow
 import signal
 import sys
 import web
-import thread
+# module renamed to _thread in python3, it is lowlevel, module threading should
+# be used:
+import _thread
 import pickle
 import os
 import pygal
@@ -101,7 +103,7 @@ def td_format(td_object):  # formats timedelta to nice string
             ('hour',        60 * 60),
             ('minute',      60),
         ]
-            #('second',      1)
+        # ('second',      1)
         strings = []
         for period_name, period_seconds in periods:
                 if seconds > period_seconds:
@@ -128,7 +130,7 @@ def check_and_set_time():  # check local and RTC time
     \return None
     """
     # check if last check was done at least one week before:
-    if arrow.utcnow().replace(weeks=-1) > gv.lastRTCupdate:
+    if arrow.utcnow().shift(weeks=-1) > gv.lastRTCupdate:
         lcl = arrow.utcnow()
         if not gv.hw.RTC_get_bat():
             log_add(' <font color="red">RTC battery not OK!</font>')
@@ -246,7 +248,7 @@ def init_cv():  # initialize dictionary with current values
         'SeIllum': -300,
         'CurAct': '',
         'xConstrain': False,
-        'xMin': arrow.now('local').replace(days=-2),
+        'xMin': arrow.now('local').shift(days=-2),
         'xMax': arrow.now('local'),
     }
 
@@ -290,8 +292,8 @@ def prg_get_new():  # returns dict with a new program
         'Name': 'new program',
         'Enabled': False,
         'Stations': [],
-        #'Mode': 'waterlevel',
-        #'Mode': 'weekly',
+        # 'Mode': 'waterlevel',
+        # 'Mode': 'weekly',
         'Mode': 'interval',
         'wlMinDelayH': 1,
         'wlEmptyDelayH': 1,
@@ -303,7 +305,7 @@ def prg_get_new():  # returns dict with a new program
         'TimeFromM': 0,
         'TimeToH': 19,
         'TimeToM': 0,
-        'TimeLastRun': arrow.now('local').replace(days=-1),
+        'TimeLastRun': arrow.now('local').shift(days=-1),
         'FoundEmpty': False,
         'TimeFoundEmpty': arrow.now('local')
     }
@@ -434,7 +436,7 @@ def prg_lev_is_water_time(index, now):  # checks if is watering time
     if not allempty:
         # return time in history to represent that it is impossible to know
         # when next watering will be
-        tmp = now.replace(days=-1)
+        tmp = now.shift(days=-1)
         # someone other could water the pot instead of YawsPi, so just to be
         # sure FoundEmpty is reseted:
         gv.prg[index]['FoundEmpty'] = False
@@ -447,11 +449,11 @@ def prg_lev_is_water_time(index, now):  # checks if is watering time
             gv.prg[index]['FoundEmpty'] = True
     # stations found empty, so:
     # check if time from last watering is long enough:
-    tmp = prg['TimeLastRun'].replace(hours=prg['wlMinDelayH'])
+    tmp = prg['TimeLastRun'].shift(hours=prg['wlMinDelayH'])
     if now <= tmp:
         return (tmp, 'not long enough from last watering', False)
     # check if stations are empty long enough:
-    tmp = prg['TimeFoundEmpty'].replace(hours=prg['wlEmptyDelayH'])
+    tmp = prg['TimeFoundEmpty'].shift(hours=prg['wlEmptyDelayH'])
     if now < tmp:
         return (tmp, 'stations not empty long enough', False)
     # all conditions ok, program is ready for watering:
@@ -477,11 +479,11 @@ def is_in_time_span(index, querytime, nextwatertime):  # times are equal?
     mli = gv.gs['MLInterval']
     tlr = gv.prg[index]['TimeLastRun']
     tmp = (
-        querytime > tlr.replace(seconds=2 * mli)
+        querytime > tlr.shift(seconds=2 * mli)
         and
-        nextwatertime > querytime.replace(seconds=-2 * mli)
+        nextwatertime > querytime.shift(seconds=-2 * mli)
         and
-        nextwatertime < querytime.replace(seconds=+2 * mli)
+        nextwatertime < querytime.shift(seconds=+2 * mli)
     )
     return tmp
 
@@ -512,7 +514,7 @@ def prg_wee_next_water_time(index, starttime):  # returns next watering time
         # starttime is valid week of day,
         # add repeat interval till bigger than starttime:
         while not ts >= starttime:
-            ts = ts.replace(hours=prg['calwRepeatH'])
+            ts = ts.shift(hours=prg['calwRepeatH'])
         # if ts is still the same day as starttime:
         if ts.day == t.day:
             # if not later than 'program valid to' time:
@@ -526,10 +528,10 @@ def prg_wee_next_water_time(index, starttime):  # returns next watering time
         # date overflow, therefore starttime is later than TimeTo:
         reason = 'later than TimeTo'
         # add day and continue looking for valid weekday:
-        t = t.replace(days=+1)
+        t = t.shift(days=+1)
     # t is not valid weekday, add days till next valid weekday found:
     while not t.isoweekday() in prg['calwDays']:
-        t = t.replace(days=+1)
+        t = t.shift(days=+1)
     # set hour and minute to 'program valid from'
     return (t, reason)
 
@@ -561,7 +563,7 @@ def prg_int_next_water_time(index, starttime):  # returns next watering time
     t = t.floor('minute')
     # add days till found day greater or equal to starttime:
     while t.floor('day') < starttime.floor('day'):
-        t = t.replace(days=prg['caliIntervalD'])
+        t = t.shift(days=prg['caliIntervalD'])
     # found day is not equal to starttime?
     if not t.day == starttime.day:
         # found time is later day than starttime, return it:
@@ -570,12 +572,12 @@ def prg_int_next_water_time(index, starttime):  # returns next watering time
     # greater than starttime
     ts = t
     while ts < starttime:
-        ts = ts.replace(hours=prg['caliRepeatH'])
+        ts = ts.shift(hours=prg['caliRepeatH'])
     pvt = starttime.replace(hour=prg['TimeToH'], minute=prg['TimeToH'])
     # found time is greater then 'program valid to' time?
     if ts > pvt:
         # add caliIntervalD to previous found day and return it:
-        t = t.replace(days=prg['caliIntervalD'])
+        t = t.shift(days=prg['caliIntervalD'])
         return(t,  'later than TimeTo')
     # found time is not grater then 'program valid to' time, return it:
     return(ts, 'not valid time of a day')
@@ -589,7 +591,7 @@ def prg_water(index):  # starts watering all stations in the program
     gv.prg[index]['TimeLastRun'] = arrow.now('local')
     # set that station was not yet found empty:
     gv.prg[index]['FoundEmpty'] = False
-    gv.prg[index]['TimeFoundEmpty'] = arrow.now('local').replace(days=-1)
+    gv.prg[index]['TimeFoundEmpty'] = arrow.now('local').shift(days=-1)
 
 
 # ------------------- configurations saving and loading:
@@ -597,7 +599,7 @@ def gs_load():  # load configuration file
     # general settings:
     if os.path.isfile(gv.gsfilepath):
         # if file exist load it:
-        gsfile = open(gv.gsfilepath, 'r')
+        gsfile = open(gv.gsfilepath, 'rb')
         gv.gs = pickle.load(gsfile)
         gsfile.close()
         log_add('general settings loaded from file')
@@ -611,7 +613,7 @@ def gs_save():  # save configuration file
     # general settings:
     if not os.path.isdir(gv.configdir):
         os.mkdir(gv.configdir)
-    gsfile = open(gv.gsfilepath, 'w')
+    gsfile = open(gv.gsfilepath, 'wb')
     pickle.dump(gv.gs, gsfile)
     gsfile.close()
     log_add('general settings saved to file')
@@ -621,7 +623,7 @@ def hws_load():  # load hardware settings file
     # general settings:
     if os.path.isfile(gv.hwsfilepath):
         # if file exist load it:
-        hwsfile = open(gv.hwsfilepath, 'r')
+        hwsfile = open(gv.hwsfilepath, 'rb')
         gv.hws = pickle.load(hwsfile)
         hwsfile.close()
         if len(gv.hws['StData']) != gv.hw.StNo:
@@ -640,7 +642,7 @@ def hws_save():  # save hardware settings to a file
     # hardware settings:
     if not os.path.isdir(gv.configdir):
         os.mkdir(gv.configdir)
-    hwsfile = open(gv.hwsfilepath, 'w')
+    hwsfile = open(gv.hwsfilepath, 'wb')
     pickle.dump(gv.hws, hwsfile)
     hwsfile.close()
     log_add('hardware settings saved to file')
@@ -650,7 +652,7 @@ def prg_load():  # load program file
     # general settings:
     if os.path.isfile(gv.prgfilepath):
         # if file exist load it:
-        prgfile = open(gv.prgfilepath, 'r')
+        prgfile = open(gv.prgfilepath, 'rb')
         gv.prg = pickle.load(prgfile)
         prgfile.close()
         log_add('programs loaded from file')
@@ -664,7 +666,7 @@ def prg_save():  # save program file
     # general settings:
     if not os.path.isdir(gv.configdir):
         os.mkdir(gv.configdir)
-    prgfile = open(gv.prgfilepath, 'w')
+    prgfile = open(gv.prgfilepath, 'wb')
     pickle.dump(gv.prg, prgfile)
     prgfile.close()
     log_add('programs saved to file')
@@ -887,8 +889,7 @@ def make_chart(name, constrain, xmin, xmax):  # generate history chart
                                show_y_guides=True,
                                x_label_rotation=20,
                                x_label_format='%a %d.%m. %H:%M',
-                               x_value_formatter=
-                               lambda dt: dt.strftime('%a %d.%m. %H:%M'),
+                               x_value_formatter=lambda dt: dt.strftime('%a %d.%m. %H:%M'),
                                title=gtitle,
                                y_title=y1title,
                                show_legend=False,
@@ -1026,8 +1027,8 @@ class WebHome:  # home page with status informations
             'log': '/log',
             'reboot': '/reboot',
         }
-        if response.keys()[0] in simpleredirect:
-            raise web.seeother(simpleredirect[response.keys()[0]])
+        if [*response][0] in simpleredirect:
+            raise web.seeother(simpleredirect[[*response][0]])
         elif 'breakmainloop' in response:
             # user required for main loop break, add flag:
             if not 'askforbreak' in gv.flags:
@@ -1186,7 +1187,7 @@ class WebReboot:  # show reboot question
         response = web.input()  # get user response
         if 'reboot' in response:
             # send keyboard interrupt to main thread:
-            thread.interrupt_main()
+            _thread.interrupt_main()
             # call system reboot in 1 minute
             # XXX causes error, but it is working. it is some problem of
             # threading package?
@@ -1200,7 +1201,7 @@ class WebReboot:  # show reboot question
 class WebLog:  # show log
     def GET(self):
         tmp = log_get()
-        #reverse list and serialize it:
+        # reverse list and serialize it:
         # XXX zkusit pres [8:0:-1]
         tmp.reverse()
         tmp = ''.join(tmp)
@@ -1330,12 +1331,12 @@ class WebPrograms:  # shows list of programs
             return web.seeother('programs')
         if 'check' in response:
             return web.seeother('checkprograms')
-        if response.keys()[0] in ['c' + str(i) for i in range(len(gv.prg))]:
+        if [*response][0] in ['c' + str(i) for i in range(len(gv.prg))]:
             # change program:
-            return web.seeother('changeprogram' + response.keys()[0][1:])
-        if response.keys()[0] in ['r' + str(i) for i in range(len(gv.prg))]:
+            return web.seeother('changeprogram' + [*response][0][1:])
+        if [*response][0] in ['r' + str(i) for i in range(len(gv.prg))]:
             # remove program and reload page:
-            prg_remove(int(response.keys()[0][1:]))
+            prg_remove(int([*response][0][1:]))
             return web.seeother('programs')
         # if cancel or any unknown response, go to home page:
         raise web.seeother('/')
@@ -1493,7 +1494,7 @@ class WebChangeProgram:  # change program settings
                     frm.TimeToM.value = response['TimeToM']
                     return render.changeprogram(gv, frm, index, indexstr)
                 else:
-                # write new values to global variables:
+                    # write new values to global variables:
                     p = gv.prg[index]
                     p['Name'] = response['Name']
                     if response['Enabled'] == 'On':
@@ -1529,7 +1530,7 @@ class WebChangeProgram:  # change program settings
                         t = t.replace(hour=p['TimeFromH'],
                                       minute=p['TimeFromM'])
                         t = t.floor('minute')
-                        t = t.replace(days=-1 * p['caliIntervalD'])
+                        t = t.shift(days=-1 * p['caliIntervalD'])
                         p['TimeLastRun'] = t
                     # parse selected stations
                     tmp = []
@@ -1563,7 +1564,7 @@ class WebCheckPrograms:  # shows plan of programs for next 2 weeks
         # plan from now:
         tstart = arrow.now('local')
         # till next two weeks:
-        tmax = tstart.replace(weeks=2)
+        tmax = tstart.shift(weeks=2)
         lst = []
         for i in range(len(gv.prg)):
             if gv.prg[i]['Enabled'] and gv.prg[i]['Mode'] != 'waterlevel':
@@ -1588,7 +1589,7 @@ class WebCheckPrograms:  # shows plan of programs for next 2 weeks
                         gv.prg[i]['Name']
                     lst.append(s)
                     # add second to move in programs:
-                    t = tmp[0].replace(seconds=+1)
+                    t = tmp[0].shift(seconds=+1)
         # sort the list (it is year-month-date-time, so sorting of strings
         # gives required result)
         lst.sort()
@@ -1613,7 +1614,7 @@ class WebHistory:  # to select history of what
     def POST(self):
         response = web.input()  # get user response
         # XXX check here correct web? not needed really
-        return web.seeother('historychart' + response.keys()[0])
+        return web.seeother('historychart' + [*response][0])
 
 
 class WebHistoryChart:  # chart with history and xaxis change
@@ -1748,11 +1749,11 @@ class WebHistoryChart:  # chart with history and xaxis change
             elif 'last2days' in response:
                 gv.cv['xConstrain'] = True
                 gv.cv['xMax'] = arrow.now('local')
-                gv.cv['xMin'] = gv.cv['xMax'].replace(days=-2)
+                gv.cv['xMin'] = gv.cv['xMax'].shift(days=-2)
             elif 'last2weeks' in response:
                 gv.cv['xConstrain'] = True
                 gv.cv['xMax'] = arrow.now('local')
-                gv.cv['xMin'] = gv.cv['xMax'].replace(days=-14)
+                gv.cv['xMin'] = gv.cv['xMax'].shift(days=-14)
             elif 'fullrange' in response:
                 gv.cv['xConstrain'] = False
                 # if any unknown response, go to history page:
@@ -1825,7 +1826,7 @@ if __name__ == "__main__":
     if gv.hw.WithHW != 1:
             # not running on RPi, simulation mode set
             tmp = 'no GPIO module was loaded, running in no-hardware mode'
-            print tmp
+            print(tmp)
             log_add(tmp)
     # load hardware settings:
     hws_load()
@@ -1841,13 +1842,13 @@ if __name__ == "__main__":
     web.config.debug = 1
     app = web.application(urls, globals())
     # run web server in separate thread:
-    thread.start_new_thread(app.run, ())
+    _thread.start_new_thread(app.run, ())
 
     # -------------------------------- main program loop
     try:
         # generate time of next loop iteration
         loopendtime = arrow.now('local')
-        loopendtime = loopendtime.replace(seconds=+gv.gs['MLInterval'])
+        loopendtime = loopendtime.shift(seconds=+gv.gs['MLInterval'])
         loopendtime = loopendtime.floor('second')
         while True:
             # generate values for web:
@@ -1892,12 +1893,12 @@ if __name__ == "__main__":
             if arrow.now('local') >= loopendtime:
                 # this happens only if waiting for next iteration was not
                 # broken by web:
-                loopendtime = loopendtime.replace(seconds=+gv.gs['MLInterval'])
+                loopendtime = loopendtime.shift(seconds=+gv.gs['MLInterval'])
                 loopendtime = loopendtime.floor('second')
                 # ensure loopendtime is not in the past, some watering can take
                 # loooong time:
                 while loopendtime < arrow.now('local'):
-                    loopendtime = loopendtime.replace(
+                    loopendtime = loopendtime.shift(
                         seconds=+gv.gs['MLInterval']
                     )
     except KeyboardInterrupt:
