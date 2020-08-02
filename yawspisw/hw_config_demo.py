@@ -1,6 +1,6 @@
-#=================================================================
+# =================================================================
 # yawspi hardware configuration
-#=================================================================
+# =================================================================
 
 # hw adress is composed of two numbers - first one is index of the hw device,
 # second one is pin number.
@@ -15,6 +15,10 @@ def hw_config():
 
     # initialize dictionary with hardware settings:
     tmp = {}
+    # ------------------- RTC:
+    # is Real Time Clock installed?
+    tmp['RTC'] = 0
+    # tmp['RTC'] = 1
 
     # ------------------- IO outputs:
     # expanders MCP23017 (multiple port expanders possible)
@@ -103,27 +107,61 @@ def hw_config():
             'MinPin':  (1, 9),
             'MaxPin':  (1, 8),
         },
-        #{
-        #    'Type':  'none',
-        #},
-        #{
-        #    'Type':  'min',
-        #    'Pin':  (1, 5),
-        #},
-        #{
-        #    'Type':  'max',
-        #    'Pin':  (1, 6),
-        #},
-        #{
-        #    'Type':  'minmax',
-        #    'MinPin':  (1, 7),
-        #    'MaxPin':  (1, 8),
-        #},
-        #{
-        #    'Type':  'grad',
-        #    'ValuePin':  (0, 0),
-        #    'OnOffPin':  (1, 9),
-        #},
+        # {
+        #     'Type':  'none',
+        # },
+        # {
+        #     'Type':  'min',
+        #     'Pin':  (1, 5),
+        # },
+        # {
+        #     'Type':  'max',
+        #     'Pin':  (1, 6),
+        # },
+        # {
+        #     'Type':  'minmax',
+        #     'MinPin':  (1, 7),
+        #     'MaxPin':  (1, 8),
+        # },
+        # {
+        #     'Type':  'grad',
+        #     'ValuePin':  (0, 0),
+        #     'OnOffPin':  (1, 9),
+        # },
+    )
+
+    # ------------------- Soil Humidity Sensors:
+    # possible sensor types:
+    #   none - no soil humidity sensor, humidity is not measured
+    #   grad - some analog sensor measured by adc
+    #   modbus - sensor connected using modbus
+    #           OnOffPin can be the same for all modbus devices
+    # First sensor should be always none, because source does not have soil!
+    tmp['SeSH'] = (
+        {
+            'Type':  'none',
+        },
+        {
+            'Type':  'modbus',
+            'Address':  1,
+            'Register':  1,
+            'TTY':  '/dev/ttyUSB0',
+            'Baudrate':  9600,
+            'OnOffPin':  (0, 4),
+        },
+        #  {
+        #      'Type':  'none',
+        #      'Address':  1,
+        #  },
+        #  {
+        #      'Type':  'grad',
+        #      'ValuePin':  (-1, 5),
+        #      'OnOffPin':  (2, 4),
+        #  },
+        #  {
+        #      'Type':  'modbus',
+        #      'Address':  1,
+        #  },
     )
 
     return tmp

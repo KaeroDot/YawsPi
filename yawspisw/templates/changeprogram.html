@@ -44,6 +44,22 @@ $def with (gv,frm,index,indexerror)
                 <strong class="wrong">$frm.wlEmptyDelayH.note</strong>
             hours from last watering.
             <p></p>
+            $if gv.prg[index]['Mode'] == 'soilhumidity':
+                <input type="radio" checked="checked" id="Mode" value="soilhumidity" name="Mode">
+            $else:
+                <input type="radio" id="Mode" value="soilhumidity" name="Mode">
+            <b>Soil humidity</b> mode of operation:
+            <br>
+            Water stations when all stations are dry at least for 
+            $:frm.shMinDelayH.render()
+            $if frm.shMinDelayH.note:
+                <strong class="wrong">$frm.shMinDelayH.note</strong>
+            hours, but not sooner than 
+            $:frm.shEmptyDelayH.render()
+            $if frm.shEmptyDelayH.note:
+                <strong class="wrong">$frm.shEmptyDelayH.note</strong>
+            hours from last drying out.
+            <p></p>
             $if gv.prg[index]['Mode'] == 'weekly':
                 <input type="radio" checked="checked" id="Mode" value="weekly" name="Mode">
             $else:

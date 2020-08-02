@@ -11,12 +11,15 @@ from time import sleep
 from time import time
 import arrow
 # hw configuration:
-# AND in check_gpio is import RPi.GPIO
-# AND in _inithw is import Adafruit_MCP23017
-# AND in _inithw is import MCP32008
-# AND in _inithw is import BMP180
-# AND in _inithw is import BH1750
-# AND in _inithw is import DHT11
+#   in check_gpio is import RPi.GPIO
+#   in _inithw is import Adafruit_MCP23017
+#   in _inithw is import MCP32008
+#   in _inithw is import BMP180
+#   in _inithw is import BH1750
+#   in _inithw is import DHT11
+#   in _inithw is import SMSens
+# __main__:
+#   is import sys
 
 
 class YawspiHW:
@@ -49,7 +52,7 @@ class YawspiHW:
         # initialize variables
         self._init_vars()
         # check hardware configuration:
-        self._check_config()
+        self._check_config()  # XXX 2DO modbus
         # test for GPIO
         self._check_gpio()
         # initialize hardware
@@ -74,6 +77,8 @@ class YawspiHW:
         self.StStatus = [0] * len(self.hwc['St'])
         # status (on/off) of sensors:
         self.SeWLStatus = [0] * len(self.hwc['SeWL'])
+        # status (on/off) of soil humidity sensors:
+        self.SeSHStatus = [0] * len(self.hwc['SeWL'])
         # status (on/off) of water source:
         self.SoStatus = 0
         # installed ambient sensors:
@@ -130,6 +135,7 @@ class YawspiHW:
         if len(self.hwc['St']) + 1 != len(self.hwc['SeWL']):
             raise NameError('hw config check: different number '
                             'of stations and sensors!')
+        # XXX check number of soil humidity sensors is equal to number of sensors
         # check temperature source:
         if self.hwc['SeTemp']:
             if self.hwc['SeTempSource'] == 'humid':
@@ -166,6 +172,7 @@ class YawspiHW:
         \param Nothing
         \return list: numbers of GPIO pins
         """
+        # XXX does not check for modbus power pin
         pinsgpio = []
         # humidity sensor:
         if self.hwc['SeHumid']:
@@ -308,12 +315,31 @@ class YawspiHW:
             for x in self.hwc['SeWL']:
                 if x['Type'] == 'grad':
                     self._pin_config(x['OnOffPin'], 0)
+
+            # setup soil humidity sensors:
+            self._SHmodbus = ['']*len(self.hwc['SeSH'])
+            from SMSens import SMSens
+            for x, i in enumerate(self.hwc['SeSH']):
+                if x['Type'] == 'grad':
+                    # switch off pin
+                    # set pins on 'grad' sensors to output:
+                    self._pin_config(x['OnOffPin'], 0)
+                # initialize modbus sensor:
+                if x['Type'] == 'modbus':
+                    # set pins to output:
+                    self._pin_config(x['OnOffPin'], 0)
+                    # initialize
+                    s = SMSens(x['Address'], x['Register'], x['TTY'],  x['Baudrate'])
+                    self._SHmodbus[i] = s
+
             # and switch all off:
             self.so_switch(0)                   # switch off pump
             for x in range(len(self.hwc['St'])):  # switch off valves
                 self.st_switch(x, 0)
             for x in range(len(self.hwc['SeWL'])):  # switch off all sensors
                 self._se_switch(x, 0)
+            for x in range(len(self.hwc['SeSH'])):  # switch off all h. sensors
+                self._sh_switch(x, 0)
 
     def _pin_config(self, pin, direction):  # configure pin as output or input
         """ Confiure pin as output or input.
@@ -457,6 +483,42 @@ class YawspiHW:
             # if no hardware, do nothing
             pass
 
+    def _sh_switch(self, index, value):  # switch humidity sensor on or off
+        """ Switch power of humidity sensors on or off
+
+        \param index index of sensor to switch
+        \param value 0 to switch off, otherwise on
+        \return Nothing
+        """
+        if index < 0 or index > len(self.hwc['SeSH']) - 1:
+            raise NameError('incorrect sensor index')
+        if self.WithHW:
+            if self.hwc['SeSH'][index]['Type'] == 'none':
+                # if no sensor do nothing:
+                if value:
+                    self.SeSHStatus[index] = 1
+                else:
+                    self.SeSHStatus[index] = 0
+            elif self.hwc['SeSH'][index]['Type'] == 'grad':
+                if value:
+                    self._pin_set(self.hwc['SeSH'][index]['OnOffPin'], 1)
+                    self.SeSHStatus[index] = 1
+                else:
+                    self._pin_set(self.hwc['SeSH'][index]['OnOffPin'], 0)
+                    self.SeSHStatus[index] = 0
+            elif self.hwc['SeSH'][index]['Type'] == 'modbus':
+                if value:
+                    self._pin_set(self.hwc['SeSH'][index]['OnOffPin'], 1)
+                    self.SeSHStatus[index] = 1
+                else:
+                    self._pin_set(self.hwc['SeSH'][index]['OnOffPin'], 0)
+                    self.SeSHStatus[index] = 0
+            else:
+                raise NameError('unknown Water Level Sensor Type!')
+        else:
+            # if no hardware, do nothing
+            pass
+
     def RTC_get(self):  # return time from RTC
         """
         Return time from RTC
@@ -552,7 +614,7 @@ class YawspiHW:
         else:
             return self.se_level(len(self.hwc['SeWL']) - 1)
 
-    def se_level(self, index):  # returns water level of water source
+    def se_level(self, index):  # returns water level of station
         """ Return water level indicated by a sensor
 
         According the type of the sesnor switch the power of the sensor, gets
@@ -643,6 +705,11 @@ class YawspiHW:
             d = d + 'sensor detects station is empty or full'
         elif self.hwc['SeWL'][index]['Type'] == 'grad':
             d = d + 'sensor detects level of water'
+        # get soil moisture sensor status
+        if self.hwc['SeSH'][index]['Type'] == 'none':
+            d = d + ', no soil moisture sensor'
+        else:
+            d = d + ', soil moisture sensor installed'
         return d
 
     def fill_time(self, index):  # return expected filling time of a station
@@ -732,6 +799,54 @@ class YawspiHW:
             t = self.fill_time(index)
             sleep(t)
             return t
+
+    def se_shumid(self, index):  # return soil humidity
+        """ Return soil humidity indicated by a sensor
+
+        According the type of the sensor switch the power of the sensor, gets
+        value of the sensor, switch off the sensor, calculate the water level
+        and return float in the range from 0 (dry) to 1 (wet).
+        \param index integer, index of a sensor
+        \return float humidity level in range 0 to 1
+        """
+        if index < 0 or index > len(self.hwc['SeSH']) - 1:
+            raise NameError('incorrect humidity sensor index: ' + str(index))
+        if self.WithHW:
+            # first switch sensor on:
+            self._sh_switch(index, 1)
+            # let voltages stabilize:
+            sleep(0.1)
+            # second get sensor value
+            if self.hwc['SeSH'][index]['Type'] == 'none':
+                # if no sensor consider station always dry:
+                val = 0
+            elif self.hwc['SeSH'][index]['Type'] == 'grad':
+                sleep(0.1)
+                # first reading throw away, than read three times and return
+                # average:
+                val = self._pin_get(self.hwc['SeSH'][index]['ValuePin'])
+                val = self._pin_get(self.hwc['SeSH'][index]['ValuePin'])
+                val = val + self._pin_get(self.hwc['SeSH'][index]['ValuePin'])
+                val = val + self._pin_get(self.hwc['SeSH'][index]['ValuePin'])
+                val = val / 3
+            elif self.hwc['SeSH'][index]['Type'] == 'modbus':
+                sleep(0.1)
+                # first reading throw away, than read three times and return
+                # average:
+                val = self._SHmodbus[i].read()
+                val = self._SHmodbus[i].read()
+                val = val + self._SHmodbus[i].read()
+                val = val + self._SHmodbus[i].read()
+                val = val / 3
+            else:
+                raise NameError('unknown Humidity Sensor Type!')
+            # third switch sensor off:
+            self._sh_switch(index, 0)
+            # fourth return value:
+            return val
+        else:
+            # hardware simulation
+            return 0.20
 
     def se_temp(self):  # return temperature
         """ Measure ambient temperature by weather sensor
@@ -884,13 +999,23 @@ if __name__ == "__main__":  # this routine checks system
                     hw.st_switch(0, 0)
                 # print water level sensors:
                 print('----------')
-                print('sensors:')
+                print('wat. lev. sensors:')
                 while True:
                     for i in range(hw.StNo):
                         print('sensor of station ' + str(i) +
                               ', type ' + hw.hwc['SeWL'][i]['Type'] +
                               ': ' + str(hw.se_level(i)))
                     print('source: ' + str(hw.se_level(i + 1)))
+                    sleep(0.5)
+                # print soil humidity sensors:
+                print('----------')
+                print('soil hum. sensors:')
+                while True:
+                    for i in range(hw.StNo):
+                        print('sensor of station ' + str(i) +
+                              ', type ' + hw.hwc['SeSH'][i]['Type'] +
+                              ': ' + str(hw.sh_level(i)))
+                    print('source: ' + str(hw.sh_level(i + 1)))
                     sleep(0.5)
         except KeyboardInterrupt:
             print(' -- user interrupt')

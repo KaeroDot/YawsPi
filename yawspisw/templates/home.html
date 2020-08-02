@@ -89,6 +89,9 @@ $def with (gv)
                 <td>
                     Water Level
                 </td>
+                <td>
+                    Soil Moisture
+                </td>
             </tr>
             $for i in range(gv.hw.StNo)
                 <tr>
@@ -100,6 +103,9 @@ $def with (gv)
                     </td>
                     <td>
                         $'{:.0f}'.format(gv.cv['StWL'][i] * 100) %
+                    </td>
+                    <td>
+                        $'{:.0f}'.format(gv.cv['StSH'][i] * 100) %
                     </td>
                 </tr>
         </tbody>
