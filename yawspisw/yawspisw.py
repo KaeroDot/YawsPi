@@ -46,6 +46,18 @@ import gv
 # yawspi hardware control (hardware abstraction layer):
 from hw_control import YawspiHW
 
+# module for making figures
+import matplotlib
+#  By default matplotlib uses TK gui toolkit, when you're rendering an image
+#  without using the toolkit (i.e. into a file or a string), matplotlib still
+#  instantiates a window that doesn't get displayed, causing all kinds of
+#  problems. In order to avoid that, you should use an Agg backend:
+matplotlib.use('Agg')
+from matplotlib import pyplot as plt
+import matplotlib.dates as mdates
+# this is for saving plots into stream in memory to prevent writing to disk
+import io
+
 
 # ------------------- various functions:
 def sigterm_handler(_signo, _stack_frame):
@@ -902,118 +914,175 @@ def make_chart(name, constrain, xmin, xmax):  # generate history chart
     constrains
     \param arrow xmin low value of xaxis
     \param arrow xmax high value of xaxis
-    \return string xml/svg chart for embedding into webpage
+    \return string svg chart for embedding into webpage
     """
+
     # check input:
     if not check_data_name(name):
         return 'Unknown station or sensor'
     # measured data:
-    data = load_data_file(name)
-    ax1 = []
-    ax1b = []
-    ax2 = []
+    filedata = load_data_file(name)
+
+    # variable data contains data to plot
+    # arrays:
+    # water level x, y; soil humidty x, y; filling x, y
+    data = [[[], []], [[], []], [[], []]]
+
     # secondary axis will be used?
     secondY = False
+
     # set values according what to plot
+    # is it station?
     if name in [str(i) for i in range(gv.hw.StNo)]:
-        # it is station:
-        gtitle = gv.hws['StData'][int(name)]['Name'] + \
+        # label with station number:
+        title = gv.hws['StData'][int(name)]['Name'] + \
             ' (' + str(name) + ')'
-        # parse station data:
-        for tmp in data:
+        # parse station file data:
+        for tmp in filedata:
             if tmp[2].find('level') > -1:
                 # found water level data, apply constrains:
                 if (constrain and tmp[0] >= xmin and tmp[0] <= xmax) \
                         or (not constrain):
-                    ax1.append((tmp[0].datetime, tmp[1]))
+                    data[0][0].append(tmp[0].datetime)
+                    data[0][1].append(tmp[1])
             elif tmp[2].find('humidity') > -1:
                 # found soil humidity data, apply constrains:
                 if (constrain and tmp[0] >= xmin and tmp[0] <= xmax) \
                         or (not constrain):
-                    ax1b.append((tmp[0].datetime, tmp[1]))
+                    data[1][0].append(tmp[0].datetime)
+                    data[1][1].append(tmp[1])
             elif tmp[2].find('fill') > -1:
                 # found water filling data, apply constrains:
                 if (constrain and tmp[0] >= xmin and tmp[0] <= xmax) \
                         or (not constrain):
-                    ax2.append((tmp[0].datetime, tmp[1]))
-        if len(ax2) > 0:
-            y2title = 'fill volume (l)'
-            secondY = True
-        # make yaxis label:
-        y1title = ''
-        print(len(ax1))
-        print(len(ax1b))
-        if len(ax1) > 0 and len(ax1b) > 0:
-            y1title = 'water level, soil humidity (a.u.)'
-        elif len(ax1) > 0:
-            y1title = 'water level (a.u.)'
-        elif len(ax1b) > 0:
-            y1title = 'soil humidity (a.u.)'
-        else:
-            y1title = 'no data available?'
+                    data[2][0].append(tmp[0].datetime)
+                    data[2][1].append(tmp[1])
+
+        # labels
+        labels = ['water level (a.u.)', 'soil humidity (a.u.)', 'fill volume (l)']
+        # line color and type
+        lintype = ["b-", "g-", "ko"]
     else:
         # it is sensor or source:
         if name == 'source':
-            gtitle = 'water source'
-            y1title = 'water level (a. u.)'
+            title = 'water source'
+            labels = ['water level (a. u.)']
+            lintype = ["b-"]
         elif name == 'temp':
-            gtitle = 'ambient temperature'
-            y1title = 'deg C'
+            title = 'ambient temperature'
+            labels = ['deg C']
+            lintype = ["r-"]
         elif name == 'humid':
-            gtitle = 'ambient humidity'
-            y1title = '%'
+            title = 'ambient humidity'
+            labels = ['%']
+            lintype = ["b-"]
         elif name == 'press':
-            gtitle = 'ambient pressure'
-            y1title = 'Pa'
+            title = 'ambient pressure'
+            labels = ['Pa']
+            lintype = ["g-"]
         elif name == 'rain':
-            gtitle = 'rain'
-            y1title = '(a. u.)'
+            title = 'rain'
+            labels = ['(a. u.)']
+            lintype = ["b-"]
         elif name == 'illum':
-            gtitle = 'ambient light'
-            y1title = 'lux'
+            title = 'ambient light'
+            labels = ['lux']
+            lintype = ["y-"]
         else:
             # not identified what to plot (shouldn't happen, just for sure):
             raise NameError('Error - unknown string in name in make_chart')
         # change arrow datatype to datetime:
-        for tmp in data:
+        for tmp in filedata:
             # apply constrains:
             if (constrain and tmp[0] >= xmin and tmp[0] <= xmax) or \
                     (not constrain):
-                ax1.append((tmp[0].datetime, tmp[1]))
-    # initialize chart:
-    chart = pygal.DateTimeLine(style=pygal.style.CleanStyle,
-                               legend_at_bottom=True,
-                               print_values=False,
-                               show_x_guides=True,
-                               show_y_guides=True,
-                               x_label_rotation=20,
-                               x_label_format='%a %d.%m. %H:%M',
-                               x_value_formatter=lambda dt: dt.strftime('%a %d.%m. %H:%M'),
-                               title=gtitle,
-                               y_title=y1title,
-                               show_legend=False,
-                               human_readable=True,
-                               )
-    # create line:
-    if len(ax1) > 0:
-        chart.add('water level', ax1, fill=True)
-    if len(ax1b) > 0:
-        chart.add('soil humidity', ax1b, fill=False)
-    if secondY:
-        # add sedondary line and setup axes:
-        chart.add('filling',
-                  ax2, secondary=True,
-                  dots_size=6,
-                  stroke=False,
-                  )
-        # pygal do not shows secondary title:
-        chart.config(show_legend=True,
-                     y_title=y1title + ' / ' + y2title,
-                     # XXX not working in pygal:
-                     # secondary_title='aaa',
-                     )
-    return chart.render()
+                data[0][0].append(tmp[0].datetime)
+                data[0][1].append(tmp[1])
 
+    # if item 1 is empty in data arrays and item 2 not,
+    # move item 1 to back so it will not be drawn in figure
+    if len(data[1][0]) == 0 and len(data[2][0]) > 0:
+        data.append(data.pop(1))
+        labels.append(labels.pop(1))
+        lintype.append(lintype.pop(1))
+
+    return generate_matplotfigure(data, labels, lintype)
+
+
+def generate_matplotfigure(data, labels, lintype):  # make matplotlib figure
+    """ Generates figure using matplotlib
+
+    Generates chart of array using matplotlib
+    \param data - data array, contains array with two arrays x and y data,
+    maximum is three lines, that is [[[], []], [[], []], [[], []]]
+    \param labels - string array of y axis labels
+    \param lintype - string array of line types and colors
+    \return string svg chart
+    """
+    # based on example in:
+    # https://matplotlib.org/3.2.2/gallery/ticks_and_spines/multiple_yaxis_with_spines.html#sphx-glr-gallery-ticks-and-spines-multiple-yaxis-with-spines-py
+
+    # create matplotlib figure and first axis
+    fig, ax = plt.subplots()
+    fig.subplots_adjust(right=0.75)
+
+    # make additional 2nd and 3rd axes
+    if len(data[1][0]) > 0:
+        ax2 = ax.twinx()
+    if len(data[2][0]) > 0:
+        ax3 = ax.twinx()
+
+    # Offset the right spine of ax3.  The ticks and label have already been
+    # placed on the right by twinx above.
+    if len(data[2][0]) > 0:
+        ax3.spines["right"].set_position(("axes", 1.2))
+        # Having been created by twinx, ax3 has its frame off, so the line of its
+        # detached spine is invisible.  First, activate the frame but make the patch
+        # and spines invisible.
+        ax3.set_frame_on(True)
+        ax3.patch.set_visible(False)
+        for sp in ax3.spines.values():
+            sp.set_visible(False)
+        # Second, show the right spine.
+        ax3.spines["right"].set_visible(True)
+
+    # dicionary for parameters
+    tkw = dict(size=4, width=1.5)
+    # set line types and labels for first axis
+    p1, = ax.plot(data[0][0], data[0][1], lintype[0], label=labels[0])
+    ax.set_ylabel(labels[0])
+    ax.yaxis.label.set_color(p1.get_color())
+    ax.tick_params(axis='y', colors=p1.get_color(), **tkw)
+    if len(data[1][0]) > 0:
+        # set line types and labels for second axis
+        p2, = ax2.plot(data[1][0], data[1][1], lintype[1], label=labels[1])
+        ax2.set_ylabel(labels[1])
+        ax2.yaxis.label.set_color(p2.get_color())
+        ax2.tick_params(axis='y', colors=p2.get_color(), **tkw)
+    if len(data[2][0]) > 0:
+        # set line types and labels for third axis
+        p3, = ax3.plot(data[2][0], data[2][1], lintype[2], label=labels[2])
+        ax3.set_ylabel(labels[2])
+        ax3.yaxis.label.set_color(p3.get_color())
+        ax3.tick_params(axis='y', colors=p3.get_color(), **tkw)
+
+    ax.tick_params(axis='x', **tkw)
+
+    # set x axis to date format year/month/day
+    ax.get_xaxis().set_major_formatter(mdates.DateFormatter("%y/%m/%d"))
+    plt.setp(ax.get_xticklabels(), rotation=30, ha="right")
+
+    # create byte stream
+    # (this prevents writing to disk)
+    f = io.BytesIO()
+    # export figure to byte stream
+    plt.savefig(f, format = "svg")
+    # get bytes and convert to text
+    r = f.getvalue().decode('utf-8')
+    plt.close('all')
+
+    # return svg plot as string:
+    return r
 
 # ------------------- log related:
 def log_add(line):  # add string to a log buffer
