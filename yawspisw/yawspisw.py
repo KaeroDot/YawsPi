@@ -908,6 +908,8 @@ def make_chart(name, constrain, xmin, xmax):  # generate history chart
 
     Generates history chart of station or sensor or source. If constrain is
     true, chart will be limited by times xmin and xmax.
+    Sets gv.cv['xMin'] and gv.cv['xMax'] to limits used in plotting (usefull if
+    constrain is false.
     \param string name - number of station or source or sensors like illum,
     press etc.
     \param bool constrain if true use xmin and xmax parameters as chart
@@ -1005,6 +1007,17 @@ def make_chart(name, constrain, xmin, xmax):  # generate history chart
         data.append(data.pop(1))
         labels.append(labels.pop(1))
         lintype.append(lintype.pop(1))
+
+    # set gv.cv values to span of x axis
+    # checks for empty data
+    tmpmin = []
+    tmpmax = []
+    for dat in data:
+        if len(dat[0]) > 0:
+            tmpmin.append(min(dat[0]))
+            tmpmax.append(max(dat[0]))
+    gv.cv['xMin'] = min(tmpmin) if len(tmpmin) > 0 else arrow.now().datetime
+    gv.cv['xMax'] = max(tmpmax) if len(tmpmax) > 0 else arrow.now().datetime
 
     return generate_matplotfigure(data, labels, lintype)
 
@@ -1911,20 +1924,29 @@ class WebHistoryChart:  # chart with history and xaxis change
             # XXX should generate error? and changestation? and changeprogram?
             # one of these does!
             raise web.seeother('/')
+        # get chart (last week):
+        gv.cv['xConstrain'] = True
+        gv.cv['xMax'] = arrow.now('local')
+        gv.cv['xMin'] = gv.cv['xMax'].shift(days=-7)
+        chartstr = make_chart(dname,
+                              gv.cv['xConstrain'],
+                              gv.cv['xMin'],
+                              gv.cv['xMax'])
         # set form values:
         frm.xminY.value = gv.cv['xMin'].year
         frm.xminM.value = gv.cv['xMin'].month
         frm.xminD.value = gv.cv['xMin'].day
-        frm.xminH.value = gv.cv['xMin'].hour + gv.cv['xMin'].minute / 60 + \
-            gv.cv['xMin'].second / 3600
+        frm.xminH.value = round(gv.cv['xMin'].hour + \
+                                gv.cv['xMin'].minute / 60 + \
+                                gv.cv['xMin'].second / 3600, \
+                                2)
         frm.xmaxY.value = gv.cv['xMax'].year
         frm.xmaxM.value = gv.cv['xMax'].month
         frm.xmaxD.value = gv.cv['xMax'].day
-        frm.xmaxH.value = gv.cv['xMax'].hour + gv.cv['xMax'].minute / 60 + \
-            gv.cv['xMax'].second / 3600
-        # get chart:
-        chartstr = make_chart(dname, gv.cv['xConstrain'],
-                              gv.cv['xMin'], gv.cv['xMax'])
+        frm.xmaxH.value = round(gv.cv['xMax'].hour + \
+                                gv.cv['xMax'].minute / 60 + \
+                                gv.cv['xMax'].second / 3600, \
+                                2)
         # render web page:
         return render.historychart(frm, chartstr)
 
@@ -1948,21 +1970,21 @@ class WebHistoryChart:  # chart with history and xaxis change
                 # calculate xmin and xmax as arrow time
                 minutes = float(frm.xminH.value) % 1 % 60
                 seconds = minutes % 1 % 60
-                gv.cv['xMin'] = arrow.Arrow(int(frm.xminY.value),
-                                            int(frm.xminM.value),
-                                            int(frm.xminD.value),
-                                            int(frm.xminH.value),
-                                            int(minutes),
-                                            int(seconds)
+                gv.cv['xMin'] = arrow.Arrow(int(float(frm.xminY.value)),
+                                            int(float(frm.xminM.value)),
+                                            int(float(frm.xminD.value)),
+                                            int(float(frm.xminH.value)),
+                                            int(float(minutes)),
+                                            int(float(seconds))
                                             )
                 minutes = float(frm.xmaxH.value) % 1 % 60
                 seconds = minutes % 1 % 60
-                gv.cv['xMax'] = arrow.Arrow(int(frm.xmaxY.value),
-                                            int(frm.xmaxM.value),
-                                            int(frm.xmaxD.value),
-                                            int(frm.xmaxH.value),
-                                            int(minutes),
-                                            int(seconds)
+                gv.cv['xMax'] = arrow.Arrow(int(float(frm.xmaxY.value)),
+                                            int(float(frm.xmaxM.value)),
+                                            int(float(frm.xmaxD.value)),
+                                            int(float(frm.xmaxH.value)),
+                                            int(float(minutes)),
+                                            int(float(seconds))
                                             )
         else:
             if 'back' in response:
@@ -1985,15 +2007,17 @@ class WebHistoryChart:  # chart with history and xaxis change
             frm.xminY.value = gv.cv['xMin'].year
             frm.xminM.value = gv.cv['xMin'].month
             frm.xminD.value = gv.cv['xMin'].day
-            frm.xminH.value = gv.cv['xMin'].hour + \
-                gv.cv['xMin'].minute / 60 + \
-                gv.cv['xMin'].second / 3600
+            frm.xminH.value = round(gv.cv['xMin'].hour + \
+                                    gv.cv['xMin'].minute / 60 + \
+                                    gv.cv['xMin'].second / 3600, \
+                                    2)
             frm.xmaxY.value = gv.cv['xMax'].year
             frm.xmaxM.value = gv.cv['xMax'].month
             frm.xmaxD.value = gv.cv['xMax'].day
-            frm.xmaxH.value = gv.cv['xMax'].hour + \
-                gv.cv['xMax'].minute / 60 + \
-                gv.cv['xMax'].second / 3600
+            frm.xmaxH.value = round(gv.cv['xMax'].hour + \
+                                    gv.cv['xMax'].minute / 60 + \
+                                    gv.cv['xMax'].second / 3600, \
+                                    2)
         # get chart:
         chartstr = make_chart(dname, gv.cv['xConstrain'],
                               gv.cv['xMin'], gv.cv['xMax'])

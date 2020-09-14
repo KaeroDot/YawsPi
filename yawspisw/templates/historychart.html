@@ -14,38 +14,38 @@ $def with (frm, chartstr)
         <button name="last2weeks" title="Set x axis to last 2 weeks"><img src="static/icons/xrange.png" align="absmiddle"> Last 2 weeks</button>
         <button name="last2days" title="Set x axis to last 2 days"><img src="static/icons/xrange.png" align="absmiddle"> Last 2 days</button>
         <br>
-        or manually from: hour 
-        $:frm.xminH.render() 
-        date
-        $if frm.xminH.note:
-            <strong class="wrong">$frm.xminH.note</strong>
-        $:frm.xminD.render()
-        $if frm.xminD.note:
-            <strong class="wrong">$frm.xminD.note</strong>
-        .
-        $:frm.xminM.render()
-        $if frm.xminM.note:
-            <strong class="wrong">$frm.xminM.note</strong>
-        .
+        or manually from date 
         $:frm.xminY.render()
         $if frm.xminY.note:
             <strong class="wrong">$frm.xminY.note</strong>
-        to: hour
-        $:frm.xmaxH.render() 
-        date
-        $if frm.xmaxH.note:
-            <strong class="wrong">$frm.xmaxH.note</strong>
-        $:frm.xmaxD.render()
-        $if frm.xmaxD.note:
-            <strong class="wrong">$frm.xmaxD.note</strong>
-        .
-        $:frm.xmaxM.render()
-        $if frm.xmaxM.note:
-            <strong class="wrong">$frm.xmaxM.note</strong>
-        .
+        /
+        $:frm.xminM.render()
+        $if frm.xminM.note:
+            <strong class="wrong">$frm.xminM.note</strong>
+        /
+        $:frm.xminD.render()
+        $if frm.xminD.note:
+            <strong class="wrong">$frm.xminD.note</strong>
+        hour
+        $:frm.xminH.render() 
+        $if frm.xminH.note:
+            <strong class="wrong">$frm.xminH.note</strong>
+        , to date
         $:frm.xmaxY.render()
         $if frm.xmaxY.note:
             <strong class="wrong">$frm.xmaxY.note</strong>
+        /
+        $:frm.xmaxM.render()
+        $if frm.xmaxM.note:
+            <strong class="wrong">$frm.xmaxM.note</strong>
+        /
+        $:frm.xmaxD.render()
+        $if frm.xmaxD.note:
+            <strong class="wrong">$frm.xmaxD.note</strong>
+        hour
+        $:frm.xmaxH.render() 
+        $if frm.xmaxH.note:
+            <strong class="wrong">$frm.xmaxH.note</strong>
         <button name="setminmax" title="Set x axis to input values"><img src="static/icons/submit.png" align="absmiddle"> Set</button>
         <p></p>
         <button name="back" title="Back to history page"><img src="static/icons/back.png" align="absmiddle"> Back to history page</button>
