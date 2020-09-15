@@ -858,24 +858,30 @@ def save_sensor_value(dname, value):  # save measured sensor value
             datafile.close()
 
 
-def load_data_file(dname):  # loads data from data file
+def load_data_file(dname, tlim=arrow.now().shift(years=-100)):  # loads data from data file
     """ Loads data from saved data file with history of station, sensor or
-    source.
+    source. Expects dates in lines are increasing monotonically.
 
     \param str name of station, sensor or source
+    \param tmin optional date, if set function reads file lines with dates higher than tmin
     \return list of lists: [arrow time, value, whole data line]
     """
     data = []
     if os.path.isfile(data_filename(dname)):
         # file should be closed automatically when using with statement
-        with open(data_filename(dname)) as f:
-            for line in f:
-                # parse and convert data:
-                line = line.split(';')
-                line[0] = arrow.get(line[0])
-                line[1] = float(line[1])
+        for line in reversed(list(open(data_filename(dname)))):
+            # parse and convert data:
+            splt = line.split(';')
+            splt[0] = arrow.get(splt[0])
+            if splt[0] > tlim:
+                print(splt[0].format('YYYY-MM-DD HH:mm:ss ZZ'))
+                splt[1] = float(splt[1])
                 # parse possible other data
-                data.append(line)
+                data.append(splt)
+            else:
+                # time in last line is lower than tlim,
+                # quit reading data:
+                break
     return data
 
 
@@ -923,7 +929,10 @@ def make_chart(name, constrain, xmin, xmax):  # generate history chart
     if not check_data_name(name):
         return 'Unknown station or sensor'
     # measured data:
-    filedata = load_data_file(name)
+    if constrain:
+        filedata = load_data_file(name, xmin)
+    else:
+        filedata = load_data_file(name)
 
     # variable data contains data to plot
     # arrays:
