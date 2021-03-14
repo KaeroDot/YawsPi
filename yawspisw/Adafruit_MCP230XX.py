@@ -204,7 +204,7 @@ if __name__ == '__main__':
     ##   time.sleep(1);
 
     mcp = Adafruit_MCP230XX(address = 0x27, num_gpios = 16)  # MCP23017
-    print 'all setting to input'
+    print('all setting to input')
     for i in range(16):
         mcp.config(i, 1)
     #for i in range(16):
@@ -212,13 +212,13 @@ if __name__ == '__main__':
     #    a = mcp.input(i)
     #    print str(a)
     i = 3
-    print 'set to output pin no ' + str(i)
+    print('set to output pin no ' + str(i))
     dir=mcp.config(i, 0)
-    print 'direction: ' + str(dir)
+    print('direction: ' + str(dir))
     i = 8
-    print 'read pin no ' +str(i)
+    print('read pin no ' +str(i))
     try:
         a = mcp.input(i)
     except AssertionError:
         a = 'set to output!'
-    print str(a)
+    print(str(a))

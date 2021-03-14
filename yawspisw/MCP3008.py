@@ -68,7 +68,7 @@ class MCP3008(object):
         # voltref is value of reference voltage connected to adc
         # adc maximum return value:
         maxdig = 4095
-	return 1.0 * voltref * self.readadc(adcnum) / maxdig
+        return 1.0 * voltref * self.readadc(adcnum) / maxdig
 
 if __name__ == '__main__':
     # Note that bitbanging SPI is incredibly slow on the Pi as its not
@@ -88,19 +88,19 @@ if __name__ == '__main__':
     MAXDIG = 4095
 
     ret = range(8)
-    print "|  adcnum: \t#0 \t #1 \t #2 \t #3 \t #4 \t #5 \t #6 \t #7\t|"
-    print "------------------------------------------------------------------"
+    print("|  adcnum: \t#0 \t #1 \t #2 \t #3 \t #4 \t #5 \t #6 \t #7\t|")
+    print("------------------------------------------------------------------")
     while True:
-        print "| digital: \t",
+        print("| digital: \t", end=" ")
         for adcnum in range(8):
             ret[adcnum] = mcp.readadc(adcnum)
-            print ret[adcnum], "\t",
-        print "|"
-        print "| voltage: \t",
+            print(ret[adcnum], "\t", end=" ")
+        print("|")
+        print("| voltage: \t", end=" ")
         for adcnum in range(8):
             #voltage = 1.0 * VOLTREF * ret[adcnum] / MAXDIG
             voltage = mcp.readadcv(adcnum, 5)
-            print round(voltage, 3), "V\t",
-        print "|"
-        print "--------------------------------------------------------------"
+            print(round(voltage, 3), "V\t", end=" ")
+        print("|")
+        print("--------------------------------------------------------------")
         sleep(1)

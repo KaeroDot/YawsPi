@@ -182,12 +182,12 @@ if __name__ == '__main__':  # testing code
     # set RPI version properly!:
     s = BMP180(1, 3)
     # only for information - print out of calibration constants:
-    print s.ac1, s.ac2, s.ac3, s.ac4, s.ac5, s.ac6, \
-        s.b1, s.b2, s.mb, s.mc, s.md
+    print(s.ac1, s.ac2, s.ac3, s.ac4, s.ac5, s.ac6, \
+        s.b1, s.b2, s.mb, s.mc, s.md)
 
     # repeatedly measure temperature and pressure and print results:
     while True:
         t = s.meas_temp()
         p = s.meas_press()
-        print "{:.2f}".format(t) + " °C,  " + str(p) + " Pa"
+        print("{:.2f}".format(t) + " °C,  " + str(p) + " Pa")
         sleep(0.5)

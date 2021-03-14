@@ -98,8 +98,8 @@ class RTC8563(object):
         self.bus.write_byte_data(ADR, 0x02, (sekhi * 16) + seklo)
 
         if self.verbose:
-            print "Systemovy cas v RasPi :", datcas, "UTC"
-            print "Systemovy cas byl prekopirovan do RTC obvodu."
+            print("Systemovy cas v RasPi :" + datcas + "UTC")
+            print("Systemovy cas byl prekopirovan do RTC obvodu.")
 
     def info(self, nastav_cas=False):  # get time from RTC, and RTC->OS
         """
@@ -123,7 +123,7 @@ class RTC8563(object):
         # datcas bude obsahovat aktualni datum a cas v UTC (GMT):
         datcas = datetime.datetime.utcnow()
         if self.verbose:
-            print "Systemovy cas v RasPi :", datcas, "UTC"
+            print("Systemovy cas v RasPi :" + datcas + "UTC")
 
         rtc = self.bus.read_i2c_block_data(ADR, 0x00)
 
@@ -153,7 +153,7 @@ class RTC8563(object):
             napetis = "Napeti kleslo pod predepsanou uroven"
             napeti = False
         if self.verbose:
-            print napetis
+            print(napetis)
 
         # v nejvyssim bitu registru c.7 je informace o stoleti 20. nebo 21.
         stoleti = ((rtc[0x07] & 0b10000000))
@@ -169,12 +169,12 @@ class RTC8563(object):
             str(den) + "." + str(mes) + "." + \
             str(stoleti + rok) + " "
         if self.verbose:
-            print "Cas v RTC:  " + txtdat + "  " + txtcas + " UTC"
+            print("Cas v RTC:  " + txtdat + "  " + txtcas + " UTC")
 
         # pokud je parametr tohoto podprogramu True, nastavi se RasPi podle RTC
         if (nastav_cas is True):
             if self.verbose:
-                print "Cas v RasPi byl nastaven na:"
+                print("Cas v RasPi byl nastaven na:")
             prikaz = "sudo date -u " + (str(mes).rjust(2, "0") +
                                         str(den).rjust(2, "0") +
                                         str(hod).rjust(2, "0") +
@@ -215,7 +215,7 @@ if __name__ == '__main__':  # testing code
         s.info(True)
     else:
         # pri jakemkoli jinem parametru se zobrazi napoveda
-        print "Pripustne parametry:"
-        print "... -i        INFO - Jen zobrazi cas v RasPi a v RTC"
-        print "... -pi2rtc   Zapise cas z RasPi do RTC"
-        print "... -rtc2pi   Zapise cas z RTC do RasPi"
+        print("Pripustne parametry:")
+        print("... -i        INFO - Jen zobrazi cas v RasPi a v RTC")
+        print("... -pi2rtc   Zapise cas z RasPi do RTC")
+        print("... -rtc2pi   Zapise cas z RTC do RasPi")

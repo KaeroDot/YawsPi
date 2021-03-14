@@ -265,7 +265,7 @@ class YawspiHW:
         if self.WithHW:
             # import RTC:
             if self.hwc['RTC']:
-                from RTC8563 import RTC8563
+                from rtc8563 import RTC8563
                 self.RTC = RTC8563(False)
             # import humidity sensor:
             if self.hwc['SeHumid']:

@@ -38,5 +38,5 @@ if __name__ == '__main__':  # testing code
     s = BH1750(1, 0)
     while True:
         i = s.meas()
-        print "illuminance is " + str(i) + " lx"
+        print("illuminance is " + str(i) + " lx")
         sleep(0.5)

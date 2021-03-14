@@ -110,6 +110,6 @@ if __name__ == '__main__':  # testing code
         t = "Humidity: " + str(r[0]) + "%"
         t = t + ", Temperature: " + str(r[1]) + "℃ "
         t = t + ", Error: " + str(r[2])
-        print t
+        print(t)
         time.sleep(0.5)
     exit(0)
