@@ -115,6 +115,7 @@ class YawspiHW:
                             'analog to digital pins!')
         # check duplicate pins on GPIO
         pinsgpio = self._get_all_gpio_pins()
+        print(pinsgpio)
         if not len(set(pinsgpio)) == len(pinsgpio):
             print(pinsgpio)
             raise NameError('hw config check: duplicates in '
@@ -319,7 +320,7 @@ class YawspiHW:
             # setup soil humidity sensors:
             self._SHmodbus = ['']*len(self.hwc['SeSH'])
             from SMSens import SMSens
-            for x, i in enumerate(self.hwc['SeSH']):
+            for i, x in enumerate(self.hwc['SeSH']):
                 if x['Type'] == 'grad':
                     # switch off pin
                     # set pins on 'grad' sensors to output:

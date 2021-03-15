@@ -159,7 +159,7 @@ class BMP180(object):
         x1 = (self.b2 * (b6 * b6 / 2 ** 12)) / 2 ** 11
         x2 = self.ac2 * b6 / 2 ** 11
         x3 = x1 + x2
-        b3 = (((self.ac1 * 4 + x3) << self.acc_mode) + 2.0) / 4
+        b3 = (((self.ac1 * 4 + int(x3)) << self.acc_mode) + 2.0) / 4
         x1 = self.ac3 * b6 / 2 ** 13
         x2 = (self.b1 * (b6 * b6 / 2 ** 12)) / 2 ** 16
         x3 = ((x1 + x2) + 2) / 2 ** 2
