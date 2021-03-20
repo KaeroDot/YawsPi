@@ -70,6 +70,7 @@ if __name__ == "__main__":  # routine lists devices and readdress
     """ List or readdress connected devices
         -list       : find all connected devices
         -re X       : readdress device at address X
+        -cont X     : continuously read device at address X
     """
     import sys
     # get input parameter

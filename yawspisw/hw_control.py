@@ -78,7 +78,7 @@ class YawspiHW:
         # status (on/off) of sensors:
         self.SeWLStatus = [0] * len(self.hwc['SeWL'])
         # status (on/off) of soil humidity sensors:
-        self.SeSHStatus = [0] * len(self.hwc['SeWL'])
+        self.SeSHStatus = [0] * len(self.hwc['SeSH'])
         # status (on/off) of water source:
         self.SoStatus = 0
         # installed ambient sensors:
@@ -136,7 +136,10 @@ class YawspiHW:
         if len(self.hwc['St']) + 1 != len(self.hwc['SeWL']):
             raise NameError('hw config check: different number '
                             'of stations and sensors!')
-        # XXX check number of soil humidity sensors is equal to number of sensors
+        # check number of stations is equal to number of soil humidity sensors:
+        if len(self.hwc['St']) != len(self.hwc['SeSH']):
+            raise NameError('hw config check: different number '
+                            'of stations and soil humidity sensors!')
         # check temperature source:
         if self.hwc['SeTemp']:
             if self.hwc['SeTempSource'] == 'humid':
@@ -681,6 +684,45 @@ class YawspiHW:
         else:
             return 0.05
 
+    def sh_level(self, index):  # returns soil humidity of station
+        """ Return soil humidity indicated by a sensor
+
+        According the type of the sensor switch the power of the sensor, gets
+        value of the sensor, switch off the sensor, calculate the soil humidity
+        level and return float in the range from 0 (empty) to 1 (full).
+        \param index integer, index of a sensor
+        \return float water level in range 0 - 1
+        """
+        if index < 0 or index > len(self.hwc['SeSH']) - 1:
+            raise NameError('incorrect sensor index: ' + str(index))
+        if self.WithHW:
+            # first switch sensor on:
+            self._sh_switch(index, 1)
+            # let voltages and modbus stabilize:
+            sleep(0.1)
+            # second get sensor value
+            if self.hwc['SeSH'][index]['Type'] == 'none':
+                # if no sensor consider station always empty:
+                val = 0
+            elif self.hwc['SeSH'][index]['Type'] == 'modbus':
+                val = self._SHmodbus[index].read();
+            elif self.hwc['SeWL'][index]['Type'] == 'grad':
+                sleep(0.1)
+                # first reading throw away, than read three times and return
+                # average:
+                val = self._pin_get(self.hwc['SeSH'][index]['ValuePin'])
+                val = self._pin_get(self.hwc['SeSH'][index]['ValuePin'])
+                val = val + self._pin_get(self.hwc['SeSH'][index]['ValuePin'])
+                val = val + self._pin_get(self.hwc['SeSH'][index]['ValuePin'])
+                val = val / 3
+            else:
+                raise NameError('unknown Water Level Sensor Type!')
+            # third switch sensor off:
+            self._se_switch(index, 0)
+            # fourth return value:
+            return val
+
+
     def se_description(self, index):  # return sensor description
         """ Return sensor description according hardware configuration
 
@@ -1007,16 +1049,12 @@ if __name__ == "__main__":  # this routine checks system
                               ', type ' + hw.hwc['SeWL'][i]['Type'] +
                               ': ' + str(hw.se_level(i)))
                     print('source: ' + str(hw.se_level(i + 1)))
-                    sleep(0.5)
-                # print soil humidity sensors:
-                print('----------')
-                print('soil hum. sensors:')
-                while True:
+                    # print soil humidity sensors:
+                    print('soil hum. sensors:')
                     for i in range(hw.StNo):
                         print('sensor of station ' + str(i) +
                               ', type ' + hw.hwc['SeSH'][i]['Type'] +
                               ': ' + str(hw.sh_level(i)))
-                    print('source: ' + str(hw.sh_level(i + 1)))
                     sleep(0.5)
         except KeyboardInterrupt:
             print(' -- user interrupt')
