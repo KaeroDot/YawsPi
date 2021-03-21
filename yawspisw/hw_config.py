@@ -31,7 +31,7 @@ def hw_config():
     # converters MCP3008:
     tmp['AdcPins'] = ((23, 19, 21, 13), (23, 19, 21, 24))
     # !!! VRATIT na predchozi radek
-    tmp['AdcPins'] = ((23, 19, 21, 24),)
+    #  tmp['AdcPins'] = ((23, 19, 21, 24),)
     #tmp['AdcPins'] = ()
 
     # ------------------- Weather Sensors:
@@ -40,10 +40,11 @@ def hw_config():
     #       'humid': DHT11 (humidity sensor)
     #       'press': BMP180 (pressure sensor)
     tmp['SeTempSource'] = 'press'
-    tmp['SeRain'] = 0     # rain sensor present
+    tmp['SeRain'] = 1     # rain sensor present
     tmp['SeRainPin'] = (-2, 1)  # rain sensor pin
-    tmp['SeHumid'] = 1    # humidity sensor present
-    tmp['SeHumidPin'] = (0, 13)  # humidity sensor present
+    #  tmp['SeHumid'] = 1    # humidity sensor present
+    tmp['SeHumid'] = 0    # humidity sensor present
+    #  tmp['SeHumidPin'] = (0, 13)  # humidity sensor present
     tmp['SePress'] = 1    # pressure sensor present
     tmp['SeIllum'] = 1    # illuminance sensor present
     tmp['SeIllumAddrToHigh'] = 0    # illuminance address pin set to high?
@@ -83,36 +84,36 @@ def hw_config():
             'Pin': (1, 1),
             'SettleT': 0.1,
         },
-        {
-            'Cap': 3.0,
-            'Pin': (1, 2),
-            'SettleT': 0.1,
-        },
-        {
-            'Cap': 3.0,
-            'Pin': (1, 3),
-            'SettleT': 0.1,
-        },
-        {
-            'Cap': 0.5,
-            'Pin': (1, 4),
-            'SettleT': 0.1,
-        },
-        {
-            'Cap': 0.2,
-            'Pin': (1, 5),
-            'SettleT': 0.1,
-        },
-        {
-            'Cap': 0.5,
-            'Pin': (1, 6),
-            'SettleT': 0.1,
-        },
-        {
-            'Cap': 1.0,
-            'Pin': (1, 7),
-            'SettleT': 0.1,
-        },
+        #  {
+        #      'Cap': 3.0,
+        #      'Pin': (1, 2),
+        #      'SettleT': 0.1,
+        #  },
+        #  {
+        #      'Cap': 3.0,
+        #      'Pin': (1, 3),
+        #      'SettleT': 0.1,
+        #  },
+        #  {
+        #      'Cap': 0.5,
+        #      'Pin': (1, 4),
+        #      'SettleT': 0.1,
+        #  },
+        #  {
+        #      'Cap': 0.2,
+        #      'Pin': (1, 5),
+        #      'SettleT': 0.1,
+        #  },
+        #  {
+        #      'Cap': 0.5,
+        #      'Pin': (1, 6),
+        #      'SettleT': 0.1,
+        #  },
+        #  {
+        #      'Cap': 1.0,
+        #      'Pin': (1, 7),
+        #      'SettleT': 0.1,
+        #  },
     )
 
     # ------------------- Water Level Sensors:
@@ -131,38 +132,79 @@ def hw_config():
     # type none.
     tmp['SeWL'] = (
         {
-            'Type':  'grad',
-            'ValuePin':  (-1, 6),
-            'OnOffPin':  (2, 1),
-        },
-        {
-            'Type':  'grad',
-            'ValuePin':  (-1, 5),
-            'OnOffPin':  (2, 2),
-        },
-        {
-            'Type':  'min',
-            'Pin':  (1, 10),
-        },
-        {
             'Type':  'none',
         },
         {
             'Type':  'none',
         },
-        {
-            'Type':  'none',
-        },
-        {
-            'Type':  'grad',
-            'ValuePin':  (-1, 4),
-            'OnOffPin':  (2, 3),
-        },
-        {
-            'Type':  'minmax',
-            'MinPin':  (1, 9),
-            'MaxPin':  (1, 8),
-        },
+        #  {
+        #      'Type':  'grad',
+        #      'ValuePin':  (-1, 6),
+        #      'OnOffPin':  (2, 1),
+        #  },
+        #  {
+        #      'Type':  'grad',
+        #      'ValuePin':  (-1, 5),
+        #      'OnOffPin':  (2, 2),
+        #  },
+        #  {
+        #      'Type':  'min',
+        #      'Pin':  (1, 10),
+        #  },
+        #  {
+        #      'Type':  'none',
+        #  },
+        #  {
+        #      'Type':  'none',
+        #  },
+        #  {
+        #      'Type':  'none',
+        #  },
+        #  {
+        #      'Type':  'grad',
+        #      'ValuePin':  (-1, 4),
+        #      'OnOffPin':  (2, 3),
+        #  },
+        #  {
+        #      'Type':  'minmax',
+        #      'MinPin':  (1, 9),
+        #      'MaxPin':  (1, 8),
+        #  },
     )
+
+    # ------------------- Soil Humidity Sensors:
+    # possible sensor types:
+    #   none - no soil humidity sensor, humidity is not measured
+    #   grad - some analog sensor measured by adc
+    #   modbus - sensor connected using modbus
+    #           OnOffPin can be the same for all modbus devices
+    # Number of sensors should be number of stations, because source does not have soil!
+    tmp['SeSH'] = (
+        #  {
+        #      'Type':  'none',
+        #  },
+        {
+            'Type':  'modbus',
+            'Address':  2,
+            'Register':  2,
+            'TTY':  '/dev/ttyUSB0',
+            'Baudrate':  9600,
+            'OnOffPin':  (0, 4),
+        },
+        #  {
+        #      'Type':  'none',
+        #      'Address':  1,
+        #  },
+        #  {
+        #      'Type':  'grad',
+        #      'ValuePin':  (-1, 5),
+        #      'OnOffPin':  (2, 4),
+        #  },
+        #  {
+        #      'Type':  'modbus',
+        #      'Address':  1,
+        #  },
+    )
+
 
     return tmp

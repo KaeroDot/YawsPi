@@ -1040,10 +1040,10 @@ if __name__ == "__main__":  # this routine checks system
                     sleep(1)
                     print('valve of station 0 off...')
                     hw.st_switch(0, 0)
-                # print water level sensors:
+                # print water level and soil humidity sensors:
                 print('----------')
-                print('wat. lev. sensors:')
                 while True:
+                    print('wat. lev. sensors:')
                     for i in range(hw.StNo):
                         print('sensor of station ' + str(i) +
                               ', type ' + hw.hwc['SeWL'][i]['Type'] +
@@ -1056,6 +1056,7 @@ if __name__ == "__main__":  # this routine checks system
                               ', type ' + hw.hwc['SeSH'][i]['Type'] +
                               ': ' + str(hw.sh_level(i)))
                     sleep(0.5)
+                    print('----------')
         except KeyboardInterrupt:
             print(' -- user interrupt')
 
