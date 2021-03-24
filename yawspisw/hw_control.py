@@ -702,10 +702,8 @@ class YawspiHW:
             sleep(0.1)
             # second get sensor value
             if self.hwc['SeSH'][index]['Type'] == 'none':
-                # if no sensor consider station always empty:
+                # if no sensor consider station always dry:
                 val = 0
-            elif self.hwc['SeSH'][index]['Type'] == 'modbus':
-                val = self._SHmodbus[index].read();
             elif self.hwc['SeWL'][index]['Type'] == 'grad':
                 sleep(0.1)
                 # first reading throw away, than read three times and return
@@ -715,13 +713,24 @@ class YawspiHW:
                 val = val + self._pin_get(self.hwc['SeSH'][index]['ValuePin'])
                 val = val + self._pin_get(self.hwc['SeSH'][index]['ValuePin'])
                 val = val / 3
+            elif self.hwc['SeSH'][index]['Type'] == 'modbus':
+                sleep(0.1)
+                # first reading throw away, than read three times and return
+                # average:
+                val = self._SHmodbus[index].read()
+                val = self._SHmodbus[index].read()
+                val = val + self._SHmodbus[index].read()
+                val = val + self._SHmodbus[index].read()
+                val = val / 3
             else:
                 raise NameError('unknown Water Level Sensor Type!')
             # third switch sensor off:
             self._se_switch(index, 0)
             # fourth return value:
             return val
-
+        else:
+            # hardware simulation
+            return 0.20
 
     def se_description(self, index):  # return sensor description
         """ Return sensor description according hardware configuration
@@ -842,54 +851,6 @@ class YawspiHW:
             t = self.fill_time(index)
             sleep(t)
             return t
-
-    def se_shumid(self, index):  # return soil humidity
-        """ Return soil humidity indicated by a sensor
-
-        According the type of the sensor switch the power of the sensor, gets
-        value of the sensor, switch off the sensor, calculate the water level
-        and return float in the range from 0 (dry) to 1 (wet).
-        \param index integer, index of a sensor
-        \return float humidity level in range 0 to 1
-        """
-        if index < 0 or index > len(self.hwc['SeSH']) - 1:
-            raise NameError('incorrect humidity sensor index: ' + str(index))
-        if self.WithHW:
-            # first switch sensor on:
-            self._sh_switch(index, 1)
-            # let voltages stabilize:
-            sleep(0.1)
-            # second get sensor value
-            if self.hwc['SeSH'][index]['Type'] == 'none':
-                # if no sensor consider station always dry:
-                val = 0
-            elif self.hwc['SeSH'][index]['Type'] == 'grad':
-                sleep(0.1)
-                # first reading throw away, than read three times and return
-                # average:
-                val = self._pin_get(self.hwc['SeSH'][index]['ValuePin'])
-                val = self._pin_get(self.hwc['SeSH'][index]['ValuePin'])
-                val = val + self._pin_get(self.hwc['SeSH'][index]['ValuePin'])
-                val = val + self._pin_get(self.hwc['SeSH'][index]['ValuePin'])
-                val = val / 3
-            elif self.hwc['SeSH'][index]['Type'] == 'modbus':
-                sleep(0.1)
-                # first reading throw away, than read three times and return
-                # average:
-                val = self._SHmodbus[i].read()
-                val = self._SHmodbus[i].read()
-                val = val + self._SHmodbus[i].read()
-                val = val + self._SHmodbus[i].read()
-                val = val / 3
-            else:
-                raise NameError('unknown Humidity Sensor Type!')
-            # third switch sensor off:
-            self._sh_switch(index, 0)
-            # fourth return value:
-            return val
-        else:
-            # hardware simulation
-            return 0.20
 
     def se_temp(self):  # return temperature
         """ Measure ambient temperature by weather sensor

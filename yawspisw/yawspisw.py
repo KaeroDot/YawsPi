@@ -39,7 +39,7 @@ import web
 import _thread
 import pickle
 import os
-import pygal
+#  import pygal
 # gv - 'global vars' - an empty module, used for storing vars (as attributes),
 # that need to be 'global' across threads and between functions and classes:
 import gv
@@ -1164,7 +1164,7 @@ def sensors_get_all():  # measures water levels of barrel and all stations
         log_add('station "' + gv.hws['StData'][i]['Name'] + '" (' + str(i) +
                 ') is ' + str(gv.cv['StWL'][i] * 100) + '% full')
         # soil moisture sensors:
-        gv.cv['StSH'][i] = gv.hw.se_shumid(i)
+        gv.cv['StSH'][i] = gv.hw.sh_level(i)
         save_station_shumid(i, gv.cv['StSH'][i])
         log_add('station "' + gv.hws['StData'][i]['Name'] + '" (' + str(i) +
                 ') is ' + str(gv.cv['StSH'][i] * 100) + '% wet')
