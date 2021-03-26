@@ -29,10 +29,9 @@ def hw_config():
     # ------------------- Analog to Digital Converter:
     # Pins on Raspberry Pi GPIO of the clockpin, misopin, mosipin, cspin for AD
     # converters MCP3008:
-    tmp['AdcPins'] = ((23, 19, 21, 13), (23, 19, 21, 24))
-    # !!! VRATIT na predchozi radek
-    #  tmp['AdcPins'] = ((23, 19, 21, 24),)
-    #tmp['AdcPins'] = ()
+    #  tmp['AdcPins'] = ((23, 19, 21, 13), (23, 19, 21, 24))
+    # zatim mam jen jeden ADC:
+    tmp['AdcPins'] = ((23, 19, 21, 24),)
 
     # ------------------- Weather Sensors:
     tmp['SeTemp'] = 1     # temperature sensor present
@@ -41,9 +40,12 @@ def hw_config():
     #       'press': BMP180 (pressure sensor)
     tmp['SeTempSource'] = 'press'
     tmp['SeRain'] = 1     # rain sensor present
-    tmp['SeRainPin'] = (-2, 1)  # rain sensor pin
-    #  tmp['SeHumid'] = 1    # humidity sensor present
+    # ale mam jen jeden ADC! tady misto -2 ma byt -1 asi:
+    tmp['SeRainPin'] = (-1, 1)  # rain sensor pin
+    # humidity sensor is causing problems, many random errors during reading,
+    # but sometimes correct:
     tmp['SeHumid'] = 0    # humidity sensor present
+    #  tmp['SeHumid'] = 1    # humidity sensor present
     #  tmp['SeHumidPin'] = (0, 13)  # humidity sensor present
     tmp['SePress'] = 1    # pressure sensor present
     tmp['SeIllum'] = 1    # illuminance sensor present
@@ -134,9 +136,9 @@ def hw_config():
         {
             'Type':  'none',
         },
-        {
-            'Type':  'none',
-        },
+        #  {
+        #      'Type':  'none',
+        #  },
         #  {
         #      'Type':  'grad',
         #      'ValuePin':  (-1, 6),
@@ -165,11 +167,11 @@ def hw_config():
         #      'ValuePin':  (-1, 4),
         #      'OnOffPin':  (2, 3),
         #  },
-        #  {
-        #      'Type':  'minmax',
-        #      'MinPin':  (1, 9),
-        #      'MaxPin':  (1, 8),
-        #  },
+        {
+            'Type':  'minmax',
+            'MinPin':  (1, 9),
+            'MaxPin':  (1, 8),
+        },
     )
 
     # ------------------- Soil Humidity Sensors:
