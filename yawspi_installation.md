@@ -18,30 +18,55 @@ Installation of yawspisw on a fresh sd card
 1. run
 
         sudo raspi-config
-    and expand the filesystem to whole image. reboot.
-1. login, run raspi-config again, set hostname to *yawspi*, enable SPI and I2C, 
+    select *Advanced Options*, and expand the filesystem to whole image. reboot.
+1. login, run raspi-config again, select *System Options* and set hostname to *yawspi*, select *Interface Options* and enable SPI and I2C, 
+    select *Localisation Options* and select timezone.
 1. install wicd (and remove dhcpcd5 to remove conflicts) for wifi:
+    (debug for nonworking wpa_supplicant: ```sudo wpa_supplicant -c/etc/wpa_supplicant/wpa_supplicant.conf -iWIFIINTERFACE -d```)
 
-        sudo apt-get update
-        sudo apt-get remove dhcpcd5
-        sudo apt-get install wicd-curses
+        sudo apt update
+        sudo apt purge dhcpcd5
+        sudo apt install wicd-curses
     run wicd-curses and setup your wifi, disconnect ethernet and test wifi connection
+1. set local time zone:
+
+        sudo dpkg-reconfigure tzdata
+1. copy ssh id:
+
+        ssh-copy-id yawspi
+1. copy keys to github
+1. setup .ssh config:
+
+        vi .ssh/config
+    with content:
+
+        Host github.com
+        User git
+        Hostname github.com
+        PreferredAuthentications publickey
+        IdentityFile /home/pi/.ssh/KEY_FILE_NAME
+1. check github connection
+
+        ssh -T git@github.com
 1. install git:
 
-        sudo apt-get install git
+        sudo apt install git
 1. pull yawspi git:
 
-        git clone https://github.com/KaeroDot/YawsPi.git
+        git clone git@github.com:KaeroDot/YawsPi.git
 1. install yawspi dependencies:
 
-        sudo apt-get install python-arrow python-webpy python-smbus
-        sudo pip install pygal
-    It has to be python 3.
+        sudo apt install python3-pip python3-arrow python3-rpi.gpio python3-smbus python3-matplotlib
+        pip3 install --user minimalmodbus
+    webpy from repository can be outdated so it is better to install from pip:
+        pip3 install --user webpy
 1. cd to `YawsPi/yawspisw/`, edit `hw_config.py` according the hardware configuration
+1. cd to `YawsPi/yawspisw/` and run following to check hardware is ok:
+
+        python3 hw_control.py -all
 1. cd to `YawsPi/yawspisw/` and run following to check everything is ok:
 
-        python yawspisw.py 
-
+        python3 yawspisw.py 
 1. copy `yawspisw.service` in `yawspisw` directory to `/lib/systemd/system`:
 
         sudo mv yawspi.service /lib/systemd/system
