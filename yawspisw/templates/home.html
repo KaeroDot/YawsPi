@@ -48,7 +48,7 @@ $def with (gv)
             <tr><td>
             $if 'temp' in gv.hw.Sensors:
                     <br>
-                    Temperature: <b>$gv.cv['SeTemp'] &deg</b>
+                    Temperature: <b>$"{:.2f}".format(gv.cv['SeTemp']) &deg</b>
             </td><td>
             $if 'press' in gv.hw.Sensors:
                     <br>
