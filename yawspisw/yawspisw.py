@@ -874,7 +874,6 @@ def load_data_file(dname, tlim=arrow.now().shift(years=-100)):  # loads data fro
             splt = line.split(';')
             splt[0] = arrow.get(splt[0])
             if splt[0] > tlim:
-                print(splt[0].format('YYYY-MM-DD HH:mm:ss ZZ'))
                 splt[1] = float(splt[1])
                 # parse possible other data
                 data.append(splt)
