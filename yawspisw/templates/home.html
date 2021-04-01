@@ -52,7 +52,7 @@ $def with (gv)
             </td><td>
             $if 'press' in gv.hw.Sensors:
                     <br>
-                    Pressure: <b>$"{:.0f}".format(gv.cv['SePress']) Pa</b>
+                    Pressure: <b>$"{:.3f}".format(gv.cv['SePress'] / 1000) kPa</b>
             </td><td>
             $if 'humid' in gv.hw.Sensors:
                     <br>
