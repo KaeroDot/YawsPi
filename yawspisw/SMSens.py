@@ -45,7 +45,14 @@ class SMSens(object):
         \param Nothing
         \return float: Sensor value (0,1)
         """
-        h = self.instrument.read_register(self.register, 1)
+        try:
+            h = self.instrument.read_register(self.register, 1)
+        except minimalmodbus.InvalidResponseError:
+            # error in reading, bad data, raised by:
+            #  File "/home/pi/.local/lib/python3.7/site-packages/minimalmodbus.py", line 1756, in _extract_payload
+            #  raise InvalidResponseError(text)
+            #  minimalmodbus.InvalidResponseError: Checksum error in rtu mode
+            h = -1
         return h/100
 
     def readdress(self, newaddress):

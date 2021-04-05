@@ -725,7 +725,7 @@ class YawspiHW:
             else:
                 raise NameError('unknown Water Level Sensor Type!')
             # third switch sensor off:
-            self._se_switch(index, 0)
+            self._sh_switch(index, 0)
             # fourth return value:
             return val
         else:
@@ -1007,15 +1007,15 @@ if __name__ == "__main__":  # this routine checks system
                     print('wat. lev. sensors:')
                     for i in range(hw.StNo):
                         print('sensor of station ' + str(i) +
-                              ', type ' + hw.hwc['SeWL'][i]['Type'] +
-                              ': ' + str(hw.se_level(i)))
+                                ', type ' + hw.hwc['SeWL'][i]['Type'] +
+                                ': ' + str(hw.se_level(i)))
                     print('source: ' + str(hw.se_level(i + 1)))
                     # print soil humidity sensors:
                     print('soil hum. sensors:')
                     for i in range(hw.StNo):
                         print('sensor of station ' + str(i) +
-                              ', type ' + hw.hwc['SeSH'][i]['Type'] +
-                              ': ' + str(hw.sh_level(i)))
+                                ', type ' + hw.hwc['SeSH'][i]['Type'] +
+                                ': ' + str(hw.sh_level(i)))
                     sleep(0.5)
                     print('----------')
         except KeyboardInterrupt:
