@@ -2,6 +2,8 @@
 
 """
 Module for initialising and reading Soil Moisture Sensor using modbus
+Device can report value 0.1 s after power up, but the value is underestimated.
+Delay of 2 seconds is required to get proper value.
 """
 
 # imports:

@@ -714,7 +714,10 @@ class YawspiHW:
                 val = val + self._pin_get(self.hwc['SeSH'][index]['ValuePin'])
                 val = val / 3
             elif self.hwc['SeSH'][index]['Type'] == 'modbus':
-                sleep(0.1)
+                # Device can report value after 0.1 s, but the value is
+                # underestimated. Delay of 2 seconds is required to get proper
+                # value. For safety 3 seconds are used:
+                sleep(3)
                 # first reading throw away, than read three times and return
                 # average:
                 val = self._SHmodbus[index].read()
