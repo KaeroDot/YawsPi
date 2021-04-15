@@ -46,17 +46,8 @@ import gv
 # yawspi hardware control (hardware abstraction layer):
 from hw_control import YawspiHW
 
-# module for making figures
-import matplotlib
-#  By default matplotlib uses TK gui toolkit, when you're rendering an image
-#  without using the toolkit (i.e. into a file or a string), matplotlib still
-#  instantiates a window that doesn't get displayed, causing all kinds of
-#  problems. In order to avoid that, you should use an Agg backend:
-matplotlib.use('Agg')
-from matplotlib import pyplot as plt
-import matplotlib.dates as mdates
-# this is for saving plots into stream in memory to prevent writing to disk
-import io
+# module for running gnuplot to make figures
+import subprocess
 
 
 # ------------------- various functions:
@@ -914,196 +905,79 @@ def make_chart(name, constrain, xmin, xmax):  # generate history chart
     Generates history chart of station or sensor or source. If constrain is
     true, chart will be limited by times xmin and xmax.
     Sets gv.cv['xMin'] and gv.cv['xMax'] to limits used in plotting (usefull if
-    constrain is false.
+    constrain is false).
     \param string name - number of station or source or sensors like illum,
     press etc.
     \param bool constrain if true use xmin and xmax parameters as chart
     constrains
     \param arrow xmin low value of xaxis
     \param arrow xmax high value of xaxis
-    \return string svg chart for embedding into webpage
     """
 
     # check input:
     if not check_data_name(name):
         return 'Unknown station or sensor'
-    # measured data:
+
+    # first part of command for gnuplot:
+    cmd = ['gnuplot']
+
+    # set constrains
+    cmd.append("-e")
     if constrain:
-        filedata = load_data_file(name, xmin)
+        # set autoscale and values xmin and xmax:
+        cmd.append('"' +
+                   "as=0; xmin='" +
+                   xmin.isoformat() +
+                   "'; xmax='" +
+                   xmax.isoformat() +
+                   "'" +
+                   '"')
     else:
-        filedata = load_data_file(name)
-
-    # variable data contains data to plot
-    # arrays:
-    # water level x, y; soil humidty x, y; filling x, y
-    data = [[[], []], [[], []], [[], []]]
-
-    # secondary axis will be used?
-    secondY = False
+        # no constrain, set autoscale, value of xmin and xmax is not important:
+        cmd.append('"' +
+                   "as=1; xmin='2000-01-01T01:01:01'; xmax='2050-01-01T01:01:01'" +
+                   '"')
 
     # set values according what to plot
     # is it station?
     if name in [str(i) for i in range(gv.hw.StNo)]:
-        # label with station number:
-        title = gv.hws['StData'][int(name)]['Name'] + \
-            ' (' + str(name) + ')'
-        # parse station file data:
-        for tmp in filedata:
-            if tmp[2].find('level') > -1:
-                # found water level data, apply constrains:
-                if (constrain and tmp[0] >= xmin and tmp[0] <= xmax) \
-                        or (not constrain):
-                    data[0][0].append(tmp[0].datetime)
-                    data[0][1].append(tmp[1])
-            elif tmp[2].find('humidity') > -1:
-                # found soil humidity data, apply constrains:
-                if (constrain and tmp[0] >= xmin and tmp[0] <= xmax) \
-                        or (not constrain):
-                    data[1][0].append(tmp[0].datetime)
-                    data[1][1].append(tmp[1])
-            elif tmp[2].find('fill') > -1:
-                # found water filling data, apply constrains:
-                if (constrain and tmp[0] >= xmin and tmp[0] <= xmax) \
-                        or (not constrain):
-                    data[2][0].append(tmp[0].datetime)
-                    data[2][1].append(tmp[1])
-
-        # labels
-        labels = ['water level (a.u.)', 'soil humidity (a.u.)', 'fill volume (l)']
-        # line color and type
-        lintype = ["b-", "g-", "ko"]
+        cmd.append('-e')
+        cmd.append('"' +
+                   "station_index=" +
+                   name +
+                   '"')
+        cmd.append('gnuplot_scripts/station.gp')
     else:
         # it is sensor or source:
-        if name == 'source':
-            title = 'water source'
-            labels = ['water level (a. u.)']
-            lintype = ["b-"]
-        elif name == 'temp':
-            title = 'ambient temperature'
-            labels = ['deg C']
-            lintype = ["r-"]
-        elif name == 'humid':
-            title = 'ambient humidity'
-            labels = ['%']
-            lintype = ["b-"]
-        elif name == 'press':
-            title = 'ambient pressure'
-            labels = ['Pa']
-            lintype = ["g-"]
-        elif name == 'rain':
-            title = 'rain'
-            labels = ['(a. u.)']
-            lintype = ["b-"]
-        elif name == 'illum':
-            title = 'ambient light'
-            labels = ['lux']
-            lintype = ["y-"]
-        else:
+        if name not in ['source', 'temp', 'humid', 'press', 'rain', 'illum']:
             # not identified what to plot (shouldn't happen, just for sure):
             raise NameError('Error - unknown string in name in make_chart')
-        # change arrow datatype to datetime:
-        for tmp in filedata:
-            # apply constrains:
-            if (constrain and tmp[0] >= xmin and tmp[0] <= xmax) or \
-                    (not constrain):
-                data[0][0].append(tmp[0].datetime)
-                data[0][1].append(tmp[1])
+        cmd.append('gnuplot_scripts/' +
+                   name +
+                   '.gp')
+    chartstr = 'static/data/' + name + '.png'
 
-    # if item 1 is empty in data arrays and item 2 not,
-    # move item 1 to back so it will not be drawn in figure
-    if len(data[1][0]) == 0 and len(data[2][0]) > 0:
-        data.append(data.pop(1))
-        labels.append(labels.pop(1))
-        lintype.append(lintype.pop(1))
-
-    # set gv.cv values to span of x axis
-    # checks for empty data
-    tmpmin = []
-    tmpmax = []
-    for dat in data:
-        if len(dat[0]) > 0:
-            tmpmin.append(min(dat[0]))
-            tmpmax.append(max(dat[0]))
-    gv.cv['xMin'] = min(tmpmin) if len(tmpmin) > 0 else arrow.now().datetime
-    gv.cv['xMax'] = max(tmpmax) if len(tmpmax) > 0 else arrow.now().datetime
-
-    return generate_matplotfigure(data, labels, lintype)
-
-
-def generate_matplotfigure(data, labels, lintype):  # make matplotlib figure
-    """ Generates figure using matplotlib
-
-    Generates chart of array using matplotlib
-    \param data - data array, contains array with two arrays x and y data,
-    maximum is three lines, that is [[[], []], [[], []], [[], []]]
-    \param labels - string array of y axis labels
-    \param lintype - string array of line types and colors
-    \return string svg chart
-    """
-    # based on example in:
-    # https://matplotlib.org/3.2.2/gallery/ticks_and_spines/multiple_yaxis_with_spines.html#sphx-glr-gallery-ticks-and-spines-multiple-yaxis-with-spines-py
-
-    # create matplotlib figure and first axis
-    fig, ax = plt.subplots()
-    fig.subplots_adjust(right=0.75)
-
-    # make additional 2nd and 3rd axes
-    if len(data[1][0]) > 0:
-        ax2 = ax.twinx()
-    if len(data[2][0]) > 0:
-        ax3 = ax.twinx()
-
-    # Offset the right spine of ax3.  The ticks and label have already been
-    # placed on the right by twinx above.
-    if len(data[2][0]) > 0:
-        ax3.spines["right"].set_position(("axes", 1.2))
-        # Having been created by twinx, ax3 has its frame off, so the line of its
-        # detached spine is invisible.  First, activate the frame but make the patch
-        # and spines invisible.
-        ax3.set_frame_on(True)
-        ax3.patch.set_visible(False)
-        for sp in ax3.spines.values():
-            sp.set_visible(False)
-        # Second, show the right spine.
-        ax3.spines["right"].set_visible(True)
-
-    # dicionary for parameters
-    tkw = dict(size=4, width=1.5)
-    # set line types and labels for first axis
-    p1, = ax.plot(data[0][0], data[0][1], lintype[0], label=labels[0])
-    ax.set_ylabel(labels[0])
-    ax.yaxis.label.set_color(p1.get_color())
-    ax.tick_params(axis='y', colors=p1.get_color(), **tkw)
-    if len(data[1][0]) > 0:
-        # set line types and labels for second axis
-        p2, = ax2.plot(data[1][0], data[1][1], lintype[1], label=labels[1])
-        ax2.set_ylabel(labels[1])
-        ax2.yaxis.label.set_color(p2.get_color())
-        ax2.tick_params(axis='y', colors=p2.get_color(), **tkw)
-    if len(data[2][0]) > 0:
-        # set line types and labels for third axis
-        p3, = ax3.plot(data[2][0], data[2][1], lintype[2], label=labels[2])
-        ax3.set_ylabel(labels[2])
-        ax3.yaxis.label.set_color(p3.get_color())
-        ax3.tick_params(axis='y', colors=p3.get_color(), **tkw)
-
-    ax.tick_params(axis='x', **tkw)
-
-    # set x axis to date format year/month/day
-    ax.get_xaxis().set_major_formatter(mdates.DateFormatter("%y/%m/%d"))
-    plt.setp(ax.get_xticklabels(), rotation=30, ha="right")
-
-    # create byte stream
-    # (this prevents writing to disk)
-    f = io.BytesIO()
-    # export figure to byte stream
-    plt.savefig(f, format = "svg")
-    # get bytes and convert to text
-    r = f.getvalue().decode('utf-8')
-    plt.close('all')
-
-    # return svg plot as string:
-    return r
+    # run the command:
+    cmd = " ".join(cmd)
+    pr = subprocess.run(cmd,
+                        shell=True,
+                        stdout=subprocess.PIPE,
+                        stderr=subprocess.PIPE)
+    if pr.returncode:
+        # plotting error, show error figure
+        chartstr = 'staic/data/error.png'
+        # print out error data:
+        print('--- plotting error ---')
+        print('args:')
+        print(pr.args)
+        print('return code:')
+        print(pr.returncode)
+        print('stdout:')
+        print(pr.stdout)
+        print('stderr:')
+        print(pr.stderr)
+    #  return history chart png filename
+    return chartstr
 
 # ------------------- log related:
 def log_add(line):  # add string to a log buffer
