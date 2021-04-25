@@ -49,13 +49,14 @@ class SMSens(object):
         """
         try:
             h = self.instrument.read_register(self.register, 1)
-        except minimalmodbus.InvalidResponseError:
+            h = h/100
+        except (minimalmodbus.InvalidResponseError, minimalmodbus.NoResponseError):
             # error in reading, bad data, raised by:
             #  File "/home/pi/.local/lib/python3.7/site-packages/minimalmodbus.py", line 1756, in _extract_payload
             #  raise InvalidResponseError(text)
             #  minimalmodbus.InvalidResponseError: Checksum error in rtu mode
             h = -1
-        return h/100
+        return h
 
     def readdress(self, newaddress):
         """ Readdress device
@@ -103,25 +104,20 @@ if __name__ == "__main__":  # routine lists devices and readdress
         if par == "-list":
             # list connected devices
             for address in range(0, 256):
-                # setup humidity sensor:
-                try:
-                    # intialize device
-                    instrument = SMSens(address,  1, '/dev/ttyUSB0', 9600)
-                    # try to read soil moisture
-                    h = instrument.read()
+                # intialize humidity sensor:
+                instrument = SMSens(address,  2, '/dev/ttyUSB0', 9600)
+                # try to read soil moisture
+                h = instrument.read()
+                if h >= 0:
                     # if no error happened, mark found device and exit loop
                     foundaddress = address
                     print('\ndevice found at address ' + str(address) +
-                          ' (response was ' + str(h) + ')')
-                except KeyboardInterrupt:
-                    print('user interrupt')
-                    break
-                except:
+                        ' (response was ' + str(h) + ')')
+                else:
                     # cannot read from address, just continue with another:
-                    #  print('device not found at address ' + str(address))
                     print('.', end='')
                     sys.stdout.flush()  # refresh display
-                    #  pass
+            # finished reading all adresses
             if foundaddress < 0:
                 print('no devices found!')
             # successful quit:
@@ -130,15 +126,15 @@ if __name__ == "__main__":  # routine lists devices and readdress
             # readdress device
             oldaddress = int(sys.argv[2])
             # check humidity sensor:
-            try:
-                # intialize device
-                instrument = SMSens(oldaddress,  2, '/dev/ttyUSB0', 9600)
-                # try to read soil moisture
-                h = instrument.read()
+            # intialize device
+            instrument = SMSens(oldaddress,  2, '/dev/ttyUSB0', 9600)
+            # try to read soil moisture
+            h = instrument.read()
+            if h >= 0:
                 # if no error happened, mark found device and exit loop
                 print('device found at address ' + str(oldaddress) +
-                      ' (response was ' + str(h) + ')')
-            except:
+                        ' (response was ' + str(h) + ')')
+            else:
                 # cannot read from address, just continue with another:
                 print('device not found at address ' + str(oldaddress))
                 sys.exit(1)
