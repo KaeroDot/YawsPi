@@ -80,6 +80,7 @@ def quit(reason):  # performs safe quit
     \param string: reason why quitting
     \return Nothing
     """
+    gv.hw.sh_all_off()  # switch off all soil humidity sensors
     gv.hw.so_switch(0)  # set water source off
     for i in range(gv.hw.StNo):
         gv.hw.st_switch(i, 0)  # switch valve off
@@ -1021,7 +1022,7 @@ def log_get():  # returns full log (load file and add buffer)
 
 # ------------------- hardware related functions:
 # (can be called only from main thread)
-def sensors_get_all():  # measures water levels of barrel and all stations
+def sensors_get_all():  # measures w. levels of barrel + stations and soil hum.
     gv.cv['CurAct'] = 'reading sensors'
     if __name__ != "__main__":
         raise NameError('sensors_get_all() called outside main thread!')
@@ -1037,10 +1038,12 @@ def sensors_get_all():  # measures water levels of barrel and all stations
         log_add('station "' + gv.hws['StData'][i]['Name'] + '" (' + str(i) +
                 ') is ' + str(gv.cv['StWL'][i] * 100) + '% full')
         # soil moisture sensors:
+        gv.hw.sh_all_on()
         gv.cv['StSH'][i] = gv.hw.sh_level(i)
         save_station_shumid(i, gv.cv['StSH'][i])
         log_add('station "' + gv.hws['StData'][i]['Name'] + '" (' + str(i) +
                 ') is ' + str(gv.cv['StSH'][i] * 100) + '% wet')
+        gv.hw.sh_all_off()
     # weather sensors:
     gv.cv['SeTemp'] = gv.hw.se_temp()
     save_sensor_value('temp', gv.cv['SeTemp'])

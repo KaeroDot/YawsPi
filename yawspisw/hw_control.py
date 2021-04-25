@@ -684,6 +684,49 @@ class YawspiHW:
         else:
             return 0.05
 
+    def sh_all_on(self):  # prepare soil humidity sensors for reading
+        """ Prepare all soil humidity sensors for reading
+
+        Because: if the soil humidity sensor is powered, the voltage goes
+        somehow through data wires to other sensors. other sensors are only
+        partially powered and cause a lot of data reading errors on the bus.
+        therefore all soil humidity sensors must be powered on even if only
+        one has to be readout.
+        \param none
+        \return none
+        """
+        if self.WithHW:
+            # switch all sensors on:
+            waittime = 0.1
+            for index in range(len(self.hwc['SeSH'])):
+                if self.hwc['SeSH'][index]['Type'] == 'modbus':
+                    # Modbus device can report value after 0.1 s, but the value
+                    # is underestimated. Delay of 2 seconds is required to get
+                    # proper value. For safety 3 seconds are used:
+                    waittime = 3
+                self._sh_switch(index, 1)
+            # let voltages and modbus stabilize:
+            if waittime > 0.9:
+                print('Preparing soil humidity sensors...')
+            sleep(waittime)
+        else:
+            # hardware simulation
+            pass
+
+    def sh_all_off(self):  # switch off soil humidity sensors
+        """ Switch off all soil humidity sensors
+
+        \param none
+        \return none
+        """
+        if self.WithHW:
+            # switch all sensors off:
+            for index in range(len(self.hwc['SeSH'])):
+                self._sh_switch(index, 0)
+        else:
+            # hardware simulation
+            pass
+
     def sh_level(self, index):  # returns soil humidity of station
         """ Return soil humidity indicated by a sensor
 
@@ -696,16 +739,11 @@ class YawspiHW:
         if index < 0 or index > len(self.hwc['SeSH']) - 1:
             raise NameError('incorrect sensor index: ' + str(index))
         if self.WithHW:
-            # first switch sensor on:
-            self._sh_switch(index, 1)
-            # let voltages and modbus stabilize:
-            sleep(0.1)
-            # second get sensor value
+            # get sensor value
             if self.hwc['SeSH'][index]['Type'] == 'none':
                 # if no sensor consider station always dry:
                 val = 0
             elif self.hwc['SeWL'][index]['Type'] == 'grad':
-                sleep(0.1)
                 # first reading throw away, than read three times and return
                 # average:
                 val = self._pin_get(self.hwc['SeSH'][index]['ValuePin'])
@@ -714,22 +752,23 @@ class YawspiHW:
                 val = val + self._pin_get(self.hwc['SeSH'][index]['ValuePin'])
                 val = val / 3
             elif self.hwc['SeSH'][index]['Type'] == 'modbus':
-                # Device can report value after 0.1 s, but the value is
-                # underestimated. Delay of 2 seconds is required to get proper
-                # value. For safety 3 seconds are used:
-                sleep(3)
-                # first reading throw away, than read three times and return
-                # average:
+                # first reading throw away
                 val = self._SHmodbus[index].read()
-                val = self._SHmodbus[index].read()
-                val = val + self._SHmodbus[index].read()
-                val = val + self._SHmodbus[index].read()
-                val = val / 3
+                # read three times and return average of correct values:
+                no = 0
+                val = 0
+                for i in range(3):
+                    tmp = self._SHmodbus[index].read()
+                    if tmp >= 0:
+                        val = val + tmp
+                        no = no + 1
+                if no > 0:
+                    val = val / 3
+                else:
+                    val = -1
             else:
                 raise NameError('unknown Water Level Sensor Type!')
-            # third switch sensor off:
-            self._sh_switch(index, 0)
-            # fourth return value:
+            # return value:
             return val
         else:
             # hardware simulation
@@ -1015,10 +1054,12 @@ if __name__ == "__main__":  # this routine checks system
                     print('source: ' + str(hw.se_level(i + 1)))
                     # print soil humidity sensors:
                     print('soil hum. sensors:')
+                    hw.sh_all_on()
                     for i in range(hw.StNo):
                         print('sensor of station ' + str(i) +
                                 ', type ' + hw.hwc['SeSH'][i]['Type'] +
                                 ': ' + str(hw.sh_level(i)))
+                    hw.sh_all_off()
                     sleep(0.5)
                     print('----------')
         except KeyboardInterrupt:
