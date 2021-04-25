@@ -56,7 +56,7 @@ Installation of yawspisw on a fresh sd card
         git clone git@github.com:KaeroDot/YawsPi.git
 1. install yawspi dependencies:
 
-        sudo apt install python3-pip python3-arrow python3-rpi.gpio python3-smbus python3-matplotlib
+        sudo apt install gnuplot-nox python3-pip python3-arrow python3-rpi.gpio python3-smbus
         pip3 install --user minimalmodbus
     webpy from repository can be outdated so it is better to install from pip:
         pip3 install --user webpy
@@ -92,6 +92,7 @@ Service running?
 Available i2c devices?
 
     sudo i2cdetect -y 1
+    sudo i2cdetect -l
 
 Hardware working? First try:
 

@@ -5,6 +5,7 @@ yawspisw/*.pyc
 yawspisw/.ropeproject
 yawspisw/config/*
 yawspisw/data/*
+yawspisw/static/data/*
 doc/*
 yawspisw/__pycache__/
 yawspi_installation.html
