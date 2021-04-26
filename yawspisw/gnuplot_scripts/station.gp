@@ -14,7 +14,7 @@ set format y2 "%.2f"
 # set yrange [0:1]
 set y2range [0:1]
 
-set output 'static/data/0.png'
+set output 'static/data/'.station_index.'.png'
 plot '< grep -E "level" data/'.station_index.'.csv' using 1:2 axis x1y1 title 'Water l.' with lines lw 2 lc "blue", \
      '< grep -E "soil"  data/'.station_index.'.csv' using 1:2 axis x1y1 title 'Soil h.'  with lines lw 2 lc "green", \
      '< grep -E "fill"  data/'.station_index.'.csv' using 1:2 axis x1y2 title 'Fill v.'  with points ps 2 pt 7 lc "black"
